@@ -6,8 +6,12 @@ public class GetColor : MonoBehaviour
 
     private Camera cam;
     [SerializeField] private CanvasGroup canvasGroup;
-    private GameObject sphere;
+    [SerializeField]
+    private GameObject LaunchPlacePrefab;
     [SerializeField] private GameObject Earth;
+    private Texture politicTexture;
+    private UnitLaunchPlace launchPlace;
+    private LayerMask mask;
     void Start()
     {
         cam = Camera.main;
@@ -16,27 +20,29 @@ public class GetColor : MonoBehaviour
             canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position=new Vector3(100,100,100);
+        launchPlace = Instantiate(LaunchPlacePrefab, new Vector3(100, 100, 100), Quaternion.identity).GetComponent<UnitLaunchPlace>();
+        
+        politicTexture=Resources.Load<PoliticTextureSO>("PoliticTexture/PoliticTexture").PoliticTexture;
+
+        mask = LayerMask.GetMask("Earth");
     }
     void Update()
     {
-        if (!Input.GetMouseButton(0)||canvasGroup.alpha!=1)
+        if (!Input.GetMouseButtonDown(0)||canvasGroup.alpha!=1)
             return;
 
         RaycastHit hit;
-        if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
+        if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition),out hit, 100, mask))
             return;
 
-        Renderer rend = hit.transform.GetComponent<Renderer>();
-        MeshCollider meshCollider = hit.collider as MeshCollider;
-        if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null || meshCollider == null)
+        
+        if (politicTexture == null)
             return;
 
-        sphere.transform.position = hit.point;
-        sphere.transform.parent = Earth.transform;
+        launchPlace.transform.position = hit.point;
+        launchPlace.transform.parent = Earth.transform;
 
-        Texture2D tex = rend.material.mainTexture as Texture2D;
+        Texture2D tex = politicTexture as Texture2D;
         Vector2 pixelUV = hit.textureCoord;
         //Debug.Log("XYY:::" + pixelUV);
         pixelUV.x *= tex.width;
@@ -48,6 +54,7 @@ public class GetColor : MonoBehaviour
         c = tex.GetPixel((int)pixelUV.x, (int)pixelUV.y);
 
         Debug.Log("color::" + c);
+        Debug.Log(tex.name);
      //   Debug.Log(c.ToString());
     }
 
