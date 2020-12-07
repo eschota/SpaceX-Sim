@@ -6,5 +6,6 @@ using UnityEngine;
 public class GameParameters : ScriptableObject
 {
     public int StartBalance = 100;
+    public Vector3 StartDate = new Vector3(1, 16, 1985);
     
 }

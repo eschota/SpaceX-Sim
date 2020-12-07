@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameObject.AddComponent<Eco>();
+        gameObject.AddComponent<TimeManager>();
     }
     void Update()
     {
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
     private static void StartNewGame()
     {
         Eco.IniEco("");
+        TimeManager.Ini();
         CurrentState = State.CreateLauchPlace;
     }
     static public void LoadGame(string Name)
@@ -74,9 +76,31 @@ public class GameManager : MonoBehaviour
     public static List<Unit> LaunchPlaces = new List<Unit>();
     public static void CreateLaunchPlace(GameParametersLaunchPlace launchPlace)
     {
-        GameObject LP = new GameObject();LP.AddComponent<Unit>();
+        if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
+        GameObject LP = new GameObject();
+        LP.AddComponent<Unit>();
         LaunchPlaces.Add(LP.GetComponent<Unit>());
-        Eco.Balance -= launchPlace.CostBuild;
+         
+        CurrentState = State.Play;
+    }
+    #endregion
+    #region OnGui Hack Etc
+    private bool F1 = false;
+    void Hack()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+    private void OnGUI()
+    {
+        if (Application.isEditor)
+            if (F1 == true)
+            {
+                GUI.Label(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.2f), CurrentState.ToString());
+
+
+                //      GUI.Label(new Rect(400, 200, 100, 100), Camera.main.WorldToScreenPoint(Vector3.up * maxPos).y.ToString());
+                //      if (LastBlock != null) GUI.Label(new Rect(100, 300, 100, 100), LastBlock.transform.position.y.ToString());
+            }
     }
     #endregion
 }

@@ -33,12 +33,16 @@ public class Eco : MonoBehaviour
             if (EventChangeBalance != null) EventChangeBalance();
         }
     }
-    public static bool BalanceTest(int cost)
+    public static bool Buy(int cost, string mesage)
     {
-        if (Balance - cost > 0) return true;
+        if (Balance - cost > 0)
+        {
+            Balance -= cost;
+            return true;
+        }
         else
         {
-            Alert.instance.AlertMessage = "Not Enough Minerals";
+            Alert.instance.AlertMessage = mesage;
             return false;
         }
     }
