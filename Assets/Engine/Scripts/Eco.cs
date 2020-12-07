@@ -35,7 +35,11 @@ public class Eco : MonoBehaviour
     }
     public static bool Buy(int cost, string mesage)
     {
-        if (Balance - cost > 0) return true;
+        if (Balance - cost > 0)
+        {
+            Balance -= cost;
+            return true;
+        }
         else
         {
             Alert.instance.AlertMessage = mesage;

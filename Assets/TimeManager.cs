@@ -48,9 +48,11 @@ public class TimeManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) GameManager.CurrentState = GameManager.State.Pause;
-        else GameManager.CurrentState = GameManager.State.Play;
-        if (GameManager.CurrentState != GameManager.State.Play) return;
+        if (Input.GetKeyDown(KeyCode.Space)) 
+            if(GameManager.CurrentState==GameManager.State.Play) GameManager.CurrentState = GameManager.State.Pause;
+            else GameManager.CurrentState = GameManager.State.Play;
+
+            if (GameManager.CurrentState != GameManager.State.Play) return;
          
             Timer += Time.deltaTime;
             CalendarControl();
