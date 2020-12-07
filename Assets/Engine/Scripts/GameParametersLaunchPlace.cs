@@ -9,6 +9,6 @@ public class GameParametersLaunchPlace : ScriptableObject
     public int CostBuild = 300;
     public int CostLaunch = 50;
     public int CostPerMonth = 10;
-    
-    
+    public Color ColorPlace;
+   
 }
