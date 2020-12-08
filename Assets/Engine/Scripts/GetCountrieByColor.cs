@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GetColor : MonoBehaviour
+public class GetCountrieByColor : MonoBehaviour
 {
 
     private Camera cam;
@@ -28,7 +28,7 @@ public class GetColor : MonoBehaviour
     }
     void Update()
     {
-        if (!Input.GetMouseButtonDown(0)||GameManager.CurrentState == GameManager.State.CreateLauchPlace)
+        if (!Input.GetMouseButtonDown(0)||GameManager.CurrentState != GameManager.State.CreateLauchPlace)
             return;
 
         RaycastHit hit;

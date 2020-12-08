@@ -7,4 +7,6 @@ using UnityEngine;
 public class PoliticTextureSO : ScriptableObject
 {
     public Texture2D PoliticTexture;
+    public List<Color> CountrieColors;
+    public List<CountrySO> CountrieSOs;
 }
