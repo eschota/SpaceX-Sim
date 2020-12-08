@@ -6,14 +6,15 @@ public class Unit : MonoBehaviour
 {
     public string Name;
     public int Days = 0;
-    public int CreationDate = -1;
-    void Start()
+    public int[] CreationDate;
+    public virtual void Start()
     {
-        
+        CreationDate = new int [3];
+        CreationDate[0] = TimeManager.Days; CreationDate[1] = TimeManager.Months; CreationDate[2]= TimeManager.Years;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public virtual void Update()
     {
         
     }

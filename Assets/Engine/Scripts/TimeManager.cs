@@ -8,6 +8,9 @@ public class TimeManager : MonoBehaviour
     public static float Timer;
     public static event Action EventChangeDay;
     private static int _days;
+    private static float _elapsedTime;
+    public static float ElapsedTime { get => _elapsedTime; }
+
     public static int Days
     {
         get => _days;
