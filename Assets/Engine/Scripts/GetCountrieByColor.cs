@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GetCountrieByColor : MonoBehaviour
 {
 
     private Camera cam;
     [SerializeField] private CanvasGroup canvasGroup;
-    [SerializeField] private GameObject LaunchPlacePrefab;
+    
     [SerializeField] private GameObject Earth;
     private PoliticTextureSO politicSO;
     public static GameObject launchPlace;
     private LayerMask mask;
     private List<GuiCountryChoiceText> changeTextCountry;
+    private GameObject launchPlacePrefab;
     void Start()
     {
         cam = Camera.main;
@@ -31,12 +34,26 @@ public class GetCountrieByColor : MonoBehaviour
         changeTextCountry=new List<GuiCountryChoiceText>();
         changeTextCountry.AddRange(FindObjectsOfType<GuiCountryChoiceText>());
 
+     launchPlacePrefab= Resources.Load<GameObject>("UnitPoint/UnitPoint");
     }
 
     void Update()
     {
         if (!Input.GetMouseButton(0))
             return;
+
+        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject != null)
+            {
+                if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject
+                    .GetComponent<CanvasRenderer>() != null)
+                {
+                    return;
+                }
+            }
+        }
+
 
         if (GameManager.CurrentState == GameManager.State.CreateLauchPlace ||
             GameManager.CurrentState == GameManager.State.CreateProductionFactory ||
@@ -52,7 +69,7 @@ public class GetCountrieByColor : MonoBehaviour
 
             if (launchPlace == null)
             {
-                launchPlace = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                launchPlace = Instantiate(launchPlacePrefab);
             }
 
             launchPlace.transform.position = hit.point;
