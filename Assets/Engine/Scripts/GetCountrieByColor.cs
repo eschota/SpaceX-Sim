@@ -28,45 +28,50 @@ public class GetCountrieByColor : MonoBehaviour
 
         Earth = FindObjectOfType<UnitEarth>().gameObject;
 
-        launchPlace = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        launchPlace.transform.position=new Vector3(100,100,100);
+       
 
     }
 
     void Update()
     {
-        if (!Input.GetMouseButtonDown(0) || GameManager.CurrentState != GameManager.State.CreateLauchPlace)
+        if (!Input.GetMouseButtonDown(0))
             return;
 
-        RaycastHit hit;
-        if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, 100, mask))
-            return;
-
-
-        if (politicSO == null)
-            return;
-
-        if (launchPlace == null)
+        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace ||
+            GameManager.CurrentState == GameManager.State.CreateProductionFactory ||
+            GameManager.CurrentState == GameManager.State.CreateResearchLab)
         {
-            launchPlace = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        }
-        launchPlace.transform.position = hit.point;
-        launchPlace.transform.parent = Earth.transform;
+            RaycastHit hit;
+            if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, 100, mask))
+                return;
 
-        Texture2D tex = politicSO.PoliticTexture as Texture2D;
-        Vector2 pixelUV = hit.textureCoord;
-        //Debug.Log("XYY:::" + pixelUV);
-        pixelUV.x *= tex.width;
-        pixelUV.y *= tex.height;
 
-        //  Debug.Log("X:::" + pixelUV.x + " Y::" + pixelUV.y);
-        Color32 c;
+            if (politicSO == null)
+                return;
 
-        c = tex.GetPixel((int) pixelUV.x, (int) pixelUV.y);
+            if (launchPlace == null)
+            {
+                launchPlace = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            }
 
-        Debug.Log("color::" + c);
+            launchPlace.transform.position = hit.point;
+            launchPlace.transform.parent = Earth.transform;
+
+            Texture2D tex = politicSO.PoliticTexture as Texture2D;
+            Vector2 pixelUV = hit.textureCoord;
+            //Debug.Log("XYY:::" + pixelUV);
+            pixelUV.x *= tex.width;
+            pixelUV.y *= tex.height;
+
+            //  Debug.Log("X:::" + pixelUV.x + " Y::" + pixelUV.y);
+            Color32 c;
+
+            c = tex.GetPixel((int) pixelUV.x, (int) pixelUV.y);
+
+            Debug.Log("color::" + c);
             // Debug.Log(ComparableColors(c).name);
-        //   Debug.Log(c.ToString());
+            //   Debug.Log(c.ToString());
+        }
     }
 
     private CountrySO ComparableColors(Color colorUnderMouse)

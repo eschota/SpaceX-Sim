@@ -24,9 +24,30 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     {
         if (CurrentLauchPlace != null)
         {
-            if (GetCountrieByColor.launchPlace.transform.position != new Vector3(100, 100, 100))
+            if (GetCountrieByColor.launchPlace != null)
             {
-                GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace);
+                switch (GameManager.CurrentState)
+                {
+                    case GameManager.State.CreateLauchPlace:
+                        UnitLaunchPlace launchPlace=GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<UnitLaunchPlace>();
+                        launchPlace.name = "LaunchPlace";
+                        launchPlace.Country = CurrentLauchPlace;
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,launchPlace);
+                        break;
+                    case GameManager.State.CreateProductionFactory:
+                        UnitProductionFactory productionFactory = GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<UnitProductionFactory>();
+                        productionFactory.name = "ProductionFactory";
+                        productionFactory.Country = CurrentLauchPlace;
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, productionFactory);
+                        break;
+                    case GameManager.State.CreateResearchLab:
+                        UnitResearchLab researchLab = GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<UnitResearchLab>();
+                        researchLab.name = "ResearchLab";
+                        researchLab.Country = CurrentLauchPlace;
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,researchLab);
+                        break;
+                }
+                
             }
             else
             {

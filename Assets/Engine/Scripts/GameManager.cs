@@ -77,16 +77,20 @@ public class GameManager : MonoBehaviour
     #endregion
     #region LauchPlace ResearchLab Production Factory
     public static List<Unit> Units = new List<Unit>();
-    public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp)
+    public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp,Unit type)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
-        GameObject LP = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        LP.transform.position = launchPlaceTemp.transform.position;
-        LP.transform.parent = GameObject.FindObjectOfType<UnitEarth>().transform;
-        Units.Add(LP.AddComponent<UnitLaunchPlace>());     
+        type.transform.position = launchPlaceTemp.transform.position;
+        type.transform.parent = GameObject.FindObjectOfType<UnitEarth>().transform;
+        Units.Add(type);     
         Destroy(launchPlaceTemp);
         EventCreatedNewUnit();
         CurrentState = State.Play;
+    }
+
+    public static void CreateResearchLab(CountrySO launchPlace, GameObject launchPlaceTemp)
+    {
+
     }
     #endregion
     #region OnGui Hack Etc
