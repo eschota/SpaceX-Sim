@@ -2587,6 +2587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7491550381465219171}
   - component: {fileID: 5789633872877842794}
+  - component: {fileID: 727555416943708515}
   m_Layer: 8
   m_Name: grid Right Column
   m_TagString: Untagged
@@ -2641,6 +2642,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 1
+--- !u!114 &727555416943708515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585774557077472633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b05fd6e790c22408afb2a3f552bb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: {fileID: 2880571509003337246}
+  CostBuild: {fileID: 4340816850145943494}
+  CostPerMonth: {fileID: 1256669273263268923}
+  CostPerLaunch: {fileID: 6288715200076860295}
 --- !u!1 &1640914982756935175
 GameObject:
   m_ObjectHideFlags: 0
@@ -6926,6 +6943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3919429547200614054}
   - component: {fileID: 1192598981580173592}
+  - component: {fileID: 4035065095915945026}
   m_Layer: 8
   m_Name: grid Right Column
   m_TagString: Untagged
@@ -6980,6 +6998,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 1
+--- !u!114 &4035065095915945026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3454411515592035632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b05fd6e790c22408afb2a3f552bb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: {fileID: 5979653007098351032}
+  CostBuild: {fileID: 1300928351547965564}
+  CostPerMonth: {fileID: 733723638824050187}
+  CostPerLaunch: {fileID: 4152899419072392532}
 --- !u!1 &3542506287442429221
 GameObject:
   m_ObjectHideFlags: 0
@@ -9717,6 +9751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4900462347391035001}
   - component: {fileID: 4900462347391035002}
+  - component: {fileID: 413788901060046651}
   m_Layer: 8
   m_Name: grid Right Column
   m_TagString: Untagged
@@ -9771,6 +9806,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 1
+--- !u!114 &413788901060046651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900462347391035000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b05fd6e790c22408afb2a3f552bb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: {fileID: 4900462348150553302}
+  CostBuild: {fileID: 4900462349001384937}
+  CostPerMonth: {fileID: 4900462348611407472}
+  CostPerLaunch: {fileID: 4900462347963638543}
 --- !u!1 &4900462347430779897
 GameObject:
   m_ObjectHideFlags: 0
@@ -10725,9 +10776,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900462347997631018}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &4900462347997631012
 MonoBehaviour:
@@ -11342,9 +11393,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900462348403161454}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &4900462348403161448
 MonoBehaviour:

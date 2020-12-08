@@ -12,7 +12,7 @@ public class GetCountrieByColor : MonoBehaviour
     private PoliticTextureSO politicSO;
     public static GameObject launchPlace;
     private LayerMask mask;
-
+    private List<GuiCountryChoiceText> changeTextCountry;
     void Start()
     {
         cam = Camera.main;
@@ -28,13 +28,14 @@ public class GetCountrieByColor : MonoBehaviour
 
         Earth = FindObjectOfType<UnitEarth>().gameObject;
 
-       
+        changeTextCountry=new List<GuiCountryChoiceText>();
+        changeTextCountry.AddRange(FindObjectsOfType<GuiCountryChoiceText>());
 
     }
 
     void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
+        if (!Input.GetMouseButton(0))
             return;
 
         if (GameManager.CurrentState == GameManager.State.CreateLauchPlace ||
@@ -68,8 +69,8 @@ public class GetCountrieByColor : MonoBehaviour
 
             c = tex.GetPixel((int) pixelUV.x, (int) pixelUV.y);
 
-            Debug.Log("color::" + c);
-            // Debug.Log(ComparableColors(c).name);
+            Debug.Log("color::" + c); 
+            Debug.Log(ComparableColors(c)?.name);
             //   Debug.Log(c.ToString());
         }
     }
@@ -92,11 +93,19 @@ public class GetCountrieByColor : MonoBehaviour
             Debug.LogError("Country not found,Choose default");
             indexColorAndCountry = 0;
         }
-        if(politicSO.CountrieSOs.Count>0)
-        return politicSO.CountrieSOs[indexColorAndCountry];
+
+        if (politicSO.CountrieSOs.Count > 0)
+        {
+            foreach (GuiCountryChoiceText choiceText in changeTextCountry)
+            {
+                choiceText.SetCountryToGUI(politicSO.CountrieSOs[indexColorAndCountry]);
+            }
+            
+            return politicSO.CountrieSOs[indexColorAndCountry];
+        }
         else
         {
-            Debug.Log("NoCountry");
+            Debug.Log("NoCountrys");
 
         }
 
