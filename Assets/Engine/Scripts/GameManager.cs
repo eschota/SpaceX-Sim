@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     {
         gameObject.AddComponent<Eco>();
         gameObject.AddComponent<TimeManager>();
+        Instantiate( Resources.Load("Canvas"));
     }
     void Update()
     {
