@@ -7,10 +7,13 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
 {
     public static CountrySO CurrentLauchPlace;
     [SerializeField] GameObject CancelButton;
+    private GameObject UnitLaunchPrefab;
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(OnClick);
         GameManager.EventChangeState += OnChange;
+
+        UnitLaunchPrefab = Resources.Load<GameObject>("UnitPoint/UnitPoint");
     }
     void OnChange()
     {
@@ -29,19 +32,19 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
                 switch (GameManager.CurrentState)
                 {
                     case GameManager.State.CreateLauchPlace:
-                        UnitLaunchPlace launchPlace=GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<UnitLaunchPlace>();
+                        UnitLaunchPlace launchPlace=Instantiate(UnitLaunchPrefab).AddComponent<UnitLaunchPlace>();
                         launchPlace.name = "LaunchPlace";
                         launchPlace.Country = CurrentLauchPlace;
                         GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,launchPlace);
                         break;
                     case GameManager.State.CreateProductionFactory:
-                        UnitProductionFactory productionFactory = GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<UnitProductionFactory>();
+                        UnitProductionFactory productionFactory = Instantiate(UnitLaunchPrefab).AddComponent<UnitProductionFactory>();
                         productionFactory.name = "ProductionFactory";
                         productionFactory.Country = CurrentLauchPlace;
                         GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, productionFactory);
                         break;
                     case GameManager.State.CreateResearchLab:
-                        UnitResearchLab researchLab = GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<UnitResearchLab>();
+                        UnitResearchLab researchLab = Instantiate(UnitLaunchPrefab).AddComponent<UnitResearchLab>();
                         researchLab.name = "ResearchLab";
                         researchLab.Country = CurrentLauchPlace;
                         GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,researchLab);
