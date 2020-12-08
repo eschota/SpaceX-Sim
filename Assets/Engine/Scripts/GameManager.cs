@@ -76,11 +76,11 @@ public class GameManager : MonoBehaviour
     #endregion
     #region LauchPlace ResearchLab Production Factory
     public static List<Unit> Units = new List<Unit>();
-    public static void CreateLaunchPlace(CountrySO launchPlace)
+    public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
-        GameObject LP = new GameObject();
-        Units.Add(LP.AddComponent<UnitLaunchPlace>());        
+       // GameObject LP = new GameObject();
+        Units.Add(launchPlaceTemp.AddComponent<UnitLaunchPlace>());        
         EventCreatedNewUnit();
         CurrentState = State.Play;
     }

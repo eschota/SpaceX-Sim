@@ -23,7 +23,17 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     void OnClick()
     {
         if (CurrentLauchPlace != null)
-            GameManager.CreateLaunchPlace(CurrentLauchPlace);
+        {
+            if (GetCountrieByColor.launchPlaces.transform.position != new Vector3(100, 100, 100))
+            {
+                GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlaces);
+            }
+            else
+            {
+                Debug.Log("Chose point");
+
+            }
+        }
         else Alert.instance.AlertMessage = "Select Launch Place First!!!";
     }
     // Update is called once per frame
