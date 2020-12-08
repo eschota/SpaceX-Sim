@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
+        Hack();
     }
     #region Variables
     public static event Action EventChangeState;
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        if (Input.GetKeyDown(KeyCode.Plus)) Eco.Balance += Eco.Balance;
+        if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
     }
     private void OnGUI()
     {
