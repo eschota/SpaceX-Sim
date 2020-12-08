@@ -16,8 +16,8 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     {
         if (GameManager.CurrentState == GameManager.State.CreateLauchPlace)
         {
-            if (FindObjectOfType<UnitLaunchPlace>()==null) CancelButton.gameObject.SetActive(false);
-            else CancelButton.gameObject.SetActive(true);
+            //if (FindObjectOfType<UnitLaunchPlace>()==null) CancelButton.gameObject.SetActive(false);
+            //else CancelButton.gameObject.SetActive(true);
         }
     }
     void OnClick()
