@@ -28,7 +28,7 @@ public class GetColor : MonoBehaviour
     }
     void Update()
     {
-        if (!Input.GetMouseButtonDown(0)||canvasGroup.alpha!=1)
+        if (!Input.GetMouseButtonDown(0)||GameManager.CurrentState == GameManager.State.CreateLauchPlace)
             return;
 
         RaycastHit hit;

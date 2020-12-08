@@ -17,7 +17,7 @@ public class RotateEarth : MonoBehaviour
     }
     void Update()
     {
-        if (canvasGroup.alpha == 1)
+        if (GameManager.CurrentState==GameManager.State.CreateLauchPlace)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
