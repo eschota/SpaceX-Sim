@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     }
     private void Awake()
-    {
+    {   if (FindObjectsOfType<GameManager>().Length > 1) { DestroyImmediate(this); Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>"); }
         gameObject.AddComponent<Eco>();
         gameObject.AddComponent<TimeManager>();
      if(FindObjectOfType<Canvas>()==null)   Instantiate( Resources.Load("Canvas"));
