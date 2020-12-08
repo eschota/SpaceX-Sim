@@ -10,7 +10,7 @@ public class GetCountrieByColor : MonoBehaviour
     [SerializeField] private GameObject LaunchPlacePrefab;
     [SerializeField] private GameObject Earth;
     private PoliticTextureSO politicSO;
-    public static GameObject launchPlaces;
+    public static GameObject launchPlace;
     private LayerMask mask;
 
     void Start()
@@ -28,8 +28,8 @@ public class GetCountrieByColor : MonoBehaviour
 
         Earth = FindObjectOfType<UnitEarth>().gameObject;
 
-        launchPlaces = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        launchPlaces.transform.position=new Vector3(100,100,100);
+        launchPlace = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        launchPlace.transform.position=new Vector3(100,100,100);
 
     }
 
@@ -45,10 +45,13 @@ public class GetCountrieByColor : MonoBehaviour
 
         if (politicSO == null)
             return;
-       
-        
-        launchPlaces.transform.position = hit.point;
-        launchPlaces.transform.parent = Earth.transform;
+
+        if (launchPlace == null)
+        {
+            launchPlace = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        }
+        launchPlace.transform.position = hit.point;
+        launchPlace.transform.parent = Earth.transform;
 
         Texture2D tex = politicSO.PoliticTexture as Texture2D;
         Vector2 pixelUV = hit.textureCoord;

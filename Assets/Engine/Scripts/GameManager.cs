@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Security.Cryptography;
 
 public class GameManager : MonoBehaviour
 {
@@ -79,8 +80,11 @@ public class GameManager : MonoBehaviour
     public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
-       // GameObject LP = new GameObject();
-        Units.Add(launchPlaceTemp.AddComponent<UnitLaunchPlace>());        
+        GameObject LP = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        LP.transform.position = launchPlaceTemp.transform.position;
+        LP.transform.parent = GameObject.FindObjectOfType<UnitEarth>().transform;
+        Units.Add(LP.AddComponent<UnitLaunchPlace>());     
+        Destroy(launchPlaceTemp);
         EventCreatedNewUnit();
         CurrentState = State.Play;
     }

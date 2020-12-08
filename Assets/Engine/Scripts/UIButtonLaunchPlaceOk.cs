@@ -24,9 +24,9 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     {
         if (CurrentLauchPlace != null)
         {
-            if (GetCountrieByColor.launchPlaces.transform.position != new Vector3(100, 100, 100))
+            if (GetCountrieByColor.launchPlace.transform.position != new Vector3(100, 100, 100))
             {
-                GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlaces);
+                GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace);
             }
             else
             {
