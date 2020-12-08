@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameParametresLaunchPlace", menuName = "ScriptableObjects/GameParametresLaunchPlace", order = 1)]
-public class GameParametersLaunchPlace : ScriptableObject
+[CreateAssetMenu(fileName = "CountrySO", menuName = "ScriptableObjects/CountrySO", order = 1)]
+public class CountrySO : ScriptableObject
 {
     public string Name;
     public int CostBuild = 300;

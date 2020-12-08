@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
     #region Variables
     public static event Action EventChangeState;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace, PlayStation, PlayBase }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase }
     private static State _currentState;
     public static State CurrentState
     {
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
                     if (CurrentState == State.MenuStartGame)
                     {
                         StartNewGame();
-                        return;
+                        
                     }
 
                     break;
@@ -65,16 +65,16 @@ public class GameManager : MonoBehaviour
     {
         Eco.IniEco("");
         TimeManager.Ini();
-        CurrentState = State.CreateLauchPlace;
+       
     }
     static public void LoadGame(string Name)
     {
         Eco.IniEco(Name);
     }
     #endregion
-    #region LauchPlace
+    #region LauchPlace ResearchLab Production Factory
     public static List<Unit> LaunchPlaces = new List<Unit>();
-    public static void CreateLaunchPlace(GameParametersLaunchPlace launchPlace)
+    public static void CreateLaunchPlace(CountrySO launchPlace)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
         GameObject LP = new GameObject();

@@ -6,6 +6,7 @@ public class Unit : MonoBehaviour
 {
     public string Name;
     public int Days = 0;
+    public int CreationDate = -1;
     void Start()
     {
         

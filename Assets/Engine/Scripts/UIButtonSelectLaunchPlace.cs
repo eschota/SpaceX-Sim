@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIButtonSelectLaunchPlace : MonoBehaviour
 {
-    [SerializeField] GameParametersLaunchPlace launchPlace;
+    [SerializeField] CountrySO launchPlace;
     [SerializeField] TMPro.TextMeshProUGUI Name;
     [SerializeField] TMPro.TextMeshProUGUI CostBuild;
     [SerializeField] TMPro.TextMeshProUGUI CostPerMonth;

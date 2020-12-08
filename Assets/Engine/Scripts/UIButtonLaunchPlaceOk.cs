@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIButtonLaunchPlaceOk : MonoBehaviour
 {
-    public static GameParametersLaunchPlace CurrentLauchPlace;
+    public static CountrySO CurrentLauchPlace;
     [SerializeField] GameObject CancelButton;
     void Start()
     {
