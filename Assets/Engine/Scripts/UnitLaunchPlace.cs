@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitLaunchPlace : Unit
+public class UnitLaunchPlace : UnitEco
 {
 }

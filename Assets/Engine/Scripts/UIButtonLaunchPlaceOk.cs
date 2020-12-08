@@ -7,10 +7,13 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
 {
     public static CountrySO CurrentLauchPlace;
     [SerializeField] GameObject CancelButton;
+    private GameObject UnitLaunchPrefab;
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(OnClick);
         GameManager.EventChangeState += OnChange;
+
+        UnitLaunchPrefab = Resources.Load<GameObject>("UnitPoint/UnitPoint");
     }
     void OnChange()
     {
@@ -23,7 +26,38 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     void OnClick()
     {
         if (CurrentLauchPlace != null)
-            GameManager.CreateLaunchPlace(CurrentLauchPlace);
+        {
+            if (GetCountrieByColor.launchPlace != null)
+            {
+                switch (GameManager.CurrentState)
+                {
+                    case GameManager.State.CreateLauchPlace:
+                        UnitLaunchPlace launchPlace=Instantiate(UnitLaunchPrefab).AddComponent<UnitLaunchPlace>();
+                        launchPlace.name = "LaunchPlace";
+                        launchPlace.Country = CurrentLauchPlace;
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,launchPlace);
+                        break;
+                    case GameManager.State.CreateProductionFactory:
+                        UnitProductionFactory productionFactory = Instantiate(UnitLaunchPrefab).AddComponent<UnitProductionFactory>();
+                        productionFactory.name = "ProductionFactory";
+                        productionFactory.Country = CurrentLauchPlace;
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, productionFactory);
+                        break;
+                    case GameManager.State.CreateResearchLab:
+                        UnitResearchLab researchLab = Instantiate(UnitLaunchPrefab).AddComponent<UnitResearchLab>();
+                        researchLab.name = "ResearchLab";
+                        researchLab.Country = CurrentLauchPlace;
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,researchLab);
+                        break;
+                }
+                
+            }
+            else
+            {
+                Debug.Log("Chose point");
+
+            }
+        }
         else Alert.instance.AlertMessage = "Select Launch Place First!!!";
     }
     // Update is called once per frame
