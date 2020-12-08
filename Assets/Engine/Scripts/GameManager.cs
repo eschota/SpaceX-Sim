@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.Plus)) Eco.Balance += Eco.Balance;
     }
     private void OnGUI()
     {
