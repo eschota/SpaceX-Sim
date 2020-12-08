@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
     #region Variables
     public static event Action EventChangeState;
+    public static event Action EventCreatedNewUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase }
     private static State _currentState;
     public static State CurrentState
@@ -74,14 +75,13 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region LauchPlace ResearchLab Production Factory
-    public static List<UnitLaunchPlace> LaunchPlaces = new List<UnitLaunchPlace>();
-    public static List<UnitResearchLab> ResearchLabs = new List<UnitResearchLab>();
-    public static List<UnitProductionFactory> ProductionFactories= new List<UnitProductionFactory>();
+    public static List<Unit> Units = new List<Unit>();
     public static void CreateLaunchPlace(CountrySO launchPlace)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
         GameObject LP = new GameObject();
-        LP.AddComponent<Unit>();         
+        Units.Add(LP.AddComponent<UnitLaunchPlace>());        
+        EventCreatedNewUnit();
         CurrentState = State.Play;
     }
     #endregion

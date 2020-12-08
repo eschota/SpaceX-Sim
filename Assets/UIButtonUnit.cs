@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UIButtonUnit : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public enum UnitType { RocketLaunch, ResearchLab, ProductionFactory }
+    [SerializeField] public UnitType unitType;
+    [SerializeField] TMPro.TextMeshProUGUI number;
     void Start()
     {
         
