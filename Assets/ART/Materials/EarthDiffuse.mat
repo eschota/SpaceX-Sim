@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: EarthDiffuse
   m_Shader: {fileID: 4800000, guid: 843474d731b810348a1545746e84138f, type: 3}
-  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP _NORMALMAP_TANGENT_SPACE _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
     _SPECGLOSSMAP
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -42,7 +42,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: af3c061b8dd6f7041a065811cc087e7c, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudBumpMap:
+        m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudMap:
+        m_Texture: {fileID: 2800000, guid: 040b5d14c0963fd47981e050448e69c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudNormalMap:
+        m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CoatMaskMap:
@@ -70,7 +82,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EarthMap:
-        m_Texture: {fileID: 2800000, guid: 31c49db35f816bc45be51c4b47ec2be2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 286b6e6f63cf3dc479d05fdb0cb7a020, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EarthNormalMap:
+        m_Texture: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -82,7 +98,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Height:
-        m_Texture: {fileID: 2800000, guid: af3c061b8dd6f7041a065811cc087e7c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -98,7 +114,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 991c4f70204a84e4ebd88a0e6eb4249c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -106,15 +122,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 2dee9f6d59a2f3d4f83294106fc55f21, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NightMap:
-        m_Texture: {fileID: 2800000, guid: 1acca5db1f29cce49a7405a590cd8a5a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 14abb0596b07d1f41b3c28fc41d0b5a7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -126,7 +146,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OceanInverted:
-        m_Texture: {fileID: 2800000, guid: 2dee9f6d59a2f3d4f83294106fc55f21, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1f014093a422aa94683d2581a9d9019b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -161,6 +181,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WaterMask:
+        m_Texture: {fileID: 2800000, guid: 1f014093a422aa94683d2581a9d9019b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -176,12 +200,24 @@ Material:
     - _AlphaCutoffPrepass: 0.5
     - _AlphaCutoffShadow: 0.5
     - _Anisotropy: 0
+    - _AtmosphereBias: 0
+    - _AtmosphereDarkSide: 0.35
+    - _AtmospherePower: 3
+    - _AtmosphereScale: 1.5
+    - _Bias: 0
     - _BlendMode: 0
     - _BumpScale: 0.32
+    - _CloudDarkSide: 0.09
+    - _CloudMult: 1.1
+    - _CloudsDarkSide: 0
+    - _CloudsIntensity: 1.1
+    - _CloudsMult: 1.76
+    - _CloudsSmoothness: 0.1
     - _CoatMask: 0
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
+    - _DayNightContrast: 3
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalMapScale: 1
@@ -221,7 +257,7 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnableWind: 0
     - _EnergyConservingSpecularColor: 1
-    - _Float0: 1
+    - _Float0: 0.13111764
     - _GlossMapScale: 0.861
     - _Glossiness: 0.69
     - _GlossyReflections: 1
@@ -240,11 +276,14 @@ Material:
     - _Ior: 1
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
+    - _LandNormal: 0.1
+    - _LandSmoothness: 0.4
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _Metallic: 0.568
     - _Mode: 0
-    - _NightMult: 1.48
+    - _NightMult: 1
+    - _Normal: 0.19501047
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OcclusionStrength: 1
@@ -256,10 +295,12 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _Parallax: 0.02
+    - _Power: 2.78
     - _ReceivesSSR: 1
     - _RefractionModel: 0
-    - _Rough: 0.95
+    - _Rough: 1.2
     - _SSRefractionProjectionModel: 0
+    - _Scale: 1
     - _ShiverDirectionality: 0.5
     - _ShiverDrag: 0.2
     - _Smoothness: 0.728
@@ -280,7 +321,7 @@ Material:
     - _StencilWriteMaskMV: 176
     - _Stiffness: 1
     - _SubsurfaceMask: 1
-    - _SunMask: 42.91
+    - _SunMask: 10
     - _SupportDecals: 1
     - _SurfaceType: 0
     - _TexWorldScale: 1
@@ -299,15 +340,18 @@ Material:
     - _UVSec: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
+    - _WaterNormal: 0.03
+    - _WaterSmoothness: 0.7
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestModeDistortion: 4
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - _AtmosphereColor: {r: 0.24056602, g: 0.63926893, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.90800005, g: 0.90800005, b: 0.90800005, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

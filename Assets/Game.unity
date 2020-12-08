@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
@@ -206,6 +206,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Earth
       objectReference: {fileID: 0}
+    - target: {fileID: 1456419654723526102, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858208103431712655, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.059139393
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858208103431712655, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.71634245
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858208103431712655, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.6658414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858208103431712655, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.20002833
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858208103431712655, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 120.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428635786142703004, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428635786655540057, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f4661aa7cea1d4faf49c22f3ff0c1e, type: 3}
 --- !u!1 &705507993
@@ -238,13 +278,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3.34
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -277,7 +317,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -294,13 +334,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.33850718, y: -0.6694999, z: -0.09304312, w: 0.6546189}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.15034157, y: -0.6813704, z: 0.14607318, w: 0.70128065}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 18.578001, y: -97.616005, z: -37.351}
+  m_LocalEulerAnglesHint: {x: 24.2, y: -88.35, z: 0}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1eac6012c340344594e841761249b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitType: 0
   Name: 
   Days: 0
   CreationDate: 
@@ -352,7 +393,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
