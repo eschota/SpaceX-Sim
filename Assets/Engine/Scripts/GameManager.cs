@@ -73,14 +73,14 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region LauchPlace ResearchLab Production Factory
-    public static List<Unit> LaunchPlaces = new List<Unit>();
+    public static List<UnitLaunchPlace> LaunchPlaces = new List<UnitLaunchPlace>();
+    public static List<UnitResearchLab> ResearchLabs = new List<UnitResearchLab>();
+    public static List<UnitProductionFactory> ProductionFactories= new List<UnitProductionFactory>();
     public static void CreateLaunchPlace(CountrySO launchPlace)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
         GameObject LP = new GameObject();
-        LP.AddComponent<Unit>();
-        LaunchPlaces.Add(LP.GetComponent<Unit>());
-         
+        LP.AddComponent<Unit>();         
         CurrentState = State.Play;
     }
     #endregion
