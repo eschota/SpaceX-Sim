@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitResearchLab : Unit
+public class UnitResearchLab : UnitEco
 {
    
 }
