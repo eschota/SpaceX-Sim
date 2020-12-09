@@ -41,16 +41,20 @@ public class UIResearchManager : MonoBehaviour
             buttons.Add(Instantiate(button, transform));
             buttons[buttons.Count - 1].Rect.position = Researches[i].position;
             buttons[buttons.Count - 1].text.text = Researches[i].Name;
-            if (Researches[i].Dependances!=null)
-            if (Researches[i].Dependances.Length > 0)
-            {
-                for (int j = 0; j < Researches[i].Dependances.Length; j++)
-                {
-                    CreateLink(Researches[i].position, new Vector2( Researches[i].Dependances[j].position.x- buttons[i].Rect.sizeDelta.x/2, Researches[i].Dependances[j].position.y));
-                }
-            }
+            buttons[buttons.Count - 1].research = Researches[i];
+
         }
-         
+        for (int i = 0; i < Researches.Count; i++)
+        {
+            if (Researches[i].Dependances != null)
+                if (Researches[i].Dependances.Length > 0)
+                {
+                    for (int j = 0; j < Researches[i].Dependances.Length; j++)
+                    {
+                        CreateLink(buttons[i].pivotStart.position, buttons.Find(X => X.research == Researches[i].Dependances[j]).pivotEnd.position);
+                    }
+                }
+        }
     }
     void CreateLink(Vector2 start, Vector2 end)
     {
