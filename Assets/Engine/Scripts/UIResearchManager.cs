@@ -46,7 +46,7 @@ public class UIResearchManager : MonoBehaviour
             {
                 for (int j = 0; j < Researches[i].Dependances.Length; j++)
                 {
-                    CreateLink(Researches[i].position, Researches[i].Dependances[j].position);
+                    CreateLink(Researches[i].position, new Vector2( Researches[i].Dependances[j].position.x- buttons[i].Rect.sizeDelta.x/2, Researches[i].Dependances[j].position.y));
                 }
             }
         }
@@ -54,11 +54,11 @@ public class UIResearchManager : MonoBehaviour
     }
     void CreateLink(Vector2 start, Vector2 end)
     {
-        //float dis = Vector2.Distance(start, end);
-        //for (int i = 0; i < dis/DistanceArrows; i++)
-        //{
-        //    Arrows.Add(Instantiate(arrow, transform));
-        //    Arrows[Arrows.Count - 1].Rect.position = start + ((end - start) * DistanceArrows * i);
-        //}
+        float dis = Vector2.Distance(start, end);
+        for (int i = 0; i < dis/DistanceArrows; i++)
+        {
+            Arrows.Add(Instantiate(arrow, transform));
+            Arrows[Arrows.Count - 1].Rect.position =Vector2.Lerp(start,end, (float)i/(dis / DistanceArrows));
+        }
     }
 }

@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 031a6d514baa2dd47b30bc9c140a09af, type: 3}
-  m_Name: EngineAlien2
+  m_Name: EngineBase 2
   m_EditorClassIdentifier: 
-  Name: Engine Alien 1
-  Dependances: []
+  Name: Engines
+  Dependances:
+  - {fileID: 11400000, guid: eeb82893cd51c3d4d84f5202e3e19f3d, type: 2}
+  - {fileID: 11400000, guid: eeb82893cd51c3d4d84f5202e3e19f3d, type: 2}
   Cost: 300
-  position: {x: 224.72, y: 437.7}
+  position: {x: 172.6, y: 166.4}
