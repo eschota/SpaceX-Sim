@@ -8,6 +8,8 @@ public class UIResearchManager : MonoBehaviour
     
     [SerializeField] UIResearchButton button;
     [SerializeField] Arrow arrow;
+    [SerializeField] Transform PivotButtons;
+    [SerializeField] Transform PivotArrows;
     [SerializeField] List<UIResearchButton> buttons;
 
     [SerializeField] float DistanceArrows=100;
@@ -38,10 +40,13 @@ public class UIResearchManager : MonoBehaviour
         buttons.Clear();
         for (int i = 0; i < Researches.Count; i++)
         {
-            buttons.Add(Instantiate(button, transform));
+            buttons.Add(Instantiate(button, PivotButtons));
             buttons[buttons.Count - 1].Rect.position = Researches[i].position;
-            buttons[buttons.Count - 1].text.text = Researches[i].Name;
+            buttons[buttons.Count - 1].text.text = Researches[i].name;
             buttons[buttons.Count - 1].research = Researches[i];
+            buttons[buttons.Count - 1].pivotStart.localPosition = new Vector3(Researches[i].pivotStart.x, Researches[i].pivotStart.y,0);
+            buttons[buttons.Count - 1].pivotEnd.localPosition = new Vector3(Researches[i].pivotEnd.x, Researches[i].pivotStart.y,0);
+            buttons[buttons.Count - 1].CostText.text = Researches[i].Cost.ToString();
 
         }
         for (int i = 0; i < Researches.Count; i++)
@@ -51,7 +56,7 @@ public class UIResearchManager : MonoBehaviour
                 {
                     for (int j = 0; j < Researches[i].Dependances.Length; j++)
                     {
-                        CreateLink(buttons[i].pivotStart.position, buttons.Find(X => X.research == Researches[i].Dependances[j]).pivotEnd.position);
+                        CreateLink(buttons[i].pivotEnd.position, buttons.Find(X => X.research == Researches[i].Dependances[j]).pivotStart.position);
                     }
                 }
         }
@@ -61,7 +66,7 @@ public class UIResearchManager : MonoBehaviour
         float dis = Vector2.Distance(start, end);
         for (int i = 0; i < dis/DistanceArrows; i++)
         {
-            Arrows.Add(Instantiate(arrow, transform));
+            Arrows.Add(Instantiate(arrow, PivotArrows));
             Arrows[Arrows.Count - 1].Rect.position =Vector2.Lerp(start,end, (float)i/(dis / DistanceArrows));
         }
     }

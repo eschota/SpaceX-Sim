@@ -10,4 +10,6 @@ public class ResearchSO : ScriptableObject
     public ResearchSO[] Dependances;
     public int Cost = 300;
     public Vector2 position;
+    public Vector2 pivotStart;
+    public Vector2 pivotEnd;
 }

@@ -10,6 +10,7 @@ public class UIResearchButton : MonoBehaviour
     [SerializeField] private RectTransform _rect;
     [SerializeField] public RectTransform pivotStart;
     [SerializeField] public RectTransform pivotEnd;
+    [SerializeField] public TMPro.TextMeshProUGUI CostText;
      public RectTransform Rect
     {
         get
