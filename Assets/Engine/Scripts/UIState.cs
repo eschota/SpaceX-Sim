@@ -25,11 +25,11 @@ public class UIState : MonoBehaviour
         EditorUIInteract();
     }
     [HideInInspector] [SerializeField] CanvasGroup CG;
-    [SerializeField] GameManager.State thisState;
+    [SerializeField] List <GameManager.State> thisState;
 
     void OnChange()
     {
-        if (thisState == GameManager.CurrentState) Show();
+        if(thisState.Exists(X=>X==GameManager.CurrentState))  Show();
         else Hide();
     }
     void Show()

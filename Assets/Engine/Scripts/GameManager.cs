@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
                     break;
             }
 
-            Debug.Log("State changed " + _currentState + "=>" + value);
+            Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
             _currentState = value;
             if(EventChangeState!=null) EventChangeState();
 
@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.Escape)) CurrentState = State.Play;
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
     }
     private void OnGUI()
