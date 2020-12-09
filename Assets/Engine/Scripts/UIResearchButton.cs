@@ -5,8 +5,11 @@ using UnityEngine;
 public class UIResearchButton : MonoBehaviour
 {
     [ExecuteInEditMode]
+    public ResearchSO research;
     [SerializeField] private TMPro.TextMeshProUGUI _text;
     [SerializeField] private RectTransform _rect;
+    [SerializeField] public RectTransform pivotStart;
+    [SerializeField] public RectTransform pivotEnd;
      public RectTransform Rect
     {
         get
