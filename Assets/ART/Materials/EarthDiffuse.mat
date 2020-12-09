@@ -51,7 +51,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _CloudMap:
         m_Texture: {fileID: 2800000, guid: 040b5d14c0963fd47981e050448e69c3, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _CloudNormalMap:
         m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
@@ -95,6 +95,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Flowmapcloud:
+        m_Texture: {fileID: 2800000, guid: a8292d88cfd8dc34eb86f33b85404ad1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Height:
@@ -207,8 +211,8 @@ Material:
     - _Bias: 0
     - _BlendMode: 0
     - _BumpScale: 0.32
-    - _CloudDarkSide: 0.05
-    - _CloudMult: 1.3
+    - _CloudDarkSide: 0.015
+    - _CloudMult: 1.04
     - _CloudsDarkSide: 0
     - _CloudsIntensity: 1.1
     - _CloudsMult: 1.76
@@ -259,6 +263,7 @@ Material:
     - _EnergyConservingSpecularColor: 1
     - _Float0: 0.13111764
     - _Float1: 0.0409
+    - _FlowCloud: 0.09
     - _GlossMapScale: 0.861
     - _Glossiness: 0.69
     - _GlossyReflections: 1
@@ -311,6 +316,7 @@ Material:
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SpecularHighlights: 1
+    - _SpeedFlowmap: 0.02
     - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefDepth: 0
@@ -329,6 +335,7 @@ Material:
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
     - _ThicknessMultiplier: 1
+    - _TilingFlow: 1
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentDepthPostpassEnable: 0
