@@ -16,6 +16,7 @@ public class GetCountrieByColor : MonoBehaviour
     private LayerMask mask;
     private List<GuiCountryChoiceText> changeTextCountry;
     private GameObject launchPlacePrefab;
+    private int fingerID = -1;
     void Start()
     {
         cam = Camera.main;
@@ -35,6 +36,10 @@ public class GetCountrieByColor : MonoBehaviour
         changeTextCountry.AddRange(FindObjectsOfType<GuiCountryChoiceText>());
 
      launchPlacePrefab= Resources.Load<GameObject>("UnitPoint/UnitPoint");
+
+#if !UNITY_EDITOR
+     fingerID = 0; 
+#endif
     }
 
     void Update()
@@ -42,16 +47,9 @@ public class GetCountrieByColor : MonoBehaviour
         if (!Input.GetMouseButton(0))
             return;
 
-        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject(fingerID)) // is the touch on the GUI
         {
-            if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject != null)
-            {
-                if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject
-                    .GetComponent<CanvasRenderer>() != null)
-                {
-                    return;
-                }
-            }
+            return;
         }
 
 

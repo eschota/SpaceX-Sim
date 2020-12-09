@@ -1157,8 +1157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 5262380281060500090}
-  LaunchPlacePrefab: {fileID: 4085048146977144675, guid: 356cf5317273e6c46885dc5ca3d8f5d7,
-    type: 3}
   Earth: {fileID: 0}
 --- !u!1 &931642196314394595
 GameObject:
@@ -11635,6 +11633,7 @@ GameObject:
   - component: {fileID: 4900462348568592089}
   - component: {fileID: 4900462348568592088}
   - component: {fileID: 2058607509964143410}
+  - component: {fileID: 1039904184896152942}
   m_Layer: 8
   m_Name: CreateLaunchPlace
   m_TagString: Untagged
@@ -11675,7 +11674,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 0
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &4900462348568592088
 MonoBehaviour:
@@ -11704,9 +11703,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 4900462348568592089}
-  LaunchPlacePrefab: {fileID: 4085048146977144675, guid: ba14aeef29675ae46815e7eeff202fb7,
-    type: 3}
   Earth: {fileID: 0}
+--- !u!222 &1039904184896152942
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900462348568592094}
+  m_CullTransparentMesh: 0
 --- !u!1 &4900462348589616070
 GameObject:
   m_ObjectHideFlags: 0
@@ -21803,8 +21808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 6928952631406533170}
-  LaunchPlacePrefab: {fileID: 4085048146977144675, guid: 77cd9ce1713f3ed408f71295a5799628,
-    type: 3}
   Earth: {fileID: 0}
 --- !u!1 &8968852548908126319
 GameObject:
