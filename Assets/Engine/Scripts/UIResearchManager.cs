@@ -17,7 +17,7 @@ public class UIResearchManager : MonoBehaviour
     void Update()
     {
     // if(Selection.activeGameObject==gameObject)    
-            Rebuild();
+        if(Application.isEditor)    Rebuild();
          
     }
     void Rebuild()

@@ -22,7 +22,7 @@ public class UIState : MonoBehaviour
     }
     void Update()
     {
-        EditorUIInteract();
+      if(Application.isEditor)  EditorUIInteract();
     }
     [HideInInspector] [SerializeField] CanvasGroup CG;
     [SerializeField] List <GameManager.State> thisState;

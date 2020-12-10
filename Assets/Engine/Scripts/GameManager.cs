@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Security.Cryptography;
-#endregion
+using UnityEngine.SceneManagement;
+using Object = System.Object;
+
+    #endregion
     #region Base Functions
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +20,9 @@ public class GameManager : MonoBehaviour
     {   if (FindObjectsOfType<GameManager>().Length > 1) { DestroyImmediate(this); Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>"); }
         gameObject.AddComponent<Eco>();
         gameObject.AddComponent<TimeManager>();
-     if(FindObjectOfType<Canvas>()==null)   Instantiate( Resources.Load("Canvas"));
+     if(FindObjectOfType<Canvas>()==null)    Instantiate( Resources.Load("Canvas")) ;
+     SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
+     
     }
     void Update()
     {
@@ -27,7 +32,7 @@ public class GameManager : MonoBehaviour
     #region Variables
     public static event Action EventChangeState;
     public static event Action EventCreatedNewUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal }
     private static State _currentState;
     public static State CurrentState
     {
@@ -76,6 +81,8 @@ public class GameManager : MonoBehaviour
         TimeManager.Ini();
        
     }
+
+    
     static public void LoadGame(string Name)
     {
         Eco.IniEco(Name);
