@@ -27,6 +27,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CloudMap:
+        m_Texture: {fileID: 2800000, guid: 040b5d14c0963fd47981e050448e69c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _CloudNormalMap:
         m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -53,6 +57,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Flowmapcloud:
+        m_Texture: {fileID: 2800000, guid: a8292d88cfd8dc34eb86f33b85404ad1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -103,7 +111,9 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpeedFlowmap: 0.02
     - _SrcBlend: 1
+    - _TilingFlow: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
