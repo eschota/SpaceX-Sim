@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿    #region Using
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Security.Cryptography;
-
+#endregion
+    #region Base Functions
 public class GameManager : MonoBehaviour
 {
+
     void Start()
     {
 
@@ -20,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         Hack();
     }
+    #endregion
     #region Variables
     public static event Action EventChangeState;
     public static event Action EventCreatedNewUnit;
@@ -62,6 +66,8 @@ public class GameManager : MonoBehaviour
             return _gameParam;
         }
     }
+
+    public enum level { Easy, Medium, Hard}
     #endregion
     #region Game Start Load Save etc
     private static void StartNewGame()
@@ -113,5 +119,6 @@ public class GameManager : MonoBehaviour
                 //      if (LastBlock != null) GUI.Label(new Rect(100, 300, 100, 100), LastBlock.transform.position.y.ToString());
             }
     }
-    #endregion
+
 }
+#endregion

@@ -12,4 +12,5 @@ public class ResearchSO : ScriptableObject
     public Vector2 position;
     public Vector2 pivotStart;
     public Vector2 pivotEnd;
+    public GameManager.level Level;
 }

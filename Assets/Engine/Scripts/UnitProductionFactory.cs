@@ -8,6 +8,6 @@ public class UnitProductionFactory : UnitEco
     {
         base.Start();
 
-        unitType = UnitType.ProductionFactory;
+         
     }
 }
