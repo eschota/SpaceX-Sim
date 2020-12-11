@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     }
     void Update()
     {
-        //if (GameManager.CurrentState != GameManager.State.Play) return;
+         if (GameManager.CurrentState == GameManager.State.ResearchGlobal) return;
          
         Zoom();
         NearEarth();
