@@ -14,7 +14,9 @@ public class LightController : MonoBehaviour
     [SerializeField] List<Light> Lights;
     [SerializeField] float DayStart = 5.5f;
     [SerializeField] float DayEnd = 19.5f;
-
+    [SerializeField] Material[] emissivMat;
+    [SerializeField] AnimationCurve EmissiveIntensity;
+    Color[] colors;
     float localTimer;
     private void Awake()
     {
@@ -22,7 +24,11 @@ public class LightController : MonoBehaviour
         if (TimeManager.Hours == null) localTimer = 5;
         else localTimer = TimeManager.Hours;
         localTimer += Time.deltaTime;
-        
+        colors = new Color[emissivMat.Length];
+        for (int i = 0; i < colors.Length; i++)
+        {
+            colors[i] = emissivMat[i].GetColor("_EmissionColor");
+        }
     }
     void Update()
     {
@@ -33,6 +39,13 @@ public class LightController : MonoBehaviour
 
 
         Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
+        for (int i = 0; i < colors.Length; i++)
+        {
+            emissivMat[i].SetColor("_EmissionColor", colors[i] * EmissiveIntensity.Evaluate(localTimer));
+        }
+        
+
+        
         Sun.transform.rotation =Quaternion.Euler(SunRotationX.Evaluate(localTimer / 24f)*360, SunRotationY.Evaluate(localTimer / 24f) * 360, SunRotationZ.Evaluate(localTimer / 24f) * 360);
         RenderSettings.ambientIntensity = AmbientLight.Evaluate(localTimer / 24f);
     }
