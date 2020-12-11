@@ -38,12 +38,12 @@ public class UIResearchManager : MonoBehaviour
     void MouseControl()
     {
         if(GameManager.CurrentState!=GameManager.State.ResearchGlobal) return;
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1)|| Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;
             target = CameraPivot.position;
         }
-        if (Input.GetMouseButton(1)) CameraPivot.position = target+(Input.mousePosition-startPos);
+        if (Input.GetMouseButton(1)|| Input.GetMouseButtonDown(0)) CameraPivot.position = target+(Input.mousePosition-startPos);
         if (Input.GetMouseButtonUp(1)) ;
 
         CameraPivot.position = new Vector3(Mathf.Clamp(CameraPivot.position.x, 0, maxpos.x), Mathf.Clamp(CameraPivot.position.y, 0, maxpos.y), 0);
