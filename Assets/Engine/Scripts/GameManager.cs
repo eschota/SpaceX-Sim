@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
                     }
 
                     break;
+                case State.PlayStation:
+                    CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
+                    return;
+                    break;
             }
 
             Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));

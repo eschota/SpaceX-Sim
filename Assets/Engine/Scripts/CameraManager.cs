@@ -44,9 +44,9 @@ public class CameraManager : MonoBehaviour
             }
         if (TargetObject != null)
         {
-            Pivot.transform.LookAt(-TargetObject.transform.position);
-          
-            return;
+           // Pivot.transform.LookAt(-TargetObject.transform.position);
+            target = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
+            //return;
         }
         Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler( target), 10 * Time.unscaledDeltaTime * Speed);
 

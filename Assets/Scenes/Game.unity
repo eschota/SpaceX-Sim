@@ -461,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367467336}
   m_LocalRotation: {x: -0.232369, y: 0.66783583, z: 0.23236902, w: 0.6678358}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 2131989709}
@@ -726,6 +726,7 @@ GameObject:
   - component: {fileID: 2131989708}
   - component: {fileID: 2131989707}
   - component: {fileID: 2131989706}
+  - component: {fileID: 2131989710}
   m_Layer: 0
   m_Name: ISS_x1000_scale
   m_TagString: Untagged
@@ -808,6 +809,25 @@ Transform:
   m_Father: {fileID: 1367467337}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131989710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131989705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70dbfcf24e8588d4782b99e17cbe417a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  localPosition: {x: 0, y: 0, z: 0}
+  localRotation: {x: 0, y: 0, z: 0}
+  localScale: {x: 0, y: 0, z: 0}
+  ParentName: 
+  Class: 
+  CreationDate: 
 --- !u!4 &1456419654308691206
 Transform:
   m_ObjectHideFlags: 0
