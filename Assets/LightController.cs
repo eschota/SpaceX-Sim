@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
+    [SerializeField] float Speed=1;
     [SerializeField] List<Light> Lights;
     [SerializeField] float DayStart = 5.5f;
     [SerializeField] float DayEnd = 19.5f;
@@ -19,7 +20,7 @@ public class LightController : MonoBehaviour
     }
     void Update()
     {
-        localTimer += Time.deltaTime;
+        localTimer += Time.deltaTime* Speed;
                     if (localTimer > 24) localTimer = 0;
         if (localTimer > DayStart && localTimer<DayEnd) foreach (var item in Lights) item.enabled = true;
         else foreach (var item in Lights) item.enabled = true;
