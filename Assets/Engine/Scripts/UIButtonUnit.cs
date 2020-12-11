@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIButtonUnit : MonoBehaviour
 {
-    public enum UnitType { RocketLaunch, ResearchLab, ProductionFactory }
-    [SerializeField] public UnitType unitType;
+    [SerializeField] object UnitClass;
+    public Unit unit;
     [SerializeField] TMPro.TextMeshProUGUI number;
     void Start()
     {
-        
+        GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnClick()
     {
-        
+        CameraManager.instance.TargetObject = unit.transform;
     }
+    
+   
 }

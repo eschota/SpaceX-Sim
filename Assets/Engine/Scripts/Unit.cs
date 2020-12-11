@@ -21,8 +21,12 @@ public class Unit : MonoBehaviour
         localScale = transform.localScale;
        if(transform.parent!=null) ParentName = transform.parent.name;
         Debug.Log(string.Format("<color=blue> Created new Unit:" + name + "</color>"));
+        GameManager.UnitsAll.Add(this);
     }
-
+    public virtual void OnDestroy()
+    {
+        GameManager.UnitsAll.Remove(this);
+    }
 
     public virtual void Update()
     {

@@ -7,18 +7,19 @@ public class CameraManager : MonoBehaviour
     private float Speed = 1;
     private float zoom;
     private Vector3 startPos,currentPos;
-
-   Quaternion target;
-    
-    float tiltAngle = 60.0f;
+    public static CameraManager instance;
+    public Vector3 target;
+    public Transform TargetObject;
     private Transform Pivot;
     private void Awake()
     {
+        if (instance == null) instance = this; else DestroyImmediate(this.gameObject);
         transform.SetParent( Pivot = new GameObject("Pivot").transform);
+        target = transform.rotation.eulerAngles ;
     }
     void Update()
     {
-        if (GameManager.CurrentState != GameManager.State.Play) return;
+        //if (GameManager.CurrentState != GameManager.State.Play) return;
          
         Zoom();
         NearEarth();
@@ -26,8 +27,11 @@ public class CameraManager : MonoBehaviour
 
     private void NearEarth()
     {
+        
+        
         if (Input.GetMouseButtonDown(1))
             {
+            TargetObject = null;
                 startPos = Input.mousePosition;
                 currentPos = Pivot.rotation.eulerAngles;
             } else
@@ -35,14 +39,16 @@ public class CameraManager : MonoBehaviour
             {
                 Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 100;
 
-                target = Quaternion.Euler(currentPos.x- temp.y, currentPos.y + temp.x, 0);
+                target =new Vector3( currentPos.x- temp.y, currentPos.y + temp.x, 0 );
 
             }
-        if (Input.GetMouseButtonUp(1))
-            {
-
-            }
-        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, target, 10 * Time.unscaledDeltaTime * Speed);
+        if (TargetObject != null)
+        {
+            Pivot.transform.LookAt(-TargetObject.transform.position);
+          
+            return;
+        }
+        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler( target), 10 * Time.unscaledDeltaTime * Speed);
 
         
     }

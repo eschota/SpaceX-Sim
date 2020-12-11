@@ -5,6 +5,10 @@ using UnityEngine;
 public class UIButtonUnitController : MonoBehaviour
 {
      UIButtonUnit[] units;
+
+    [SerializeField] List<UIButtonUnit> UIButtonsUnitLaunchPlace;
+    [SerializeField] List<UIButtonUnit> UIButtonsUnitResearch;
+    [SerializeField] List<UIButtonUnit> UIButtonsUnitProduction;
     void Start()
     {
         units=GetComponentsInChildren<UIButtonUnit>();
@@ -15,37 +19,22 @@ public class UIButtonUnitController : MonoBehaviour
 
         GameManager.EventCreatedNewUnit += OnCreateNewUnit;
     }    
-    void OnCreateNewUnit()
+    void OnCreateNewUnit(Unit unit)
     {
-        int sum = FindObjectsOfType<UnitLaunchPlace>().Length;
-        for (int i = 0; i <units.Length; i++)
+        if (unit.GetType() == typeof(UnitLaunchPlace))
         {
-            if(sum>0)
-            if (units[i].unitType == UIButtonUnit.UnitType.RocketLaunch)
-            {
-                    units[i].gameObject.SetActive(true);
-                    sum--;
-                }
+            UIButtonsUnitLaunchPlace[(unit as UnitEco).id].gameObject.SetActive(true);
+            UIButtonsUnitLaunchPlace[(unit as UnitEco).id].unit = unit;
         }
-         sum = FindObjectsOfType<UnitResearchLab>().Length;
-        for (int i = 0; i < units.Length; i++)
+        if (unit.GetType() == typeof(UnitResearchLab))
         {
-            if (sum > 0)
-                if (units[i].unitType == UIButtonUnit.UnitType.ResearchLab)
-                {
-                    units[i].gameObject.SetActive(true);
-                    sum--;
-                }
+            UIButtonsUnitResearch[(unit as UnitEco).id].gameObject.SetActive(true);
+            UIButtonsUnitResearch[(unit as UnitEco).id].unit = unit;
         }
-        sum = FindObjectsOfType<UnitProductionFactory>().Length;
-        for (int i = 0; i < units.Length; i++)
+        if (unit.GetType() == typeof(UnitProductionFactory))
         {
-            if (sum > 0)
-                if (units[i].unitType == UIButtonUnit.UnitType.ProductionFactory)
-                {
-                    units[i].gameObject.SetActive(true);
-                    sum--;
-                }
+            UIButtonsUnitProduction[(unit as UnitEco).id].gameObject.SetActive(true);
+            UIButtonsUnitProduction[(unit as UnitEco).id].unit = unit;
         }
     }
 }

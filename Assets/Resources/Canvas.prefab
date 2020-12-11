@@ -3575,7 +3575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &2154942509554537368
 GameObject:
@@ -4934,7 +4934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &2817269993656478337
 GameObject:
@@ -5069,7 +5069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &2847193144273532217
 GameObject:
@@ -6129,7 +6129,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: -19.8, y: 0}
+  m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!114 &2606411315109826577
@@ -6144,6 +6144,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb94834c6c6e42f47bd06c66f3285d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIButtonsUnitLaunchPlace:
+  - {fileID: 7070195378390896168}
+  - {fileID: 2554725241971509119}
+  - {fileID: 98094663402096420}
+  - {fileID: 6969126791219919875}
+  - {fileID: 8069434562531066131}
+  UIButtonsUnitResearch:
+  - {fileID: 5478895495325572298}
+  - {fileID: 1688022123265815413}
+  - {fileID: 6901867758847503429}
+  - {fileID: 6736267297148730757}
+  - {fileID: 8769045882733993168}
+  UIButtonsUnitProduction:
+  - {fileID: 2438941624903761441}
+  - {fileID: 7363304412995818086}
+  - {fileID: 8999514859998313399}
+  - {fileID: 2918861720475531255}
+  - {fileID: 6941723248195484117}
 --- !u!1 &3016688084204296194
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,9 +6588,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3016688084489436163}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &3946786152153916596
 MonoBehaviour:
@@ -7275,7 +7293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &3669966238400186213
 GameObject:
@@ -7814,7 +7832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &4011203564565597324
 GameObject:
@@ -8023,7 +8041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &4338450998487025522
 GameObject:
@@ -8224,7 +8242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &4385691232636241391
 GameObject:
@@ -8625,7 +8643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &4467166052942009690
 GameObject:
@@ -10281,7 +10299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &4900462347676176913
 GameObject:
@@ -10904,9 +10922,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900462347997631018}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &4900462347997631012
 MonoBehaviour:
@@ -14571,7 +14589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &5371027120174706999
 GameObject:
@@ -17598,7 +17616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &6002045339577574447
 GameObject:
@@ -17864,9 +17882,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6108869910704865543}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &7032417874181327223
 MonoBehaviour:
@@ -18094,7 +18112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &6208656317485947724
 GameObject:
@@ -18424,7 +18442,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 25}
+  m_Spacing: {x: 25, y: 25}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1 &6420728902409499748
@@ -19126,7 +19144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &6646347271357173368
 GameObject:
@@ -19808,7 +19826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &6996237428993949700
 GameObject:
@@ -19943,7 +19961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744b18dab8d2134786b1f0110459dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
+  unit: {fileID: 0}
   number: {fileID: 0}
 --- !u!1 &7301331023744032647
 GameObject:

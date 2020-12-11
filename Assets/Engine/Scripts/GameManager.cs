@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     #endregion
     #region Variables
     public static event Action EventChangeState;
-    public static event Action EventCreatedNewUnit;
+    public static event Action <Unit> EventCreatedNewUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal }
     private static State _currentState;
     public static State CurrentState
@@ -89,15 +89,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region LauchPlace ResearchLab Production Factory
-    public static List<Unit> Units = new List<Unit>();
-    public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp,Unit type)
+    public static List<Unit> UnitsAll = new List<Unit>();
+    public static List<Unit> UnitsLaunchPlace = new List<Unit>();
+    public static List<Unit> UnitsResearchLab = new List<Unit>();
+    public static List<Unit> UnitsProductionFactory = new List<Unit>();
+    public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp,Unit currentUnit)
     {
         if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
-        type.transform.position = launchPlaceTemp.transform.position;
-        type.transform.parent = GameObject.FindObjectOfType<UnitEarth>().transform;
-        Units.Add(type);     
+        currentUnit.transform.position = launchPlaceTemp.transform.position;
+        currentUnit.transform.parent = UnitsAll.Find(X =>   X.GetType() == typeof( UnitEarth)).transform;
         Destroy(launchPlaceTemp);
-        EventCreatedNewUnit();
+        EventCreatedNewUnit(currentUnit);
         CurrentState = State.Play;
     }
 

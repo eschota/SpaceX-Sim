@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class UnitProductionFactory : UnitEco
 {
-    public override void Start()
+    void Awake()
     {
-        base.Start();
-
-         
+        id = GameManager.UnitsProductionFactory.Count;
+        GameManager.UnitsProductionFactory.Add(this);
     }
 }
