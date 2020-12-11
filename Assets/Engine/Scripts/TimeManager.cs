@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public class TimeManager : MonoBehaviour
 {
-    public static float Timer;
     public static event Action EventChangeDay;
+
+    private static float _timer; // 1 сек реального времени == 1 игровому часу
     private static int _days;
+    private static int _years;
+    private static int _months;
+    private static float _hours;
     private static float _elapsedTime;
-    public static float ElapsedTime { get => _elapsedTime; }
 
     public static int Days
     {
@@ -20,7 +21,7 @@ public class TimeManager : MonoBehaviour
             EventChangeDay();
         }
     }
-    static int _years;
+
     public static int Years
     {
         get => _years;
@@ -30,122 +31,121 @@ public class TimeManager : MonoBehaviour
             EventChangeDay();
         }
     }
-    static int _months;
+
     public static int Months
     {
         get => _months;
         set
         {
             _months = value;
-            EventChangeDay(); 
+            EventChangeDay();
         }
     }
-    public static void Ini()
+
+    public static float ElapsedTime
     {
-        Days = Mathf.RoundToInt( GameManager.GameParam.StartDate[0]);
+        get => _elapsedTime;
+    }
+
+    public static float Hours => _hours;
+
+    public static void Init()
+    {
+        Days = Mathf.RoundToInt(GameManager.GameParam.StartDate[0]);
         Years = Mathf.RoundToInt(GameManager.GameParam.StartDate[1]);
         Months = Mathf.RoundToInt(GameManager.GameParam.StartDate[2]);
-
     }
 
-    
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
-            if(GameManager.CurrentState==GameManager.State.Play) GameManager.CurrentState = GameManager.State.Pause;
-            else GameManager.CurrentState = GameManager.State.Play;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (GameManager.CurrentState == GameManager.State.Play)
+                GameManager.CurrentState = GameManager.State.Pause;
+            else
+                GameManager.CurrentState = GameManager.State.Play;
+        }
 
-            if (GameManager.CurrentState != GameManager.State.Play) return;
-         
-            Timer += Time.deltaTime;
-            CalendarControl();
+        if (GameManager.CurrentState != GameManager.State.Play)
+            return;
+
+        _timer += Time.deltaTime;
+        CalendarControl();
     }
-    void CalendarControl()
+
+    private static void CalendarControl()
     {
-        if (Timer > 365)
+        _hours += Time.deltaTime;
+        if (_hours >= 24)
+            _hours = 0;
+
+        var days = _timer / 24f;
+
+        if (days > 365)
         {
             Years++;
-            Timer = 0;
-
+            _timer = 0;
         }
-        if (Timer > 0 && Timer <= 31)
+
+        if (days > 0 && days <= 31)
         {
-            Days = Mathf.RoundToInt(Timer + 1);
+            Days = Mathf.RoundToInt(days + 1);
             Months = 1;
         }
-        else
-        if (Timer > 31 && Timer <= 60)
+        else if (days > 31 && days <= 60)
         {
             Months = 2;
-            Days = Mathf.RoundToInt(Timer - 31);
+            Days = Mathf.RoundToInt(days - 31);
         }
-        else
-        if (Timer > 59 && Timer <= 90)
+        else if (days > 59 && days <= 90)
         {
             Months = 3;
-            Days = Mathf.RoundToInt(Timer - 59);
+            Days = Mathf.RoundToInt(days - 59);
         }
-        else
-        if (Timer > 90 && Timer <= 121)
+        else if (days > 90 && days <= 121)
         {
-
             Months = 4;
-            Days = Mathf.RoundToInt(Timer - 90);
+            Days = Mathf.RoundToInt(days - 90);
         }
-        else
-        if (Timer > 120 && Timer <= 150)
+        else if (days > 120 && days <= 150)
         {
             Months = 5;
-            Days = Mathf.RoundToInt(Timer - 120);
+            Days = Mathf.RoundToInt(days - 120);
         }
-        else
-        if (Timer > 151 && Timer <= 181)
+        else if (days > 151 && days <= 181)
         {
-
             Months = 6;
-            Days = Mathf.RoundToInt(Timer - 151);
+            Days = Mathf.RoundToInt(days - 151);
         }
-        else
-        if (Timer > 181 && Timer <= 212)
+        else if (days > 181 && days <= 212)
         {
-
             Months = 7;
-            Days = Mathf.RoundToInt(Timer - 181);
+            Days = Mathf.RoundToInt(days - 181);
         }
-        else
-        if (Timer > 212 && Timer <= 243)
+        else if (days > 212 && days <= 243)
         {
-
             Months = 8;
-            Days = Mathf.RoundToInt(Timer - 212);
+            Days = Mathf.RoundToInt(days - 212);
         }
-        else
-        if (Timer > 243 && Timer <= 273)
+        else if (days > 243 && days <= 273)
         {
-
             Months = 9;
-            Days = Mathf.RoundToInt(Timer - 242);
+            Days = Mathf.RoundToInt(days - 242);
         }
-        else
-        if (Timer > 273 && Timer <= 304)
+        else if (days > 273 && days <= 304)
         {
-
             Months = 10;
-            Days = Mathf.RoundToInt(Timer - 273);
+            Days = Mathf.RoundToInt(days - 273);
         }
-        else
-        if (Timer > 304 && Timer <= 334)
+        else if (days > 304 && days <= 334)
         {
-
             Months = 11;
-            Days = Mathf.RoundToInt(Timer - 303);
+            Days = Mathf.RoundToInt(days - 303);
         }
-        else
-        if (Timer > 334 && Timer <= 365)
+        else if (days > 334 && days <= 365)
         {
-
             Months = 12;
-            Days = Mathf.RoundToInt(Timer - 333);
+            Days = Mathf.RoundToInt(days - 333);
         }
     }
 }

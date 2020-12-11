@@ -29,10 +29,10 @@ public class UISpeedButton : MonoBehaviour
                 Time.timeScale = 1;
             }if (id == 1)
             {
-                Time.timeScale = 10;
+                Time.timeScale = 30;
             }if (id == 2)
             {
-                Time.timeScale = 60;
+                Time.timeScale = 100;
             }
         }
     }

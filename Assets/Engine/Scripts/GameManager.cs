@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     private static void StartNewGame()
     {
         Eco.IniEco("");
-        TimeManager.Ini();
+        TimeManager.Init();
        
     }
 
