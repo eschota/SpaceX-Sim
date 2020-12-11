@@ -29,20 +29,21 @@ public class CameraManager : MonoBehaviour
             {
                 // rotation
                 mp1=Input.mousePosition;
-                dmp=mp1-mp0;
+                dmp=(mp1-mp0)/Screen.width*1000;
                 target = Quaternion.Euler( dmp.y*v.y,dmp.x*v.x,0);
-                Pivot.rotation = Quaternion.Slerp(Pivot.rotation, target,  Time.deltaTime * smooth);
+              
                 // zoom
                
                
             }
+            Pivot.rotation = Quaternion.Slerp(Pivot.rotation, target,  Time.unscaledDeltaTime * smooth);
             zoom += 5*Input.mouseScrollDelta.y;
-            if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.deltaTime;
+            if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
             if (Input.GetMouseButtonUp(1))
             {
                 offset=-dmp;
             }
-            zoom = Mathf.Lerp(zoom, 0, Time.deltaTime*5);
+            zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime*3);
             if (Input.GetMouseButtonDown(2)) zoom = 0;
         }
     }
