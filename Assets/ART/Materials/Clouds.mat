@@ -31,6 +31,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 040b5d14c0963fd47981e050448e69c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CloudMap1:
+        m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _CloudNormalMap:
         m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Flowmapcloud:
-        m_Texture: {fileID: 2800000, guid: a8292d88cfd8dc34eb86f33b85404ad1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35cac8ffad82c5048bc85886a6df7c90, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -71,6 +75,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -79,8 +87,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: 8bf30880a0e617b4caad7837d0649bbe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TextureSample0:
         m_Texture: {fileID: 2800000, guid: 040b5d14c0963fd47981e050448e69c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex3coord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -93,8 +109,8 @@ Material:
     - _AtmosphereScale: 1.5
     - _BumpScale: 1
     - _CloudDarkSide: 0.09
-    - _CloudMult: 1.5
-    - _CloudNormal: 0.1
+    - _CloudMult: 1.32
+    - _CloudNormal: 0.163
     - _CloudSmoothness: 0.2
     - _Cutoff: 0.5
     - _DarkSideContrast: 3
@@ -102,6 +118,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Emission: 0.046
+    - _FlowOffset: 0
+    - _FlowTiling: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -109,11 +127,12 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PowerFlow: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpeedFlowmap: 0.02
     - _SrcBlend: 1
-    - _TilingFlow: 1
+    - _TilingFlow: 0.8
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
