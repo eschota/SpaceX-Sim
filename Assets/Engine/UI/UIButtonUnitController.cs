@@ -44,9 +44,9 @@ public class UIButtonUnitController : MonoBehaviour
             UIButtonsUnitProduction[(unit as UnitEco).id].unit = unit;
         }
     }
-    void OnClickEnter()
+   public void OnClickEnter()
     {
-    
+        CameraManager.FlyToUnit = SelectedUnit;
     }
     public void ShowEnterButton(Unit unit, Vector3 pos)
     {

@@ -11,6 +11,17 @@ public class CameraManager : MonoBehaviour
     public Vector3 target;
     public Transform TargetObject;
     private Transform Pivot;
+    private static Unit _flyToUnit;
+    public static Unit FlyToUnit
+    {
+        get => _flyToUnit;
+        set
+        {
+            Camera.main.transform.SetParent(null);
+            _flyToUnit= value;
+        }
+    }
+    
     private void Awake()
     {
         if (instance == null) instance = this; else DestroyImmediate(this.gameObject);
@@ -20,11 +31,26 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
          if (GameManager.CurrentState == GameManager.State.ResearchGlobal) return;
-         
+        if (FlyToUnit != null)
+        {
+            FlyTo();
+            return;
+        }
         Zoom();
         NearEarth();
     }
 
+    private void FlyTo()
+    {
+        if (Vector3.Distance(transform.position, FlyToUnit.transform.position) > 1)
+        {
+            transform.position = Vector3.Slerp(transform.position, FlyToUnit.transform.position, Time.unscaledDeltaTime * 1.5f);
+            transform.LookAt(FlyToUnit.transform.position);
+        }
+        else FlyToUnit = null;
+        
+
+    }
     private void NearEarth()
     {
         
@@ -75,4 +101,6 @@ public class CameraManager : MonoBehaviour
                 //      if (LastBlock != null) GUI.Label(new Rect(100, 300, 100, 100), LastBlock.transform.position.y.ToString());
             }
     }
+
+    
 }
