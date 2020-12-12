@@ -8,7 +8,8 @@ public class UnitEarth : Unit
 
     private void Update()
     {
-         
+        if (GameManager.CurrentState == GameManager.State.MenuStartGame)
+            transform.Rotate(Vector3.back, Time.deltaTime);
 
         if (GameManager.CurrentState == GameManager.State.Play)
         {

@@ -247,6 +247,37 @@ MonoBehaviour:
   CreationDate: 
   minAngle: 26.3
   maxAngle: -26.3
+--- !u!1 &904981780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904981781}
+  m_Layer: 0
+  m_Name: StationPivotRotated
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &904981781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904981780}
+  m_LocalRotation: {x: -0.23196098, y: -0.66797763, z: -0.23196098, w: 0.66797763}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1367467337}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: -38.3, y: -90, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,9 +464,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1367467337}
-  - component: {fileID: 1367467338}
   m_Layer: 0
-  m_Name: ISS Pivot
+  m_Name: SpaceStationRotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,33 +478,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367467336}
-  m_LocalRotation: {x: -0.232369, y: 0.66783583, z: 0.23236902, w: 0.6678358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 2131989709}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -38.37, y: 90.00001, z: 0}
---- !u!114 &1367467338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367467336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70dbfcf24e8588d4782b99e17cbe417a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
-  localPosition: {x: 0, y: 0, z: 0}
-  localRotation: {x: 0, y: 0, z: 0}
-  localScale: {x: 0, y: 0, z: 0}
-  ParentName: 
-  Class: 
-  CreationDate: 
+  m_Father: {fileID: 904981781}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1376885483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,8 +596,9 @@ GameObject:
   - component: {fileID: 2131989708}
   - component: {fileID: 2131989707}
   - component: {fileID: 2131989706}
+  - component: {fileID: 2131989710}
   m_Layer: 0
-  m_Name: ISS_x1000_scale
+  m_Name: StationPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,6 +679,27 @@ Transform:
   m_Father: {fileID: 1367467337}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131989710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131989705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70dbfcf24e8588d4782b99e17cbe417a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  localPosition: {x: 0, y: 0, z: 0}
+  localRotation: {x: 0, y: 0, z: 0}
+  localScale: {x: 0, y: 0, z: 0}
+  ParentName: 
+  Class: 
+  CreationDate: 
+  SpeedPerDay: 1
+  ObjectToRotate: {fileID: 1367467337}
 --- !u!4 &1456419654308691206
 Transform:
   m_ObjectHideFlags: 0
@@ -767,7 +800,7 @@ Transform:
   m_Children:
   - {fileID: 9120530738437913563}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -1.914, y: -96.578, z: -78.880005}
 --- !u!114 &3456452070497050567
 MonoBehaviour:
@@ -781,8 +814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7b45056223f1749b414e8136162b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  Axis: {x: -1.914, y: -96.578, z: -78.88}
 --- !u!1 &3456452070497050568
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +844,7 @@ Transform:
   m_Children:
   - {fileID: 9120530739003015709}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 2.5970001, y: -282.801, z: -352.646}
 --- !u!114 &3456452071013934593
 MonoBehaviour:
@@ -827,8 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7b45056223f1749b414e8136162b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  Axis: {x: 2.597, y: -282.801, z: -352.646}
 --- !u!1 &3456452071013934606
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +940,7 @@ PrefabInstance:
     - target: {fileID: 3456452069137017229, guid: 5e6da716c7a76c741be00a2713d77302,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3456452069137017229, guid: 5e6da716c7a76c741be00a2713d77302,
         type: 3}

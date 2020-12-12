@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitStation : Unit
 {
+    
+    [SerializeField] float SpeedPerDay=1;
+    [SerializeField] public Transform ObjectToRotate;
     private void Update()
     {
         
@@ -13,7 +16,7 @@ public class UnitStation : Unit
             var hours = TimeManager.Hours;
             var angle = Mathf.Lerp(360, 0f, hours / 24f);
 
-            transform.localRotation = Quaternion.Euler(-90f, 180f, angle);
+            ObjectToRotate.localRotation = Quaternion.Euler(-90f, 180f, angle*SpeedPerDay);
         }
     }
 }
