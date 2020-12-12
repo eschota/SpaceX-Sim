@@ -2356,9 +2356,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403048136385204658}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1419879113009822746
 MonoBehaviour:
@@ -11692,7 +11692,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900462347997631018}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -12309,9 +12309,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900462348403161454}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &4900462348403161448
 MonoBehaviour:
@@ -21342,8 +21342,8 @@ GameObject:
   - component: {fileID: 443628963239295249}
   - component: {fileID: 7836347178947854143}
   - component: {fileID: 6308745565956237883}
-  - component: {fileID: 3128725234518105747}
   - component: {fileID: 1559997181857233942}
+  - component: {fileID: 5070383622568952811}
   m_Layer: 5
   m_Name: ButtonBackPlayStation
   m_TagString: Untagged
@@ -21464,20 +21464,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &3128725234518105747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345043706678416511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e12bae2c42d17743a99c8ea4ca30c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CG: {fileID: 6308745565956237883}
-  thisState: 03000000
 --- !u!114 &1559997181857233942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21492,6 +21478,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisState: 7
   but: {fileID: 7836347178947854143}
+--- !u!114 &5070383622568952811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345043706678416511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e12bae2c42d17743a99c8ea4ca30c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CG: {fileID: 6308745565956237883}
+  thisState: 03000000
 --- !u!1 &7395198004963728093
 GameObject:
   m_ObjectHideFlags: 0
@@ -22128,7 +22128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 83.9, y: 76}
+  m_AnchoredPosition: {x: 83.8999, y: 76}
   m_SizeDelta: {x: 172, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6049502828689701465

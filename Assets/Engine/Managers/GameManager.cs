@@ -14,15 +14,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        Debug.Log("I lebedey");
     }
     private void Awake()
-    {   if (FindObjectsOfType<GameManager>().Length > 1) { DestroyImmediate(this); Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>"); }
-        gameObject.AddComponent<Eco>();
-        gameObject.AddComponent<TimeManager>();
-     if(FindObjectOfType<Canvas>()==null)    Instantiate( Resources.Load("Canvas")) ;
+    {   if (FindObjectsOfType<GameManager>().Length > 1) { DestroyImmediate(this); Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>"); return; }
+        DontDestroyOnLoad(gameObject.AddComponent<Eco>());
+        DontDestroyOnLoad(gameObject.AddComponent<TimeManager>());
+     if(FindObjectOfType<Canvas>()==null)   DontDestroyOnLoad( Instantiate( Resources.Load("Canvas"))) ;
      SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
-     
+        Debug.Log("EbalKoney");
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Update()
     {
@@ -90,7 +91,14 @@ public class GameManager : MonoBehaviour
        
     }
 
-    
+    static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().name == "SeaLaunch") CurrentState = State.EarthLauchPlace;
+        if (SceneManager.GetActiveScene().name == "Launch") CurrentState = State.EarthLauchPlace;
+        if (SceneManager.GetActiveScene().name == "Production") CurrentState = State.EarthProductionFactory;
+        if (SceneManager.GetActiveScene().name == "Research") CurrentState = State.EarthResearchLab;
+        Debug.Log("Loaded Scene: "+ SceneManager.GetActiveScene().name);
+    }
     static public void LoadGame(string Name)
     {
         Eco.IniEco(Name);
@@ -123,6 +131,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         if (Input.GetKeyDown(KeyCode.Escape)) CurrentState = State.Play;
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
+        if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(1);
+        if (Input.GetKeyDown(KeyCode.X)) SceneManager.LoadScene(2);
+        if (Input.GetKeyDown(KeyCode.C)) SceneManager.LoadScene(3);
+        if (Input.GetKeyDown(KeyCode.V)) SceneManager.LoadScene(4);
     }
     private void OnGUI()
     {
@@ -136,6 +148,6 @@ public class GameManager : MonoBehaviour
                 //      if (LastBlock != null) GUI.Label(new Rect(100, 300, 100, 100), LastBlock.transform.position.y.ToString());
             }
     }
-
+    
 }
 #endregion

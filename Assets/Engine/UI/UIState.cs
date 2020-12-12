@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[ExecuteInEditMode]
+ 
 [RequireComponent (typeof(CanvasGroup))]
 public class UIState : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class UIState : MonoBehaviour
     private void Awake()
     {
         GameManager.EventChangeState += OnChange;
+        if (thisState  == null) Debug.LogError("Ни одного стейта не выбрано у ГУЙ объекта : " + name);
     }
 
     void Start()
@@ -24,7 +25,7 @@ public class UIState : MonoBehaviour
     {
       if(Application.isEditor)  EditorUIInteract();
     }
-    [HideInInspector] [SerializeField] CanvasGroup CG;
+     [SerializeField] CanvasGroup CG;
     [SerializeField] List <GameManager.State> thisState;
 
     void OnChange()
@@ -40,6 +41,7 @@ public class UIState : MonoBehaviour
     }
     void Hide()
     {
+        Debug.Log(gameObject.name);
         CG.alpha = 0;
 
         CG.interactable = false;
@@ -60,5 +62,9 @@ public class UIState : MonoBehaviour
             
 
         }
+    }
+    private void OnDestroy()
+    {
+        GameManager.EventChangeState -= OnChange;
     }
 }
