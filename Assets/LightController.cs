@@ -41,7 +41,7 @@ public class LightController : MonoBehaviour
         Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
         for (int i = 0; i < colors.Length; i++)
         {
-            emissivMat[i].SetColor("_EmissionColor", colors[i] * EmissiveIntensity.Evaluate(localTimer));
+            emissivMat[i].SetColor("_EmissionColor", colors[i] * EmissiveIntensity.Evaluate(localTimer/24f));
         }
         
 
