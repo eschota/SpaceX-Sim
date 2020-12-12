@@ -35,7 +35,7 @@ public class LightController : MonoBehaviour
         localTimer += Time.deltaTime* Speed;
                     if (localTimer > 24) localTimer = 0;
         if (localTimer > DayStart && localTimer<DayEnd) foreach (var item in Lights) item.enabled = true;
-        else foreach (var item in Lights) item.enabled = true;
+        else foreach (var item in Lights) item.enabled = false;
 
 
         Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
