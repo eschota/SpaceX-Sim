@@ -55,7 +55,6 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
             else
             {
                 Debug.Log("Chose point");
-
             }
         }
         else Alert.instance.AlertMessage = "Select Launch Place First!!!";
