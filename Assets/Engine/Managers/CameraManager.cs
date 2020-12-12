@@ -17,7 +17,8 @@ public class CameraManager : MonoBehaviour
         get => _flyToUnit;
         set
         {
-            Camera.main.transform.SetParent(null);
+          
+                Camera.main.transform.SetParent(null);
             _flyToUnit= value;
         }
     }

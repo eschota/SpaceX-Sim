@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     #region Variables
     public static event Action EventChangeState;
     public static event Action <Unit> EventCreatedNewUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace }
     private static State _currentState;
     public static State CurrentState
     {
@@ -46,10 +46,14 @@ public class GameManager : MonoBehaviour
                     if (CurrentState == State.MenuStartGame)
                     {
                         StartNewGame();
-                        
+                    }
+                    else
+                        if (CurrentState == State.EarthLauchPlace|| CurrentState == State.EarthProductionFactory|| CurrentState == State.EarthResearchLab)
+                    {
+                        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
                     }
 
-                    break;
+                        break;
                 case State.PlayStation:
                     CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
                     return;
