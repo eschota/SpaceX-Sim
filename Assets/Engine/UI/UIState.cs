@@ -14,6 +14,7 @@ public class UIState : MonoBehaviour
     private void Awake()
     {
         GameManager.EventChangeState += OnChange;
+        ScenarioManager.EventChangeState += OnChangeScenario;
         if (thisState  == null) Debug.LogError("Ни одного стейта не выбрано у ГУЙ объекта : " + name);
     }
 
@@ -23,14 +24,21 @@ public class UIState : MonoBehaviour
     }
     void Update()
     {
-      if(Application.isEditor)  EditorUIInteract();
+      
     }
-     [SerializeField] CanvasGroup CG;
+     [SerializeField] public CanvasGroup CG;
     [SerializeField] List <GameManager.State> thisState;
+    [SerializeField] List <ScenarioManager.State> thisStateScenario;
 
     void OnChange()
     {
-        if(thisState.Exists(X=>X==GameManager.CurrentState))  Show();
+        if (thisState.Count < 1) return;
+        if (thisState.Exists(X=>X==GameManager.CurrentState))  Show();
+        else Hide();
+    } void OnChangeScenario()
+    {
+        if (thisStateScenario.Count < 1) return;
+        if(thisStateScenario.Exists(X=>X==ScenarioManager.CurrentState))  Show();
         else Hide();
     }
     void Show()
@@ -41,30 +49,37 @@ public class UIState : MonoBehaviour
     }
     void Hide()
     {
-        Debug.Log(gameObject.name);
+        
         CG.alpha = 0;
 
         CG.interactable = false;
         CG.blocksRaycasts = false;
     }
 
-    void EditorUIInteract()
-    {
-        if (Application.isPlaying) return;
-        if (Selection.activeGameObject == gameObject)
-        {
-            foreach (var item in FindObjectsOfType<UIState>())
-            {
-
-                if (item.gameObject!=gameObject)  item.CG.alpha = 0;
-                else item.CG.alpha = 1;
-            }
-            
-
-        }
-    }
+   
     private void OnDestroy()
     {
         GameManager.EventChangeState -= OnChange;
+        ScenarioManager.EventChangeState -= OnChangeScenario;
+    }
+
+
+   
+}
+[CustomEditor(typeof(UIState))]
+class UIStateButton : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        if (GUILayout.Button("IsolateThisUI"))
+            foreach (var item in FindObjectsOfType<UIState>())
+            {
+                if (item.gameObject == Selection.activeGameObject)
+                    item.CG.alpha = 0;
+                else
+                    item.CG.alpha = 1;
+            }
+
     }
 }
