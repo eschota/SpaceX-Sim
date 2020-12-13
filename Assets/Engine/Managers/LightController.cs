@@ -18,6 +18,9 @@ public class LightController : MonoBehaviour
     [SerializeField] AnimationCurve EmissiveIntensity;
     Color[] colors;
     float localTimer;
+
+    
+    List<float> RandomTimersForLights = new List<float>();
     private void Awake()
     {
         Time.timeScale = 1;
@@ -29,13 +32,22 @@ public class LightController : MonoBehaviour
         {
             colors[i] = emissivMat[i].GetColor("_EmissionColor");
         }
+        for (int i = 0; i < Lights.Count; i++)
+        {
+            RandomTimersForLights.Add(Random.Range(0f, 1f));
+        }
     }
     void Update()
     {
         localTimer += Time.deltaTime* Speed;
                     if (localTimer > 24) localTimer = 0;
-        if (localTimer > DayStart && localTimer<DayEnd) foreach (var item in Lights) item.enabled = true;
-        else foreach (var item in Lights) item.enabled = false;
+        for (int i = 0; i < Lights.Count; i++)
+
+            if (localTimer > DayStart && localTimer < DayEnd+RandomTimersForLights[i]) 
+            {
+                Lights[i].enabled = true;
+            } 
+        else Lights[i].enabled = false;
 
 
         Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
