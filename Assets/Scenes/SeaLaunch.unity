@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.3254717, g: 0.80672884, b: 1, a: 1}
+  m_FogColor: {r: 0.10298407, g: 1, b: 0, a: 1}
   m_FogMode: 1
   m_FogDensity: 0
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 800
+  m_LinearFogStart: 269.5
+  m_LinearFogEnd: 278.81
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.001515297
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 2
-  m_ReflectionIntensity: 0.2
+  m_ReflectionIntensity: 0.19647247
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1688135824}
-  m_IndirectSpecularColor: {r: 0.20304927, g: 0.22712195, b: 0.25927922, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.201143, g: 0.22503784, b: 0.2569576, a: 0.19647247}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bbd6005112bac42a9af4c5f2b017f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localTimer: 19.41
   Sun: {fileID: 1688135824}
   SunIntensity:
     serializedVersion: 2
@@ -384,26 +385,44 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2.0066803
-      outSlope: 2.0066803
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.49833548
-      value: 1
-      inSlope: 0.006658137
-      outSlope: 0.006658137
+      time: 0.26045197
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: -0.022613287
+      outSlope: -0.022613287
       tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7562921
+      value: 0.0016518943
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.993364
-      outSlope: -1.993364
+      inSlope: -0.006778173
+      outSlope: -0.006778173
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -415,28 +434,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2.028302
-      outSlope: 2.028302
+      time: 0.002910614
+      value: 0.94973755
+      inSlope: 0.2772809
+      outSlope: 0.2772809
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.49302325
-      value: 1
-      inSlope: 0.027912378
-      outSlope: 0.027912378
-      tangentMode: 34
+      time: 0.5177604
+      value: 1.0924956
+      inSlope: 0.0016556402
+      outSlope: 0.0016556402
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.6234462
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1.9724772
-      outSlope: -1.9724772
+      time: 0.9825266
+      value: 0.951031
+      inSlope: -0.30437782
+      outSlope: -0.30437782
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -450,26 +469,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2
-      outSlope: -2
+      value: 1
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -482,66 +492,186 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2.0145633
-      outSlope: 2.0145633
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.4963855
+      time: 1
       value: 1
-      inSlope: 0.018567502
-      outSlope: 0.018567502
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0020928
-      value: 0
-      inSlope: -1.9774283
-      outSlope: -1.9774283
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  AmbientLight:
+  AllLight:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
-      value: 1
+      time: 0.26045197
+      value: 0
       inSlope: 0
       outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: 0.87982714
+      outSlope: 0.87982714
       tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8918817
+      value: 0.0018655173
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2
-      outSlope: -2
+      inSlope: -0.01725441
+      outSlope: -0.01725441
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  Reflections:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26045197
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: 1.5468059
+      outSlope: 1.5468059
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.68077105
+      value: 0.9229391
+      inSlope: -5.946866
+      outSlope: -5.946866
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.271519
+    - serializedVersion: 3
+      time: 0.88623595
+      value: 0
+      inSlope: -0.33031178
+      outSlope: -0.33031178
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6974334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  Ambients:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26045197
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: -0.022613287
+      outSlope: -0.022613287
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7562921
+      value: 0.0016518943
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.006778173
+      outSlope: -0.006778173
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
     m_RotationOrder: 4
   Speed: 2
   Lights:
@@ -568,8 +698,6 @@ MonoBehaviour:
   - {fileID: 1552347254}
   - {fileID: 1036844431}
   - {fileID: 1865707488}
-  DayStart: 8
-  DayEnd: 21
   emissivMat:
   - {fileID: 2100000, guid: fd74ba4c8a021df439d4449f534d71e7, type: 2}
   EmissiveIntensity:
@@ -577,34 +705,45 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 10.020245
-      outSlope: 10.020245
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.49651244
-      value: 4.9751763
-      inSlope: 0.009204167
-      outSlope: 0.009204167
+      value: 1
+      inSlope: 0.1420333
+      outSlope: 0.1420333
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.37040895
+      inWeight: 0
+      outWeight: 0.8818573
+    - serializedVersion: 3
+      time: 0.24
+      value: 0
+      inSlope: Infinity
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -9.881428
-      outSlope: -9.881428
-      tangentMode: 34
+      value: 1
+      inSlope: -0.0007585007
+      outSlope: -0.0007585007
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 1
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
+  ReflectionProbes:
+  - {fileID: 1834493965}
 --- !u!1 &123152996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1349,18 @@ PrefabInstance:
       propertyPath: Color.b
       value: 0.4906105
       objectReference: {fileID: 0}
+    - target: {fileID: 364613694, guid: f098329b011ee50409b06b8c366ee0e9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 364613694, guid: f098329b011ee50409b06b8c366ee0e9, type: 3}
+      propertyPath: Offset.x
+      value: 41.113674
+      objectReference: {fileID: 0}
+    - target: {fileID: 364613694, guid: f098329b011ee50409b06b8c366ee0e9, type: 3}
+      propertyPath: Offset.y
+      value: 41.113674
+      objectReference: {fileID: 0}
     - target: {fileID: 364613699, guid: f098329b011ee50409b06b8c366ee0e9, type: 3}
       propertyPath: CustomColor
       value: 1
@@ -1366,6 +1517,10 @@ PrefabInstance:
       propertyPath: Intensity
       value: 3.16
       objectReference: {fileID: 0}
+    - target: {fileID: 1036844431, guid: f098329b011ee50409b06b8c366ee0e9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 232852860992507074, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1415,6 +1570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Range
       value: 29.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332047063692364446, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1519417221561968744, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1521,6 +1681,16 @@ PrefabInstance:
       propertyPath: m_Range
       value: 37.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4101296160294879197, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475964641719589360, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921205378120962, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1561,6 +1731,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.8679245
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921205378120965, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921205503478822, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1576,10 +1751,20 @@ PrefabInstance:
       propertyPath: m_Range
       value: 115.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921205503478825, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921205551105518, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337921205551105521, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337921205561831800, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1601,6 +1786,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921205561831800, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921205561831801, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1610,6 +1800,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Range
       value: 57.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337921205664311750, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337921205664311751, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1621,6 +1816,11 @@ PrefabInstance:
       propertyPath: m_Range
       value: 96.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921205679929446, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921205679929447, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1631,6 +1831,11 @@ PrefabInstance:
       propertyPath: m_Range
       value: 69.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921205743250646, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921205743250647, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1640,6 +1845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Range
       value: 133.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337921206159893242, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337921206159893243, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1656,20 +1866,40 @@ PrefabInstance:
       propertyPath: m_Range
       value: 68.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921206197586597, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921206528026954, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_Range
       value: 70.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337921206528026954, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337921206528026955, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921206759789460, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921206759789461, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337921206943611246, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337921206943611247, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1721,10 +1951,20 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921207155253261, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921207212946936, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_Range
       value: 89.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337921207212946936, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337921207212946937, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1736,6 +1976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Point LightSpot007
       objectReference: {fileID: 0}
+    - target: {fileID: 5337921207387774250, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5337921207387774251, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_IsActive
@@ -1746,10 +1991,20 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5951648900583013752, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5963301606852044694, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
       propertyPath: m_Range
       value: 60.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963301606852044694, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6043106618428288629, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -1790,6 +2045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Intensity
       value: 2.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410657270255288146, guid: f098329b011ee50409b06b8c366ee0e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7042660497001304321, guid: f098329b011ee50409b06b8c366ee0e9,
         type: 3}
@@ -3618,8 +3878,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340690548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -103.75108, y: -37.41369, z: 110.56854}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -267.87, y: -196.4, z: 361.26}
+  m_LocalScale: {x: 4.684, y: 4.684, z: 4.684}
   m_Children:
   - {fileID: 49679331}
   - {fileID: 563890797}
@@ -3740,7 +4000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364953381}
   m_LocalRotation: {x: -0.008384159, y: -0.75578165, z: -0.0005402467, w: 0.65476984}
-  m_LocalPosition: {x: 142.6, y: 32.6, z: 36.2}
+  m_LocalPosition: {x: 80.8, y: 32.6, z: 31.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3834,57 +4094,57 @@ MonoBehaviour:
   - {fileID: 0}
   NoiseTexture3D: {fileID: 11700000, guid: ea166c3018822e44fb93eca537a773fc, type: 2}
   BlitMatrix:
-    e00: -1.2836169
+    e00: -1.9464747
     e01: 0.01028729
     e02: -1.2866321
-    e03: 142.6
-    e10: 0.10785148
+    e03: 80.8
+    e10: 0.16354582
     e11: 0.76870924
     e12: 0.015334807
     e13: 32.6
-    e20: 8.920856
+    e20: 13.527573
     e21: -0.00781332
     e22: -0.18531808
-    e23: 36.2
+    e23: 31.74
     e30: 0
     e31: 0
     e32: 0
     e33: 1
   BlitMatrixMV:
-    e00: 9.013378
+    e00: 13.667873
     e01: -9.807161e-10
     e02: 0.00000006671741
-    e03: -0.00000040617556
-    e10: -0.000000010566909
+    e03: 0.0000025753873
+    e10: -0.000000017279527
     e11: 0.7688178
     e12: 6.386544e-11
-    e13: 0.0000014858297
-    e20: -0.0000004084335
+    e13: -0.00000033308322
+    e20: -0.00000065538086
     e21: 1.9739449e-10
     e22: -1.3000001
-    e23: -0.00000259344
+    e23: 0.00000023387148
     e30: 0
     e31: 0
     e32: 0
     e33: 1
   BlitMatrixMVP:
-    e00: 13.316318
-    e01: -0.0000000023691347
-    e02: 0.000000088928104
-    e03: 0.0000022072545
-    e10: 0.000000017655388
+    e00: 13.316316
+    e01: -0.000000001044017
+    e02: 0.000000065114065
+    e03: 0.0000036642186
+    e10: 0.000000028947856
     e11: -1.3316314
     e12: -4.9510196e-10
-    e13: -0.0000004314583
-    e20: -1.2709199e-10
+    e13: 0.0000012107215
+    e20: -2.0353379e-10
     e21: -4.63417e-14
     e22: -0.00039006473
     e23: 0.30009001
-    e30: 0.0000004084335
+    e30: 0.00000065538086
     e31: -1.9739449e-10
     e32: 1.3000001
-    e33: 0.00000259344
-  BlitScale: {x: 9.013377, y: 0.7688178, z: 1.3}
+    e33: -0.00000023387148
+  BlitScale: {x: 13.667871, y: 0.7688178, z: 1.3}
   resolution: 1
   SampleCount: 4
   DirectionalSampleCount: 24
@@ -3931,39 +4191,39 @@ MonoBehaviour:
   MapToLDR: 0
   RemoveColorBanding: 1
   MatrixVP:
-    e00: -0.21039934
-    e01: 0.017678078
-    e02: 1.4622294
-    e03: -23.50606
+    e00: -0.13874938
+    e01: 0.011657937
+    e02: 0.96427774
+    e03: -19.77527
     e10: -0.023175985
     e11: -1.7318063
     e12: 0.017602436
-    e13: 59.12457
+    e13: 57.7708
     e20: 0.00029696437
     e21: -0.0000035393891
     e22: 0.00004277281
-    e23: 0.2563099
+    e23: 0.27485308
     e30: -0.989717
     e31: 0.011796006
     e32: -0.14255238
-    e33: 145.9095
+    e33: 84.1092
   LastMatrixVP:
-    e00: -0.21039934
-    e01: 0.017678078
-    e02: 1.4622294
-    e03: -23.50606
+    e00: -0.13874938
+    e01: 0.011657937
+    e02: 0.96427774
+    e03: -19.77527
     e10: 0.023175985
     e11: 1.7318063
     e12: -0.017602436
-    e13: -59.12457
+    e13: -57.7708
     e20: 0.00029696437
     e21: -0.0000035393891
     e22: 0.00004277281
-    e23: 0.2563099
+    e23: 0.27485308
     e30: -0.989717
     e31: 0.011796006
     e32: -0.14255238
-    e33: 145.9095
+    e33: 84.1092
   LastMatrixVPInv:
     e00: 0
     e01: 0
@@ -4019,15 +4279,15 @@ MonoBehaviour:
     e00: -0.14241242
     e01: 0.0119657125
     e02: 0.9897351
-    e03: -15.910482
+    e03: -20.297348
     e10: 0.013380662
     e11: 0.99985886
     e12: -0.010162772
-    e13: -34.135586
+    e13: -33.35399
     e20: 0.989717
     e21: -0.011796006
     e22: 0.14255238
-    e23: -145.9095
+    e23: -84.1092
     e30: 0
     e31: 0
     e32: 0
@@ -4374,7 +4634,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.23
+  m_Intensity: 0.001515297
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4385,7 +4645,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0
-    m_NormalBias: 0.56
+    m_NormalBias: 0.39
     m_NearPlane: 0.34
     m_CullingMatrixOverride:
       e00: 1
@@ -4430,13 +4690,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688135823}
-  m_LocalRotation: {x: -0.27794817, y: 0.58131105, z: 0.23396137, w: 0.72806895}
-  m_LocalPosition: {x: -382, y: 71, z: -157}
+  m_LocalRotation: {x: -0.04241384, y: 0.5645793, z: -0.029068667, w: -0.8237757}
+  m_LocalPosition: {x: -20, y: 71, z: -93.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -402.589, y: 436.678, z: 721.364}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.618, z: 8.618}
 --- !u!1 &1708703420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,7 +4863,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 0.1
-  Offset: {x: 254.94809, y: 254.94809, z: 0}
+  Offset: {x: 624.14655, y: 624.14655, z: 0}
 --- !u!1 &1731086318
 GameObject:
   m_ObjectHideFlags: 0
@@ -4770,7 +5030,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 0.1
-  Offset: {x: 315.22037, y: 315.22037, z: 0}
+  Offset: {x: 682.5565, y: 682.5565, z: 0}
 --- !u!1 &1798601597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5337921205551105518, guid: f098329b011ee50409b06b8c366ee0e9,
@@ -4843,7 +5103,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 0.1
-  Offset: {x: 151.49806, y: 151.49806, z: 0}
+  Offset: {x: 520.4025, y: 520.4025, z: 0}
 --- !u!1 &1810628274
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,12 +5225,12 @@ ReflectionProbe:
   m_Enabled: 1
   serializedVersion: 2
   m_Type: 0
-  m_Mode: 1
+  m_Mode: 0
   m_RefreshMode: 1
   m_TimeSlicingMode: 0
   m_Resolution: 256
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 500, y: 121.16, z: 500}
+  m_BoxSize: {x: 2000, y: 200, z: 2000}
   m_BoxOffset: {x: 0, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
@@ -4980,13 +5240,13 @@ ReflectionProbe:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IntensityMultiplier: 0.7
+  m_IntensityMultiplier: 0.19647247
   m_BlendDistance: 1
   m_HDR: 1
   m_BoxProjection: 1
   m_RenderDynamicObjects: 0
   m_UseOcclusionCulling: 1
-  m_Importance: 1
+  m_Importance: 0
   m_CustomBakedTexture: {fileID: 0}
 --- !u!4 &1834493966
 Transform:
@@ -4996,7 +5256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834493964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.4, y: 65, z: 0}
+  m_LocalPosition: {x: -25.4, y: 22.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

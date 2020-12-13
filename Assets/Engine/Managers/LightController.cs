@@ -1,23 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[ExecuteInEditMode]
 public class LightController : MonoBehaviour
 {
+    [Range(0, 24)]
+    [SerializeField] float localTimer;
     [SerializeField] Light Sun;
     [SerializeField] AnimationCurve SunIntensity;
     [SerializeField] AnimationCurve SunRotationX;
     [SerializeField] AnimationCurve SunRotationY;
     [SerializeField] AnimationCurve SunRotationZ;
-    [SerializeField] AnimationCurve AmbientLight;
+    
+    [SerializeField] AnimationCurve AllLight;
+    [SerializeField] AnimationCurve Reflections;
+    [SerializeField] AnimationCurve Ambients;
     [SerializeField] float Speed=1;
     [SerializeField] List<Light> Lights;
-    [SerializeField] float DayStart = 5.5f;
-    [SerializeField] float DayEnd = 19.5f;
+ 
     [SerializeField] Material[] emissivMat;
     [SerializeField] AnimationCurve EmissiveIntensity;
+
+    [SerializeField] List<ReflectionProbe> ReflectionProbes;
     Color[] colors;
-    float localTimer;
+     
 
     
     List<float> RandomTimersForLights = new List<float>();
@@ -34,20 +40,22 @@ public class LightController : MonoBehaviour
         }
         for (int i = 0; i < Lights.Count; i++)
         {
-            RandomTimersForLights.Add(Random.Range(0f, 1f));
+            RandomTimersForLights.Add(Random.Range(-0.5f,0.5f));
         }
     }
     void Update()
     {
+        if(Application.isPlaying)
         localTimer += Time.deltaTime* Speed;
                     if (localTimer > 24) localTimer = 0;
-        for (int i = 0; i < Lights.Count; i++)
-
-            if (localTimer + RandomTimersForLights[i] > DayStart && localTimer + RandomTimersForLights[i] < DayEnd) 
+        for (int i = 0; i < Lights.Count; i++)             
             {
+            float tempIntensity = AllLight.Evaluate((localTimer + RandomTimersForLights[i])/24f);
+            if(tempIntensity<0.1f)
                 Lights[i].enabled = true;
-            } 
-        else Lights[i].enabled = false;
+            else Lights[i].enabled = false;
+        } 
+        
 
 
         Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
@@ -58,7 +66,10 @@ public class LightController : MonoBehaviour
         
 
         
-        Sun.transform.rotation =Quaternion.Euler(SunRotationX.Evaluate(localTimer / 24f)*360, SunRotationY.Evaluate(localTimer / 24f) * 360, SunRotationZ.Evaluate(localTimer / 24f) * 360);
-        RenderSettings.ambientIntensity = AmbientLight.Evaluate(localTimer / 24f);
+        Sun.transform.rotation =Quaternion.Euler(SunRotationX.Evaluate(localTimer / 24f)*360 , SunRotationY.Evaluate(localTimer / 24f) * 360, SunRotationZ.Evaluate(localTimer / 24f) * 360);
+        RenderSettings.ambientIntensity = Ambients.Evaluate(localTimer / 24f);
+        RenderSettings.reflectionIntensity = Reflections.Evaluate(localTimer / 24f);
+        foreach (var item in ReflectionProbes) item.intensity= Reflections.Evaluate(localTimer / 24f);
+
     }
 }
