@@ -44,10 +44,14 @@ public class UIButtonUnitController : MonoBehaviour
             UIButtonsUnitProduction[(unit as UnitEco).id].unit = unit;
         }
     }
-   public void OnClickEnter()
+    
+    public void OnClickEnter()
     {
+        GameManager.instance.OpenUnitScene(SelectedUnit);
+        
         CameraManager.FlyToUnit = SelectedUnit;
     }
+    
     public void ShowEnterButton(Unit unit, Vector3 pos)
     {
         SelectedUnit = unit;

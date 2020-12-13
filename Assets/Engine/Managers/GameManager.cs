@@ -11,17 +11,27 @@ using Object = System.Object;
     #region Base Functions
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
 
     void Start()
     {
-        
     }
+    
     private void Awake()
-    {   if (FindObjectsOfType<GameManager>().Length > 1) { DestroyImmediate(this); Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>"); return; }
+    {
+        if (FindObjectsOfType<GameManager>().Length > 1 || instance != null)
+        {
+            DestroyImmediate(this);
+            Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>");
+            return;
+        }
+        instance = this;
+
         DontDestroyOnLoad(gameObject.AddComponent<Eco>());
         DontDestroyOnLoad(gameObject.AddComponent<TimeManager>());
-     if(FindObjectOfType<Canvas>()==null)   DontDestroyOnLoad( Instantiate( Resources.Load("Canvas"))) ;
-     SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
+        if (FindObjectOfType<Canvas>() == null)
+            DontDestroyOnLoad(Instantiate(Resources.Load("Canvas")));
+        SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
          
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -151,5 +161,49 @@ public class GameManager : MonoBehaviour
             }
     }
     
+    public void OpenUnitScene(Unit unit)
+    {
+        Debug.Log(unit.Class);
+
+        var sceneIndex = 0;
+        switch (unit.name)
+        {
+            case "ProductionFactory":
+                sceneIndex = 2;
+                break;
+            case "LaunchPlace":
+                sceneIndex = 3;
+                break;
+            case "ResearchLab":
+                sceneIndex = 4;
+                break;
+            default:
+                throw new Exception("Unit name not found");
+        }
+
+        StartCoroutine(LoadAsyncScene(sceneIndex));
+    }
+
+    private const float MinTimeBeforeLoadScene = 1.5f;
+    
+    private static IEnumerator LoadAsyncScene(int sceneIndex)
+    {
+        var asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
+        var timer = 0f;
+        
+        asyncLoad.allowSceneActivation = false;
+        while (!asyncLoad.isDone)
+        {
+            timer += Time.deltaTime;
+
+            if (asyncLoad.progress >= 0.9f && timer >= MinTimeBeforeLoadScene)
+            {
+                CameraManager.FlyToUnit = null;
+                asyncLoad.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
+    }
 }
 #endregion
