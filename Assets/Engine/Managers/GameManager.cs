@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("I lebedey");
+        
     }
     private void Awake()
     {   if (FindObjectsOfType<GameManager>().Length > 1) { DestroyImmediate(this); Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>"); return; }
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject.AddComponent<TimeManager>());
      if(FindObjectOfType<Canvas>()==null)   DontDestroyOnLoad( Instantiate( Resources.Load("Canvas"))) ;
      SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
-        Debug.Log("EbalKoney");
+         
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Update()

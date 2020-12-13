@@ -20,7 +20,7 @@ public class UIResearchManager : MonoBehaviour
     void Update()
     {
     // if(Selection.activeGameObject==gameObject)    
-        if(!Application.isPlaying)    Rebuild();
+        if(!Application.isPlaying) if (Selection.activeGameObject == null) Rebuild();
         else
         MouseControl();
     }
@@ -51,8 +51,9 @@ public class UIResearchManager : MonoBehaviour
         zoom= Mathf.Clamp(zoom, -0.5f, 0.5f);
         CameraPivot.localScale = Vector3.one *( 1 + zoom) ;
     }
-    void Rebuild()
+   public void Rebuild()
     {
+        Debug.Log("rebuild");
         List<ResearchSO> Researches = new List<ResearchSO>();
         Researches.AddRange(Resources.LoadAll<ResearchSO>("Researches"));
         List<UIResearchButton> tempButtons = new List<UIResearchButton>();
@@ -78,7 +79,7 @@ public class UIResearchManager : MonoBehaviour
             buttons[buttons.Count - 1].pivotStart.localPosition = new Vector3(Researches[i].pivotStart.x, Researches[i].pivotStart.y,0);
             buttons[buttons.Count - 1].pivotEnd.localPosition = new Vector3(Researches[i].pivotEnd.x, Researches[i].pivotStart.y,0);
             buttons[buttons.Count - 1].CostText.text = Researches[i].Cost.ToString();
-
+            buttons[buttons.Count - 1].name = Researches[i].Name;
         }
         for (int i = 0; i < Researches.Count; i++)
         {

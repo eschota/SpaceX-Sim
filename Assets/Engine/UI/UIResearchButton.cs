@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
+[ExecuteInEditMode]
 public class UIResearchButton : MonoBehaviour
 {
-    [ExecuteInEditMode]
+   
     public ResearchSO research;
     [SerializeField] private TMPro.TextMeshProUGUI _text;
     [SerializeField] private RectTransform _rect;
     [SerializeField] public RectTransform pivotStart;
     [SerializeField] public RectTransform pivotEnd;
     [SerializeField] public TMPro.TextMeshProUGUI CostText;
-     public RectTransform Rect
+   
+    public RectTransform Rect
     {
         get
         {
@@ -37,6 +39,11 @@ public class UIResearchButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Application.isEditor) return;
+       
+         if (Selection.activeObject == gameObject)
+            {
+                research.position = new Vector2(_rect.position.x, _rect.position.y);
+                
+            }
     }
 }
