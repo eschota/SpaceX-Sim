@@ -43,7 +43,7 @@ public class LightController : MonoBehaviour
                     if (localTimer > 24) localTimer = 0;
         for (int i = 0; i < Lights.Count; i++)
 
-            if (localTimer > DayStart && localTimer < DayEnd+RandomTimersForLights[i]) 
+            if (localTimer + RandomTimersForLights[i] > DayStart && localTimer + RandomTimersForLights[i] < DayEnd) 
             {
                 Lights[i].enabled = true;
             } 
