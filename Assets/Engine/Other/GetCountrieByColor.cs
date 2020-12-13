@@ -26,7 +26,7 @@ public class GetCountrieByColor : MonoBehaviour
         }
 
         
-        politicSO = Resources.Load<PoliticTextureSO>("PoliticTexture/PoliticTexture");
+        politicSO = Resources.Load<PoliticTextureSO>("PoliticTexture/BasePoliticMap");
 
         mask = LayerMask.GetMask("Earth");
 
