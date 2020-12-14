@@ -7,7 +7,7 @@ using System.IO;
 public class ScenarioManager : MonoBehaviour
 {
     public static event Action EventChangeState; 
-    public enum State {None, StartConditions,PoliticMap  }
+    public enum State {None, StartConditions,Researches,PoliticMap  }
     private static State _currentState;
     public static State CurrentState
     {
