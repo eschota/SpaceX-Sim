@@ -20,10 +20,11 @@ public class UIResearchManager : MonoBehaviour
     List<ResearchSO> Researches = new List<ResearchSO>();
     void Update()
     {
-    // if(Selection.activeGameObject==gameObject)    
-        if(!Application.isPlaying) if (Selection.activeGameObject == null) Rebuild();
+#if UNITY_EDITOR
+        if (!Application.isPlaying) if (Selection.activeGameObject == null) Rebuild();
         else
         MouseControl();
+#endif
     }
 
     void Awake()
@@ -111,7 +112,7 @@ public class UIResearchManager : MonoBehaviour
         }
     }
 
-
+#if UNITY_EDITOR
     [MenuItem("My Commands/Special Command %z")]
     static void SpecialCommand()
     {
@@ -140,10 +141,10 @@ public class UIResearchManager : MonoBehaviour
         Event e = Event.current;
         GUILayout.Label("Mouse pos: " + e.mousePosition);
     }
+#endif
 
 
-
-
+#if UNITY_EDITOR
     private void OnEnable()
     {
         if (!Application.isEditor)
@@ -179,4 +180,5 @@ public class UIResearchManager : MonoBehaviour
             e.Use();
         }
     }
+#endif
 }

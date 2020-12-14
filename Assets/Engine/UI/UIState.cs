@@ -66,6 +66,7 @@ public class UIState : MonoBehaviour
 
    
 }
+#if UNITY_EDITOR
 [CustomEditor(typeof(UIState))]
 class UIStateButton : Editor
 {
@@ -83,3 +84,4 @@ class UIStateButton : Editor
 
     }
 }
+#endif

@@ -35,7 +35,7 @@ public class UIResearchButton : MonoBehaviour
     {
 
     }
-
+#if UNITY_EDITOR
     // Update is called once per frame
     void Update()
     {
@@ -60,5 +60,5 @@ public class UIResearchButton : MonoBehaviour
                 FindObjectOfType<UIResearchManager>().RebuildLinks();
         }
     }
-   
+#endif
 }
