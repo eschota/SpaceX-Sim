@@ -87,17 +87,7 @@ public class GetCountrieByColor : MonoBehaviour
             Debug.Log("color::" + c); 
             Debug.Log(ComparableColors(c)?.name);
             //   Debug.Log(c.ToString());
-            
-            CalculateDayTime(launchPlace.transform.position);    
         }
-    }
-
-    private void CalculateDayTime(Vector3 position)
-    {
-        var sunDirection = new Vector3(1f,0f,0f);
-        position.y = 0f;
-        var angle = Vector3.Angle(sunDirection, position.normalized);
-        //Debug.Log($"angle: {angle}");
     }
 
     private CountrySO ComparableColors(Color colorUnderMouse)

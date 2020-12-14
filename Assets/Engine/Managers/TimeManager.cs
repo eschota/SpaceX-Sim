@@ -5,6 +5,8 @@ public class TimeManager : MonoBehaviour
 {
     public static event Action EventChangeDay;
 
+    public static float LocalHoursOffset;
+
     private static float _timer; // 1 сек реального времени == 1 игровому часу
     private static int _days;
     private static int _years;

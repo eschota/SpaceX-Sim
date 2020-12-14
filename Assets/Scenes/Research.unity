@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.048607927
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 2
-  m_ReflectionIntensity: 0.2
+  m_ReflectionIntensity: 0.043786585
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1688135824}
-  m_IndirectSpecularColor: {r: 0.20304927, g: 0.22712195, b: 0.25927922, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.082035236, g: 0.09481887, b: 0.11189575, a: 0.043786585}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -216,12 +216,6 @@ Transform:
   m_Father: {fileID: 1340690549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &70478336 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921206759789460, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &72018280
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bbd6005112bac42a9af4c5f2b017f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localTimer: 6.9580054
   Sun: {fileID: 1688135824}
   SunIntensity:
     serializedVersion: 2
@@ -324,44 +319,80 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.7821488
-      outSlope: 1.7821488
-      tangentMode: 34
+      inSlope: 0.18412922
+      outSlope: 0.18412922
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
+      outWeight: 0.9883595
+    - serializedVersion: 3
+      time: 0.26045197
+      value: 0.09223938
+      inSlope: 1.5027279
+      outSlope: 1.5027279
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4849256
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.0069275
-      value: 1.7944946
-      inSlope: 1.7821488
-      outSlope: 1.7821488
+      time: 0.4289338
+      value: 3.2435682
+      inSlope: -0.027331755
+      outSlope: -0.027331755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.80241567
+    - serializedVersion: 3
+      time: 0.7562921
+      value: 0.0016518943
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.006778173
+      outSlope: -0.006778173
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 0
     m_RotationOrder: 4
   SunRotationX:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      time: 0.002910614
+      value: 0.94973755
+      inSlope: 0.2772809
+      outSlope: 0.2772809
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      time: 0.5177604
+      value: 1.0924956
+      inSlope: 0.0016556402
+      outSlope: 0.0016556402
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.6234462
+    - serializedVersion: 3
+      time: 0.9825266
+      value: 0.951031
+      inSlope: -0.30437782
+      outSlope: -0.30437782
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -372,17 +403,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00023455707
-      outSlope: 0.00023455707
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.0083313
-      value: 0.00023651123
-      inSlope: 0.00023455707
-      outSlope: 0.00023455707
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -395,94 +426,234 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0.9976476
-      outSlope: 0.9976476
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.9999939
-      value: 0.9976415
-      inSlope: 0.9976476
-      outSlope: 0.9976476
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  AmbientLight:
+  AllLight:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.001487
-      outSlope: 1.001487
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.9953613
-      value: 0.99684143
-      inSlope: 1.001487
-      outSlope: 1.001487
+      time: 0.26045197
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: 0.87982714
+      outSlope: 0.87982714
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8918817
+      value: 0.0018655173
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.01725441
+      outSlope: -0.01725441
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  Reflections:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26045197
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: 1.5468059
+      outSlope: 1.5468059
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.68077105
+      value: 0.9229391
+      inSlope: -5.946866
+      outSlope: -5.946866
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.271519
+    - serializedVersion: 3
+      time: 0.88623595
+      value: 0
+      inSlope: -0.33031178
+      outSlope: -0.33031178
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6974334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  Ambients:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26045197
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50964224
+      value: 1.2562485
+      inSlope: -0.022613287
+      outSlope: -0.022613287
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7562921
+      value: 0.0016518943
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.006778173
+      outSlope: -0.006778173
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
     m_RotationOrder: 4
   Speed: 2
-  Lights:
-  - {fileID: 1200022647}
-  - {fileID: 749334475}
-  - {fileID: 888711832}
-  - {fileID: 70478336}
-  - {fileID: 1030481170}
-  - {fileID: 1573128870}
-  - {fileID: 702030718}
-  - {fileID: 652144726}
-  - {fileID: 320732244}
-  - {fileID: 271134396}
-  - {fileID: 1847696865}
-  - {fileID: 877499168}
-  - {fileID: 543820943}
-  - {fileID: 727959041}
-  - {fileID: 1407907504}
-  DayStart: 8
-  DayEnd: 21
+  Lights: []
   emissivMat:
   - {fileID: 2100000, guid: fd74ba4c8a021df439d4449f534d71e7, type: 2}
   EmissiveIntensity:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.002380371
-      value: -1.5119019
-      inSlope: 6.3517036
-      outSlope: 6.3517036
-      tangentMode: 34
+      time: 0
+      value: 1
+      inSlope: 0.1420333
+      outSlope: 0.1420333
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.8818573
     - serializedVersion: 3
-      time: 1.0208191
-      value: 4.987158
-      inSlope: 6.3517036
-      outSlope: 6.3517036
-      tangentMode: 34
+      time: 0.24
+      value: 0
+      inSlope: Infinity
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.0007585007
+      outSlope: -0.0007585007
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 0
     m_RotationOrder: 4
+  ReflectionProbes: []
 --- !u!1 &184117066
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,12 +842,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245935352}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &271134396 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921206943611246, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &284263520
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,12 +936,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284263520}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &320732244 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205743250646, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &364613689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1396,12 +1555,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505835309}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &543820943 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205679929446, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &562263362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,12 +1837,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606454808}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &652144726 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205551105521, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &662443935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,30 +1931,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662443935}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &702030718 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921207212946936, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &727959041 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921206197586597, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &749334475 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205378120965, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &877499168 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921206159893242, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &884046550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,24 +2025,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884046550}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &888711832 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921207155253261, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &1030481170 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921206528026954, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &1200022647 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205561831800, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251113766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,18 +2313,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!108 &1407907504 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205664311750, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &1573128870 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921205503478825, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1642527694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,7 +2436,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.23
+  m_Intensity: 0.37793648
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2399,19 +2492,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688135823}
-  m_LocalRotation: {x: 0.8032583, y: -0.0037732385, z: 0.58073086, w: 0.13233894}
+  m_LocalRotation: {x: 0.093693785, y: 0.78071624, z: -0.12072407, w: 0.6059121}
   m_LocalPosition: {x: 0, y: 71, z: -23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 12.532001, y: 107.311005, z: 171.30101}
---- !u!108 &1847696865 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5337921207387774250, guid: f098329b011ee50409b06b8c366ee0e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 364613689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1879231484
 GameObject:
   m_ObjectHideFlags: 0

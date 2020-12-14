@@ -1,30 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIButtonUnitController : MonoBehaviour
 {
-     UIButtonUnit[] units;
-    
+    UIButtonUnit[] units;
+
     private Unit SelectedUnit;
-    
-    [SerializeField] Button EnterCurrentUnit; 
+
+    [SerializeField] Button EnterCurrentUnit;
     [SerializeField] List<UIButtonUnit> UIButtonsUnitLaunchPlace;
     [SerializeField] List<UIButtonUnit> UIButtonsUnitResearch;
     [SerializeField] List<UIButtonUnit> UIButtonsUnitProduction;
+
     void Start()
     {
-        units=GetComponentsInChildren<UIButtonUnit>();
+        units = GetComponentsInChildren<UIButtonUnit>();
         foreach (var item in units)
         {
             item.gameObject.SetActive(false);
         }
+
         EnterCurrentUnit.onClick.AddListener(OnClickEnter);
         GameManager.EventCreatedNewUnit += OnCreateNewUnit;
         EnterCurrentUnit.gameObject.SetActive(false);
-
     }
+
     void OnCreateNewUnit(Unit unit)
     {
         HideEnterButton();
@@ -33,32 +34,41 @@ public class UIButtonUnitController : MonoBehaviour
             UIButtonsUnitLaunchPlace[(unit as UnitEco).id].gameObject.SetActive(true);
             UIButtonsUnitLaunchPlace[(unit as UnitEco).id].unit = unit;
         }
+
         if (unit.GetType() == typeof(UnitResearchLab))
         {
             UIButtonsUnitResearch[(unit as UnitEco).id].gameObject.SetActive(true);
             UIButtonsUnitResearch[(unit as UnitEco).id].unit = unit;
         }
+
         if (unit.GetType() == typeof(UnitProductionFactory))
         {
             UIButtonsUnitProduction[(unit as UnitEco).id].gameObject.SetActive(true);
             UIButtonsUnitProduction[(unit as UnitEco).id].unit = unit;
         }
     }
-    
+
     public void OnClickEnter()
     {
-        GameManager.instance.OpenUnitScene(SelectedUnit);
+        var position = SelectedUnit.transform.position;
+        var earth = GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform;
+        var earthDirection = earth.right;
+        position.y = 0f;
+        var angle = Vector3.SignedAngle(earthDirection, position.normalized, Vector3.up);
+        var localHoursOffset = -angle / 180f * 12f;
+        TimeManager.LocalHoursOffset = localHoursOffset;
         
+        GameManager.instance.OpenUnitScene(SelectedUnit);
         CameraManager.FlyToUnit = SelectedUnit;
     }
-    
+
     public void ShowEnterButton(Unit unit, Vector3 pos)
     {
         SelectedUnit = unit;
         EnterCurrentUnit.transform.position = pos + Vector3.up * 80;
         EnterCurrentUnit.gameObject.SetActive(true);
-
     }
+
     public void HideEnterButton()
     {
         SelectedUnit = null;

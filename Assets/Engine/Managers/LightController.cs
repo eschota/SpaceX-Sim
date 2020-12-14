@@ -23,16 +23,19 @@ public class LightController : MonoBehaviour
 
     [SerializeField] List<ReflectionProbe> ReflectionProbes;
     Color[] colors;
-     
-
     
     List<float> RandomTimersForLights = new List<float>();
+    
     private void Awake()
     {
         Time.timeScale = 1;
-        if (TimeManager.Hours == null) localTimer = 5;
-        else localTimer = TimeManager.Hours;
+        if (TimeManager.Hours == null)
+            localTimer = 5;
+        else
+            localTimer = TimeManager.Hours;
         localTimer += Time.deltaTime;
+        CorrectLocalTime();
+        
         colors = new Color[emissivMat.Length];
         for (int i = 0; i < colors.Length; i++)
         {
@@ -43,6 +46,7 @@ public class LightController : MonoBehaviour
             RandomTimersForLights.Add(Random.Range(-0.5f,0.5f));
         }
     }
+    
     void Update()
     {
         if(Application.isPlaying)
@@ -71,5 +75,16 @@ public class LightController : MonoBehaviour
         RenderSettings.reflectionIntensity = Reflections.Evaluate(localTimer / 24f);
         foreach (var item in ReflectionProbes) item.intensity= Reflections.Evaluate(localTimer / 24f);
 
+    }
+
+    private void CorrectLocalTime()
+    {
+        var localHoursOffset = TimeManager.LocalHoursOffset;
+        localTimer += localHoursOffset;
+
+        if (localTimer > 24f)
+            localTimer -= 24f;
+        else if (localTimer < 0f)
+            localTimer = 24f - localTimer;
     }
 }
