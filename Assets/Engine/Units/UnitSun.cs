@@ -17,6 +17,6 @@ public class UnitSun : Unit
         else if (days >= 182)
             angle = Mathf.LerpAngle(minAngle, maxAngle, (days - 182f) / 182f);
 
-        transform.eulerAngles = new Vector3(angle, transform.eulerAngles.y, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(angle,-90, 0);
     }
 }
