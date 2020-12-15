@@ -33,7 +33,6 @@ public class LightController : MonoBehaviour
             localTimer = 5;
         else
             localTimer = TimeManager.Hours;
-        localTimer += Time.deltaTime;
         CorrectLocalTime();
         
         colors = new Color[emissivMat.Length];
@@ -49,15 +48,17 @@ public class LightController : MonoBehaviour
     
     void Update()
     {
-        if(Application.isPlaying)
-        localTimer += Time.deltaTime* Speed;
-                    if (localTimer > 24) localTimer = 0;
+        if (Application.isPlaying)
+            localTimer += Time.deltaTime * Speed * TimeManager.TimeScale; 
+        if (localTimer > 24)
+            localTimer = 0;
         for (int i = 0; i < Lights.Count; i++)             
-            {
+        {
             float tempIntensity = AllLight.Evaluate((localTimer + RandomTimersForLights[i])/24f);
-            if(tempIntensity<0.1f)
+            if (tempIntensity < 0.1f)
                 Lights[i].enabled = true;
-            else Lights[i].enabled = false;
+            else
+                Lights[i].enabled = false;
         } 
         
 

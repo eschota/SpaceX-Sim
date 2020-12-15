@@ -35,22 +35,27 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
                         UnitLaunchPlace launchPlace=Instantiate(UnitLaunchPrefab).AddComponent<UnitLaunchPlace>();
                         launchPlace.name = "LaunchPlace";
                         launchPlace.Country = CurrentLauchPlace;
-                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,launchPlace);
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, launchPlace);
+                        GameManager.instance.OpenUnitScene(launchPlace);
+                        CameraManager.FlyToUnit = launchPlace;
                         break;
                     case GameManager.State.CreateProductionFactory:
                         UnitProductionFactory productionFactory = Instantiate(UnitLaunchPrefab).AddComponent<UnitProductionFactory>();
                         productionFactory.name = "ProductionFactory";
                         productionFactory.Country = CurrentLauchPlace;
                         GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, productionFactory);
+                        GameManager.instance.OpenUnitScene(productionFactory);
+                        CameraManager.FlyToUnit = productionFactory;
                         break;
                     case GameManager.State.CreateResearchLab:
                         UnitResearchLab researchLab = Instantiate(UnitLaunchPrefab).AddComponent<UnitResearchLab>();
                         researchLab.name = "ResearchLab";
                         researchLab.Country = CurrentLauchPlace;
-                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace,researchLab);
+                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, researchLab);
+                        GameManager.instance.OpenUnitScene(researchLab);
+                        CameraManager.FlyToUnit = researchLab;
                         break;
                 }
-                
             }
             else
             {

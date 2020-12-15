@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
         get => _currentState;
         set
         {
-
             switch (value)
             {
                 case State.Play:
@@ -59,12 +58,14 @@ public class GameManager : MonoBehaviour
                         StartNewGame();
                     }
                     else
-                        if (CurrentState == State.EarthLauchPlace|| CurrentState == State.EarthProductionFactory|| CurrentState == State.EarthResearchLab)
+                    if (CurrentState == State.EarthLauchPlace || CurrentState == State.EarthProductionFactory || CurrentState == State.EarthResearchLab)
                     {
+                        TimeManager.TimeScale = 1f;
+                        var earth = UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).gameObject;
+                        earth.SetActive(true);
                         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
                     }
-
-                        break;
+                    break;
                 case State.PlayStation:
                     CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
                     return;
@@ -163,8 +164,17 @@ public class GameManager : MonoBehaviour
     
     public void OpenUnitScene(Unit unit)
     {
-        Debug.Log(unit.Class);
-
+        var position = unit.transform.position;
+        var earth = UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform;
+        var earthDirection = earth.right;
+        position.y = 0f;
+        var angle = Vector3.SignedAngle(earthDirection, position.normalized, Vector3.up);
+        var localHoursOffset = -angle / 180f * 12f;
+        TimeManager.LocalHoursOffset = localHoursOffset;
+        TimeManager.TimeScale = 1 / 60f;
+        
+        earth.gameObject.SetActive(false);
+        
         var sceneIndex = 0;
         switch (unit.name)
         {

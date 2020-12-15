@@ -50,14 +50,6 @@ public class UIButtonUnitController : MonoBehaviour
 
     public void OnClickEnter()
     {
-        var position = SelectedUnit.transform.position;
-        var earth = GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform;
-        var earthDirection = earth.right;
-        position.y = 0f;
-        var angle = Vector3.SignedAngle(earthDirection, position.normalized, Vector3.up);
-        var localHoursOffset = -angle / 180f * 12f;
-        TimeManager.LocalHoursOffset = localHoursOffset;
-        
         GameManager.instance.OpenUnitScene(SelectedUnit);
         CameraManager.FlyToUnit = SelectedUnit;
     }

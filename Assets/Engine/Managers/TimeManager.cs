@@ -6,8 +6,9 @@ public class TimeManager : MonoBehaviour
     public static event Action EventChangeDay;
 
     public static float LocalHoursOffset;
+    public static float TimeScale = 1f;
 
-    private static float _timer; // 1 сек реального времени == 1 игровому часу
+    private static float _timer;
     private static int _days;
     private static int _years;
     private static int _months;
@@ -71,13 +72,13 @@ public class TimeManager : MonoBehaviour
         if (GameManager.CurrentState != GameManager.State.Play)
             return;
 
-        _timer += Time.deltaTime;
+        _timer += Time.deltaTime * TimeScale;
         CalendarControl();
     }
 
     private static void CalendarControl()
     {
-        _hours += Time.deltaTime;
+        _hours += Time.deltaTime * TimeScale;
         if (_hours >= 24)
             _hours = 0;
 
