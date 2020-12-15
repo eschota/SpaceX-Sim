@@ -13,7 +13,7 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 4001
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -67,6 +67,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: d98e5cc718c04de4caec1291c58dcfb7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: d288b8940e5ac6e42990d89cafefce73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture1:
         m_Texture: {fileID: 2800000, guid: b273dbd84408a344da543d1a41388641, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -92,6 +96,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OpacityContrast: 0
+    - _OpacityPower: 1
     - _Parallax: 0.02
     - _Power: 0.28
     - _PrimaryPower: 2.12
@@ -103,9 +108,12 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
+    - _powerEmission: 7.14
+    - _speed: 0.02
     - _thirdPower: 0.1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.4878055, g: 0.7924528, b: 0.3102527, a: 0}
     - _Dark: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Light: {r: 1, g: 0, b: 0, a: 0}
@@ -115,3 +123,5 @@ Material:
     - _SecondlayerLight: {r: 0.7254902, g: 0.045470234, b: 0, a: 0}
     - _ThirdlayerDark: {r: 0, g: 0, b: 0, a: 0}
     - _ThirdlayerLight: {r: 0.43454072, g: 0.85866433, b: 0.990566, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _frenel: {r: 0.36249352, g: 1, b: 0, a: 0}
