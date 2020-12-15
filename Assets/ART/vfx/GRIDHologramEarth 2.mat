@@ -67,6 +67,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture1:
         m_Texture: {fileID: 2800000, guid: b273dbd84408a344da543d1a41388641, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -93,6 +97,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OpacityContrast: 0
+    - _OpacityPower: 1
     - _Parallax: 0.02
     - _Power: 0.28
     - _PrimaryPower: 0.94
@@ -104,9 +109,12 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
+    - _powerEmission: 19.96
+    - _speed: 0.2
     - _thirdPower: 0.1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.4878055, g: 0.7924528, b: 0.3102527, a: 0}
     - _Dark: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Light: {r: 1, g: 0, b: 0, a: 0}
@@ -116,3 +124,5 @@ Material:
     - _SecondlayerLight: {r: 0.7924528, g: 0, b: 0, a: 0}
     - _ThirdlayerDark: {r: 0, g: 0.53125, b: 1, a: 0}
     - _ThirdlayerLight: {r: 0.122641504, g: 0.023718402, b: 0.023718402, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _frenel: {r: 0, g: 0, b: 0, a: 0}
