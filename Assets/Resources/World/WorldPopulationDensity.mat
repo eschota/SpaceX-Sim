@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WorldPopulationDensity
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: da32cd36447f4574a80143d64f21c6ba, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 6e47007baef0e5b43a028beef062f5dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: 55e1aa774c84c84428a10b54249515b5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,6 +56,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -67,11 +75,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PowerColor: 2.43
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
+    - _ColoArBG: {r: 0.016286938, g: 0.05660379, b: 0.05660379, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorBrBG: {r: 0.007386964, g: 0.01533531, b: 0.01886791, a: 0}
+    - _ColorTint: {r: 0.1462264, g: 0.6345609, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
