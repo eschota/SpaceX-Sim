@@ -5,6 +5,7 @@ using UnityEngine;
 public class Country : MonoBehaviour
 {
     [SerializeField] public Color ColorCountry;
+    public bool Hovered=false;
     void Start()
     {
         ChangeColor();
@@ -27,6 +28,12 @@ public class Country : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Hovered)
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.05f,3* Time.unscaledDeltaTime);
+        else
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.0f,3* Time.unscaledDeltaTime);
+
     }
+
+
 }

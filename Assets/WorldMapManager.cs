@@ -15,6 +15,7 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Science;
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
+    Country CurrentHovered;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
     public enum State { Earth, Politic, Population, Science, Transport,Disaster }
@@ -81,8 +82,16 @@ public class WorldMapManager : MonoBehaviour
 
     void OnChangeState()
     {
-        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) ShowMap();
-        else HideMap();
+        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
+        {
+            ShowMap();
+            CurrentState = State.Politic;
+        }
+        else
+        {
+            CurrentState = State.Earth;
+            HideMap();
+        }
     }
     private void OnDestroy()
     {
@@ -113,14 +122,47 @@ public class WorldMapManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F4)) CurrentState = State.Science;
         if (Input.GetKeyDown(KeyCode.F5)) CurrentState = State.Transport;
         if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
+        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) SelectCountry();
     }
 
     void SelectCountry()
     {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+
+            if (hit.collider.gameObject == null) return;
+            Country tempCountry = countries.Find(X => X.gameObject == hit.collider.gameObject);
+            if (tempCountry != null)
+            {
+                if (tempCountry != CurrentHovered)
+                {
+                    if (CurrentHovered != null) CurrentHovered.Hovered = false;
+                    CurrentHovered = tempCountry;
+                    Debug.Log("Hovered:" + tempCountry.name);
+                }
+
+                CurrentHovered.Hovered = true;
+                return;
+            }
+            else
+            {
+                if (CurrentHovered != null) CurrentHovered.Hovered = false;
+                CurrentHovered = null;
+            }
+        }
+        else
+        {
+            if (CurrentHovered != null) CurrentHovered.Hovered = false;
+            CurrentHovered = null;
+        }
+
 
     }
 
-    [ContextMenu ("Select AllCountryes")]
+            [ContextMenu ("Select AllCountryes")]
     void SelectAllCountriesInEditor()
     {
         countries.Clear();
