@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     #region Variables
     public static event Action EventChangeState;
     public static event Action <Unit> EventCreatedNewUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load }
     private static State _currentState;
     public static State CurrentState
     {
@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadAsyncScene(sceneIndex));
     }
 
-    private const float MinTimeBeforeLoadScene = 1.5f;
+    private const float MinTimeBeforeLoadScene = 1.1f;
     
     private static IEnumerator LoadAsyncScene(int sceneIndex)
     {
