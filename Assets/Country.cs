@@ -29,7 +29,7 @@ public class Country : MonoBehaviour
     void Update()
     {
         if (Hovered)
-            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.05f,3* Time.unscaledDeltaTime);
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.00f,3* Time.unscaledDeltaTime);
         else
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.0f,3* Time.unscaledDeltaTime);
 

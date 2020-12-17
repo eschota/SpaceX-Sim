@@ -16,6 +16,8 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
     Country CurrentHovered;
+    
+    public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
     public enum State { Earth, Politic, Population, Science, Transport,Disaster }
@@ -34,6 +36,7 @@ public class WorldMapManager : MonoBehaviour
                     HideMap();
                     break;
                 case State.Politic:
+                    EarthRenderer.sharedMaterial = Earth;
                     ShowMap();
                     Clouds.SetActive(false);
                     Glow.SetActive(false);
@@ -158,7 +161,11 @@ public class WorldMapManager : MonoBehaviour
             if (CurrentHovered != null) CurrentHovered.Hovered = false;
             CurrentHovered = null;
         }
+        if (Input.GetMouseButtonDown(0)) PlaceUnitPoint();
 
+    }
+    void PlaceUnitPoint()
+    {
 
     }
 
