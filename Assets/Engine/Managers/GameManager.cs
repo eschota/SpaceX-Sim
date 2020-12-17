@@ -7,8 +7,8 @@ using System.Security.Cryptography;
 using UnityEngine.SceneManagement;
 using Object = System.Object;
 
-#endregion
-#region Base Functions
+    #endregion
+    #region Base Functions
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
     }
-
+    
     private void Awake()
     {
         if (FindObjectsOfType<GameManager>().Length > 1 || instance != null)
@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Instantiate(Resources.Load("Canvas")));
         //GameObject WorldMap= Instantiate( Resources.Load("world_map"))as GameObject;
         //WorldMap.transform.SetParent(transform);
-        SceneManager.LoadScene("UIResearch", LoadSceneMode.Additive);
-
+        SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
+         
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Update()
@@ -42,19 +42,10 @@ public class GameManager : MonoBehaviour
         Hack();
     }
     #endregion
-    #region Variables 
-    private static UnitEarth _Earth;
-    public static UnitEarth Earth
-    {
-        get
-        {
-            if (_Earth == null) _Earth = FindObjectOfType<UnitEarth>();
-            return _Earth;
-        }
-    }
+    #region Variables
     public static event Action EventChangeState;
-    public static event Action<Unit> EventCreatedNewUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditor, Settings, Save, Load }
+    public static event Action <Unit> EventCreatedNewUnit;
+    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load }
     private static State _currentState;
     public static State CurrentState
     {
@@ -87,7 +78,7 @@ public class GameManager : MonoBehaviour
 
             Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
             _currentState = value;
-            if (EventChangeState != null) EventChangeState();
+            if(EventChangeState!=null) EventChangeState();
 
         }
     }
@@ -98,21 +89,21 @@ public class GameManager : MonoBehaviour
         {
             if (_gameParam == null)
             {
-                _gameParam = (Resources.LoadAll<GameParameters>("GameParametres")[0]) as GameParameters;
+                _gameParam=(Resources.LoadAll<GameParameters>("GameParametres")[0]) as GameParameters;
                 Debug.Log("Loaded GameParams from Default: " + _gameParam.name);
             }
             return _gameParam;
         }
     }
 
-    public enum level { Easy, Medium, Hard }
+    public enum level { Easy, Medium, Hard}
     #endregion
     #region Game Start Load Save etc
     private static void StartNewGame()
     {
         Eco.IniEco("");
         TimeManager.Init();
-
+       
     }
 
     static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -121,9 +112,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Launch") CurrentState = State.EarthLauchPlace;
         if (SceneManager.GetActiveScene().name == "Production") CurrentState = State.EarthProductionFactory;
         if (SceneManager.GetActiveScene().name == "Research") CurrentState = State.EarthResearchLab;
-        if (SceneManager.GetActiveScene().name == "Game") Earth?.gameObject.SetActive(true);else Earth?.gameObject.SetActive(false);
-
-        Debug.Log("Loaded Scene: " + SceneManager.GetActiveScene().name);
+        Debug.Log("Loaded Scene: "+ SceneManager.GetActiveScene().name);
     }
     static public void LoadGame(string Name)
     {
@@ -136,7 +125,7 @@ public class GameManager : MonoBehaviour
     public static List<Unit> UnitsResearchLab = new List<Unit>();
     public static List<Unit> UnitsProductionFactory = new List<Unit>();
     public static void CreateUnit(Unit currentUnit)
-    {
+    {           
         EventCreatedNewUnit(currentUnit);
         CurrentState = State.Play;
     }
@@ -179,7 +168,7 @@ public class GameManager : MonoBehaviour
         TimeManager.LocalHoursOffset = localHoursOffset;
         TimeManager.TimeScale = 1 / 60f;
         
-        
+        earth.gameObject.SetActive(false);
         
         var sceneIndex = 0;
         switch (unit.name)
