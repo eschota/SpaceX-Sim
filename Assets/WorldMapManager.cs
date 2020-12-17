@@ -20,7 +20,7 @@ public class WorldMapManager : MonoBehaviour
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
-    public enum State { Earth, Politic, Population, Science, Transport,Disaster }
+    public enum State { Earth=0, Politic=1, Population=2, Science=3, Transport=4,Disaster=5 }
     private  State _currentState;
     public  State CurrentState
     {
@@ -71,8 +71,9 @@ public class WorldMapManager : MonoBehaviour
                     break;
             }
 
-
+            
             _currentState = value;
+            EventChangeState();
         }
     
     }

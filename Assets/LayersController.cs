@@ -5,14 +5,18 @@ using UnityEngine;
 public class LayersController : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Dropdown drop;
-    
+    List<string> options;
+    WorldMapManager WM;
     void Awake()
     {
+        drop=GetComponent<TMPro.TMP_Dropdown>();
         drop.onValueChanged.AddListener(OnChange);
+        WM = FindObjectOfType<WorldMapManager>();
+        WorldMapManager.EventChangeState += OnChangeState;
     }
     private void OnChange(int id)
     {
-        WorldMapManager WM = FindObjectOfType<WorldMapManager>();
+       
         if (id == 0) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Earth;
         if (id == 1) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Politic;
         if (id == 2) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Population;
@@ -23,8 +27,13 @@ public class LayersController : MonoBehaviour
     private void OnDestroy()
     {
         drop.onValueChanged.RemoveListener(OnChange);
+        WorldMapManager.EventChangeState -= OnChangeState;
     }
-    // Update is called once per frame
+    void OnChangeState()
+    {
+        drop.SetValueWithoutNotify((int)WM.CurrentState);
+        drop.SetValueWithoutNotify((int)WM.CurrentState);
+    }
     void Update()
     {
         
