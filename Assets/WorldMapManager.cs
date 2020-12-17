@@ -15,8 +15,8 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Science;
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
-    Country CurrentHovered;
-    
+    public Country CurrentHovered;
+    LayerMask mask;
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
@@ -78,12 +78,23 @@ public class WorldMapManager : MonoBehaviour
     
     }
     #endregion
+    public static WorldMapManager instance;
     void Awake()
     {
+        if (instance == null) instance = this;
+        else { DestroyImmediate(this.gameObject); return; };
+       
         GameManager.EventChangeState += OnChangeState;
-        HideMap();
-    }
+        GameManager.EventCreatedNewUnit += OnUnitCreated;
 
+        Debug.Log("WorldMap");
+        HideMap();
+        mask = LayerMask.GetMask("Earth");
+    }
+    void OnUnitCreated(Unit unit)
+    {
+       
+    }
     void OnChangeState()
     {
         if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
@@ -96,27 +107,29 @@ public class WorldMapManager : MonoBehaviour
             CurrentState = State.Earth;
             HideMap();
         }
+        if (GameManager.CurrentState == GameManager.State.Play) Destroy(CurrenUnitPoint.gameObject);
     }
     private void OnDestroy()
     {
         GameManager.EventChangeState -= OnChangeState;
+        GameManager.EventCreatedNewUnit -= OnUnitCreated;
     }
 
     void ShowMap()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (var item in countries)
         {
-            transform.GetChild(i).gameObject.SetActive(true);
+            item.gameObject.SetActive(true);
         }
        
     }
     void HideMap()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (var item in countries)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            item.gameObject.SetActive(false);
         }
-        
+
     }
     void Update()
     {
@@ -131,6 +144,8 @@ public class WorldMapManager : MonoBehaviour
 
     void SelectCountry()
     {
+        if (Input.GetMouseButton(0)) PlaceUnitPoint();
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -162,12 +177,18 @@ public class WorldMapManager : MonoBehaviour
             if (CurrentHovered != null) CurrentHovered.Hovered = false;
             CurrentHovered = null;
         }
-        if (Input.GetMouseButtonDown(0)) PlaceUnitPoint();
+       
 
     }
     void PlaceUnitPoint()
     {
-
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, mask))
+        {
+            if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
+            CurrenUnitPoint.transform.position = hit.point;
+            CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
+        }
     }
 
             [ContextMenu ("Select AllCountryes")]
