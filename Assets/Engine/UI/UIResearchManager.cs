@@ -13,6 +13,7 @@ public class UIResearchManager : MonoBehaviour
     [SerializeField] List<UIResearchButton> buttons;
     [SerializeField] private RectTransform CameraPivot;
     [SerializeField] float DistanceArrows=100;
+    
     List<Arrow> Arrows;
     private float zoom = 0;
     private Vector3 startPos, target;

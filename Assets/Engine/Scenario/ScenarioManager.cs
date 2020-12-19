@@ -42,6 +42,7 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
     [SerializeField] TMPro.TMP_InputField ScenarioStartYear;
     [SerializeField] TMPro.TMP_InputField ScenarioStartBalance;
+    [SerializeField] public UIEditResearch CurrentResearch;
     Scenario scenario;
     public void CreateScenarioButtonClick()
     {
@@ -49,7 +50,7 @@ public class ScenarioManager : MonoBehaviour
         scenario.SaveScenario();
     }
 
-
+     
     public void AddModule()
     {
 
@@ -57,7 +58,10 @@ public class ScenarioManager : MonoBehaviour
     List<Research> Researches = new List<Research>();
     public void AddResearch()
     {
-        Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject).GetComponent<Research>());
+        Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,transform).GetComponent<Research>());
+      //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
+        Researches[Researches.Count - 1].researchButton = Researches[Researches.Count - 1].GetComponent<UIResearchButton>();
+        Researches[Researches.Count - 1].researchButton.transform.position = new Vector3(200, 200);
     }
     
     [System.Serializable]
