@@ -63,13 +63,13 @@ public class TimeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameManager.CurrentState == GameManager.State.Play)
+            if (GameManager.CurrentState == GameManager.State.PlaySpace)
                 GameManager.CurrentState = GameManager.State.Pause;
             else
-                GameManager.CurrentState = GameManager.State.Play;
+                GameManager.CurrentState = GameManager.State.PlaySpace;
         }
 
-        if (GameManager.CurrentState != GameManager.State.Play)
+        if (GameManager.CurrentState != GameManager.State.PlaySpace)
             return;
 
         _timer += Time.deltaTime * TimeScale;

@@ -12,5 +12,6 @@ public class Research : Unit
     public Vector2 position;
     public Vector2 pivotStart;
     public Vector2 pivotEnd; 
-    public List<Module> ModulesOpen;
+    public List<Module> ModulesOpen;    
+    public UIResearchButton researchButton;   
 }

@@ -114,7 +114,7 @@ public class WorldMapManager : MonoBehaviour
             CurrentState = State.Earth;
             HideMap();
         }
-        if (GameManager.CurrentState == GameManager.State.Play) Destroy(CurrenUnitPoint.gameObject);
+        if (GameManager.CurrentState == GameManager.State.PlaySpace) Destroy(CurrenUnitPoint.gameObject);
     }
     private void OnDestroy()
     {

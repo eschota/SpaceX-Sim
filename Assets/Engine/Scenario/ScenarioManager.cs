@@ -48,6 +48,18 @@ public class ScenarioManager : MonoBehaviour
         scenario = new Scenario( ScenarioName.text, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
         scenario.SaveScenario();
     }
+
+
+    public void AddModule()
+    {
+
+    }
+    List<Research> Researches = new List<Research>();
+    public void AddResearch()
+    {
+        Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject).GetComponent<Research>());
+    }
+    
     [System.Serializable]
     public class Scenario
     {

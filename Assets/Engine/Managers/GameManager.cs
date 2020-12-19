@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     #region Variables
     public static event Action EventChangeState;
     public static event Action <Unit> EventCreatedNewUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, Play, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load,PlayEarth }
     private static State _currentState;
     public static State CurrentState
     {
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             switch (value)
             {
-                case State.Play:
+                case State.PlaySpace:
                     if (CurrentState == State.MenuStartGame)
                     {
                         StartNewGame();
@@ -108,10 +108,10 @@ public class GameManager : MonoBehaviour
 
     static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name == "SeaLaunch") CurrentState = State.EarthLauchPlace;
-        if (SceneManager.GetActiveScene().name == "Launch") CurrentState = State.EarthLauchPlace;
-        if (SceneManager.GetActiveScene().name == "Production") CurrentState = State.EarthProductionFactory;
-        if (SceneManager.GetActiveScene().name == "Research") CurrentState = State.EarthResearchLab;
+        if (SceneManager.GetActiveScene().name == "SeaLaunch") CurrentState = State.PlayEarth;
+        if (SceneManager.GetActiveScene().name == "Launch") CurrentState = State.PlayEarth;
+        if (SceneManager.GetActiveScene().name == "Production") CurrentState = State.PlayEarth;
+        if (SceneManager.GetActiveScene().name == "Research") CurrentState = State.PlayEarth;
         Debug.Log("Loaded Scene: "+ SceneManager.GetActiveScene().name);
     }
     static public void LoadGame(string Name)
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     public static void CreateUnit(Unit currentUnit)
     {           
         EventCreatedNewUnit(currentUnit);
-        CurrentState = State.Play;
+        CurrentState = State.PlaySpace;
     }
 
    
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        if (Input.GetKeyDown(KeyCode.Escape)) CurrentState = State.Play;
+        if (Input.GetKeyDown(KeyCode.Escape)) CurrentState = State.PlaySpace;
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
         if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(1);
         if (Input.GetKeyDown(KeyCode.X)) SceneManager.LoadScene(2);

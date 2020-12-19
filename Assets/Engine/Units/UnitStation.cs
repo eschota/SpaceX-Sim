@@ -11,7 +11,7 @@ public class UnitStation : Unit
     {
         
 
-        if (GameManager.CurrentState == GameManager.State.Play)
+        if (GameManager.CurrentState == GameManager.State.PlaySpace)
         {
             var hours = TimeManager.Hours;
             var angle = Mathf.Lerp(360, 0f, hours / 24f);
