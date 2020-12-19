@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     {
         if (FindObjectsOfType<GameManager>().Length > 1 || instance != null)
         {
-            DestroyImmediate(this);
+            DestroyImmediate(this.gameObject);
             Debug.Log("<color: red> ДВА СКРИПТА ГЕЙМ МЕНЕДЖЕР!!! </color>");
             return;
         }
@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject.AddComponent<TimeManager>());
         if (FindObjectOfType<Canvas>() == null)
             DontDestroyOnLoad(Instantiate(Resources.Load("Canvas")));
+        //GameObject WorldMap= Instantiate( Resources.Load("world_map"))as GameObject;
+        //WorldMap.transform.SetParent(transform);
         SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
          
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -122,20 +124,13 @@ public class GameManager : MonoBehaviour
     public static List<Unit> UnitsLaunchPlace = new List<Unit>();
     public static List<Unit> UnitsResearchLab = new List<Unit>();
     public static List<Unit> UnitsProductionFactory = new List<Unit>();
-    public static void CreateLaunchPlace(CountrySO launchPlace ,GameObject launchPlaceTemp,Unit currentUnit)
-    {
-        if (!Eco.Buy(launchPlace.CostBuild, "Not Enough Money :(")) return; 
-        currentUnit.transform.position = launchPlaceTemp.transform.position;
-        currentUnit.transform.parent = UnitsAll.Find(X =>   X.GetType() == typeof( UnitEarth)).transform;
-        Destroy(launchPlaceTemp);
+    public static void CreateUnit(Unit currentUnit)
+    {           
         EventCreatedNewUnit(currentUnit);
         CurrentState = State.Play;
     }
 
-    public static void CreateResearchLab(CountrySO launchPlace, GameObject launchPlaceTemp)
-    {
-
-    }
+   
     #endregion
     #region OnGui Hack Etc
     private bool F1 = false;

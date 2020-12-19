@@ -6,8 +6,8 @@ public class ModuleSO : ScriptableObject
 {
     public string Name;
     public Sprite icon;
-    public int CostProduction = 100;
-    public int[] Production = {100,100,100};
-
+    public float CostProduction = 1.1f;
+    public int[] ProductionByClass = {100,100,100};
+    public Module Prefab;
    
 }

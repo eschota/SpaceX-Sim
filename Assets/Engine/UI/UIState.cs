@@ -87,6 +87,10 @@ class UIStateButton : Editor
                     item.CG.alpha = 0;
                 if (statesParent.Exists(X => X == item)) item.CG.alpha = 1;
             }
+            foreach (var item in Selection.activeGameObject.GetComponentsInParent<UIState>())
+            {
+                item.CG.alpha = 1;
+            }
         }
 
     }

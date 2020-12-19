@@ -28,6 +28,7 @@ public class LightController : MonoBehaviour
     
     private void Awake()
     {
+    if(Application.isPlaying)    if (FindObjectOfType<CameraInUnits>() == null) gameObject.AddComponent<CameraInUnits>();
         Time.timeScale = 1;
         if (TimeManager.Hours == null)
             localTimer = 5;

@@ -25,43 +25,51 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     }
     void OnClick()
     {
-        if (CurrentLauchPlace != null)
-        {
-            if (GetCountrieByColor.launchPlace != null)
+       
+            if (WorldMapManager.instance.CurrenUnitPoint!=null)
             {
                 switch (GameManager.CurrentState)
                 {
                     case GameManager.State.CreateLauchPlace:
                         UnitLaunchPlace launchPlace=Instantiate(UnitLaunchPrefab).AddComponent<UnitLaunchPlace>();
                         launchPlace.name = "LaunchPlace";
-                        launchPlace.Country = CurrentLauchPlace;
-                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, launchPlace);
+                        launchPlace.Country = WorldMapManager.instance.CurrentHovered;
+
+                        launchPlace.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
+                    launchPlace.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
+                        GameManager.CreateUnit(launchPlace);
+
                         GameManager.instance.OpenUnitScene(launchPlace);
                         CameraManager.FlyToUnit = launchPlace;
                         break;
                     case GameManager.State.CreateProductionFactory:
-                        UnitProductionFactory productionFactory = Instantiate(UnitLaunchPrefab).AddComponent<UnitProductionFactory>();
-                        productionFactory.name = "ProductionFactory";
-                        productionFactory.Country = CurrentLauchPlace;
-                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, productionFactory);
-                        GameManager.instance.OpenUnitScene(productionFactory);
-                        CameraManager.FlyToUnit = productionFactory;
+                        UnitProductionFactory unit = Instantiate(UnitLaunchPrefab).AddComponent<UnitProductionFactory>();
+                        unit.name = "ProductionFactory";
+                        unit.Country = WorldMapManager.instance.CurrentHovered;
+
+                        unit.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
+                    unit.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
+                    GameManager.CreateUnit(unit);
+
+                        GameManager.instance.OpenUnitScene(unit);
+                        CameraManager.FlyToUnit = unit;
                         break;
                     case GameManager.State.CreateResearchLab:
-                        UnitResearchLab researchLab = Instantiate(UnitLaunchPrefab).AddComponent<UnitResearchLab>();
-                        researchLab.name = "ResearchLab";
-                        researchLab.Country = CurrentLauchPlace;
-                        GameManager.CreateLaunchPlace(CurrentLauchPlace, GetCountrieByColor.launchPlace, researchLab);
-                        GameManager.instance.OpenUnitScene(researchLab);
-                        CameraManager.FlyToUnit = researchLab;
+                        UnitResearchLab unitR = Instantiate(UnitLaunchPrefab).AddComponent<UnitResearchLab>();
+                        unitR.name = "ResearchLab";
+                        unitR.Country = WorldMapManager.instance.CurrentHovered;
+
+                        unitR.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
+                    unitR.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
+                    GameManager.CreateUnit(unitR);
+
+                        GameManager.instance.OpenUnitScene(unitR);
+                        CameraManager.FlyToUnit = unitR;
                         break;
                 }
             }
-            else
-            {
-                Debug.Log("Chose point");
-            }
-        }
+           
+         
         else Alert.instance.AlertMessage = "Select Launch Place First!!!";
     }
     // Update is called once per frame

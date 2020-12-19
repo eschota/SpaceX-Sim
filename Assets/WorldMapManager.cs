@@ -15,12 +15,13 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Science;
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
-    Country CurrentHovered;
-    
+    [SerializeField] public Material Climat;
+    public Country CurrentHovered;
+    LayerMask mask;
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
-    public enum State { Earth=0, Politic=1, Population=2, Science=3, Transport=4,Disaster=5 }
+    public enum State { Earth=0, Politic=1, Population=2, Science=3, Transport=4,Disaster=5,Climat=6 }
     private  State _currentState;
     public  State CurrentState
     {
@@ -67,6 +68,12 @@ public class WorldMapManager : MonoBehaviour
                     Clouds.SetActive(false);
                     HideMap();
                     break;
+                case State.Climat:
+                    EarthRenderer.sharedMaterial = Climat;
+                    Glow.SetActive(false);
+                    Clouds.SetActive(false);
+                    HideMap();
+                    break;
                 default:
                     break;
             }
@@ -78,12 +85,23 @@ public class WorldMapManager : MonoBehaviour
     
     }
     #endregion
+    public static WorldMapManager instance;
     void Awake()
     {
+        if (instance == null) instance = this;
+        else { DestroyImmediate(this.gameObject); return; };
+       
         GameManager.EventChangeState += OnChangeState;
-        HideMap();
-    }
+        GameManager.EventCreatedNewUnit += OnUnitCreated;
 
+        Debug.Log("WorldMap");
+        HideMap();
+        mask = LayerMask.GetMask("Earth");
+    }
+    void OnUnitCreated(Unit unit)
+    {
+       
+    }
     void OnChangeState()
     {
         if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
@@ -96,27 +114,29 @@ public class WorldMapManager : MonoBehaviour
             CurrentState = State.Earth;
             HideMap();
         }
+        if (GameManager.CurrentState == GameManager.State.Play) Destroy(CurrenUnitPoint.gameObject);
     }
     private void OnDestroy()
     {
         GameManager.EventChangeState -= OnChangeState;
+        GameManager.EventCreatedNewUnit -= OnUnitCreated;
     }
 
     void ShowMap()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (var item in countries)
         {
-            transform.GetChild(i).gameObject.SetActive(true);
+            item.gameObject.SetActive(true);
         }
        
     }
     void HideMap()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (var item in countries)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            item.gameObject.SetActive(false);
         }
-        
+
     }
     void Update()
     {
@@ -126,11 +146,14 @@ public class WorldMapManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F4)) CurrentState = State.Science;
         if (Input.GetKeyDown(KeyCode.F5)) CurrentState = State.Transport;
         if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
+        if (Input.GetKeyDown(KeyCode.F7)) CurrentState = State.Climat;
         if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) SelectCountry();
     }
 
     void SelectCountry()
     {
+        if (Input.GetMouseButton(0)) PlaceUnitPoint();
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -162,12 +185,18 @@ public class WorldMapManager : MonoBehaviour
             if (CurrentHovered != null) CurrentHovered.Hovered = false;
             CurrentHovered = null;
         }
-        if (Input.GetMouseButtonDown(0)) PlaceUnitPoint();
+       
 
     }
     void PlaceUnitPoint()
     {
-
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, mask))
+        {
+            if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
+            CurrenUnitPoint.transform.position = hit.point;
+            CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
+        }
     }
 
             [ContextMenu ("Select AllCountryes")]

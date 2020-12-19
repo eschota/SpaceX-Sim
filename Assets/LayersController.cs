@@ -23,6 +23,7 @@ public class LayersController : MonoBehaviour
         if (id == 3) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Science;
         if (id == 4) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Transport;
         if (id == 5) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Disaster;
+        if (id == 6) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Climat;
     }
     private void OnDestroy()
     {

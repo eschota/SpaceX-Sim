@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Research : MonoBehaviour
+public class Research : Unit
 {
     public enum Type { None, Engine, Rockets, Modules, SpaceSuit, Equipment, Concept }
     public string Name;

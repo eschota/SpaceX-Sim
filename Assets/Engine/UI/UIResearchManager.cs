@@ -17,7 +17,7 @@ public class UIResearchManager : MonoBehaviour
     private float zoom = 0;
     private Vector3 startPos, target;
     Vector3 maxpos;
-    List<ResearchSO> Researches = new List<ResearchSO>();
+    List<Research> Researches = new List<Research>();
     void Update()
     {
 #if UNITY_EDITOR
@@ -56,8 +56,8 @@ public class UIResearchManager : MonoBehaviour
    public void Rebuild()
     {
         Debug.Log("rebuild");
-        Researches = new List<ResearchSO>();
-        Researches.AddRange(Resources.LoadAll<ResearchSO>("Researches"));
+        Researches = new List<Research>();
+        Researches.AddRange(Resources.LoadAll<Research>("Researches"));
         List<UIResearchButton> tempButtons = new List<UIResearchButton>();
         tempButtons.AddRange(FindObjectsOfType<UIResearchButton>());
         for (int i = 0; i < tempButtons.Count; i++)
@@ -75,7 +75,7 @@ public class UIResearchManager : MonoBehaviour
             buttons[buttons.Count - 1].research = Researches[i];
             buttons[buttons.Count - 1].pivotStart.localPosition = new Vector3(Researches[i].pivotStart.x, Researches[i].pivotStart.y,0);
             buttons[buttons.Count - 1].pivotEnd.localPosition = new Vector3(Researches[i].pivotEnd.x, Researches[i].pivotStart.y,0);
-            buttons[buttons.Count - 1].CostText.text = Researches[i].Cost.ToString();
+            buttons[buttons.Count - 1].CostText.text = Researches[i].TimeCost.ToString();
             buttons[buttons.Count - 1].name = Researches[i].Name;
         }
         RebuildLinks();
@@ -116,7 +116,7 @@ public class UIResearchManager : MonoBehaviour
     [MenuItem("My Commands/Special Command %z")]
     static void SpecialCommand()
     {
-        ResearchSO RSO = Selection.activeGameObject.GetComponent<UIResearchButton>().research;
+        Research RSO = Selection.activeGameObject.GetComponent<UIResearchButton>().research;
         if (RSO.Dependances.Count > 0)
         {
             RSO.Dependances.RemoveAt(RSO.Dependances.Count - 1);
