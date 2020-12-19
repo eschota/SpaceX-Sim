@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 87465603}
   - component: {fileID: 87465602}
   - component: {fileID: 87465606}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: BuildCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,6 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fabab9e0367c646bddf575bcb20ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
   building: {fileID: 0}
 --- !u!1 &133116203
 GameObject:
@@ -728,7 +730,7 @@ MonoBehaviour:
   buildCellRoot: {fileID: 444827549}
   buildLayerMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 1024
   mainCamera: {fileID: 1336541098}
   buildPrefabs:
   - {fileID: -1755996918051333259, guid: a95c7404a859c884b89169d7d270844c, type: 3}
