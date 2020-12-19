@@ -6,7 +6,7 @@ using UnityEditor;
 public class UIResearchButton : MonoBehaviour
 {
 
-    public ResearchSO research;
+    public Research research;
     [SerializeField] private TMPro.TextMeshProUGUI _text;
     [SerializeField] private RectTransform _rect;
     [SerializeField] public RectTransform pivotStart;
