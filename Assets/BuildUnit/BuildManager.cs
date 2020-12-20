@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 public class BuildManager : MonoBehaviour
 {
@@ -13,9 +13,10 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Transform buildCellRoot;
     [SerializeField] private LayerMask buildLayerMask;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private BuildingUnit[] buildPrefabs;
     [SerializeField] private Transform buildingsRoot;
     [SerializeField] private GameObject deleteUnitPopup;
+    [SerializeField] private Transform buildItemsContainer;
+    [SerializeField] private UiBuildItem buildItemPrefab;
 
     private BuildCell[,] _buildCells;
     private BuildingUnit _buildingUnit;
@@ -25,7 +26,17 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
-        BuildCell();
+        BuildCellGrid();
+
+        for (var i = 0; i < UnitManager.instance.BuildingUnitPrefabs.Length; i++)
+        {
+            var item = Instantiate(buildItemPrefab, buildItemsContainer);
+            var index = i;
+            item.TitleText.text = UnitManager.instance.BuildingUnitPrefabs[i].Title;
+            item.IconImage.sprite = UnitManager.instance.BuildingUnitPrefabs[i].Icon;
+            item.Button.onClick.AddListener(() => StartBuild(index));
+            item.gameObject.SetActive(true);
+        }
     }
 
     private void Update()
@@ -33,7 +44,7 @@ public class BuildManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (_buildingUnit != null)
-                OnBuildClick();
+                ClickBuild();
             else if (_hoverCell != null && _hoverCell.Building != null)
                 OnUnitClick();
         }
@@ -42,10 +53,36 @@ public class BuildManager : MonoBehaviour
         UpdateBuildPosition();
     }
 
-    public void StartBuild(int type)
+    private void StartBuild(int type)
     {
-        _buildingUnit = Instantiate(buildPrefabs[type], buildingsRoot, true);
+        _buildingUnit = Instantiate(UnitManager.instance.BuildingUnitPrefabs[type], buildingsRoot, true);
         _buildingUnit.gameObject.SetActive(false);
+        buildItemsContainer.gameObject.SetActive(false);
+    }
+
+    public void OnBuildClick() => buildItemsContainer.gameObject.SetActive(true);
+
+    private void BuildCellGrid()
+    {
+        _buildCells = new BuildCell[width, height];
+
+        var left = -width / cellWidth / 2f + .5f;
+        var top = height / cellHeight / 2f - .5f;
+
+        for (var i = 0; i < width; i++)
+        {
+            for (var j = 0; j < height; j++)
+            {
+                var buildCell = SpawnBuildCell(new Vector3(
+                    left + i * cellWidth,
+                    0f,
+                    top - j * cellHeight
+                ));
+                _buildCells[j, i] = buildCell;
+                buildCell.x = j;
+                buildCell.y = i;
+            }
+        }
     }
 
     private void CheckSelection()
@@ -161,6 +198,20 @@ public class BuildManager : MonoBehaviour
 
                 _selectedCells.AddRange(cells);
             }
+
+            var accept = true;
+            foreach (var selectedCell in _selectedCells)
+            {
+                if (selectedCell.Building != null)
+                {
+                    accept = false;
+                    break;
+                }
+            }
+
+            _buildingUnit.CurrentState = accept
+                ? BuildingUnit.EBuildingState.AcceptForBuilding
+                : BuildingUnit.EBuildingState.NotAcceptForBuilding;
         }
     }
 
@@ -171,30 +222,7 @@ public class BuildManager : MonoBehaviour
         _selectedCells.Clear();
     }
 
-    private void BuildCell()
-    {
-        _buildCells = new BuildCell[width, height];
-
-        var left = -width / cellWidth / 2f + .5f;
-        var top = height / cellHeight / 2f - .5f;
-
-        for (var i = 0; i < width; i++)
-        {
-            for (var j = 0; j < height; j++)
-            {
-                var buildCell = SpawnBuildCell(new Vector3(
-                    left + i * cellWidth,
-                    0f,
-                    top - j * cellHeight
-                ));
-                _buildCells[j, i] = buildCell;
-                buildCell.x = j;
-                buildCell.y = i;
-            }
-        }
-    }
-
-    private void OnBuildClick()
+    private void ClickBuild()
     {
         if (_selectedCells.Count == 0)
             return;

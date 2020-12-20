@@ -1,14 +1,58 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BuildingUnit : MonoBehaviour
 {
+    public enum EBuildingState
+    {
+        AcceptForBuilding,
+        NotAcceptForBuilding,
+        BuildingNow,
+        Working,
+        NotWorking
+    }
+    
+    [SerializeField] private EBuildingState _currentState;
+    public static event Action EventChangeState;
+
+    public EBuildingState CurrentState
+    {
+        get => _currentState;
+        set
+        {
+            switch (value)
+            {
+                case EBuildingState.AcceptForBuilding:
+                    break;
+                case EBuildingState.NotAcceptForBuilding:
+                    break;
+                case EBuildingState.BuildingNow:
+                    break;
+                case EBuildingState.Working:
+                    break;
+                case EBuildingState.NotWorking:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+            }
+            _currentState = value;
+            EventChangeState?.Invoke();
+        }
+    }
+    
     [SerializeField] private int size;
-    [SerializeField] private BuildCell[] cells;
+    [SerializeField] private string title;
+    [SerializeField] private Sprite icon;
+    
+    private BuildCell[] _cells;
 
     public int Size => size;
     public BuildCell[] Cells
     {
-        get => cells;
-        set => cells = value;
+        get => _cells;
+        set => _cells = value;
     }
+
+    public string Title => title;
+    public Sprite Icon => icon;
 }
