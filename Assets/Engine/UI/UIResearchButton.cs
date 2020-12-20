@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEditor;
+
 [ExecuteInEditMode]
-public class UIResearchButton : MonoBehaviour
+public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
 {
 
     public Research research;
@@ -12,7 +15,8 @@ public class UIResearchButton : MonoBehaviour
     [SerializeField] public RectTransform pivotStart;
     [SerializeField] public RectTransform pivotEnd;
     [SerializeField] public TMPro.TextMeshProUGUI CostText;
-     
+
+    
     public RectTransform Rect
     {
         get
@@ -31,23 +35,36 @@ public class UIResearchButton : MonoBehaviour
         }
 
     }
+
+    Vector3 startPos;
+    Vector3 currentPos;
+   
     void Start()
     {
-
+        GetComponent<Button>().onClick.AddListener(OnClick);
     }
 #if UNITY_EDITOR
     // Update is called once per frame
     void Update()
     {
 
-        if (Selection.activeObject == gameObject)
-        {
-
-            research.position = new Vector2(_rect.position.x, _rect.position.y);
-            FindObjectOfType<UIResearchManager>().RebuildLinks();
-        }
+       
         
     }
+    void OnClick()
+    {
+        ScenarioManager.instance.CurrentResearch.ResearchSelected = research;
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = eventData.pointerCurrentRaycast.screenPosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
     [CustomEditor(typeof(UIResearchButton))]
     class DecalMeshHelperEditor : Editor
     {

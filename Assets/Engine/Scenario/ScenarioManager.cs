@@ -26,16 +26,13 @@ public class ScenarioManager : MonoBehaviour
 
         }
     }
+    public static ScenarioManager instance;
     void Start()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     #region  Scenario
     [SerializeField] TMPro.TMP_InputField ScenarioName;
     [SerializeField] TMPro.TMP_InputField ScenarioStartDay;
@@ -50,18 +47,22 @@ public class ScenarioManager : MonoBehaviour
         scenario.SaveScenario();
     }
 
-     
+     public void DeselectResearch()
+    {
+        ScenarioManager.instance.CurrentResearch.ResearchSelected = null;
+    }
     public void AddModule()
     {
 
     }
-    List<Research> Researches = new List<Research>();
+    public List<Research> Researches = new List<Research>();
     public void AddResearch()
     {
         Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,transform).GetComponent<Research>());
       //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
         Researches[Researches.Count - 1].researchButton = Researches[Researches.Count - 1].GetComponent<UIResearchButton>();
         Researches[Researches.Count - 1].researchButton.transform.position = new Vector3(200, 200);
+        Researches[Researches.Count - 1].researchButton.research = Researches[Researches.Count - 1];
     }
     
     [System.Serializable]

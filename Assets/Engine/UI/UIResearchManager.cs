@@ -27,10 +27,10 @@ public class UIResearchManager : MonoBehaviour
         MouseControl();
 #endif
     }
-
+    public static UIResearchManager instance;
     void Awake()
     {
-
+        instance = this;
         maxpos = -Vector3.one * 10000;
         foreach (var item in FindObjectsOfType<UIResearchButton>())
         {
