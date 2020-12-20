@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 public class BuildManager : MonoBehaviour
@@ -12,13 +13,15 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Transform buildCellRoot;
     [SerializeField] private LayerMask buildLayerMask;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private BuildingObject[] buildPrefabs;
+    [SerializeField] private BuildingUnit[] buildPrefabs;
     [SerializeField] private Transform buildingsRoot;
+    [SerializeField] private GameObject deleteUnitPopup;
 
     private BuildCell[,] _buildCells;
-    private BuildingObject _building;
+    private BuildingUnit _buildingUnit;
     private List<BuildCell> _selectedCells = new List<BuildCell>();
     private BuildCell _hoverCell;
+    private BuildingUnit _buildForDelete;
 
     private void Start()
     {
@@ -27,8 +30,13 @@ public class BuildManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
-            OnBuildClick();
+        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            if (_buildingUnit != null)
+                OnBuildClick();
+            else if (_hoverCell != null && _hoverCell.Building != null)
+                OnUnitClick();
+        }
 
         CheckSelection();
         UpdateBuildPosition();
@@ -36,8 +44,8 @@ public class BuildManager : MonoBehaviour
 
     public void StartBuild(int type)
     {
-        _building = Instantiate(buildPrefabs[type], buildingsRoot, true);
-        _building.gameObject.SetActive(false);
+        _buildingUnit = Instantiate(buildPrefabs[type], buildingsRoot, true);
+        _buildingUnit.gameObject.SetActive(false);
     }
 
     private void CheckSelection()
@@ -70,17 +78,17 @@ public class BuildManager : MonoBehaviour
         if (!_hoverCell.IsSelected)
             _hoverCell.SetSelection(true);
 
-        if (_building == null)
+        if (_buildingUnit == null)
         {
             _selectedCells.Add(_hoverCell);
         }
         else
         {
-            if (_building.Size == 1)
+            if (_buildingUnit.Size == 1)
             {
                 _selectedCells.Add(_hoverCell);
             }
-            else if (_building.Size == 2)
+            else if (_buildingUnit.Size == 2)
             {
                 var cells = new BuildCell[4];
 
@@ -118,7 +126,7 @@ public class BuildManager : MonoBehaviour
 
                 _selectedCells.AddRange(cells);
             }
-            else if (_building.Size == 3)
+            else if (_buildingUnit.Size == 3)
             {
                 var cells = new BuildCell[9];
                 var xOffset = 0;
@@ -188,7 +196,7 @@ public class BuildManager : MonoBehaviour
 
     private void OnBuildClick()
     {
-        if (_selectedCells.Count == 0 || _building == null)
+        if (_selectedCells.Count == 0)
             return;
 
         foreach (var selectedCell in _selectedCells)
@@ -198,9 +206,10 @@ public class BuildManager : MonoBehaviour
         }
 
         foreach (var selectedCell in _selectedCells)
-            selectedCell.Building = _building.gameObject;
+            selectedCell.Building = _buildingUnit.gameObject;
+        _buildingUnit.Cells = _selectedCells.ToArray();
 
-        _building = null;
+        _buildingUnit = null;
     }
 
     private BuildCell SpawnBuildCell(Vector3 position)
@@ -213,37 +222,60 @@ public class BuildManager : MonoBehaviour
 
     private void UpdateBuildPosition()
     {
-        if (_building == null)
+        if (_buildingUnit == null)
             return;
 
         if (_hoverCell != null)
         {
-            if (!_building.gameObject.activeSelf)
-                _building.gameObject.SetActive(true);
+            if (!_buildingUnit.gameObject.activeSelf)
+                _buildingUnit.gameObject.SetActive(true);
 
             var position = _selectedCells[0].transform.position;
-            _building.transform.position = position;
-            if (_building.Size == 1)
+            _buildingUnit.transform.position = position;
+            if (_buildingUnit.Size == 1)
             {
-                _building.transform.localPosition =
-                    new Vector3(_building.transform.localPosition.x, 0f, _building.transform.localPosition.z);
+                _buildingUnit.transform.localPosition =
+                    new Vector3(_buildingUnit.transform.localPosition.x, 0f, _buildingUnit.transform.localPosition.z);
             }
-            else if (_building.Size == 2)
+            else if (_buildingUnit.Size == 2)
             {
-                _building.transform.localPosition =
-                    new Vector3(_building.transform.localPosition.x - .5f, 0f,
-                        _building.transform.localPosition.z - .5f);
+                _buildingUnit.transform.localPosition =
+                    new Vector3(_buildingUnit.transform.localPosition.x - .5f, 0f,
+                        _buildingUnit.transform.localPosition.z - .5f);
             }
-            else if (_building.Size == 3)
+            else if (_buildingUnit.Size == 3)
             {
-                _building.transform.localPosition =
-                    new Vector3(_building.transform.localPosition.x - 1f, 0f,
-                        _building.transform.localPosition.z - 1f);
+                _buildingUnit.transform.localPosition =
+                    new Vector3(_buildingUnit.transform.localPosition.x - 1f, 0f,
+                        _buildingUnit.transform.localPosition.z - 1f);
             }
         }
         else
         {
-            _building.gameObject.SetActive(false);
+            _buildingUnit.gameObject.SetActive(false);
         }
+    }
+
+    private void OnUnitClick()
+    {
+        _buildForDelete = _hoverCell.Building.GetComponent<BuildingUnit>();
+        deleteUnitPopup.SetActive(true);
+    }
+
+    public void DeleteUnitAccept()
+    {
+        deleteUnitPopup.SetActive(false);
+
+        foreach (var cell in _buildForDelete.Cells)
+            cell.Building = null;
+        DestroyImmediate(_buildForDelete.gameObject);
+
+        _buildForDelete = null;
+    }
+
+    public void DeleteUnitCancel()
+    {
+        deleteUnitPopup.SetActive(false);
+        _buildForDelete = null;
     }
 }
