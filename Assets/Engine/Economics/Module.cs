@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEditor;
 [ExecuteInEditMode]
 public class Module : Unit
-{    
+{
+    public enum Type { None, Engine, Rockets, Modules, SpaceSuit, Equipment, Concept }
+    public Type type;
     public string Name;
     public int Cost = 1;
     public Texture2D IconSprite;

@@ -5,7 +5,7 @@ using System.IO;
 
 public class Research : Unit
 {
-    public enum Type { None, Engine, Rockets, Modules, SpaceSuit, Equipment, Concept }
+    
     
     public List<Research> Dependances;
     public int[] TimeCost = { 100, 100, 100 };
