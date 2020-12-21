@@ -25,7 +25,8 @@ public class UISelectModule : MonoBehaviour
             }
             else
             { 
-                CG.alpha = 1;               
+                CG.alpha = 1;
+                OnChange(0);
             }
         }
     }

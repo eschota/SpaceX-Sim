@@ -20,6 +20,8 @@ public class UIEditResearch : MonoBehaviour
         set
         {
 
+            
+
             if (_research != value)
             {
                 UISelectModule.instance.CurrentResearchSelected = null;
