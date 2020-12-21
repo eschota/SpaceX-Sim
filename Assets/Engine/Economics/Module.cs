@@ -9,7 +9,7 @@ public class Module : Unit
     public Type type;
     public string Name;
     public int Cost = 1;
-    public Texture2D IconSprite;
+    public Sprite IconSprite;
     [SerializeField] public Camera IconCamera;
     [SerializeField] public GameObject Prefab;
    public string filename
@@ -52,7 +52,7 @@ public class Module : Unit
                 Selection.activeGameObject.GetComponent<Module>().IconCamera.enabled = true;
                 Selection.activeGameObject.GetComponent<Module>().RenderIcon();
                 AssetDatabase.Refresh();
-                Selection.activeGameObject.GetComponent<Module>().IconSprite = Resources.Load("Modules/Icons/" + Selection.activeGameObject.GetComponent<Module>().name) as Texture2D;
+                Selection.activeGameObject.GetComponent<Module>().IconSprite = Resources.Load("Modules/Icons/" + Selection.activeGameObject.GetComponent<Module>().name) as Sprite;
             }
             
             // if (GUILayout.Button("IsolateThisModule"))
