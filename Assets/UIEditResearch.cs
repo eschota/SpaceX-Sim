@@ -28,7 +28,10 @@ public class UIEditResearch : MonoBehaviour
             {
                 CG.alpha = 1;
                 ResearchName.text = value.Name;
-
+                Light.text = value.TimeCost[0].ToString();
+                Medium.text = value.TimeCost[1].ToString();
+                Heavy.text = value.TimeCost[2].ToString();
+                Completed.isOn = value.Completed;
                 EventChangeResearch();
             }
         }

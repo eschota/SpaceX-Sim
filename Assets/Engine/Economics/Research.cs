@@ -23,12 +23,14 @@ public class Research : Unit
     {
         get
         {
-            if (TimeCompleted[0] == TimeCost[0])
-                if (TimeCompleted[1] == TimeCost[1])
-                    if (TimeCompleted[2] == TimeCost[2]) 
-                    {
+            if (TimeCompleted[0] != TimeCost[0]) _completed = false;
+                else
+            if (TimeCompleted[1] != TimeCost[1]) _completed = false;
+                else
+            if (TimeCompleted[2] != TimeCost[2]) _completed = false;
+                else
                         _completed = true;
-                    };
+                    
             return _completed;
                 
         }
