@@ -23,10 +23,13 @@ public class BuildingUnit : MonoBehaviour
             switch (value)
             {
                 case EBuildingState.AcceptForBuilding:
+                    rootRenderer.material.SetColor("_Color", Color.green);
                     break;
                 case EBuildingState.NotAcceptForBuilding:
+                    rootRenderer.material.SetColor("_Color", Color.red);
                     break;
                 case EBuildingState.BuildingNow:
+                    rootRenderer.material.SetColor("_Color", Color.white);
                     break;
                 case EBuildingState.Working:
                     break;
@@ -43,9 +46,10 @@ public class BuildingUnit : MonoBehaviour
     [SerializeField] private int size;
     [SerializeField] private string title;
     [SerializeField] private Sprite icon;
+    [SerializeField] private Renderer rootRenderer;
     
     private BuildCell[] _cells;
-
+    
     public int Size => size;
     public BuildCell[] Cells
     {

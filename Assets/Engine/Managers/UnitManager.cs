@@ -24,6 +24,7 @@ public class UnitManager : MonoBehaviour
             switch (value)
             {
             }
+
             _currentState = value;
             EventChangeState();
         }
@@ -40,5 +41,12 @@ public class UnitManager : MonoBehaviour
             DestroyImmediate(gameObject);
             return;
         }
+
+        var canvas = Instantiate(Resources.Load("BuildUnitCanvas"));
+        var buildUnitCanvas = FindObjectOfType<BuildUnitCanvas>();
+
+        buildUnitCanvas.BuildButton.onClick.AddListener(() => BuildController.instance.OnBuildClick());
+        buildUnitCanvas.DeleteUnitYesButton.onClick.AddListener(() => BuildController.instance.DeleteUnitAccept());
+        buildUnitCanvas.DeleteUnitNoButton.onClick.AddListener(() => BuildController.instance.DeleteUnitCancel());
     }
 }

@@ -3,8 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BuildManager : MonoBehaviour
+public class BuildController : MonoBehaviour
 {
+    public static BuildController instance;
+
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 10;
     [SerializeField] private float cellWidth = 1f;
@@ -14,23 +16,31 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private LayerMask buildLayerMask;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform buildingsRoot;
-    [SerializeField] private GameObject deleteUnitPopup;
-    [SerializeField] private Transform buildItemsContainer;
-    [SerializeField] private UiBuildItem buildItemPrefab;
 
     private BuildCell[,] _buildCells;
     private BuildingUnit _buildingUnit;
     private List<BuildCell> _selectedCells = new List<BuildCell>();
     private BuildCell _hoverCell;
     private BuildingUnit _buildForDelete;
+    private BuildUnitCanvas _buildUnitCanvas;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            DestroyImmediate(gameObject);
+    }
+    
     private void Start()
     {
         BuildCellGrid();
+        
+        _buildUnitCanvas = FindObjectOfType<BuildUnitCanvas>();
 
         for (var i = 0; i < UnitManager.instance.BuildingUnitPrefabs.Length; i++)
         {
-            var item = Instantiate(buildItemPrefab, buildItemsContainer);
+            var item = Instantiate(_buildUnitCanvas.BuildItemPrefab, _buildUnitCanvas.BuildItemsContainer);
             var index = i;
             item.TitleText.text = UnitManager.instance.BuildingUnitPrefabs[i].Title;
             item.IconImage.sprite = UnitManager.instance.BuildingUnitPrefabs[i].Icon;
@@ -57,10 +67,10 @@ public class BuildManager : MonoBehaviour
     {
         _buildingUnit = Instantiate(UnitManager.instance.BuildingUnitPrefabs[type], buildingsRoot, true);
         _buildingUnit.gameObject.SetActive(false);
-        buildItemsContainer.gameObject.SetActive(false);
+        _buildUnitCanvas.BuildItemsContainer.gameObject.SetActive(false);
     }
 
-    public void OnBuildClick() => buildItemsContainer.gameObject.SetActive(true);
+    public void OnBuildClick() => _buildUnitCanvas.BuildItemsContainer.gameObject.SetActive(true);
 
     private void BuildCellGrid()
     {
@@ -236,6 +246,7 @@ public class BuildManager : MonoBehaviour
         foreach (var selectedCell in _selectedCells)
             selectedCell.Building = _buildingUnit.gameObject;
         _buildingUnit.Cells = _selectedCells.ToArray();
+        _buildingUnit.CurrentState = BuildingUnit.EBuildingState.BuildingNow;
 
         _buildingUnit = null;
     }
@@ -287,12 +298,12 @@ public class BuildManager : MonoBehaviour
     private void OnUnitClick()
     {
         _buildForDelete = _hoverCell.Building.GetComponent<BuildingUnit>();
-        deleteUnitPopup.SetActive(true);
+        _buildUnitCanvas.DeleteUnitPopup.SetActive(true);
     }
 
     public void DeleteUnitAccept()
     {
-        deleteUnitPopup.SetActive(false);
+        _buildUnitCanvas.DeleteUnitPopup.SetActive(false);
 
         foreach (var cell in _buildForDelete.Cells)
             cell.Building = null;
@@ -303,7 +314,7 @@ public class BuildManager : MonoBehaviour
 
     public void DeleteUnitCancel()
     {
-        deleteUnitPopup.SetActive(false);
+        _buildUnitCanvas.DeleteUnitPopup.SetActive(false);
         _buildForDelete = null;
     }
 }
