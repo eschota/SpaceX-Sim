@@ -22,6 +22,8 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     [SerializeField] public TMPro.TextMeshProUGUI LightMax;
     [SerializeField] public TMPro.TextMeshProUGUI MediumMax;
     [SerializeField] public TMPro.TextMeshProUGUI HeavyMax;
+    [SerializeField] public UIModule ModulesIcons;
+    [SerializeField] public Transform ModulesIconsRootTransform;
     [SerializeField] GameObject[] progressesGO;
     public RectTransform Rect
     {
@@ -53,9 +55,19 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
         research.researchButton.transform.position = new Vector3(200, 200);
                 
     }
+    List<UIModule> modules = new List<UIModule>();
    public void Refresh()
     {
-        
+        for (int i = 0; i < modules.Count; i++)
+        {
+            Destroy(modules[i].gameObject);
+        }
+        modules.Clear();
+        for (int i = 0; i < research.ModulesOpen.Count; i++)
+        {
+            modules.Add(Instantiate(ModulesIcons, ModulesIconsRootTransform));
+            modules[modules.Count - 1].imgSprite.sprite = research.ModulesOpen[i].IconSprite;
+        }
         
         
 
