@@ -23,6 +23,7 @@ public class UIEditResearch : MonoBehaviour
             if (value == null)
             {
                 CG.alpha = 0;
+                UISelectModule.instance.CurrentResearchSelected = null;
             }
             else
             {

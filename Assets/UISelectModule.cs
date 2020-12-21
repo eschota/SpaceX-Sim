@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UISelectModule : MonoBehaviour
 {
-    [SerializeField] Dropdown DropdownByTypes;
+    [SerializeField] TMPro.TMP_Dropdown DropdownByTypes;
     [SerializeField] CanvasGroup CG;
     private Research _research;
     public Research CurrentResearchSelected
@@ -25,6 +26,16 @@ public class UISelectModule : MonoBehaviour
         }
     }
 
-   
-   
+    public static UISelectModule instance;
+    public List<Module> DefaultModules = new List<Module>();
+    void Awake()
+    {
+        instance = this;
+        DefaultModules.AddRange(Resources.LoadAll("Modules/", typeof(Module)).Cast<Module>());
+        Debug.Log("Modules Loaded: " + DefaultModules.Count);
+    }
+   public void AddModule()
+    {
+        //CurrentResearchSelected.ModulesOpen.Add()
+    }
 }

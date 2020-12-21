@@ -56,7 +56,7 @@ public class ScenarioManager : MonoBehaviour
     }
     public void AddModule()
     {
-
+        UISelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearchSelected;
     }
     public List<Research> Researches = new List<Research>();
     public List<Module> Modules= new List<Module>();

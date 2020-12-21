@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Instantiate(Resources.Load("Canvas")));
         //GameObject WorldMap= Instantiate( Resources.Load("world_map"))as GameObject;
         //WorldMap.transform.SetParent(transform);
-        SceneManager.LoadScene("UIResearch",LoadSceneMode.Additive);
+       
          
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
