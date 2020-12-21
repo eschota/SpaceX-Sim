@@ -10,6 +10,7 @@ public class UISelectModule : MonoBehaviour
     [SerializeField] Transform SelectModuleButtons;
     [SerializeField] TMPro.TMP_Dropdown DropdownByTypes;
     [SerializeField] CanvasGroup CG;
+    [SerializeField] Button AddButton;
     private Research _research;
     private List<UISelectModuleButton> activeButtons = new List<UISelectModuleButton>();
     public Research CurrentResearchSelected
@@ -28,7 +29,17 @@ public class UISelectModule : MonoBehaviour
             }
         }
     }
-
+    private Module _currentSelectedModule;
+    public Module CurrentSelectedModule
+    {
+        get => _currentSelectedModule;
+        set
+        {
+            if (value == null) AddButton.gameObject.SetActive(false);
+            else AddButton.gameObject.SetActive(true);
+            _currentSelectedModule = value;
+        }
+    }
     public static UISelectModule instance;
     public List<Module> DefaultModules = new List<Module>();
     public List<Module> CurrentShow = new List<Module>();
@@ -41,7 +52,8 @@ public class UISelectModule : MonoBehaviour
     }
    public void AddModule(int id)
     {
-        //CurrentResearchSelected.ModulesOpen.Add()
+        CurrentResearchSelected.ModulesOpen.Add(CurrentSelectedModule);
+        CurrentResearchSelected.researchButton.Refresh();
     }
 
     void OnChange(int id)
@@ -51,6 +63,7 @@ public class UISelectModule : MonoBehaviour
         {
             Destroy(activeButtons[i].gameObject);
         }
+        CurrentSelectedModule = null;
         activeButtons.Clear();
         CurrentShow.Clear();
         CurrentShow= DefaultModules.FindAll(X => (int)X.type == id);
@@ -64,8 +77,17 @@ public class UISelectModule : MonoBehaviour
             
 
             activeButtons[activeButtons.Count - 1].ModuleName.text= CurrentShow[i].Name;
+
+            activeButtons[activeButtons.Count - 1].thisModule= CurrentShow[i];
+
+
         }
 
     }
+    public void Close()
+    {
+        CurrentResearchSelected = null;
+        CurrentSelectedModule = null;
 
+    }
 }

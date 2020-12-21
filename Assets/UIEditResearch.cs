@@ -12,18 +12,28 @@ public class UIEditResearch : MonoBehaviour
     [SerializeField] public TMPro.TMP_InputField Heavy;
     [SerializeField] public CanvasGroup CG;
     [SerializeField] public Toggle Completed;
-    public static event Action EventChangeResearch;
+    
     private Research _research;
     public Research CurrentResearchSelected
     {
         get => _research;
         set
         {
+
+            if (_research != value)
+            {
+                UISelectModule.instance.CurrentResearchSelected = null;
+                UISelectModule.instance.CurrentSelectedModule = null;
+
+            }
+
             _research = value;
+
             if (value == null)
             {
                 CG.alpha = 0;
                 UISelectModule.instance.CurrentResearchSelected = null;
+                UISelectModule.instance.CurrentSelectedModule = null;
             }
             else
             {
@@ -33,7 +43,7 @@ public class UIEditResearch : MonoBehaviour
                 Medium.text = value.TimeCost[1].ToString();
                 Heavy.text = value.TimeCost[2].ToString();
                 Completed.isOn = value.Completed;
-                EventChangeResearch();
+                value.researchButton.Refresh();
             }
         }
     }
@@ -52,8 +62,8 @@ public class UIEditResearch : MonoBehaviour
         int.TryParse(Heavy.text,out heavy);
 
         CurrentResearchSelected.TimeCost = new[] {light,medium,heavy};
-        CurrentResearchSelected.Completed = Completed.isOn;        
-        EventChangeResearch();
+        CurrentResearchSelected.Completed = Completed.isOn;
+        CurrentResearchSelected.researchButton.Refresh();
     }
     void Start()
     {

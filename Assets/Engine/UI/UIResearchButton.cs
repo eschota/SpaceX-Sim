@@ -44,15 +44,16 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
 
     Vector3 startPos;
     Vector3 currentPos;
+    
    void Awake()
     {
-        UIEditResearch.EventChangeResearch += OnChangeResearch;
+        
         research = GetComponent<Research>();
         research.researchButton = this;
         research.researchButton.transform.position = new Vector3(200, 200);
                 
     }
-    void OnChangeResearch()
+   public void Refresh()
     {
         
         
