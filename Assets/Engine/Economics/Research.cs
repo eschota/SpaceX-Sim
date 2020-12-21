@@ -14,10 +14,37 @@ public class Research : Unit
     public Vector2 pivotStart;
     public Vector2 pivotEnd; 
     public List<Module> ModulesOpen;    
-    public UIResearchButton researchButton;   
-    
+    public UIResearchButton researchButton;
 
+    public int[] TimeCompleted = { 0, 0, 0 };
 
-
+    private bool _completed;
+    public bool Completed
+    {
+        get
+        {
+            if (TimeCompleted[0] == TimeCost[0])
+                if (TimeCompleted[1] == TimeCost[1])
+                    if (TimeCompleted[2] == TimeCost[2]) 
+                    {
+                        _completed = true;
+                    };
+            return _completed;
+                
+        }
+        set
+        {
+            if( value==true)
+            {
+                TimeCompleted = TimeCost;
+                _completed = true;
+            }
+            else
+            {
+                TimeCompleted = new int []{0,0,0};
+            }
+            GameManager.EventUnit(this);
+        }
+    }
     
 }

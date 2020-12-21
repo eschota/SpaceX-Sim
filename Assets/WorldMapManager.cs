@@ -93,9 +93,8 @@ public class WorldMapManager : MonoBehaviour
         else { DestroyImmediate(this.gameObject); return; };
        
         GameManager.EventChangeState += OnChangeState;
-        GameManager.EventCreatedNewUnit += OnUnitCreated;
-
-        Debug.Log("WorldMap");
+        GameManager.EventWithUnit += OnUnitCreated;
+         
         HideMap();
         mask = LayerMask.GetMask("Earth");
     }
@@ -120,7 +119,7 @@ public class WorldMapManager : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.EventChangeState -= OnChangeState;
-        GameManager.EventCreatedNewUnit -= OnUnitCreated;
+        GameManager.EventWithUnit -= OnUnitCreated;
     }
 
     void ShowMap()

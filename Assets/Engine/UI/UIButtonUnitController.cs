@@ -22,7 +22,7 @@ public class UIButtonUnitController : MonoBehaviour
         }
 
         EnterCurrentUnit.onClick.AddListener(OnClickEnter);
-        GameManager.EventCreatedNewUnit += OnCreateNewUnit;
+        GameManager.EventWithUnit += OnCreateNewUnit;
         EnterCurrentUnit.gameObject.SetActive(false);
     }
 

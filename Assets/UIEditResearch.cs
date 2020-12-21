@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class UIEditResearch : MonoBehaviour
@@ -10,6 +11,7 @@ public class UIEditResearch : MonoBehaviour
     [SerializeField] public TMPro.TMP_InputField Medium;
     [SerializeField] public TMPro.TMP_InputField Heavy;
     [SerializeField] public CanvasGroup CG;
+    [SerializeField] public Toggle Completed;
     public static event Action EventChangeResearch;
     private Research _research;
     public Research CurrentResearchSelected
@@ -37,6 +39,16 @@ public class UIEditResearch : MonoBehaviour
     public void OnEditResearch()
     {
         CurrentResearchSelected.Name = ResearchName.text;
+
+        int light = 0;
+        int.TryParse(Light.text,out light);
+        int medium = 0;
+        int.TryParse(Medium.text,out medium);
+        int heavy = 0;
+        int.TryParse(Heavy.text,out heavy);
+
+        CurrentResearchSelected.TimeCost = new[] {light,medium,heavy};
+        CurrentResearchSelected.Completed = Completed.isOn;        
         EventChangeResearch();
     }
     void Start()

@@ -16,8 +16,13 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     [SerializeField] public RectTransform pivotStart;
     [SerializeField] public RectTransform pivotEnd;
     [SerializeField] public TMPro.TextMeshProUGUI CostText;
-   
-
+    [SerializeField] public Image ProgressLight;
+    [SerializeField] public Image ProgressMedium;
+    [SerializeField] public Image ProgressHeavy;
+    [SerializeField] public TMPro.TextMeshProUGUI LightMax;
+    [SerializeField] public TMPro.TextMeshProUGUI MediumMax;
+    [SerializeField] public TMPro.TextMeshProUGUI HeavyMax;
+    [SerializeField] GameObject[] progressesGO;
     public RectTransform Rect
     {
         get
@@ -49,7 +54,34 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     }
     void OnChangeResearch()
     {
+        
+        
+        
+
         ResearchName.text = research.Name;
+
+        if (research.TimeCost[0] > 0)
+        {
+            progressesGO[0].SetActive(true);
+            LightMax.text = research.TimeCompleted[0].ToString() + "/" + research.TimeCost[0].ToString();
+            ProgressLight.fillAmount = research.TimeCompleted[0] / research.TimeCost[0];
+        }
+        else progressesGO[0].SetActive(false);
+        if (research.TimeCost[1] > 0)
+        {
+            progressesGO[1].SetActive(true);
+            MediumMax.text = research.TimeCompleted[1].ToString() + "/" + research.TimeCost[1].ToString();
+            ProgressMedium.fillAmount = research.TimeCompleted[1] / research.TimeCost[1];
+        }
+        else progressesGO[1].SetActive(false);
+        if (research.TimeCost[2] > 0)
+        {
+            progressesGO[2].SetActive(true);
+            HeavyMax.text = research.TimeCompleted[2].ToString() + "/" + research.TimeCost[2].ToString();
+            ProgressHeavy.fillAmount = research.TimeCompleted[2] / research.TimeCost[2];
+        }
+        else progressesGO[2].SetActive(false);
+
 
     }
     void Start()
@@ -76,7 +108,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-         
+        research.position = Rect.position;
     }
     void OnDestroy()
     {

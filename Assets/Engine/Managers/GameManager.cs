@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     #endregion
     #region Variables
     public static event Action EventChangeState;
-    public static event Action <Unit> EventCreatedNewUnit;
+    public static event Action <Unit> EventWithUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load,PlayEarth }
     private static State _currentState;
     public static State CurrentState
@@ -119,6 +119,12 @@ public class GameManager : MonoBehaviour
         Eco.IniEco(Name);
     }
     #endregion
+    #region Unit Events
+    public static void EventUnit(Unit unit)        // здесь мы сообщаем о том что произошло любое событие с юнитом и записываем его в историю
+    {
+        EventWithUnit(unit);
+    }
+    #endregion
     #region LauchPlace ResearchLab Production Factory
     public static List<Unit> UnitsAll = new List<Unit>();
     public static List<Unit> UnitsLaunchPlace = new List<Unit>();
@@ -126,7 +132,7 @@ public class GameManager : MonoBehaviour
     public static List<Unit> UnitsProductionFactory = new List<Unit>();
     public static void CreateUnit(Unit currentUnit)
     {           
-        EventCreatedNewUnit(currentUnit);
+        EventWithUnit(currentUnit);
         CurrentState = State.PlaySpace;
     }
 
