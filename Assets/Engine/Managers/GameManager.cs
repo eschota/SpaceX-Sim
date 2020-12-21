@@ -139,10 +139,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         if (Input.GetKeyDown(KeyCode.Escape)) CurrentState = State.PlaySpace;
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
-        if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(1);
-        if (Input.GetKeyDown(KeyCode.X)) SceneManager.LoadScene(2);
-        if (Input.GetKeyDown(KeyCode.C)) SceneManager.LoadScene(3);
-        if (Input.GetKeyDown(KeyCode.V)) SceneManager.LoadScene(4);
+        //if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(1);
+        //if (Input.GetKeyDown(KeyCode.X)) SceneManager.LoadScene(2);
+        //if (Input.GetKeyDown(KeyCode.C)) SceneManager.LoadScene(3);
+        //if (Input.GetKeyDown(KeyCode.V)) SceneManager.LoadScene(4);
     }
     private void OnGUI()
     {

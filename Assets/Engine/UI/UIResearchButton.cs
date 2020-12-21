@@ -10,13 +10,14 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
 {
 
     public Research research;
-    [SerializeField] private TMPro.TextMeshProUGUI _text;
+    [SerializeField] private TMPro.TextMeshProUGUI ResearchName;
+   
     [SerializeField] private RectTransform _rect;
     [SerializeField] public RectTransform pivotStart;
     [SerializeField] public RectTransform pivotEnd;
     [SerializeField] public TMPro.TextMeshProUGUI CostText;
+   
 
-    
     public RectTransform Rect
     {
         get
@@ -29,21 +30,33 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         get
         {
-            if (_text == null) _text = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            if (ResearchName == null) ResearchName = GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
-            return _text;
+            return ResearchName;
         }
 
     }
 
     Vector3 startPos;
     Vector3 currentPos;
-   
+   void Awake()
+    {
+        UIEditResearch.EventChangeResearch += OnChangeResearch;
+        research = GetComponent<Research>();
+        research.researchButton = this;
+        research.researchButton.transform.position = new Vector3(200, 200);
+                
+    }
+    void OnChangeResearch()
+    {
+        ResearchName.text = research.Name;
+
+    }
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(OnClick);
     }
-#if UNITY_EDITOR
+   
     // Update is called once per frame
     void Update()
     {
@@ -51,9 +64,10 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
        
         
     }
+
     void OnClick()
     {
-        ScenarioManager.instance.CurrentResearch.ResearchSelected = research;
+      if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -62,20 +76,24 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+         
     }
-
-    [CustomEditor(typeof(UIResearchButton))]
-    class DecalMeshHelperEditor : Editor
+    void OnDestroy()
     {
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
-            if (GUILayout.Button("Rebuild"))
-                FindObjectOfType<UIResearchManager>().Rebuild();
-            if (GUILayout.Button("RebuildLinks"))
-                FindObjectOfType<UIResearchManager>().RebuildLinks();
-        }
+
     }
+#if UNITY_EDITOR
+    //[CustomEditor(typeof(UIResearchButton))]
+    //class DecalMeshHelperEditor : Editor
+    //{
+    //    public override void OnInspectorGUI()
+    //    {
+    //        base.OnInspectorGUI();
+    //        if (GUILayout.Button("Rebuild"))
+    //            FindObjectOfType<UIResearchManager>().Rebuild();
+    //        if (GUILayout.Button("RebuildLinks"))
+    //            FindObjectOfType<UIResearchManager>().RebuildLinks();
+    //    }
+    //}
 #endif
 }

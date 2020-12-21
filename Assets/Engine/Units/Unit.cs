@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 [System.Serializable]
 public class Unit : MonoBehaviour
@@ -31,5 +32,15 @@ public class Unit : MonoBehaviour
     public virtual void Update()
     {
         
+    }
+    public virtual void Save()
+    {
+        string jsonData = JsonUtility.ToJson(this, true);
+        string ScenarioPath = Application.streamingAssetsPath + "/" + ScenarioManager.instance.CurrentScenario.Name + "/";
+        string ClassTypePath = GetType().ToString() + "/";
+        if (!Directory.Exists(ScenarioPath)) Directory.CreateDirectory(ScenarioPath);
+        if (!Directory.Exists(ScenarioPath + ClassTypePath)) Directory.CreateDirectory(ScenarioPath + ClassTypePath);
+        File.WriteAllText(ScenarioPath + ClassTypePath +Name+ ".unit", jsonData);
+        Debug.Log("File Saved at: " + ScenarioPath + ClassTypePath + ".unit");
     }
 }

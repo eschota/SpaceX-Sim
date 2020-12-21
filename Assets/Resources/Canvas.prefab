@@ -1800,7 +1800,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 5262380281060500090}
   thisState: 06000000
-  thisStateScenario: 
 --- !u!1 &931642196314394595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2557,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 7395353545049244654}
   thisState: 00000000
-  thisStateScenario: 
 --- !u!1 &1435366720017904601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,9 +6624,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3016688082936181318}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &4155978581657595977
 MonoBehaviour:
@@ -6644,7 +6642,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 935124689180817257}
   thisState: 1100000003000000
-  thisStateScenario: 
 --- !u!1 &3016688083076130219
 GameObject:
   m_ObjectHideFlags: 0
@@ -7657,9 +7654,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3016688084489436163}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &3946786152153916596
 MonoBehaviour:
@@ -7675,7 +7672,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 2607450026313838167}
   thisState: 01000000030000000400000005000000060000000700000011000000
-  thisStateScenario: 
 --- !u!1 &3016688084748173454
 GameObject:
   m_ObjectHideFlags: 0
@@ -12216,7 +12212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 4900462347997631013}
   thisState: 030000000a0000000b0000000c000000
-  thisStateScenario: 
 --- !u!1 &4900462348053796013
 GameObject:
   m_ObjectHideFlags: 0
@@ -12834,7 +12829,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 4900462348403161449}
   thisState: 00000000
-  thisStateScenario: 
 --- !u!1 &4900462348421086933
 GameObject:
   m_ObjectHideFlags: 0
@@ -13115,7 +13109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 4900462348568592089}
   thisState: 04000000
-  thisStateScenario: 
 --- !u!222 &1039904184896152942
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19596,7 +19589,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 8278458403285129300}
   thisState: 09000000
-  thisStateScenario: 
 --- !u!114 &2973342110957088552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20340,7 +20332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 3040760903112433251}
   thisState: 03000000040000000500000006000000
-  thisStateScenario: 
 --- !u!1 &6379879862252710332
 GameObject:
   m_ObjectHideFlags: 0
@@ -22558,7 +22549,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 6308745565956237883}
   thisState: 03000000
-  thisStateScenario: 
 --- !u!1 &7395198004963728093
 GameObject:
   m_ObjectHideFlags: 0
@@ -24803,7 +24793,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 6897407033150196273}
   thisState: 11000000
-  thisStateScenario: 
 --- !u!1 &8751326235977416125
 GameObject:
   m_ObjectHideFlags: 0
@@ -25344,7 +25333,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CG: {fileID: 6928952631406533170}
   thisState: 05000000
-  thisStateScenario: 
 --- !u!1 &8922828298091080966
 GameObject:
   m_ObjectHideFlags: 0
@@ -26718,7 +26706,17 @@ PrefabInstance:
     - target: {fileID: 1910090894788872367, guid: a2768d80b5df7d64cad71bc64ca513af,
         type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910090894788872367, guid: a2768d80b5df7d64cad71bc64ca513af,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910090894788872367, guid: a2768d80b5df7d64cad71bc64ca513af,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2446649731449332067, guid: a2768d80b5df7d64cad71bc64ca513af,
         type: 3}
@@ -27054,6 +27052,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519318983043652936, guid: a2768d80b5df7d64cad71bc64ca513af,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519318983043652936, guid: a2768d80b5df7d64cad71bc64ca513af,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519318983043652936, guid: a2768d80b5df7d64cad71bc64ca513af,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8839612822163438308, guid: a2768d80b5df7d64cad71bc64ca513af,
         type: 3}

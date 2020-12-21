@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 [ExecuteInEditMode]
-public class Module : MonoBehaviour
+public class Module : Unit
 {    
     public string Name;
     public int Cost = 1;

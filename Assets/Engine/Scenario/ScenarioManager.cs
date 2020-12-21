@@ -39,32 +39,42 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
     [SerializeField] TMPro.TMP_InputField ScenarioStartYear;
     [SerializeField] TMPro.TMP_InputField ScenarioStartBalance;
-    [SerializeField] public UIEditResearch CurrentResearch;
-    Scenario scenario;
+    [SerializeField] public UIEditResearch CurrentResearcLink;
+    public Scenario CurrentScenario;
     public void CreateScenarioButtonClick()
     {
-        scenario = new Scenario( ScenarioName.text, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
-        scenario.SaveScenario();
+        CurrentScenario = new Scenario( ScenarioName.text, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
+        CurrentScenario.SaveNewScenario();
+        foreach (var item in Researches) item.Save();
+        foreach (var item in Modules) item.Save();
+        
     }
 
      public void DeselectResearch()
     {
-        ScenarioManager.instance.CurrentResearch.ResearchSelected = null;
+        ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null;
     }
     public void AddModule()
     {
 
     }
     public List<Research> Researches = new List<Research>();
+    public List<Module> Modules= new List<Module>();
     public void AddResearch()
     {
         Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,transform).GetComponent<Research>());
       //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
-        Researches[Researches.Count - 1].researchButton = Researches[Researches.Count - 1].GetComponent<UIResearchButton>();
-        Researches[Researches.Count - 1].researchButton.transform.position = new Vector3(200, 200);
-        Researches[Researches.Count - 1].researchButton.research = Researches[Researches.Count - 1];
+       
+        CurrentResearcLink.CurrentResearchSelected = Researches[Researches.Count - 1];
     }
-    
+    public void DeleteResearch()
+    {
+        Research temp = CurrentResearcLink.CurrentResearchSelected;
+        Researches.Remove(CurrentResearcLink.CurrentResearchSelected);
+        Destroy(CurrentResearcLink.CurrentResearchSelected.researchButton.gameObject);
+        Destroy(CurrentResearcLink.CurrentResearchSelected.gameObject);
+        CurrentResearcLink.CurrentResearchSelected = null;
+    }
     [System.Serializable]
     public class Scenario
     {
@@ -80,11 +90,13 @@ public class ScenarioManager : MonoBehaviour
             StartDate[1] = _StartMonth;
             StartDate[2] = _StartYear;
         }
-        public void SaveScenario()
+        public void SaveNewScenario()
         {
             string jsonData = JsonUtility.ToJson(this, true);
-            File.WriteAllText(Application.streamingAssetsPath+"/Scenarios/"+Name+".dat", jsonData);
-            Debug.Log("File Saved at: " + Application.streamingAssetsPath + "/Scenarios/" + Name + ".dat");
+            string Folder = Application.streamingAssetsPath + "/Scenarios/";
+           
+            File.WriteAllText(Folder+ "/" + Name + ".scenario", jsonData);
+            Debug.Log("File Saved at: " +Folder);
         }
     }
     #endregion

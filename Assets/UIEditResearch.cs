@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class UIEditResearch : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class UIEditResearch : MonoBehaviour
     [SerializeField] public TMPro.TMP_InputField Medium;
     [SerializeField] public TMPro.TMP_InputField Heavy;
     [SerializeField] public CanvasGroup CG;
+    public static event Action EventChangeResearch;
     private Research _research;
-    public Research ResearchSelected
+    public Research CurrentResearchSelected
     {
         get => _research;
         set
@@ -20,13 +22,26 @@ public class UIEditResearch : MonoBehaviour
             {
                 CG.alpha = 0;
             }
-            else CG.alpha = 1;
+            else
+            {
+                CG.alpha = 1;
+                ResearchName.text = value.Name;
+
+                EventChangeResearch();
+            }
         }
     }
     
+     
+
+    public void OnEditResearch()
+    {
+        CurrentResearchSelected.Name = ResearchName.text;
+        EventChangeResearch();
+    }
     void Start()
     {
-        ResearchSelected = null;
+        CurrentResearchSelected = null;
     }
 
     // Update is called once per frame
