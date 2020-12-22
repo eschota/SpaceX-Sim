@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,7 +13,6 @@ public class BuildController : MonoBehaviour
     [SerializeField] private BuildCell buildCellPrefab;
     [SerializeField] private Transform buildCellRoot;
     [SerializeField] private LayerMask buildLayerMask;
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform buildingsRoot;
 
     private BuildCell[,] _buildCells;
@@ -23,6 +21,7 @@ public class BuildController : MonoBehaviour
     private BuildCell _hoverCell;
     private BuildingUnit _buildForDelete;
     private BuildUnitCanvas _buildUnitCanvas;
+    private Camera _mainCamera;
 
     private void Awake()
     {
@@ -30,12 +29,14 @@ public class BuildController : MonoBehaviour
             instance = this;
         else
             DestroyImmediate(gameObject);
+
+        _mainCamera = FindObjectOfType<Camera>();
     }
-    
+
     private void Start()
     {
         BuildCellGrid();
-        
+
         _buildUnitCanvas = FindObjectOfType<BuildUnitCanvas>();
 
         for (var i = 0; i < UnitManager.instance.BuildingUnitPrefabs.Length; i++)
@@ -76,8 +77,8 @@ public class BuildController : MonoBehaviour
     {
         _buildCells = new BuildCell[width, height];
 
-        var left = -width / cellWidth / 2f + .5f;
-        var top = height / cellHeight / 2f - .5f;
+        var left = -width * cellWidth / 2f + cellWidth / 2f;
+        var top = height * cellHeight / 2f - cellHeight / 2f;
 
         for (var i = 0; i < width; i++)
         {
@@ -97,7 +98,7 @@ public class BuildController : MonoBehaviour
 
     private void CheckSelection()
     {
-        var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out var hit, Mathf.Infinity, buildLayerMask))
         {
             var cell = hit.transform.GetComponent<BuildCell>();
@@ -253,9 +254,10 @@ public class BuildController : MonoBehaviour
 
     private BuildCell SpawnBuildCell(Vector3 position)
     {
-        var prefab = Instantiate(buildCellPrefab, position, Quaternion.identity);
+        var prefab = Instantiate(buildCellPrefab);
         prefab.gameObject.SetActive(true);
         prefab.transform.parent = buildCellRoot;
+        prefab.transform.localPosition = position;
         return prefab;
     }
 
@@ -279,14 +281,14 @@ public class BuildController : MonoBehaviour
             else if (_buildingUnit.Size == 2)
             {
                 _buildingUnit.transform.localPosition =
-                    new Vector3(_buildingUnit.transform.localPosition.x - .5f, 0f,
-                        _buildingUnit.transform.localPosition.z - .5f);
+                    new Vector3(_buildingUnit.transform.localPosition.x - cellWidth / 2f, 0f,
+                        _buildingUnit.transform.localPosition.z - cellHeight / 2f);
             }
             else if (_buildingUnit.Size == 3)
             {
                 _buildingUnit.transform.localPosition =
-                    new Vector3(_buildingUnit.transform.localPosition.x - 1f, 0f,
-                        _buildingUnit.transform.localPosition.z - 1f);
+                    new Vector3(_buildingUnit.transform.localPosition.x - cellWidth, 0f,
+                        _buildingUnit.transform.localPosition.z - cellHeight);
             }
         }
         else

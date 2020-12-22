@@ -19,9 +19,17 @@ public class BuildCell : MonoBehaviour
     {
         _isSelected = selected;
         if (selected)
-            _renderer.material.SetColor("_Color", Color.green);
+        {
+            var color = Color.green;
+            color.a = .5f;
+            _renderer.material.SetColor("_Color", color);
+        }
         else
-            _renderer.material.SetColor("_Color", Color.white);
+        {
+            var color = Color.white;
+            color.a = 0f;
+            _renderer.material.SetColor("_Color", color);
+        }
     }
     
     public GameObject Building
