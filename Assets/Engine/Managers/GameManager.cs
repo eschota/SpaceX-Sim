@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     #region Variables
     public static event Action EventChangeState;
     public static event Action <Unit> EventWithUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLauchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load,PlayEarth }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load,PlayEarth }
     private static State _currentState;
     public static State CurrentState
     {

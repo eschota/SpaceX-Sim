@@ -7,7 +7,7 @@ public class Module : Unit
 {
     public enum Type { None, Engine, Rockets, Modules, SpaceSuit, Equipment, Concept }
     public Type type;
-    public string Name;
+     
     public int Cost = 1;
     public Sprite IconSprite;
     [SerializeField] public Camera IconCamera;

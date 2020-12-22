@@ -24,6 +24,12 @@ public class Unit : MonoBehaviour
         Debug.Log(string.Format("<color=green> Created new Unit:" + name + "</color>"));
         GameManager.UnitsAll.Add(this);
     }
+
+
+    public virtual void Awake()
+    {
+        Name = name;
+    }
     public virtual void OnDestroy()
     {
         GameManager.UnitsAll.Remove(this);

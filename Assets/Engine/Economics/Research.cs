@@ -48,5 +48,8 @@ public class Research : Unit
             GameManager.EventUnit(this);
         }
     }
-    
+    public override void Awake()
+    {
+        Name = "Research " + ScenarioManager.instance.Researches.Count.ToString();
+    }
 }

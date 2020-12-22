@@ -53,7 +53,7 @@ public class GetCountrieByColor : MonoBehaviour
         }
 
 
-        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace ||
+        if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace ||
             GameManager.CurrentState == GameManager.State.CreateProductionFactory ||
             GameManager.CurrentState == GameManager.State.CreateResearchLab)
         {

@@ -104,7 +104,7 @@ public class WorldMapManager : MonoBehaviour
     }
     void OnChangeState()
     {
-        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
+        if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
         {
             ShowMap();
             CurrentState = State.Politic;
@@ -147,7 +147,7 @@ public class WorldMapManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5)) CurrentState = State.Transport;
         if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
         if (Input.GetKeyDown(KeyCode.F7)) CurrentState = State.Climat;
-        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) SelectCountry();
+        if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) SelectCountry();
     }
 
     void SelectCountry()
@@ -168,7 +168,7 @@ public class WorldMapManager : MonoBehaviour
                 {
                     if (CurrentHovered != null) CurrentHovered.Hovered = false;
                     CurrentHovered = tempCountry;
-                    Debug.Log("Hovered:" + tempCountry.name);
+
                 }
 
                 CurrentHovered.Hovered = true;

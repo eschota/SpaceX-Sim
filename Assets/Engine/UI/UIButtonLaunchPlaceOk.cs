@@ -17,7 +17,7 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
     }
     void OnChange()
     {
-        if (GameManager.CurrentState == GameManager.State.CreateLauchPlace)
+        if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace)
         {
             //if (FindObjectOfType<UnitLaunchPlace>()==null) CancelButton.gameObject.SetActive(false);
             //else CancelButton.gameObject.SetActive(true);
@@ -30,7 +30,7 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
             {
                 switch (GameManager.CurrentState)
                 {
-                    case GameManager.State.CreateLauchPlace:
+                    case GameManager.State.CreateLaunchPlace:
                         UnitLaunchPlace launchPlace=Instantiate(UnitLaunchPrefab).AddComponent<UnitLaunchPlace>();
                         launchPlace.name = "LaunchPlace";
                         launchPlace.Country = WorldMapManager.instance.CurrentHovered;

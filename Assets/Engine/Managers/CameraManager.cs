@@ -31,8 +31,8 @@ public class CameraManager : MonoBehaviour
     }
     void Update()
     {
-         //if (GameManager.CurrentState != GameManager.State.Play || GameManager.CurrentState != GameManager.State.CreateLauchPlace || GameManager.CurrentState != GameManager.State.CreateResearchLab||
-         //   GameManager.CurrentState != GameManager.State.CreateProductionFactory) return;
+          if (GameManager.CurrentState != GameManager.State.PlaySpace && GameManager.CurrentState != GameManager.State.CreateLaunchPlace && GameManager.CurrentState != GameManager.State.CreateResearchLab&&
+            GameManager.CurrentState != GameManager.State.CreateProductionFactory) return;
         if (FlyToUnit != null)
         {
             FlyTo();
