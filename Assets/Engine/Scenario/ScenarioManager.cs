@@ -64,8 +64,8 @@ public class ScenarioManager : MonoBehaviour
     public void AddResearch()
     {
         Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
-      //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
-       
+        //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
+        if (Researches.Count > 1) Researches[Researches.Count - 1].Dependances.Add(Researches[Researches.Count - 2]);
         CurrentResearcLink.CurrentResearchSelected = Researches[Researches.Count - 1];
     }
     public void DeleteResearch()

@@ -25,6 +25,8 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     [SerializeField] public UIModule ModulesIcons;
     [SerializeField] public Transform ModulesIconsRootTransform;
     [SerializeField] GameObject[] progressesGO;
+    [SerializeField] Arrow LinkPoint;
+    List<Arrow> Arrows  = new List<Arrow>();
     public RectTransform Rect
     {
         get
@@ -95,7 +97,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else progressesGO[2].SetActive(false);
 
-
+        RebuildLinks();
     }
     void Start()
     {
@@ -117,6 +119,10 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.pointerCurrentRaycast.screenPosition;
+        foreach (var item in ScenarioManager.instance.Researches)
+        {
+            item.researchButton.RebuildLinks();
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -127,18 +133,33 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     {
 
     }
-#if UNITY_EDITOR
-    //[CustomEditor(typeof(UIResearchButton))]
-    //class DecalMeshHelperEditor : Editor
-    //{
-    //    public override void OnInspectorGUI()
-    //    {
-    //        base.OnInspectorGUI();
-    //        if (GUILayout.Button("Rebuild"))
-    //            FindObjectOfType<UIResearchManager>().Rebuild();
-    //        if (GUILayout.Button("RebuildLinks"))
-    //            FindObjectOfType<UIResearchManager>().RebuildLinks();
-    //    }
-    //}
-#endif
+    
+    public void RebuildLinks()
+    { 
+         
+        for (int i = 0; i < Arrows.Count; i++)
+        {
+            DestroyImmediate(Arrows[i].gameObject);
+        }
+        Arrows.Clear();
+        for (int i = 0; i < research.Dependances.Count; i++)
+        {
+           
+                if (research.Dependances.Count > 0)
+                {
+                     
+                        CreateLink(Rect.position, research.Dependances[i].researchButton.Rect.position);                    
+                }
+        }
+    }
+    void CreateLink(Vector2 start, Vector2 end)
+    {
+        float dis = Vector2.Distance(start, end);
+        for (int i = 2; i < dis / 100 - 2; i++)
+        {
+            Arrows.Add(Instantiate(LinkPoint, transform));
+            Arrows[Arrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 100));
+        }
+    }
+
 }
