@@ -51,6 +51,7 @@ public class ScenarioManager : MonoBehaviour
         
     }
 
+    
      public void DeselectResearch()
     {
         ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null;

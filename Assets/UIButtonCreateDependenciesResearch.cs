@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIButtonCreateDependenciesResearch : MonoBehaviour
 {
     [SerializeField] Button btn;
-    [SerializeField] public Research research;
+    [SerializeField] public UIResearchButton UIresearch;
     void Awake()
     {
         btn.onClick.AddListener(OnClick);
@@ -14,18 +14,15 @@ public class UIButtonCreateDependenciesResearch : MonoBehaviour
 
     void OnClick()
     {
-        if (Input.GetMouseButtonDown(1))
+        UIresearch.CreateDependence = true;
+        foreach (var it in ScenarioManager.instance.Researches)
         {
-            research.Dependances.Clear();            
+            it.researchButton.clearDependence.gameObject.SetActive(false);
         }
-        else
+            foreach (var item in FindObjectsOfType<UIButtonCreateDependenciesResearch>())
         {
-
+            item.gameObject.SetActive(false);
         }
-
     }
-    void Update()
-    {
-        
-    }
+    
 }
