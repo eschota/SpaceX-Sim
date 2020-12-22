@@ -155,10 +155,17 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler
     void CreateLink(Vector2 start, Vector2 end)
     {
         float dis = Vector2.Distance(start, end);
-        for (int i = 2; i < dis / 100 - 2; i++)
+        for (int i = 2; i < dis / 66 - 2; i++)
         {
             Arrows.Add(Instantiate(LinkPoint, transform));
-            Arrows[Arrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 100));
+            Arrows[Arrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 66));
+
+            float targetRotation = Mathf.Atan((end.y - start.y) / (end.x - start.x));
+            if(end.x - start.x >0)
+            Arrows[Arrows.Count - 1].Rect.rotation = Quaternion.Euler(0, 0, 180 + targetRotation *Mathf.Rad2Deg);
+            else
+                Arrows[Arrows.Count - 1].Rect.rotation = Quaternion.Euler(0, 0, targetRotation * Mathf.Rad2Deg);
+
         }
     }
 
