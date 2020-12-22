@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-[ExecuteInEditMode]
 public class UIResearchManager : MonoBehaviour
 {
     
@@ -21,11 +20,9 @@ public class UIResearchManager : MonoBehaviour
     List<Research> Researches = new List<Research>();
     void Update()
     {
-#if UNITY_EDITOR
-        if (!Application.isPlaying) if (Selection.activeGameObject == null) Rebuild();
-        else
+ 
         MouseControl();
-#endif
+ 
     }
     public static UIResearchManager instance;
     void Awake()
@@ -40,7 +37,7 @@ public class UIResearchManager : MonoBehaviour
     }
     void MouseControl()
     {
-        if(GameManager.CurrentState!=GameManager.State.ResearchGlobal) return;
+        if(GameManager.CurrentState!=GameManager.State.ResearchGlobal&& GameManager.CurrentState != GameManager.State.ScenarioEditor) return;
         if (Input.GetMouseButtonDown(1)|| Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;
@@ -49,7 +46,7 @@ public class UIResearchManager : MonoBehaviour
         if (Input.GetMouseButton(1)|| Input.GetMouseButtonDown(0)) CameraPivot.position = target+(Input.mousePosition-startPos);
         if (Input.GetMouseButtonUp(1)) ;
 
-        CameraPivot.position = new Vector3(Mathf.Clamp(CameraPivot.position.x, 0, maxpos.x), Mathf.Clamp(CameraPivot.position.y, 0, maxpos.y), 0);
+       // CameraPivot.position = new Vector3(Mathf.Clamp(CameraPivot.position.x, 0, maxpos.x), Mathf.Clamp(CameraPivot.position.y, 0, maxpos.y), 0);
         zoom += 0.1f*Input.mouseScrollDelta.y;
         zoom= Mathf.Clamp(zoom, -0.5f, 0.5f);
         CameraPivot.localScale = Vector3.one *( 1 + zoom) ;
@@ -113,34 +110,5 @@ public class UIResearchManager : MonoBehaviour
         }
     }
 
-#if UNITY_EDITOR
-    [MenuItem("My Commands/Special Command %z")]
-    static void SpecialCommand()
-    {
-        Research RSO = Selection.activeGameObject.GetComponent<UIResearchButton>().research;
-        if (RSO.Dependances.Count > 0)
-        {
-            RSO.Dependances.RemoveAt(RSO.Dependances.Count - 1);
-        
-        Debug.Log("Remove Dependencies");
-        }
-        else
-            Debug.Log("Все связи уже удалены, узбагойзя");
-
-        FindObjectOfType<UIResearchManager>().RebuildLinks();
-    }
-    [MenuItem("My Commands/Special Command %x")]
-    static void SpecialCommandx()
-    {
-         
-            Debug.Log(Camera.current.ScreenToWorldPoint(Vector3.zero)+"    "+"mouse pos" +Input.mousePosition);
-        
-        FindObjectOfType<UIResearchManager>().RebuildLinks();
-    } 
-#endif
-
-
-#if UNITY_EDITOR
-   
-#endif
+ 
 }

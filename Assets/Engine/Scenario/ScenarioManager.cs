@@ -9,6 +9,7 @@ public class ScenarioManager : MonoBehaviour
     public static event Action EventChangeState; 
     public enum State {None, StartConditions,Researches,PoliticMap  }
     private static State _currentState;
+    [SerializeField] Transform CameraPivot;
     public static State CurrentState
     {
         get => _currentState;
@@ -62,7 +63,7 @@ public class ScenarioManager : MonoBehaviour
     public List<Module> Modules= new List<Module>();
     public void AddResearch()
     {
-        Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,transform).GetComponent<Research>());
+        Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
       //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
        
         CurrentResearcLink.CurrentResearchSelected = Researches[Researches.Count - 1];
