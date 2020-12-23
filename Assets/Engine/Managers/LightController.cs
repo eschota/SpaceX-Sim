@@ -78,7 +78,7 @@ public class LightController : MonoBehaviour
         }
         RenderSettings.ambientIntensity = Ambients.Evaluate(localTimer / 24f);
         RenderSettings.reflectionIntensity = Reflections.Evaluate(localTimer / 24f);
-        foreach (var item in ReflectionProbes) item.intensity= Reflections.Evaluate(localTimer / 24f);
+        foreach (var item in ReflectionProbes) if(item!=null)item.intensity= Reflections.Evaluate(localTimer / 24f);
 
     }
 
