@@ -62,10 +62,12 @@ public class ScenarioManager : MonoBehaviour
     }
     public List<Research> Researches = new List<Research>();
     public List<Module> Modules= new List<Module>();
+    public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public void AddResearch()
     {
         Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
         //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
+        buttons.Add(Researches[Researches.Count - 1].researchButton);
         if (Researches.Count > 1)
         {
             Researches[Researches.Count - 1].Dependances.Add(Researches[Researches.Count - 2]);
@@ -76,6 +78,7 @@ public class ScenarioManager : MonoBehaviour
     public void DeleteResearch()
     {
         Research temp = CurrentResearcLink.CurrentResearchSelected;
+        buttons.Remove(CurrentResearcLink.CurrentResearchSelected.researchButton);
         Researches.Remove(CurrentResearcLink.CurrentResearchSelected);
         Destroy(CurrentResearcLink.CurrentResearchSelected.researchButton.gameObject);
         Destroy(CurrentResearcLink.CurrentResearchSelected.gameObject);

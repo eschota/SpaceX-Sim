@@ -48,27 +48,10 @@ public class UIResearchManager : MonoBehaviour
         CameraPivot.localScale = Vector3.one *( 1 + zoom) ;
     }
 
-    public List<RaycastResult> RaycastMouse()
-    {
-
-        PointerEventData pointerData = new PointerEventData(EventSystem.current)
-        {
-            pointerId = -1,
-        };
-
-        pointerData.position = Input.mousePosition;
-
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointerData, results);
-        //results.gameObject
-          Debug.Log(results.Count);
-        //if(results.Find(X=>X.GetType()==typeof(UIResearchButton)))
-
-        return results;
-    }
+  
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) RaycastMouse();
+        
         MouseControl();
 
     }

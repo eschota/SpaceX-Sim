@@ -14,7 +14,7 @@ public class UIButtonCreateDependenciesResearch : MonoBehaviour
 
     void OnClick()
     {
-        UIresearch.CreateDependence = true;
+        UIresearch.DependenceNow = true;
         foreach (var it in ScenarioManager.instance.Researches)
         {
             it.researchButton.clearDependence.gameObject.SetActive(false);

@@ -29,7 +29,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     List<Arrow> Arrows  = new List<Arrow>();
     [SerializeField] public UIButtonCreateDependenciesResearch createrDependence;
     [SerializeField] public  RectTransform clearDependence;
-    public bool CreateDependence=false;
+    public bool DependenceNow=false;
     public RectTransform Rect
     {
         get
@@ -108,16 +108,11 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     }
    
     // Update is called once per frame
-    void Update()
-    {
-         
-
-        CreateDependences();
-    }
+     
     List<Arrow> addArrows = new List<Arrow>();
     public void CreateDependences()
     {
-        if (CreateDependence == false) return;
+        if (DependenceNow == false) return;
       
         for (int i = 0; i < addArrows.Count; i++)
         {
@@ -132,6 +127,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         research.Dependances.Clear();
         RebuildLinks();
     }
+
     void OnClick()
     {
      // if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
@@ -172,8 +168,55 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     {
 
     }
-    
-    public void RebuildLinks()
+    public List<RaycastResult> RaycastMouse()
+    {
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            pointerId = -1,
+        };
+
+        pointerData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        if (DependenceNow)
+        {
+            DependenceNow = false;
+            RebuildLinks();
+            foreach (var item in results)
+            {
+                UIResearchButton tempButton = ScenarioManager.instance.buttons.Find(X => X.gameObject == item.gameObject);
+                if (tempButton != null)
+                {
+                    if (tempButton != this)
+                    {
+                        DependenceNow = false;
+                        if (!tempButton.research.Dependances.Contains(research))
+                        {
+                            tempButton.research.Dependances.Add(this.research);
+                            RebuildLinks();
+                            tempButton.RebuildLinks();
+
+                        }
+
+                    }
+                }
+            }
+        }
+
+        Debug.Log(results.Count);
+        //if(results.Find(X=>X.GetType()==typeof(UIResearchButton)))
+
+        return results;
+    }
+    void Update()
+    {
+        CreateDependences();
+        if (Input.GetMouseButtonDown(0)) RaycastMouse();
+    }
+        public void RebuildLinks()
     {
         for (int i = 0; i < addArrows.Count; i++)
         {
