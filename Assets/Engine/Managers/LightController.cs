@@ -34,13 +34,18 @@ public class LightController : MonoBehaviour
             localTimer = 5;
         else
             localTimer = TimeManager.Hours;
-        CorrectLocalTime();
         
-        colors = new Color[emissivMat.Length];
-        for (int i = 0; i < colors.Length; i++)
+        CorrectLocalTime();
+        CorrectPrefabsBuildingLocalTime();
+        if (emissivMat != null)
         {
-            colors[i] = emissivMat[i].GetColor("_EmissionColor");
+            colors = new Color[emissivMat.Length];
+            for (int i = 0; i < colors.Length; i++)
+            {
+                colors[i] = emissivMat[i].GetColor("_EmissionColor");
+            }
         }
+        if(Lights!=null)
         for (int i = 0; i < Lights.Count; i++)
         {
             RandomTimersForLights.Add(Random.Range(-0.5f,0.5f));
@@ -53,19 +58,21 @@ public class LightController : MonoBehaviour
             localTimer += Time.deltaTime * Speed * TimeManager.TimeScale; 
         if (localTimer > 24)
             localTimer = 0;
-        for (int i = 0; i < Lights.Count; i++)             
+        if (Lights != null)
+            for (int i = 0; i < Lights.Count; i++)             
         {
             float tempIntensity = AllLight.Evaluate((localTimer + RandomTimersForLights[i])/24f);
             if (tempIntensity < 0.1f)
                 Lights[i].enabled = true;
             else
                 Lights[i].enabled = false;
-        } 
-        
+        }
 
 
-        
-        for (int i = 0; i < colors.Length; i++)
+
+        if (emissivMat != null)
+            if(colors!=null)
+            for (int i = 0; i < colors.Length; i++)
         {
             emissivMat[i].SetColor("_EmissionColor", colors[i] * EmissiveIntensity.Evaluate(localTimer/24f));
         }
@@ -76,12 +83,21 @@ public class LightController : MonoBehaviour
             Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
             Sun.transform.rotation = Quaternion.Euler(SunRotationX.Evaluate(localTimer / 24f) * 360, SunRotationY.Evaluate(localTimer / 24f) * 360, SunRotationZ.Evaluate(localTimer / 24f) * 360);
         }
+        if(Ambients!=null)
         RenderSettings.ambientIntensity = Ambients.Evaluate(localTimer / 24f);
-        RenderSettings.reflectionIntensity = Reflections.Evaluate(localTimer / 24f);
-        foreach (var item in ReflectionProbes) if(item!=null)item.intensity= Reflections.Evaluate(localTimer / 24f);
-
+        if (Reflections != null)
+        {
+            RenderSettings.reflectionIntensity = Reflections.Evaluate(localTimer / 24f);
+            foreach (var item in ReflectionProbes) if (item != null) item.intensity = Reflections.Evaluate(localTimer / 24f);
+        }
     }
-
+    private void CorrectPrefabsBuildingLocalTime()
+    {
+        List <LightController> LC = new List<LightController>();
+        LC.AddRange(FindObjectsOfType<LightController>()) ;
+        LightController global = LC.Find(X => X.Sun != null);
+        if (global != null) localTimer = global.localTimer;
+    }
     private void CorrectLocalTime()
     {
         var localHoursOffset = TimeManager.LocalHoursOffset;
