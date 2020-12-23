@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEditor;
 
 [ExecuteInEditMode]
-public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, IPointerClickHandler
 {
 
     public Research research;
@@ -110,7 +110,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler, IP
     // Update is called once per frame
     void Update()
     {
-
+         
 
         CreateDependences();
     }
@@ -118,6 +118,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler, IP
     public void CreateDependences()
     {
         if (CreateDependence == false) return;
+      
         for (int i = 0; i < addArrows.Count; i++)
         {
             DestroyImmediate(addArrows[i].gameObject);
@@ -125,42 +126,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler, IP
         addArrows.Clear();
         CreateLinkOnCreate(Rect.position, Input.mousePosition); 
     }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        //if (CreateDependence == false) return;
-        //Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
-        //foreach (var item in ScenarioManager.instance.Researches)
-        //{
-        //    if (item.researchButton.gameObject== eventData.pointerCurrentRaycast.gameObject)
-        //    {
-        //        research.Dependances.Add(item.researchButton.research);
-        //        Debug.Log("Suka");
-        //        CreateDependence = false;
-                
-        //        addArrows.Clear();
-        //        RebuildLinks();
-        //        return;
-
-        //    }
-        //}
-
-        //CreateDependence = false;
-        //foreach (var it in ScenarioManager.instance.Researches)
-        //{
-        //    it.researchButton.RebuildLinks();
-
-        //}
-        //for (int i = 0; i < addArrows.Count; i++)
-        //{
-        //    DestroyImmediate(addArrows[i].gameObject);
-        //}
-        //addArrows.Clear();
-        //RebuildLinks();
-
-
-
-
-    }
+   
     public void ClearDependencies()
     {
         research.Dependances.Clear();
@@ -168,16 +134,17 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler, IP
     }
     void OnClick()
     {
-      if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
+     // if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
 
 
-     Research res= ScenarioManager.instance.Researches.Find(X => X.researchButton.CreateDependence == true);
-        if (res == null) return;
-        if (research != res) res.Dependances.Add(research);
-        res.researchButton.CreateDependence = false;
-        CreateDependence = false;
-        res.researchButton.RebuildLinks();
-        RebuildLinks();
+     //Research res= ScenarioManager.instance.Researches.Find(X => X.researchButton.CreateDependence == true);
+     //   if (res == null) return;
+     //   if (research != res) res.Dependances.Add(research);
+        
+     //   res.researchButton.CreateDependence = false;
+     //   CreateDependence = false;
+     //   res.researchButton.RebuildLinks();
+     //   RebuildLinks();
     }
     public void OnDrag(PointerEventData eventData)
     {

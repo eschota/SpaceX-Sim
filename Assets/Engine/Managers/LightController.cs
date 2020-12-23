@@ -64,15 +64,18 @@ public class LightController : MonoBehaviour
         
 
 
-        Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
+        
         for (int i = 0; i < colors.Length; i++)
         {
             emissivMat[i].SetColor("_EmissionColor", colors[i] * EmissiveIntensity.Evaluate(localTimer/24f));
         }
-        
 
-        
-        Sun.transform.rotation =Quaternion.Euler(SunRotationX.Evaluate(localTimer / 24f)*360 , SunRotationY.Evaluate(localTimer / 24f) * 360, SunRotationZ.Evaluate(localTimer / 24f) * 360);
+
+        if (Sun != null)
+        {
+            Sun.intensity = SunIntensity.Evaluate(localTimer / 24f);
+            Sun.transform.rotation = Quaternion.Euler(SunRotationX.Evaluate(localTimer / 24f) * 360, SunRotationY.Evaluate(localTimer / 24f) * 360, SunRotationZ.Evaluate(localTimer / 24f) * 360);
+        }
         RenderSettings.ambientIntensity = Ambients.Evaluate(localTimer / 24f);
         RenderSettings.reflectionIntensity = Reflections.Evaluate(localTimer / 24f);
         foreach (var item in ReflectionProbes) item.intensity= Reflections.Evaluate(localTimer / 24f);

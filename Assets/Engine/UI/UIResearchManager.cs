@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.EventSystems;
 public class UIResearchManager : MonoBehaviour
 {
     
@@ -18,12 +19,7 @@ public class UIResearchManager : MonoBehaviour
     private Vector3 startPos, target;
     Vector3 maxpos;
     List<Research> Researches = new List<Research>();
-    void Update()
-    {
  
-        MouseControl();
- 
-    }
     public static UIResearchManager instance;
     void Awake()
     {
@@ -51,6 +47,29 @@ public class UIResearchManager : MonoBehaviour
         zoom= Mathf.Clamp(zoom, -0.5f, 0.5f);
         CameraPivot.localScale = Vector3.one *( 1 + zoom) ;
     }
-   
- 
+
+    public List<RaycastResult> RaycastMouse()
+    {
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            pointerId = -1,
+        };
+
+        pointerData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+        //results.gameObject
+          Debug.Log(results.Count);
+        //if(results.Find(X=>X.GetType()==typeof(UIResearchButton)))
+
+        return results;
+    }
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) RaycastMouse();
+        MouseControl();
+
+    }
 }
