@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIEditModule : MonoBehaviour
+public class UIEditModule : UIWindows
 {
     private Module _currentModule;
-    [SerializeField] public CanvasGroup CG;
+ 
     [SerializeField] public UIModuleParam ModuleParam;
     public  Module currentModule
     {
@@ -14,7 +14,7 @@ public class UIEditModule : MonoBehaviour
         {
             if (value == null)
             {
-                CG.alpha = 0;
+                Hide();
             }
             else
             {

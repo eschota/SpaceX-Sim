@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class UISelectModule : MonoBehaviour
+public class UISelectModule : UIWindows
 {
     [SerializeField] UISelectModuleButton ButtonSelectModule;
     [SerializeField] Transform SelectModuleButtons;
     [SerializeField] TMPro.TMP_Dropdown DropdownByTypes;
-    [SerializeField] CanvasGroup CG;
+     
     [SerializeField] Button AddButton;
     private Research _research;
     private List<UISelectModuleButton> activeButtons = new List<UISelectModuleButton>();
@@ -21,15 +21,17 @@ public class UISelectModule : MonoBehaviour
             _research = value;
             if (value == null)
             {
-                CG.alpha = 0;
+                CurrentMode = Mode.hide;
             }
             else
-            { 
-                CG.alpha = 1;
+            {
+                CurrentMode = Mode.show;
                 OnChange(0);
             }
         }
     }
+
+    
     private Module _currentSelectedModule;
     public Module CurrentSelectedModule
     {
@@ -48,6 +50,7 @@ public class UISelectModule : MonoBehaviour
     {
         DropdownByTypes.onValueChanged.AddListener(OnChange);
         instance = this;
+        CurrentResearchSelected = null;
         DefaultModules.AddRange(Resources.LoadAll("Modules/", typeof(Module)).Cast<Module>());
         Debug.Log("Modules Loaded: " + DefaultModules.Count);
     }

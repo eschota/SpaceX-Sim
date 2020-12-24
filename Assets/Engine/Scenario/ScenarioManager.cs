@@ -51,10 +51,10 @@ public class ScenarioManager : MonoBehaviour
         
     }
 
-    
-     public void DeselectResearch()
+
+    private void Update()
     {
-        ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null;
+        if(Input.GetMouseButtonDown(1)) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null; 
     }
     public void AddModule()
     {

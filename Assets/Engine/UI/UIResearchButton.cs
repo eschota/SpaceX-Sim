@@ -130,7 +130,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 
     void OnClick()
     {
-     // if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
+       if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
 
 
      //Research res= ScenarioManager.instance.Researches.Find(X => X.researchButton.CreateDependence == true);
