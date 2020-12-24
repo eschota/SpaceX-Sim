@@ -29,6 +29,8 @@ public class LightController : MonoBehaviour
     [SerializeField] List<Light> Lights;
     [Header("Самосветящиеся материалы с Emissive")]
     [SerializeField] Material[] emissivMat;
+    [Header("Их Цвета: количество должно соответствовать количеству материалов")]
+    [SerializeField] Color[] emissivMatColors;
     [Header("Их яркость в течении дня ")]
 
     [SerializeField] AnimationCurve EmissiveIntensity;
@@ -112,10 +114,10 @@ public class LightController : MonoBehaviour
     void ProcessEmissive()
     {
         if (emissivMat != null)
-            if (colors != null)
+            if (colors != null)                
                 for (int i = 0; i < colors.Length; i++)
                 {
-                    emissivMat[i].SetColor("_EmissionColor", colors[i] * EmissiveIntensity.Evaluate(localTimer / 24f));
+                 if(emissivMatColors[i]!=null)   emissivMat[i].SetColor("_EmissionColor", emissivMatColors[i]* EmissiveIntensity.Evaluate(localTimer / 24f));
                 }
     }
     void ProcessSun()
