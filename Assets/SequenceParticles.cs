@@ -5,7 +5,7 @@ using UnityEngine;
 public class SequenceParticles : Sequence
 {
     [Header("Кривая управления партикл системами")]
-    [SerializeField] public AnimationCurve ParticlesProcess;
+    [SerializeField] public AnimationCurve ParticlesProcess = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
     [SerializeField] public List<ParticleSystem> PS;
 
 

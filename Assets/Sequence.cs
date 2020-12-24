@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sequence : MonoBehaviour
 {
     [Header ("Нужно выбрать менеджер управляющий этим состоянием")]
+
     [SerializeField] public SequenceManager manager;
 
     [Header ("Управляет выбранным состоянием")]
