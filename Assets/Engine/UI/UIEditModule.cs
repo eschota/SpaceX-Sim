@@ -24,9 +24,9 @@ public class UIEditModule : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-
+        currentModule = null;
     }
 
     public static void LoadModule()

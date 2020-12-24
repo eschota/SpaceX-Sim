@@ -130,17 +130,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: ModuleEngineMiddle
   localPosition: {x: 0, y: 0, z: 0}
-  localRotation: {x: 0, y: 0, z: 0}
-  localScale: {x: 0, y: 0, z: 0}
+  localRotation: {x: -0, y: 0, z: 0}
+  localScale: {x: 1, y: 1, z: 1}
   ParentName: 
-  Class: 
-  CreationDate: 
+  Class: ModuleEngineMiddle (ModuleEngine)
+  CreationDate: 000000000000000000000000
+  type: 0
   moduleCost: 1
-  moduleIcon: {fileID: 0}
+  moduleIcon: {fileID: 21300000, guid: f70e04f3a69a6fa40a6112ae20547682, type: 3}
   ProductionTime: 0a0000000a0000000a000000
-  moduleCamera: {fileID: 0}
-  modulePrefab: {fileID: 0}
+  Description: Description
+  moduleCamera: {fileID: 4978170741013862363}
+  modulePrefab: {fileID: 7206673835707321931}
   Power: 100
+  FuelTaking: 1
 --- !u!1001 &7548691007972504346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +223,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d543940ac61aace44b58d73539837f48, type: 3}
+--- !u!1 &7206673835707321931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d543940ac61aace44b58d73539837f48,
+    type: 3}
+  m_PrefabInstance: {fileID: 7548691007972504346}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8018921951485465841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d543940ac61aace44b58d73539837f48,

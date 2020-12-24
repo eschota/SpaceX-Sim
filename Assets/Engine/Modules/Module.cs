@@ -5,11 +5,9 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class Module : Unit
 {
-   
-    public object type
-    {
-        get => this.GetType();
-    }
+    public enum ModuleType { None=-1, Engine=0, FirstStage=1, SecondStage=2 }
+    public ModuleType type;
+    
      
     public int moduleCost = 1;
     public Sprite moduleIcon;
@@ -25,7 +23,10 @@ public class Module : Unit
     {
         gameObject.layer = 9;// Modules
         Name = gameObject.name;
- 
+        if (moduleCamera == null) moduleCamera = GetComponentInChildren<Camera>();
+        moduleIcon = Resources.Load<Sprite>("Modules/Icons/" + gameObject.name);
+
+
     }
     public void RenderIcon()
     {
@@ -34,8 +35,11 @@ public class Module : Unit
         Debug.Log("ScreenShot Captured: " + filename);
     }
 
-    private void Awake()
+   
+    [ContextMenu ("GetIcon")]
+    public void GetIcon()
     {
-        
-    } 
+        moduleIcon = Resources.Load<Sprite>("Modules/Icons/"+gameObject.name);
+       
+    }
 }
