@@ -33,4 +33,8 @@ public class UIEditModule : MonoBehaviour
     {
 
     }
+    public void CloseWindow()
+    {
+        currentModule = null;
+    }
 }

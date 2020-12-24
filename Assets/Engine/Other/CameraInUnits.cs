@@ -40,7 +40,7 @@ public class CameraInUnits : MonoBehaviour
         else
       if (Input.GetMouseButton(1))
         {
-            Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 200;
+            Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 500;
 
             target = new Vector3(currentPos.x - temp.y, currentPos.y + temp.x, 0);
 
@@ -101,10 +101,10 @@ public class CameraInUnits : MonoBehaviour
     }
     private void Zoom()
     {
-        zoom += 5 * Input.mouseScrollDelta.y;
+        zoom += 3 * Input.mouseScrollDelta.y;
         if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
 
-        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.45f, 4));
+        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 2));
         zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
         if (Input.GetMouseButtonDown(2)) zoom = 0;
     }

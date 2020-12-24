@@ -60,13 +60,17 @@ public class LightController : MonoBehaviour
         {
             ProcessSun();
             ProcessAmbientAndReflectionAmbient();
+            ProcessTime();
+            ProcessLights();
+            ProcessEmissive();
+            ProcessReflectionProbes();
         }
 
         if (!Application.isPlaying&& Selection.activeGameObject==gameObject)// работа в эдиторе
         {
             List < LightController > LC = new List<LightController>(); LC.AddRange(FindObjectsOfType<LightController>());
             foreach (var item in LC) item.localTimer = localTimer;
-            LC.Find(X => X.Sun != null).ProcessSun();
+            LC.Find(X => X.Sun != null)?.ProcessSun();
             ProcessLights();
             ProcessEmissive();
             ProcessReflectionProbes();
@@ -114,7 +118,7 @@ public class LightController : MonoBehaviour
     void ProcessEmissive()
     {
         if (emissivMat != null)
-            if (colors != null)                
+            if (emissivMatColors != null)                
                 for (int i = 0; i < emissivMatColors.Length; i++)
                 {
                  if(emissivMatColors[i]!=null)   emissivMat[i].SetColor("_EmissionColor", emissivMatColors[i]* EmissiveIntensity.Evaluate(localTimer / 24f));
@@ -161,7 +165,14 @@ public class LightController : MonoBehaviour
         {
             isLocalLightController = true;
             localTimer = global.localTimer;
+            if (global == this) isLocalLightController = false;
+            else isLocalLightController = true;
         }
+        else
+        {
+            isLocalLightController = false;
+        }
+
     }
     private void CorrectLocalTime()
     {
