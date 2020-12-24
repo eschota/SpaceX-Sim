@@ -8,9 +8,13 @@ public class Unit : MonoBehaviour
 {
     
     public string Name;
+    [HideInInspector]
     public Vector3 localPosition, localRotation, localScale;
+    [HideInInspector]
     public string ParentName = "";
+    [HideInInspector]
     public string Class;
+    [HideInInspector]
     public int[] CreationDate;
     public virtual void Start()
     {
