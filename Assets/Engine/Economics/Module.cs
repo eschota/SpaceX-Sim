@@ -5,13 +5,13 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class Module : Unit
 {
-    public enum Type { None, Engine, Rockets, Modules, SpaceSuit, Equipment, Concept }
-    public Type type;
+    public enum moduleType { None, Engine, Rockets, Modules, SpaceSuit, Equipment, Concept }
+    public moduleType type;
      
-    public int Cost = 1;
-    public Sprite IconSprite;
-    [SerializeField] public Camera IconCamera;
-    [SerializeField] public GameObject Prefab;
+    public int moduleCost = 1;
+    public Sprite moduleIcon;
+    [SerializeField] public Camera moduleCamera;
+    [SerializeField] public GameObject modulePrefab;
    public string filename
     {
      get =>   Application.dataPath + "/Resources/Modules/Icons/" + gameObject.name ;
@@ -20,7 +20,7 @@ public class Module : Unit
     {
         gameObject.layer = 9;// Modules
         Name = gameObject.name;
-        if (IconCamera == null) IconCamera = Instantiate(Resources.Load("ModuleCamera") as GameObject, transform).GetComponent<Camera>() ;
+        if (moduleCamera == null) moduleCamera = Instantiate(Resources.Load("ModuleCamera") as GameObject, transform).GetComponent<Camera>() ;
     }
     public void RenderIcon()
     {
@@ -45,14 +45,14 @@ public class Module : Unit
             {
                 foreach (var item in FindObjectsOfType<Module>())
                 {
-                    item.Prefab.SetActive(false);
-                    item.IconCamera.enabled = false;
+                    item.modulePrefab.SetActive(false);
+                    item.moduleCamera.enabled = false;
                 }
-                Selection.activeGameObject.GetComponent<Module>().Prefab.SetActive(true);
-                Selection.activeGameObject.GetComponent<Module>().IconCamera.enabled = true;
+                Selection.activeGameObject.GetComponent<Module>().modulePrefab.SetActive(true);
+                Selection.activeGameObject.GetComponent<Module>().moduleCamera.enabled = true;
                 Selection.activeGameObject.GetComponent<Module>().RenderIcon();
                 AssetDatabase.Refresh();
-                Selection.activeGameObject.GetComponent<Module>().IconSprite = Resources.Load("Modules/Icons/" + Selection.activeGameObject.GetComponent<Module>().name) as Sprite;
+                Selection.activeGameObject.GetComponent<Module>().moduleIcon = Resources.Load("Modules/Icons/" + Selection.activeGameObject.GetComponent<Module>().name) as Sprite;
             }
             
             // if (GUILayout.Button("IsolateThisModule"))

@@ -74,7 +74,7 @@ public class UISelectModule : MonoBehaviour
             activeButtons.Add( Instantiate(ButtonSelectModule, SelectModuleButtons));
 
 
-            activeButtons[activeButtons.Count - 1].icon.sprite=CurrentShow[i].IconSprite;
+            activeButtons[activeButtons.Count - 1].icon.sprite=CurrentShow[i].moduleIcon;
             
 
             activeButtons[activeButtons.Count - 1].ModuleName.text= CurrentShow[i].Name;
