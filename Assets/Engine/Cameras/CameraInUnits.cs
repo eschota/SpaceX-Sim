@@ -1,22 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CameraInUnits : MonoBehaviour
 {
     private float Speed = 25;
     private float zoom;
-    public Vector3 startPos = new Vector3(0,300,-200);
+    public Vector3 startPos = new Vector3(0, 300, -200);
     public Vector3 currentPos = Vector3.zero;
     public Vector3 target = Vector3.zero;
-    public Vector3 startRot = new Vector3(45,0,0);
-    Vector3 startDrag, CurrentDrag,targetDrag;
+    public Vector3 startRot = new Vector3(45, 0, 0);
+    Vector3 startDrag, CurrentDrag, targetDrag;
     Transform Pivot;
+    DepthOfField dof;
     void Start()
     {
+
+        FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
         Pivot = new GameObject("Pivot").transform;
         Camera.main.transform.position = startPos;
-        Camera.main.transform.rotation= Quaternion.Euler(startRot);
+        Camera.main.transform.rotation = Quaternion.Euler(startRot);
         Camera.main.fieldOfView = 50;
         Camera.main.transform.SetParent(Pivot);
     }
@@ -25,9 +29,20 @@ public class CameraInUnits : MonoBehaviour
     void Update()
     {
         Zoom();
-       
+
         Rotate();
-        
+
+    }
+    void DOF()
+    {
+        if (dof == null) return;
+
+        Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit))
+        {
+            dof.focusDistance.value = Vector3.Distance(Camera.main.transform.position, hit.point);
+        }
     }
     void Rotate()
     {
@@ -83,6 +98,7 @@ public class CameraInUnits : MonoBehaviour
     private void Move()
     {
         if (Input.mousePosition.x > Screen.width || Input.mousePosition.x < 0) return;
+        if (Input.mousePosition.y > Screen.height || Input.mousePosition.y < 0) return;
         Vector3 forward = Camera.main.transform.forward;
         Vector3 left = -Camera.main.transform.right;
         left = new Vector3(left.x, 0, left.z);
