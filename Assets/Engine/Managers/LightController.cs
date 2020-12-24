@@ -115,7 +115,7 @@ public class LightController : MonoBehaviour
     {
         if (emissivMat != null)
             if (colors != null)                
-                for (int i = 0; i < colors.Length; i++)
+                for (int i = 0; i < emissivMatColors.Length; i++)
                 {
                  if(emissivMatColors[i]!=null)   emissivMat[i].SetColor("_EmissionColor", emissivMatColors[i]* EmissiveIntensity.Evaluate(localTimer / 24f));
                 }
