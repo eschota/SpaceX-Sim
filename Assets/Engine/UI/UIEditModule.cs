@@ -14,11 +14,11 @@ public class UIEditModule : UIWindows
         {
             if (value == null)
             {
-                Hide();
+                CurrentMode = Mode.hide;
             }
             else
             {
-                CG.alpha = 1;
+                CurrentMode = Mode.show;
                 LoadModule();
             }
         }
