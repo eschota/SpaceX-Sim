@@ -110,7 +110,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     // Update is called once per frame
      
     List<Arrow> addArrows = new List<Arrow>();
-    public void CreateDependences()
+    public void ShowArrowsWhenCreateDependance()
     {
         if (DependenceNow == false) return;
       
@@ -119,7 +119,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
             DestroyImmediate(addArrows[i].gameObject);
         }
         addArrows.Clear();
-        CreateLinkOnCreate(Rect.position, Input.mousePosition); 
+        CreateLinkOnCreate( Input.mousePosition, Rect.position); 
     }
    
     public void ClearDependencies()
@@ -168,7 +168,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     {
 
     }
-    public List<RaycastResult> RaycastMouse()
+    public List<RaycastResult> RaycastMouse()// здесь обрабатывается клик и ищется зависимость рисерча
     {
 
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
@@ -194,6 +194,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
                     {
                         DependenceNow = false;
                         if (!tempButton.research.Dependances.Contains(research))
+                        if(!research.Dependances.Contains(tempButton.research))// исключаем круговую зависимость
                         {
                             tempButton.research.Dependances.Add(this.research);
                             RebuildLinks();
@@ -213,7 +214,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     }
     void Update()
     {
-        CreateDependences();
+        ShowArrowsWhenCreateDependance();
         if (Input.GetMouseButtonDown(0)) RaycastMouse();
     }
         public void RebuildLinks()

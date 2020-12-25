@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIScenarioSelectModule : MonoBehaviour
+public class UIButtonSelectModule : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

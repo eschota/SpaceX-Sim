@@ -17,7 +17,7 @@ public class UISelectModuleButton : MonoBehaviour
 
     void OnClick()
     {
-        UISelectModule.instance.CurrentSelectedModule = thisModule;
+        WindowSelectModule.instance.CurrentSelectedModule = thisModule;
     }
     private void OnDestroy()
     {

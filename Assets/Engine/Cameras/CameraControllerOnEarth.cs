@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class CameraInUnits : MonoBehaviour
+public class CameraControllerOnEarth : MonoBehaviour
 {
     private float Speed = 25;
     private float zoom;
