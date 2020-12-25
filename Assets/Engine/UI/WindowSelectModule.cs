@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class UISelectModule : UIWindows
+public class WindowSelectModule : UIWindows
 {
     [SerializeField] UISelectModuleButton ButtonSelectModule;
     [SerializeField] Transform SelectModuleButtons;
@@ -43,7 +43,7 @@ public class UISelectModule : UIWindows
             _currentSelectedModule = value;
         }
     }
-    public static UISelectModule instance;
+    public static WindowSelectModule instance;
     public List<Module> DefaultModules = new List<Module>();
     public List<Module> CurrentShow = new List<Module>();
     void Awake()
@@ -58,6 +58,7 @@ public class UISelectModule : UIWindows
     {
         CurrentResearchSelected.ModulesOpen.Add(CurrentSelectedModule);
         CurrentResearchSelected.researchButton.Refresh();
+        WindowEditResearch.instance.AddModuleButton();
     }
 
     void OnChange(int id)

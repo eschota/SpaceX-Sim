@@ -40,7 +40,7 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
     [SerializeField] TMPro.TMP_InputField ScenarioStartYear;
     [SerializeField] TMPro.TMP_InputField ScenarioStartBalance;
-    [SerializeField] public UIEditResearch CurrentResearcLink;
+    [SerializeField] public WindowEditResearch CurrentResearcLink;
     public Scenario CurrentScenario;
     public void CreateScenarioButtonClick()
     {
@@ -58,14 +58,14 @@ public class ScenarioManager : MonoBehaviour
     }
     public void AddModule()
     {
-        UISelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearchSelected;
+        WindowSelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearchSelected;
     }
     public List<Research> Researches = new List<Research>();
     public List<Module> Modules= new List<Module>();
     public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public void AddResearch()
     {
-        Researches.Add( Instantiate( Resources.Load("UI/UIResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
+        Researches.Add( Instantiate( Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
         //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
         buttons.Add(Researches[Researches.Count - 1].researchButton);
         if (Researches.Count > 1)
@@ -75,15 +75,7 @@ public class ScenarioManager : MonoBehaviour
         }
         CurrentResearcLink.CurrentResearchSelected = Researches[Researches.Count - 1];
     }
-    public void DeleteResearch()
-    {
-        Research temp = CurrentResearcLink.CurrentResearchSelected;
-        buttons.Remove(CurrentResearcLink.CurrentResearchSelected.researchButton);
-        Researches.Remove(CurrentResearcLink.CurrentResearchSelected);
-        Destroy(CurrentResearcLink.CurrentResearchSelected.researchButton.gameObject);
-        Destroy(CurrentResearcLink.CurrentResearchSelected.gameObject);
-        CurrentResearcLink.CurrentResearchSelected = null;
-    }
+   
     [System.Serializable]
     public class Scenario
     {

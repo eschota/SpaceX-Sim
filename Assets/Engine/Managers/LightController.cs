@@ -79,7 +79,7 @@ public class LightController : MonoBehaviour
     }
     private void IniTimer()
     {
-        if (Application.isPlaying) if (FindObjectOfType<CameraInUnits>() == null) gameObject.AddComponent<CameraInUnits>();
+        if (Application.isPlaying) if (FindObjectOfType<CameraControllerOnEarth>() == null) gameObject.AddComponent<CameraControllerOnEarth>();
         Time.timeScale = 1;
         if (TimeManager.Hours == null)
             localTimer = 5;
