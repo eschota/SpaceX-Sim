@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIButtonCreateDependenciesResearch : MonoBehaviour
+public class ButtonCreateDependencies : MonoBehaviour
 {
     [SerializeField] Button btn;
     [SerializeField] public UIResearchButton UIresearch;
@@ -19,7 +19,7 @@ public class UIButtonCreateDependenciesResearch : MonoBehaviour
         {
             it.researchButton.clearDependence.gameObject.SetActive(false);
         }
-            foreach (var item in FindObjectsOfType<UIButtonCreateDependenciesResearch>())
+            foreach (var item in FindObjectsOfType<ButtonCreateDependencies>())
         {
             item.gameObject.SetActive(false);
         }

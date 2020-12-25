@@ -1,18 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIButtonSelectModule : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] public Image image;
+    public Module module
     {
-        
+        get => _module;
+        set
+        {
+            _module = value;
+            image.sprite = value.moduleIcon;
+        }
+    }
+    private Module _module;
+    private void Awake()
+    {
+        GetComponent<Button>().onClick.AddListener(OnClick);
+
+    }
+    void OnClick()
+    {
+        WindowEditModule.instance.currentModule = module;
     }
 }

@@ -41,22 +41,33 @@ public class WindowEditResearch : UIWindows
             }
             else
             {
-                
-                ResearchName.text = value.Name;
-                Light.text = value.TimeCost[0].ToString();
-                Medium.text = value.TimeCost[1].ToString();
-                Heavy.text = value.TimeCost[2].ToString();
-                Completed.isOn = value.Completed;
+
+                Refresh();
+
+
                 value.researchButton.Refresh();
                 Show();
             }
         }
     }
-    
-    public List<UIButtonSelectModule> UIModuleButtons = new List<UIButtonSelectModule>();
-    public void AddModuleButton()
+    public void Refresh()
     {
-        UIModuleButtons.Add( Instantiate(ButtonSelectModule, SelectModulesTransform));
+        ClearModulesButton();
+        foreach (var item in CurrentResearchSelected.ModulesOpen)
+        {
+            AddModuleButton(item);
+        }
+        ResearchName.text = CurrentResearchSelected.Name;
+        Light.text = CurrentResearchSelected.TimeCost[0].ToString();
+        Medium.text = CurrentResearchSelected.TimeCost[1].ToString();
+        Heavy.text = CurrentResearchSelected.TimeCost[2].ToString();
+        Completed.isOn = CurrentResearchSelected.Completed;
+    }
+    public List<UIButtonSelectModule> UIModuleButtons = new List<UIButtonSelectModule>();
+    public void AddModuleButton(Module module)
+    {
+        UIModuleButtons.Add(   Instantiate(ButtonSelectModule, SelectModulesTransform));
+        UIModuleButtons[UIModuleButtons.Count - 1].module = module;
     }
     public void ClearModulesButton()
     {

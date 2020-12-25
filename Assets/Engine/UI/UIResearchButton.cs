@@ -27,7 +27,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     [SerializeField] GameObject[] progressesGO;
     [SerializeField] Arrow LinkPoint;
     List<Arrow> Arrows  = new List<Arrow>();
-    [SerializeField] public UIButtonCreateDependenciesResearch createrDependence;
+    [SerializeField] public ButtonCreateDependencies createrDependence;
     [SerializeField] public  RectTransform clearDependence;
     public bool DependenceNow=false;
     public RectTransform Rect

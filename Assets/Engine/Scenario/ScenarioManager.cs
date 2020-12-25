@@ -74,6 +74,8 @@ public class ScenarioManager : MonoBehaviour
             Researches[Researches.Count - 1].researchButton.Rect.position = Researches[Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
         }
         CurrentResearcLink.CurrentResearchSelected = Researches[Researches.Count - 1];
+        WindowSelectModule.instance.Hide();
+        WindowEditModule.instance.Hide();
     }
    
     [System.Serializable]

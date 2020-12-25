@@ -56,9 +56,10 @@ public class WindowSelectModule : UIWindows
     }
    public void AddModule(int id)
     {
+        if (CurrentResearchSelected.ModulesOpen.Contains(CurrentSelectedModule)) return;
         CurrentResearchSelected.ModulesOpen.Add(CurrentSelectedModule);
         CurrentResearchSelected.researchButton.Refresh();
-        WindowEditResearch.instance.AddModuleButton();
+        WindowEditResearch.instance.Refresh();
     }
 
     void OnChange(int id)

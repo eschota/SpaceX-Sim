@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class WindowEditModule : UIWindows
 {
-    private Module _currentModule;
+    
  
     [SerializeField] public UIModuleParam ModuleParam;
+
+    private Module _currentModule;
     public  Module currentModule
     {
         get => _currentModule;
         set
         {
+            _currentModule = value;
             if (value == null)
             {
                 CurrentMode = Mode.hide;
@@ -21,20 +24,30 @@ public class WindowEditModule : UIWindows
                 CurrentMode = Mode.show;
                 LoadModule();
             }
+            
         }
     }
-    // Update is called once per frame
+    public static WindowEditModule instance;
     private void Awake()
     {
-        currentModule = null;
+        instance = this;
+        Hide();
     }
 
-    public static void LoadModule()
+    public void LoadModule()
     {
-
+        WindowSelectModule.instance.Hide();
+        Name.text = currentModule.Name;
     }
     public void CloseWindow()
     {
         currentModule = null;
     }
+
+
+
+
+
+
+    [SerializeField] TMPro.TextMeshProUGUI Name;
 }

@@ -10,7 +10,9 @@ public class Module : Unit
     
      
     public int moduleCost = 1;
+
     public Sprite moduleIcon;
+
     public int[] ProductionTime = new int[] { 10,10,10};
     public string Description="Description";
     [SerializeField] public Camera moduleCamera;
