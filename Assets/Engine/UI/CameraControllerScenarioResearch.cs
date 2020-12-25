@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.EventSystems;
-public class ScenarioResearchPanelCameraController : MonoBehaviour
+public class CameraControllerScenarioResearch : MonoBehaviour
 {
     
     [SerializeField] UIResearchButton button;
@@ -20,7 +20,7 @@ public class ScenarioResearchPanelCameraController : MonoBehaviour
     Vector3 maxpos;
     List<Research> Researches = new List<Research>();
  
-    public static ScenarioResearchPanelCameraController instance;
+    public static CameraControllerScenarioResearch instance;
     void Awake()
     {
         instance = this;
