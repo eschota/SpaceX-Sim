@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
                     CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
                     return;
                 case State.ScenarioEditor:
-                    ScenarioManager.CurrentState = ScenarioManager.State.StartConditions;
+                    ScenarioManager.instance.CurrentState = ScenarioManager.State.LoadScenario;
                     break;
             }
 

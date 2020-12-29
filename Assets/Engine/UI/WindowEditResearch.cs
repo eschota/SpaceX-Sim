@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
+using System.Collections.Specialized;
+using System.Collections.ObjectModel;
 public class WindowEditResearch : UIWindows
 {
     [SerializeField] public TMPro.TMP_InputField ResearchName;
@@ -14,6 +15,7 @@ public class WindowEditResearch : UIWindows
     [SerializeField] public Toggle Completed;
     [SerializeField] public UIButtonSelectModule ButtonSelectModule;
     [SerializeField] public Transform SelectModulesTransform;
+
     
     private Research _research;
     public Research CurrentResearchSelected

@@ -52,7 +52,7 @@ public class WindowSelectModule : UIWindows
         instance = this;
         CurrentResearchSelected = null;
         DefaultModules.AddRange(Resources.LoadAll("Modules/", typeof(Module)).Cast<Module>());
-        Debug.Log("Modules Loaded: " + DefaultModules.Count);
+      //  Debug.Log("Modules Loaded: " + DefaultModules.Count);
     }
    public void AddModule(int id)
     {

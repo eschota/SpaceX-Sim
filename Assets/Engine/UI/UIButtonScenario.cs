@@ -19,6 +19,6 @@ public class UIButtonScenario : MonoBehaviour
     }
     void OnClick()
     {
-        ScenarioManager.CurrentState = thisState;
+        ScenarioManager.instance.CurrentState = thisState;
     }
 }

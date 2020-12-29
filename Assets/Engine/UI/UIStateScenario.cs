@@ -32,7 +32,7 @@ public class UIStateScenario : MonoBehaviour
     void OnChange()
     {
         if (thisState.Count < 1) return;
-        if (thisState.Exists(X=>X==ScenarioManager.CurrentState))  Show();
+        if (thisState.Exists(X=>X==ScenarioManager.instance.CurrentState))  Show();
         else Hide();
     }  
     void Show()
