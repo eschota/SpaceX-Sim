@@ -17,23 +17,23 @@ public class WindowEditResearch : UIWindows
     [SerializeField] public Transform SelectModulesTransform;
 
     
-    private Research _research;
-    public Research CurrentResearchSelected
+    private Research _currentResearch;
+    public Research CurrentResearch
     {
-        get => _research;
+        get => _currentResearch;
         set
         {
 
             
 
-            if (_research != value)
+            if (_currentResearch != value)
             {
                 WindowSelectModule.instance.CurrentResearchSelected = null;
                 WindowSelectModule.instance.CurrentSelectedModule = null;
 
             }
 
-            _research = value;
+            _currentResearch = value;
 
             if (value == null)
             {
@@ -43,27 +43,26 @@ public class WindowEditResearch : UIWindows
             }
             else
             {
+                RefreshWindow();
 
-                Refresh();
 
-
-                value.researchButton.Refresh();
+               
                 Show();
             }
         }
     }
-    public void Refresh()
+    public void RefreshWindow()
     {
         ClearModulesButton();
-        foreach (var item in CurrentResearchSelected.ModulesOpen)
+        foreach (var item in CurrentResearch.ModulesOpen)
         {
             AddModuleButton(item);
         }
-        ResearchName.text = CurrentResearchSelected.Name;
-        Light.text = CurrentResearchSelected.TimeCost[0].ToString();
-        Medium.text = CurrentResearchSelected.TimeCost[1].ToString();
-        Heavy.text = CurrentResearchSelected.TimeCost[2].ToString();
-        Completed.isOn = CurrentResearchSelected.Completed;
+        ResearchName.SetTextWithoutNotify( CurrentResearch.Name);
+        Light.SetTextWithoutNotify(CurrentResearch.TimeCost[0].ToString());
+        Medium.SetTextWithoutNotify(CurrentResearch.TimeCost[1].ToString());
+        Heavy.SetTextWithoutNotify(  CurrentResearch.TimeCost[2].ToString());
+        Completed.SetIsOnWithoutNotify( CurrentResearch.Completed);
     }
     public List<UIButtonSelectModule> UIModuleButtons = new List<UIButtonSelectModule>();
     public void AddModuleButton(Module module)
@@ -82,8 +81,10 @@ public class WindowEditResearch : UIWindows
 
     public void OnEditResearch()
     {
-        if (CurrentResearchSelected == null) return;
-        CurrentResearchSelected.Name = ResearchName.text;
+        if (CurrentResearch == null) return;
+
+        Debug.Log("Ebal Koney");
+        CurrentResearch.Name = ResearchName.text;
 
         int light = 0;
         int.TryParse(Light.text,out light);
@@ -92,9 +93,9 @@ public class WindowEditResearch : UIWindows
         int heavy = 0;
         int.TryParse(Heavy.text,out heavy);
 
-        CurrentResearchSelected.TimeCost = new[] {light,medium,heavy};
-        CurrentResearchSelected.Completed = Completed.isOn;
-        CurrentResearchSelected.researchButton.Refresh();
+        CurrentResearch.TimeCost = new[] {light,medium,heavy};
+        CurrentResearch.Completed = Completed.isOn;
+        CurrentResearch.researchButton.Refresh();
     }
     public static WindowEditResearch instance;
     void Awake()
@@ -104,7 +105,7 @@ public class WindowEditResearch : UIWindows
     }
     public void DeleteResearch()
     {
-        Research temp = ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected;
+        Research temp = ScenarioManager.instance.CurrentResearcLink.CurrentResearch;
         foreach (var item in ScenarioManager.instance.CurrentScenario.Researches.FindAll(X => X.Dependances.Contains(temp)))//удаляем зависимомсти от этого рисерча
         {
             item.Dependances.Remove(temp);
@@ -112,11 +113,11 @@ public class WindowEditResearch : UIWindows
         }
 
             
-            ScenarioManager.instance.buttons.Remove(ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected.researchButton);//удаляем кнопки
-        ScenarioManager.instance.CurrentScenario.Researches.Remove(ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected);//удаляем рисерчи
-        Destroy(ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected.researchButton.gameObject);
-        Destroy(ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected.gameObject);
-        ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null;
+            ScenarioManager.instance.buttons.Remove(ScenarioManager.instance.CurrentResearcLink.CurrentResearch.researchButton);//удаляем кнопки
+        ScenarioManager.instance.CurrentScenario.Researches.Remove(ScenarioManager.instance.CurrentResearcLink.CurrentResearch);//удаляем рисерчи
+        Destroy(ScenarioManager.instance.CurrentResearcLink.CurrentResearch.researchButton.gameObject);
+        Destroy(ScenarioManager.instance.CurrentResearcLink.CurrentResearch.gameObject);
+        ScenarioManager.instance.CurrentResearcLink.CurrentResearch = null;
         
         Hide();
     }

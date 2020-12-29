@@ -130,7 +130,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 
     void OnClick()
     {
-       if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = research;
+       if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearch) ScenarioManager.instance.CurrentResearcLink.CurrentResearch = research;
 
 
      //Research res= ScenarioManager.instance.Researches.Find(X => X.researchButton.CreateDependence == true);
@@ -146,7 +146,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     public void OnDrag(PointerEventData eventData)
     {   if(delta.sqrMagnitude<1)
         delta = eventData.pointerCurrentRaycast.screenPosition - new Vector2(Rect.position.x,Rect.position.y);
-        Debug.Log(delta);
+      //  Debug.Log(delta);
         Rect.position = -delta+ eventData.pointerCurrentRaycast.screenPosition;
         foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
         {
@@ -207,7 +207,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
             }
         }
 
-        Debug.Log(results.Count);
+     //   Debug.Log(results.Count);
         //if(results.Find(X=>X.GetType()==typeof(UIResearchButton)))
 
         return results;

@@ -40,7 +40,7 @@ public class CameraControllerScenarioResearch : MonoBehaviour
             target = CameraPivot.position;
         }
         if (Input.GetMouseButton(1)|| Input.GetMouseButtonDown(0)) CameraPivot.position = target+(Input.mousePosition-startPos);
-        if (Input.GetMouseButtonUp(1)) ;
+        
 
        // CameraPivot.position = new Vector3(Mathf.Clamp(CameraPivot.position.x, 0, maxpos.x), Mathf.Clamp(CameraPivot.position.y, 0, maxpos.y), 0);
         zoom += 0.1f*Input.mouseScrollDelta.y;

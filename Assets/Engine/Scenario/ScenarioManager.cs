@@ -100,11 +100,11 @@ public class ScenarioManager : MonoBehaviour
     
     private void Update()
     {
-        if(Input.GetMouseButtonDown(1)) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null; 
+        if(Input.GetMouseButtonDown(1)) ScenarioManager.instance.CurrentResearcLink.CurrentResearch = null; 
     }
     public void AddModule()
     {
-        WindowSelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearchSelected;
+        WindowSelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearch;
     }
      
     public List<Module> Modules= new List<Module>();
@@ -119,7 +119,7 @@ public class ScenarioManager : MonoBehaviour
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].Dependances.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 2]);
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton.Rect.position = CurrentScenario.Researches[CurrentScenario.Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
         }
-        CurrentResearcLink.CurrentResearchSelected = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
+        CurrentResearcLink.CurrentResearch = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
         WindowSelectModule.instance.Hide();
         WindowEditModule.instance.Hide();
     }
