@@ -10,7 +10,10 @@ public class ScenarioManager : MonoBehaviour
     {
         get => Application.streamingAssetsPath + "/Scenarios/";
     }
-
+    public string CurrentScenarioFolder
+    {
+        get => ScenariosFolder + CurrentScenario.Name    ;
+    }
     public static event Action EventChangeState; 
     public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario  }
     private   State _currentState;
@@ -124,8 +127,8 @@ public class ScenarioManager : MonoBehaviour
     {
         public int[] StartDate;
         public string Name;
-        public string FilePath => instance.ScenariosFolder + "/" + Name + ".scenario";
-        public string FolderPath => instance.ScenariosFolder + "/" + Name + "/";
+        public string FilePath => instance.ScenariosFolder   + Name + ".scenario";
+        public string FolderPath => instance.ScenariosFolder +   Name  ;
         
         public int StartBalance;
         public List<Research> Researches;
@@ -151,13 +154,16 @@ public class ScenarioManager : MonoBehaviour
             }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
         }
-        public void Delete()
+        public void DeleteFilesAndFoldersOfScenario()
         {
             if (File.Exists(FilePath))
             {
                 File.Delete(FilePath);
                 Debug.Log("Scenario " + Name + " Deleted");
             }
+            if(Directory.Exists(FolderPath))
+            FileUtil.DeleteFileOrDirectory(FolderPath);
+            
         }
     }
     #endregion
@@ -165,16 +171,15 @@ public class ScenarioManager : MonoBehaviour
     public void LoadScenarioUnits()
     {
 
-        //DirectoryInfo dir = new DirectoryInfo(CurrentScenario.FilePath);
-        //FileInfo[] info = dir.GetFiles("*.scenario");
-        LoadedScenarios.Clear();
-        //foreach (FileInfo f in info)
-        //{
-        //    string temp = File.ReadAllText(ScenariosFolder + "/" + (f.Name));
-        //    //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
-        //    LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
-        //}
-        //Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
-        //WindowLoadScenario.instance.LoadScenarios();
+        DirectoryInfo dir = new DirectoryInfo(CurrentScenario.FilePath);
+        FileInfo[] info = dir.GetFiles("*.unit");
+        CurrentScenario.Researches.Clear();
+        foreach (FileInfo f in info)
+        {
+            string temp = File.ReadAllText(CurrentScenarioFolder + f.Name);
+            Debug.Log("research Loaded: " + f.Name + "  " + temp);
+            CurrentScenario.Researches.Add(JsonUtility.FromJson<Research>(temp));
+
+        } 
     }
 }

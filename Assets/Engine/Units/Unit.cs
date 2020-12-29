@@ -48,12 +48,12 @@ public class Unit : MonoBehaviour
     {
         ID = this.GetInstanceID();
         string jsonData = JsonUtility.ToJson(this, true);
-        string ScenarioPath = ScenarioManager.instance.ScenariosFolder+ ScenarioManager.instance.CurrentScenario.Name + "/";
+         
         
-        if (!Directory.Exists(ScenarioPath)) Directory.CreateDirectory(ScenarioPath);
+        if (!Directory.Exists(ScenarioManager.instance.CurrentScenarioFolder)) Directory.CreateDirectory(ScenarioManager.instance.CurrentScenarioFolder);
         //if (!Directory.Exists(ScenarioPath )) Directory.CreateDirectory(ScenarioPath + ClassTypePath);
-        File.WriteAllText(ScenarioPath + ID+ ".unit", jsonData);
-        Debug.Log("File Saved at: " + ScenarioPath + ID + ".unit");
+        File.WriteAllText(ScenarioManager.instance.CurrentScenarioFolder +"/" +ID+ ".unit", jsonData);
+        Debug.Log("File Saved at: " + ScenarioManager.instance.CurrentScenarioFolder +"/" + ID + ".unit");
     }
     
 }

@@ -27,7 +27,7 @@ public class WindowLoadScenario : UIWindows
     public void DeleteScenartio()
     {
         LoadScenarios();
-        ScenarioManager.instance.CurrentScenario?.Delete();
+        ScenarioManager.instance.CurrentScenario?.DeleteFilesAndFoldersOfScenario();
         ScenarioManager.instance.LoadedScenarios.Remove(ScenarioManager.instance.CurrentScenario);
         ScenarioManager.instance.CurrentScenario = null;
         LoadScenarios();
