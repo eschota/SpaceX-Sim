@@ -71,7 +71,7 @@ public class Research : Unit
     {
         ID = GetInstanceID();
         position = researchButton.Rect.position;
-        SaveDataResearch SD= new SaveDataResearch(GetInstanceID(), Name, researchButton.Rect.position, Dependances, ModulesOpen);
+        SaveDataResearch SD= new SaveDataResearch(GetInstanceID(), Name, researchButton.Rect.position, Dependances, ModulesOpen,TimeCost,Completed);
         string jsonData = JsonUtility.ToJson(SD, true);
         File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
         Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
@@ -82,6 +82,8 @@ public class Research : Unit
         SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(FilePath));
         ID = SD.ID;
         Name = SD.Name;
+        TimeCost = SD.TimeCost;
+        Completed = SD.Completed;
         researchButton.Rect.position = SD.RectPosition;
         Dependances = new List<Research>();
         Dependances.Clear();
@@ -95,7 +97,9 @@ public class Research : Unit
         public Vector3 RectPosition;
         public List<int> DependesID;
         public List<int> ModulesID;
-        public SaveDataResearch(int id, string name, Vector3 rect, List<Research> dependences, List<Module> modules)
+        public int[] TimeCost;
+        public bool Completed;
+        public SaveDataResearch(int id, string name, Vector3 rect, List<Research> dependences, List<Module> modules, int[] timeCost, bool completed)
         {
             ID = id; RectPosition = rect;
             DependesID = new List<int>();
@@ -108,6 +112,7 @@ public class Research : Unit
             {
                 ModulesID.Add(item.GetInstanceID());
             }
+            TimeCost = timeCost;
         }
     }
 }
