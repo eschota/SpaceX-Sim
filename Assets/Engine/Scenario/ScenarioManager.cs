@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
-using UnityEditor;
 public class ScenarioManager : MonoBehaviour
 {
     public string ScenariosFolder
@@ -64,7 +63,7 @@ public class ScenarioManager : MonoBehaviour
     public Scenario CurrentScenario;
     public void CreateNewCurrentScenario()
     {
-        CurrentScenario = new Scenario( ScenarioName.text, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
+        CurrentScenario = new Scenario( ScenarioName.text+LoadedScenarios.Count, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
         CurrentScenario.SaveNewScenario();
         
         
@@ -162,9 +161,17 @@ public class ScenarioManager : MonoBehaviour
         }
         public void DeleteFilesAndFoldersOfScenario()
         {
-             
-            if(Directory.Exists(CurrentFolder))
-            FileUtil.DeleteFileOrDirectory(CurrentFolder);
+
+            if (Directory.Exists(CurrentFolder))
+            {
+                //DirectoryInfo dir = new DirectoryInfo(CurrentFolder);
+                //FileInfo[] info = dir.GetFiles("*.unit");
+                //foreach (FileInfo f in info)
+                //{
+                //    f.Delete();
+                //}
+                    Directory.Delete(CurrentFolder,true);
+            }
             
         }
     }

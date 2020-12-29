@@ -65,7 +65,7 @@ public class LightController : MonoBehaviour
             ProcessEmissive();
             ProcessReflectionProbes();
         }
-
+#if UNITY_EDITOR
         if (!Application.isPlaying&& Selection.activeGameObject==gameObject)// работа в эдиторе
         {
             List < LightController > LC = new List<LightController>(); LC.AddRange(FindObjectsOfType<LightController>());
@@ -76,6 +76,7 @@ public class LightController : MonoBehaviour
             ProcessReflectionProbes();
             ProcessAmbientAndReflectionAmbient();
         }
+#endif
     }
     private void IniTimer()
     {
