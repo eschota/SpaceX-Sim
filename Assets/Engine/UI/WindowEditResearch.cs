@@ -44,7 +44,7 @@ public class WindowEditResearch : UIWindows
             else
             {
                 RefreshWindow();
-
+                CurrentResearch.researchButton.RebuildLinks();
 
                
                 Show();
@@ -85,14 +85,14 @@ public class WindowEditResearch : UIWindows
 
         Debug.Log("Ebal Koney");
         CurrentResearch.Name = ResearchName.text;
-
+        CurrentResearch.gameObject.name = CurrentResearch.Name;
         int light = 0;
         int.TryParse(Light.text,out light);
         int medium = 0;
         int.TryParse(Medium.text,out medium);
         int heavy = 0;
         int.TryParse(Heavy.text,out heavy);
-
+        
         CurrentResearch.TimeCost = new[] {light,medium,heavy};
         CurrentResearch.Completed = Completed.isOn;
         CurrentResearch.researchButton.Refresh();
@@ -105,7 +105,7 @@ public class WindowEditResearch : UIWindows
     }
     public void DeleteResearch()
     {
-        Research temp = ScenarioManager.instance.CurrentResearcLink.CurrentResearch;
+        Research temp = CurrentResearch;
         foreach (var item in ScenarioManager.instance.CurrentScenario.Researches.FindAll(X => X.Dependances.Contains(temp)))//удаляем зависимомсти от этого рисерча
         {
             item.Dependances.Remove(temp);
@@ -113,11 +113,11 @@ public class WindowEditResearch : UIWindows
         }
 
             
-            ScenarioManager.instance.buttons.Remove(ScenarioManager.instance.CurrentResearcLink.CurrentResearch.researchButton);//удаляем кнопки
-        ScenarioManager.instance.CurrentScenario.Researches.Remove(ScenarioManager.instance.CurrentResearcLink.CurrentResearch);//удаляем рисерчи
-        Destroy(ScenarioManager.instance.CurrentResearcLink.CurrentResearch.researchButton.gameObject);
-        Destroy(ScenarioManager.instance.CurrentResearcLink.CurrentResearch.gameObject);
-        ScenarioManager.instance.CurrentResearcLink.CurrentResearch = null;
+            ScenarioManager.instance.buttons.Remove(CurrentResearch.researchButton);//удаляем кнопки
+        ScenarioManager.instance.CurrentScenario.Researches.Remove(CurrentResearch);//удаляем рисерчи
+        Destroy(CurrentResearch.researchButton.gameObject);
+        Destroy(CurrentResearch.gameObject);
+        CurrentResearch = null;
         
         Hide();
     }

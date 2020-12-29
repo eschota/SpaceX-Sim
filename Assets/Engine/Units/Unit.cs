@@ -72,9 +72,7 @@ public class Unit : MonoBehaviour
     }
     public virtual void LoadJSON()
     {
-        JObject o = JObject.Parse(File.ReadAllText(FilePath));
-        Name= o["Name"].ToString();
-        ID = (int)o["ID"];
+     
     }
     public class SaveData
     {

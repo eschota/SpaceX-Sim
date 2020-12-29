@@ -65,6 +65,7 @@ public class Research : Unit
             Dependances.Add(ScenarioManager.instance.CurrentScenario.Researches.Find(X=>X.ID==SD.DependesID[i]));
         }
         researchButton.RebuildLinks();
+        researchButton.Refresh();
     }
 
     public override void SaveJSON()
@@ -113,6 +114,8 @@ public class Research : Unit
                 ModulesID.Add(item.GetInstanceID());
             }
             TimeCost = timeCost;
+            Name = name;
+            Completed = completed;
         }
     }
 }

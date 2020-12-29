@@ -60,7 +60,7 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
     [SerializeField] TMPro.TMP_InputField ScenarioStartYear;
     [SerializeField] TMPro.TMP_InputField ScenarioStartBalance;
-    [SerializeField] public WindowEditResearch CurrentResearcLink;
+    
     public Scenario CurrentScenario;
     public void CreateNewCurrentScenario()
     {
@@ -100,11 +100,11 @@ public class ScenarioManager : MonoBehaviour
     
     private void Update()
     {
-        if(Input.GetMouseButtonDown(1)) ScenarioManager.instance.CurrentResearcLink.CurrentResearch = null; 
+        if(Input.GetMouseButtonDown(1))  WindowEditResearch.instance.CurrentResearch = null; 
     }
     public void AddModule()
     {
-        WindowSelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearch;
+        WindowSelectModule.instance.CurrentResearchSelected = WindowEditResearch.instance.CurrentResearch;
     }
      
     public List<Module> Modules= new List<Module>();
@@ -119,7 +119,10 @@ public class ScenarioManager : MonoBehaviour
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].Dependances.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 2]);
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton.Rect.position = CurrentScenario.Researches[CurrentScenario.Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
         }
-        CurrentResearcLink.CurrentResearch = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
+
+        
+        WindowEditResearch.instance.CurrentResearch = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
+        WindowEditResearch.instance.OnEditResearch();
         WindowSelectModule.instance.Hide();
         WindowEditModule.instance.Hide();
     }
@@ -182,6 +185,7 @@ public class ScenarioManager : MonoBehaviour
             string temp = File.ReadAllText(Path.Combine( CurrentScenario.CurrentFolder,f.Name));
 
             CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
+            
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
            
         }

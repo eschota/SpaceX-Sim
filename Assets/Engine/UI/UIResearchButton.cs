@@ -57,9 +57,16 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         
         research = GetComponent<Research>();
         research.researchButton = this;
-        research.researchButton.transform.position = new Vector3(200, 200);
-                
+        GetComponent<Button>().onClick.AddListener(OnClick);
+        Refresh();
+        //        research.researchButton.transform.position = new Vector3(200, 200);
+
     }
+    void OnDestroy()
+    {
+        GetComponent<Button>().onClick.RemoveAllListeners();
+    }
+
     List<UIModule> modules = new List<UIModule>();
    public void Refresh()
     {
@@ -102,10 +109,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 
         RebuildLinks();
     }
-    void Start()
-    {
-        GetComponent<Button>().onClick.AddListener(OnClick);
-    }
+    
    
     // Update is called once per frame
      
@@ -130,7 +134,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 
     void OnClick()
     {
-       if(research!=  ScenarioManager.instance.CurrentResearcLink.CurrentResearch) ScenarioManager.instance.CurrentResearcLink.CurrentResearch = research;
+       if(research!= WindowEditResearch.instance.CurrentResearch) WindowEditResearch.instance.CurrentResearch = research;
 
 
      //Research res= ScenarioManager.instance.Researches.Find(X => X.researchButton.CreateDependence == true);
@@ -164,10 +168,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
             item.researchButton.RebuildLinks();
         }
     }
-    void OnDestroy()
-    {
-
-    }
+   
     public List<RaycastResult> RaycastMouse()// здесь обрабатывается клик и ищется зависимость рисерча
     {
 
