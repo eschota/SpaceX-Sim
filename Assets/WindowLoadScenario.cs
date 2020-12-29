@@ -40,6 +40,7 @@ public class WindowLoadScenario : UIWindows
         {
             ScenarioManager.instance.LoadScenarioUnits();
             ScenarioManager.instance.CurrentState = ScenarioManager.State.StartConditions;
+            ScenarioManager.instance.RefreshScenario();
         }
     }
 
@@ -47,6 +48,7 @@ public class WindowLoadScenario : UIWindows
     {
         ScenarioManager.instance.CreateNewCurrentScenario();
         ScenarioManager.instance.CurrentState = ScenarioManager.State.StartConditions;
+        ScenarioManager.instance.RefreshScenario();
     }
     public static WindowLoadScenario instance;
         void Start()

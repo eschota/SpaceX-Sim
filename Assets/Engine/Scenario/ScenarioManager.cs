@@ -65,36 +65,32 @@ public class ScenarioManager : MonoBehaviour
     {
         CurrentScenario = new Scenario( ScenarioName.text+LoadedScenarios.Count, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
         CurrentScenario.SaveNewScenario();
+        RefreshScenario();
         
-        
+    }
+    public void RefreshScenario()
+    {
+        ScenarioName.SetTextWithoutNotify(CurrentScenario.Name);
+        ScenarioStartBalance.SetTextWithoutNotify(CurrentScenario.StartBalance.ToString());
+        ScenarioStartDay.SetTextWithoutNotify(CurrentScenario.StartDate[0].ToString());
+        ScenarioStartMonth.SetTextWithoutNotify(CurrentScenario.StartDate[1].ToString());
+        ScenarioStartYear.SetTextWithoutNotify(CurrentScenario.StartDate[2].ToString());
+    }
+    public void OnScenarioEdit()
+    {
+        CurrentScenario.Name = ScenarioName.text;
+        int.TryParse(ScenarioStartBalance.text, out CurrentScenario.StartBalance  );
+        int.TryParse(ScenarioStartDay.text, out CurrentScenario.StartDate[0]  );
+        int.TryParse(ScenarioStartMonth.text, out CurrentScenario.StartDate[1]  );
+        int.TryParse(ScenarioStartYear.text, out CurrentScenario.StartDate[2]  );
     }
      public void SaveCurrentScenario()
     {
-        CurrentScenario.SaveNewScenario();
-      
-        
+        CurrentScenario.SaveNewScenario();       
     }
 
     public List<Scenario> LoadedScenarios = new List<Scenario>();
-    public void LoadScenarios()
-    {
-        LoadedScenarios.Clear();
-        DirectoryInfo dir = new DirectoryInfo(ScenariosFolder);
-        DirectoryInfo[] info = dir.GetDirectories("**");
-       
-        foreach (DirectoryInfo f in info)
-        {
-            string temp = "";
-            if (File.Exists( Path.Combine(ScenariosFolder ,f.Name,"scenario.dat")))
-            {
-                temp = File.ReadAllText(Path.Combine(ScenariosFolder, f.Name, "scenario.dat"));
-                //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
-                LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
-            }
-     } 
-         Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
-        WindowLoadScenario.instance.LoadScenarios();
-    }
+   
 
     
     private void Update()
@@ -156,9 +152,15 @@ public class ScenarioManager : MonoBehaviour
             foreach (var item in instance.CurrentScenario.Researches)
             {
                 item.SaveJSON();
+                foreach (var module in item.ModulesOpen)
+                {
+                    module.SaveJSON();
+                }
             }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
         }
+
+      
         public void DeleteFilesAndFoldersOfScenario()
         {
 
@@ -176,7 +178,25 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     #endregion
+    public void LoadScenarios()
+    {
+        LoadedScenarios.Clear();
+        DirectoryInfo dir = new DirectoryInfo(ScenariosFolder);
+        DirectoryInfo[] info = dir.GetDirectories("**");
 
+        foreach (DirectoryInfo f in info)
+        {
+            string temp = "";
+            if (File.Exists(Path.Combine(ScenariosFolder, f.Name, "scenario.dat")))
+            {
+                temp = File.ReadAllText(Path.Combine(ScenariosFolder, f.Name, "scenario.dat"));
+                //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
+                LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
+            }
+        }
+        Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
+        WindowLoadScenario.instance.LoadScenarios();
+    }
     public void LoadScenarioUnits()
     {
 
