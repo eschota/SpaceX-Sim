@@ -206,13 +206,18 @@ public class ScenarioManager : MonoBehaviour
         {
           if(item!=null)  Destroy(item.gameObject);
         }
+        foreach (var item in buttons)
+        {
+            Destroy(item.gameObject);
+        }
+        buttons.Clear();
         CurrentScenario.Researches.Clear();
         foreach (FileInfo f in info)
         {
             string temp = File.ReadAllText(Path.Combine( CurrentScenario.CurrentFolder,f.Name));
 
             CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
-            
+            buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
            
         }

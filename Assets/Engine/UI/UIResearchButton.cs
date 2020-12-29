@@ -64,6 +64,10 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     }
     void OnDestroy()
     {
+        foreach (var item in Arrows)
+        {
+            Destroy(item.gameObject);
+        }
         GetComponent<Button>().onClick.RemoveAllListeners();
     }
 
@@ -245,10 +249,11 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     void CreateLink(Vector2 start, Vector2 end)
     {
         float dis = Vector2.Distance(start, end);
-        for (int i = 2; i < dis / 66 - 2; i++)
+        for (int i = 2; i < dis / 30 - 2; i++)
         {
-            Arrows.Add(Instantiate(LinkPoint, transform));
-            Arrows[Arrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 66));
+            Arrows.Add(Instantiate(LinkPoint, CameraControllerScenarioResearch.instance.CameraPivot));
+            Arrows[Arrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 30));
+            Arrows[Arrows.Count - 1].transform.SetAsFirstSibling();
 
             float targetRotation = Mathf.Atan((end.y - start.y) / (end.x - start.x));
             if(end.x - start.x >0)
@@ -261,10 +266,10 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     void CreateLinkOnCreate(Vector2 start, Vector2 end)
     {
         float dis = Vector2.Distance(start, end);
-        for (int i = 2; i < dis / 66 ; i++)
+        for (int i = 2; i < dis / 30 ; i++)
         {
             addArrows.Add(Instantiate(LinkPoint, transform));
-            addArrows[addArrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 66));
+            addArrows[addArrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 30));
 
             float targetRotation = Mathf.Atan((end.y - start.y) / (end.x - start.x));
             if(end.x - start.x >0)
@@ -274,5 +279,5 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 
         }
     }
-
+    
 }

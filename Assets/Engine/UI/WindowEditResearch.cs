@@ -83,7 +83,7 @@ public class WindowEditResearch : UIWindows
     {
         if (CurrentResearch == null) return;
 
-        Debug.Log("Ebal Koney");
+
         CurrentResearch.Name = ResearchName.text;
         CurrentResearch.gameObject.name = CurrentResearch.Name;
         int light = 0;

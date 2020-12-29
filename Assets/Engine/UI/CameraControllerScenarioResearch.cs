@@ -11,7 +11,7 @@ public class CameraControllerScenarioResearch : MonoBehaviour
     [SerializeField] Transform PivotButtons;
     [SerializeField] Transform PivotArrows;
     [SerializeField] List<UIResearchButton> buttons;
-    [SerializeField] private RectTransform CameraPivot;
+    [SerializeField] public RectTransform CameraPivot;
     [SerializeField] float DistanceArrows=100;
     
     List<Arrow> Arrows;
