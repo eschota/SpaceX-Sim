@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
-[System.Serializable]
+using Newtonsoft.Json.Linq;
 public class Unit : MonoBehaviour
 {
     public int ID;
@@ -16,6 +15,26 @@ public class Unit : MonoBehaviour
     public string Class;
     [HideInInspector]
     public int[] CreationDate;
+
+    private string _filePath;
+    public string FilePath
+    {
+        get => _filePath;
+        set
+        {
+            if (value != "")
+            {
+                _filePath = value;
+                LoadJSON();
+            }
+        }
+    }
+   
+    public virtual void Ini()
+    {
+        //transform.position = unitSO.Position;
+        //Name = unitSO.Name;
+    }
     public virtual void Start()
     {
         Class = this.ToString();
@@ -44,16 +63,22 @@ public class Unit : MonoBehaviour
     {
         
     }
-    public virtual void Save()
+    public virtual void SaveJSON()
     {
-        ID = this.GetInstanceID();
-        string jsonData = JsonUtility.ToJson(this, true);
-         
-        
-        if (!Directory.Exists(ScenarioManager.instance.CurrentScenarioFolder)) Directory.CreateDirectory(ScenarioManager.instance.CurrentScenarioFolder);
-        //if (!Directory.Exists(ScenarioPath )) Directory.CreateDirectory(ScenarioPath + ClassTypePath);
-        File.WriteAllText(ScenarioManager.instance.CurrentScenarioFolder +"/" +ID+ ".unit", jsonData);
-        Debug.Log("File Saved at: " + ScenarioManager.instance.CurrentScenarioFolder +"/" + ID + ".unit");
+        ID = GetInstanceID();
+        string jsonData = JsonUtility.ToJson(this, true); 
+        File.WriteAllText(Path.Combine( ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
+        Debug.Log("File Saved at: "+ Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
     }
-    
+    public virtual void LoadJSON()
+    {
+        JObject o = JObject.Parse(File.ReadAllText(FilePath));
+        Name= o["Name"].ToString();
+        ID = (int)o["ID"];
+    }
+    public class SaveData
+    {
+        public int ID;
+        public string Name;
+    }
 }

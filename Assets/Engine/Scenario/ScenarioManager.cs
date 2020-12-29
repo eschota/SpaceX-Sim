@@ -10,10 +10,8 @@ public class ScenarioManager : MonoBehaviour
     {
         get => Application.streamingAssetsPath + "/Scenarios/";
     }
-    public string CurrentScenarioFolder
-    {
-        get => ScenariosFolder + CurrentScenario.Name    ;
-    }
+    
+  
     public static event Action EventChangeState; 
     public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario  }
     private   State _currentState;
@@ -83,19 +81,23 @@ public class ScenarioManager : MonoBehaviour
     {
         LoadedScenarios.Clear();
         DirectoryInfo dir = new DirectoryInfo(ScenariosFolder);
-        FileInfo[] info = dir.GetFiles("*.scenario");
+        DirectoryInfo[] info = dir.GetDirectories("**");
        
-        foreach (FileInfo f in info)
+        foreach (DirectoryInfo f in info)
         {
-            string temp = File.ReadAllText(ScenariosFolder+"/"+(f.Name));
-          //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
-            LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
+            string temp = "";
+            if (File.Exists( Path.Combine(ScenariosFolder ,f.Name,"scenario.dat")))
+            {
+                temp = File.ReadAllText(Path.Combine(ScenariosFolder, f.Name, "scenario.dat"));
+                //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
+                LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
+            }
      } 
          Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
         WindowLoadScenario.instance.LoadScenarios();
     }
-    
 
+    
     private void Update()
     {
         if(Input.GetMouseButtonDown(1)) ScenarioManager.instance.CurrentResearcLink.CurrentResearchSelected = null; 
@@ -127,8 +129,7 @@ public class ScenarioManager : MonoBehaviour
     {
         public int[] StartDate;
         public string Name;
-        public string FilePath => instance.ScenariosFolder   + Name + ".scenario";
-        public string FolderPath => instance.ScenariosFolder +   Name  ;
+        public string CurrentFolder => Path.Combine(instance.ScenariosFolder, Name);
         
         public int StartBalance;
         public List<Research> Researches;
@@ -144,25 +145,23 @@ public class ScenarioManager : MonoBehaviour
         }
         public void SaveNewScenario()
         {
+            DeleteFilesAndFoldersOfScenario();
+
             string jsonData = JsonUtility.ToJson(this, true);
-            
-           
-            File.WriteAllText(FilePath , jsonData);
+
+            if (!Directory.Exists(instance.CurrentScenario.CurrentFolder)) Directory.CreateDirectory(instance.CurrentScenario.CurrentFolder);
+            File.WriteAllText(Path.Combine( CurrentFolder,"scenario.dat") , jsonData);
             foreach (var item in instance.CurrentScenario.Researches)
             {
-                item.Save();
+                item.SaveJSON();
             }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
         }
         public void DeleteFilesAndFoldersOfScenario()
         {
-            if (File.Exists(FilePath))
-            {
-                File.Delete(FilePath);
-                Debug.Log("Scenario " + Name + " Deleted");
-            }
-            if(Directory.Exists(FolderPath))
-            FileUtil.DeleteFileOrDirectory(FolderPath);
+             
+            if(Directory.Exists(CurrentFolder))
+            FileUtil.DeleteFileOrDirectory(CurrentFolder);
             
         }
     }
@@ -171,15 +170,23 @@ public class ScenarioManager : MonoBehaviour
     public void LoadScenarioUnits()
     {
 
-        DirectoryInfo dir = new DirectoryInfo(CurrentScenario.FilePath);
+        DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
         FileInfo[] info = dir.GetFiles("*.unit");
+        foreach (var item in CurrentScenario.Researches)
+        {
+          if(item!=null)  Destroy(item.gameObject);
+        }
         CurrentScenario.Researches.Clear();
         foreach (FileInfo f in info)
         {
-            string temp = File.ReadAllText(CurrentScenarioFolder + f.Name);
-            Debug.Log("research Loaded: " + f.Name + "  " + temp);
-            CurrentScenario.Researches.Add(JsonUtility.FromJson<Research>(temp));
+            string temp = File.ReadAllText(Path.Combine( CurrentScenario.CurrentFolder,f.Name));
 
-        } 
+            CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
+            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
+           
+        }
+        foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
     }
+    
+
 }
