@@ -65,15 +65,13 @@ public class ScenarioManager : MonoBehaviour
     {
         CurrentScenario = new Scenario( ScenarioName.text, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
         CurrentScenario.SaveNewScenario();
-        foreach (var item in Researches) item.Save();
-        foreach (var item in Modules) item.Save();
+        
         
     }
      public void SaveCurrentScenario()
     {
         CurrentScenario.SaveNewScenario();
-        foreach (var item in Researches) item.Save();
-        foreach (var item in Modules) item.Save();
+      
         
     }
 
@@ -103,20 +101,20 @@ public class ScenarioManager : MonoBehaviour
     {
         WindowSelectModule.instance.CurrentResearchSelected = CurrentResearcLink.CurrentResearchSelected;
     }
-    public List<Research> Researches = new List<Research>();
+     
     public List<Module> Modules= new List<Module>();
     public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public void AddResearch()
     {
-        Researches.Add( Instantiate( Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
+       CurrentScenario.Researches.Add( Instantiate( Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
         //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
-        buttons.Add(Researches[Researches.Count - 1].researchButton);
-        if (Researches.Count > 1)
+        buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
+        if (CurrentScenario.Researches.Count > 1)
         {
-            Researches[Researches.Count - 1].Dependances.Add(Researches[Researches.Count - 2]);
-            Researches[Researches.Count - 1].researchButton.Rect.position = Researches[Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
+            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].Dependances.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 2]);
+            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton.Rect.position = CurrentScenario.Researches[CurrentScenario.Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
         }
-        CurrentResearcLink.CurrentResearchSelected = Researches[Researches.Count - 1];
+        CurrentResearcLink.CurrentResearchSelected = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
         WindowSelectModule.instance.Hide();
         WindowEditModule.instance.Hide();
     }
@@ -127,7 +125,10 @@ public class ScenarioManager : MonoBehaviour
         public int[] StartDate;
         public string Name;
         public string FilePath => instance.ScenariosFolder + "/" + Name + ".scenario";
-        public int StartBalance; 
+        public string FolderPath => instance.ScenariosFolder + "/" + Name + "/";
+        
+        public int StartBalance;
+        public List<Research> Researches;
         public Scenario ( string _Name, int  _StartDay, int _StartMonth, int _StartYear, int _StartBalance)
         {
             Name = _Name;
@@ -136,6 +137,7 @@ public class ScenarioManager : MonoBehaviour
             StartDate[0] = _StartDay;
             StartDate[1] = _StartMonth;
             StartDate[2] = _StartYear;
+            Researches = new List<Research>();
         }
         public void SaveNewScenario()
         {
@@ -143,6 +145,10 @@ public class ScenarioManager : MonoBehaviour
             
            
             File.WriteAllText(FilePath , jsonData);
+            foreach (var item in instance.CurrentScenario.Researches)
+            {
+                item.Save();
+            }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
         }
         public void Delete()
@@ -155,4 +161,20 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     #endregion
+
+    public void LoadScenarioUnits()
+    {
+
+        //DirectoryInfo dir = new DirectoryInfo(CurrentScenario.FilePath);
+        //FileInfo[] info = dir.GetFiles("*.scenario");
+        LoadedScenarios.Clear();
+        //foreach (FileInfo f in info)
+        //{
+        //    string temp = File.ReadAllText(ScenariosFolder + "/" + (f.Name));
+        //    //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
+        //    LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
+        //}
+        //Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
+        //WindowLoadScenario.instance.LoadScenarios();
+    }
 }

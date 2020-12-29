@@ -36,13 +36,17 @@ public class WindowLoadScenario : UIWindows
 
     public void EditScenario()
     {
-        if(ScenarioManager.instance.CurrentScenario!=null)
-        ScenarioManager.instance.CurrentState = ScenarioManager.State.StartConditions;
+        if (ScenarioManager.instance.CurrentScenario != null)
+        {
+            ScenarioManager.instance.LoadScenarioUnits();
+            ScenarioManager.instance.CurrentState = ScenarioManager.State.StartConditions;
+        }
     }
 
     public void CreateNewScenario()
     {
         ScenarioManager.instance.CreateNewCurrentScenario();
+        ScenarioManager.instance.CurrentState = ScenarioManager.State.StartConditions;
     }
     public static WindowLoadScenario instance;
         void Start()

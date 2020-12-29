@@ -6,7 +6,7 @@ using System.IO;
 [System.Serializable]
 public class Unit : MonoBehaviour
 {
-    
+    public int ID;
     public string Name;
     [HideInInspector]
     public Vector3 localPosition, localRotation, localScale;
@@ -33,6 +33,7 @@ public class Unit : MonoBehaviour
     public virtual void Awake()
     {
         Name = name;
+      
     }
     public virtual void OnDestroy()
     {
@@ -45,12 +46,14 @@ public class Unit : MonoBehaviour
     }
     public virtual void Save()
     {
+        ID = this.GetInstanceID();
         string jsonData = JsonUtility.ToJson(this, true);
-        string ScenarioPath = Application.streamingAssetsPath + "/" + ScenarioManager.instance.CurrentScenario.Name + "/";
-        string ClassTypePath = GetType().ToString() + "/";
+        string ScenarioPath = ScenarioManager.instance.ScenariosFolder+ ScenarioManager.instance.CurrentScenario.Name + "/";
+        
         if (!Directory.Exists(ScenarioPath)) Directory.CreateDirectory(ScenarioPath);
-        if (!Directory.Exists(ScenarioPath + ClassTypePath)) Directory.CreateDirectory(ScenarioPath + ClassTypePath);
-        File.WriteAllText(ScenarioPath + ClassTypePath +Name+ ".unit", jsonData);
-        Debug.Log("File Saved at: " + ScenarioPath + ClassTypePath + ".unit");
+        //if (!Directory.Exists(ScenarioPath )) Directory.CreateDirectory(ScenarioPath + ClassTypePath);
+        File.WriteAllText(ScenarioPath + ID+ ".unit", jsonData);
+        Debug.Log("File Saved at: " + ScenarioPath + ID + ".unit");
     }
+    
 }

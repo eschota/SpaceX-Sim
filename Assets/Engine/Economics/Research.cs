@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+[System.Serializable]
 public class Research : Unit
 {
-    
+
     
     public List<Research> Dependances;
     public int[] TimeCost = { 100, 100, 100 };
@@ -50,6 +50,7 @@ public class Research : Unit
     }
     public override void Awake()
     {
-        Name = "Research " + ScenarioManager.instance.Researches.Count.ToString();
+        Name = "Research " + ScenarioManager.instance.CurrentScenario.Researches.Count.ToString();
+         
     }
 }
