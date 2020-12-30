@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+//using UnityEngine.Rendering.PostProcessing;
 
 public class CameraControllerOnEarth : MonoBehaviour
 {
@@ -13,11 +13,11 @@ public class CameraControllerOnEarth : MonoBehaviour
     public Vector3 startRot = new Vector3(45, 0, 0);
     Vector3 startDrag, CurrentDrag, targetDrag;
     Transform Pivot;
-    DepthOfField dof;
+  //  DepthOfField dof;
     void Start()
     {
 
-        FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
+    //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
         Pivot = new GameObject("Pivot").transform;
         Camera.main.transform.position = startPos;
         Camera.main.transform.rotation = Quaternion.Euler(startRot);
@@ -35,14 +35,14 @@ public class CameraControllerOnEarth : MonoBehaviour
     }
     void DOF()
     {
-        if (dof == null) return;
+        //if (dof == null) return;
 
-        Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit))
-        {
-            dof.focusDistance.value = Vector3.Distance(Camera.main.transform.position, hit.point);
-        }
+        //Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit))
+        //{
+        //    dof.focusDistance.value = Vector3.Distance(Camera.main.transform.position, hit.point);
+        //}
     }
     void Rotate()
     {
