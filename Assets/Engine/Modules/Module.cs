@@ -28,7 +28,7 @@ public class Module : Unit // главное это префаб модуля, �
     public string Description="Description";
     [SerializeField] public Camera _cam;
     
-   public string filename
+   public string IconFilePath
     {
      get =>   Application.dataPath + "/Resources/Modules/Icons/" + gameObject.name ;
     }
@@ -46,9 +46,9 @@ public class Module : Unit // главное это префаб модуля, �
 
        
 
-        ScreenCapture.CaptureScreenshot(filename + ".png");
+        ScreenCapture.CaptureScreenshot(IconFilePath + ".png");
         AssetDatabase.Refresh();
-        AssetDatabase.ImportAsset(filename);
+        AssetDatabase.ImportAsset(IconFilePath);
         AssetDatabase.Refresh(); 
     }
     //Texture2D toTexture2D(RenderTexture rTex)
@@ -82,14 +82,14 @@ public class Module : Unit // главное это префаб модуля, �
     [ContextMenu("ChangeToSprite")]
     public void ChangeToSprite()
     {
-        TextureImporter importer = AssetImporter.GetAtPath(filename) as TextureImporter;
+        TextureImporter importer = AssetImporter.GetAtPath(IconFilePath) as TextureImporter;
         importer.textureType = TextureImporterType.Sprite;
-        AssetDatabase.WriteImportSettingsIfDirty(filename);
+        AssetDatabase.WriteImportSettingsIfDirty(IconFilePath);
     }
     [ContextMenu ("GetIcon")]
     public Sprite GetIcon()
     {
-        return Resources.Load<Sprite>("Modules/Icons/"+gameObject.name);
+        return Resources.Load<Sprite>("Modules/Icons/"+Prefab.name);
        
     }
 

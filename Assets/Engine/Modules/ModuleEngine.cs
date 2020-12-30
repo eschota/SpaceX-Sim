@@ -28,7 +28,7 @@ public class ModuleEngine : Module
 
     public override void LoadJSON()
     {
-        SD = JsonUtility.FromJson<SaveDataEngine>(File.ReadAllText(FilePath));
+        SD = JsonUtility.FromJson<SaveDataEngine>(File.ReadAllText(JsonFilePath));
         ID = SD.ID;
         Name = SD.Name;
         ProductionTime = SD.ProductionTime;
@@ -36,6 +36,7 @@ public class ModuleEngine : Module
         FuelTaking = SD.FuelTaking;
         Cost = SD.Cost;
         Prefab = Resources.Load<GameObject>("Modules/" + SD.PrefabName);
+        if(Icon==null) Debug.LogError("Нет иконки у объекта :"+ name);
         foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
         {
             if (item.SD.ModulesID.Exists(X => X == SD.ID))

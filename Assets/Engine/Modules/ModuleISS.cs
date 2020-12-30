@@ -28,7 +28,7 @@ public class ModuleISS : Module
 
     public override void LoadJSON()
     {
-        SD = JsonUtility.FromJson<SaveDataEngine>(File.ReadAllText(FilePath));
+        SD = JsonUtility.FromJson<SaveDataEngine>(File.ReadAllText(JsonFilePath));
         ID = SD.ID;
         Name = SD.Name;
         ProductionTime = SD.ProductionTime;

@@ -16,15 +16,15 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public int[] CreationDate;
 
-    private string _filePath;
-    public string FilePath
+    private string _JSONFilePath;
+    public string JsonFilePath
     {
-        get => _filePath;
+        get => _JSONFilePath;
         set
         {
             if (value != "")
             {
-                _filePath = value;
+                _JSONFilePath = value;
                 LoadJSON();
             }
         }

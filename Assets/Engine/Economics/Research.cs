@@ -80,7 +80,7 @@ public class Research : Unit
     public SaveDataResearch SD;
     public override void LoadJSON()
     {
-        SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(FilePath));
+        SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(JsonFilePath));
         ID = SD.ID;
         Name = SD.Name;
         TimeCost = SD.TimeCost;

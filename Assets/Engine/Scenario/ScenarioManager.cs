@@ -219,16 +219,16 @@ public class ScenarioManager : MonoBehaviour
 
             CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
             buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
-            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
+            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
 
         }
         foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
         // загружаем модули
-        LoadModuleEngines();
+        LoadModules();
 
 
     }
-    public void LoadModuleEngines()
+    public void LoadModules()
     {
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
         FileInfo[] info = dir.GetFiles("*.Module");
@@ -241,8 +241,8 @@ public class ScenarioManager : MonoBehaviour
             SD = JsonUtility.FromJson<ModuleEngine.SaveDataEngine>(temp);
            if( modules.Exists(X => X.Prefab.name == SD.PrefabName))
             {
-                Module ins= Instantiate(modules.Find(X => X.Prefab.name == SD.PrefabName));
-                ins.FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
+                Module ins= new Module();                
+                ins.JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
                 
             }
           // SaveData
