@@ -46,7 +46,7 @@ public class Module : Unit // главное это префаб модуля, �
 
        
 
-        ScreenCapture.CaptureScreenshot(IconFilePath + ".png");
+        ScreenCapture.CaptureScreenshot("Modules/Icons/" + Prefab.name);
         AssetDatabase.Refresh();
         AssetDatabase.ImportAsset(IconFilePath);
         AssetDatabase.Refresh(); 
