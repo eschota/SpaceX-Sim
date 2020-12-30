@@ -66,6 +66,7 @@ public class LightController : MonoBehaviour
             ProcessReflectionProbes();
         }
 #if UNITY_EDITOR
+        
         if (!Application.isPlaying&& Selection.activeGameObject==gameObject)// работа в эдиторе
         {
             List < LightController > LC = new List<LightController>(); LC.AddRange(FindObjectsOfType<LightController>());
@@ -80,10 +81,12 @@ public class LightController : MonoBehaviour
     }
     private void IniTimer()
     {
-        if (Application.isPlaying) if (FindObjectOfType<CameraControllerOnEarth>() == null) gameObject.AddComponent<CameraControllerOnEarth>();
+         if (!Application.isPlaying) localTimer = 12;
+
+                if (Application.isPlaying) if (FindObjectOfType<CameraControllerOnEarth>() == null) gameObject.AddComponent<CameraControllerOnEarth>();
         Time.timeScale = 1;
-        if (TimeManager.Hours == null)
-            localTimer = 5;
+        if (TimeManager.Hours <= 0.1f)
+            localTimer = 12;
         else
             localTimer = TimeManager.Hours;
     }

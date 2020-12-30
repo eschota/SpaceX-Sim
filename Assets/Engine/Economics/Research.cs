@@ -77,7 +77,7 @@ public class Research : Unit
         File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
         Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
     }
-    SaveDataResearch SD;
+    public SaveDataResearch SD;
     public override void LoadJSON()
     {
         SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(FilePath));

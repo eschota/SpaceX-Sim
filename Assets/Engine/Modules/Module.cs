@@ -9,7 +9,7 @@ public class Module : Unit
     public ModuleType type;
     
      
-    public int moduleCost = 1;
+    public int Cost = 1;
 
     public Sprite moduleIcon;
 

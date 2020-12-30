@@ -38,7 +38,7 @@ public class WindowLoadScenario : UIWindows
     {
         if (ScenarioManager.instance.CurrentScenario != null)
         {
-            ScenarioManager.instance.LoadScenarioUnits();
+            ScenarioManager.instance.LoadScenarioResearchAndModules();
             ScenarioManager.instance.CurrentState = ScenarioManager.State.StartConditions;
             ScenarioManager.instance.RefreshScenario();
         }

@@ -32,7 +32,7 @@ public class ScenarioManager : MonoBehaviour
                 case State.PoliticMap:
                     break;
                 case State.LoadScenario:
-                    LoadScenarios();
+                    LoadAllExistenceScenarios();
                     break;
                 default:
                     break;
@@ -178,7 +178,7 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     #endregion
-    public void LoadScenarios()
+    public void LoadAllExistenceScenarios()
     {
         LoadedScenarios.Clear();
         DirectoryInfo dir = new DirectoryInfo(ScenariosFolder);
@@ -197,14 +197,14 @@ public class ScenarioManager : MonoBehaviour
         Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
         WindowLoadScenario.instance.LoadScenarios();
     }
-    public void LoadScenarioUnits()
+    public void LoadScenarioResearchAndModules()
     {
 
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
         FileInfo[] info = dir.GetFiles("*.unit");
         foreach (var item in CurrentScenario.Researches)
         {
-          if(item!=null)  Destroy(item.gameObject);
+            if (item != null) Destroy(item.gameObject);
         }
         foreach (var item in buttons)
         {
@@ -214,15 +214,27 @@ public class ScenarioManager : MonoBehaviour
         CurrentScenario.Researches.Clear();
         foreach (FileInfo f in info)
         {
-            string temp = File.ReadAllText(Path.Combine( CurrentScenario.CurrentFolder,f.Name));
+            string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
 
             CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
             buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
-           
+
         }
         foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
-    }
-    
+        // загружаем модули
 
+       
+    }
+    public void LoadModuleEngines()
+    {
+        DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
+        FileInfo[] info = dir.GetFiles("*.ModuleEngine");
+
+        foreach (FileInfo f in info)
+        {
+            string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+          // SaveData
+        }
+    }
 }
