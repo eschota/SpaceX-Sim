@@ -70,6 +70,7 @@ public class ScenarioManager : MonoBehaviour
     }
     public void RefreshScenario()
     {
+        if (CurrentScenario == null) return;
         ScenarioName.SetTextWithoutNotify(CurrentScenario.Name);
         ScenarioStartBalance.SetTextWithoutNotify(CurrentScenario.StartBalance.ToString());
         ScenarioStartDay.SetTextWithoutNotify(CurrentScenario.StartDate[0].ToString());
