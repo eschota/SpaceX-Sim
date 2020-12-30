@@ -235,7 +235,7 @@ public class ScenarioManager : MonoBehaviour
         modules.AddRange(Resources.LoadAll<Module>("Modules"));
         foreach (FileInfo f in info)
         {
-            ModuleEngine.SaveDataEngine SD;
+            Module.SaveData SD;
                string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
             SD = JsonUtility.FromJson<ModuleEngine.SaveDataEngine>(temp);
            if( modules.Exists(X => X.Prefab.name == SD.PrefabName))

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 [ExecuteInEditMode]
-public class ModuleEngine : Module
+public class ModuleISS : Module
 {
     public int Power = 100;
     public int FuelTaking = 1;
@@ -60,13 +60,5 @@ public class ModuleEngine : Module
         {
             ID = id; Name = name; PrefabName = prefabName; Cost = cost; ProductionTime = productionTime; Power = power; FuelTaking = fuelTaking;
         }
-    }
-
-
-
-
-  
-
-
-
+    } 
 }

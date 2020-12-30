@@ -26,7 +26,7 @@ public class Module : Unit // главное это префаб модуля, �
 
     public int[] ProductionTime = new int[] { 10,10,10};
     public string Description="Description";
-    [SerializeField] public Camera Camera;
+    [SerializeField] public Camera _cam;
     
    public string filename
     {
@@ -36,41 +36,79 @@ public class Module : Unit // главное это префаб модуля, �
     {
         gameObject.layer = 9;// Modules
         Name = gameObject.name;
-        if (Camera == null) Camera = GetComponentInChildren<Camera>();
+        if (_cam == null) _cam = GetComponentInChildren<Camera>();
         Icon = Resources.Load<Sprite>("Modules/Icons/" + gameObject.name);
-        Camera.targetTexture = Resources.Load<RenderTexture>("Modules/RT");
+        _cam.targetTexture = Resources.Load<RenderTexture>("Modules/RT");
 
     }
     public void RenderIcon()
     {
-        RenderTexture rt = Camera.targetTexture;
 
-        byte[] bytes = toTexture2D(rt).EncodeToPNG();
-        System.IO.File.WriteAllBytes(filename+".png", bytes);
-        Debug.Log("ScreenShot Captured: " + filename);
+       
+
+        ScreenCapture.CaptureScreenshot(filename + ".png");
+        AssetDatabase.Refresh();
+        AssetDatabase.ImportAsset(filename);
+        AssetDatabase.Refresh(); 
     }
-    Texture2D toTexture2D(RenderTexture rTex)
-    {
-        Texture2D tex = new Texture2D(512, 512, TextureFormat.RGB24, false);
-        RenderTexture.active = rTex;
-        tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
-        tex.Apply();
-        return tex;
-    }
+    //Texture2D toTexture2D(RenderTexture rTex)
+    //{
+    //    Texture2D tex = new Texture2D(512, 512, TextureFormat.RGB24, false);
+    //    RenderTexture.active = rTex;
+    //    tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
+    //    tex.Apply();
+    //    return tex;
+    //}
     private void Awake()
     {
         RenderIcon();
         GetIcon();
     }
-    //ScreenCapture.CaptureScreenshot(filename + ".png");
-    //Debug.Log("ScreenShot Captured: " + filename);
 
+    public override void Update()
+    {
+        if (!Application.isPlaying)
+            if (Selection.activeGameObject == gameObject)
+            {
+                foreach (var item in FindObjectsOfType<Module>())
+                {
+                    item._cam.gameObject.SetActive(false);
+                }
+                _cam.gameObject.SetActive(true);
+                _cam.gameObject.SetActive(true);
+                _cam.gameObject.SetActive(true);
+            }
+    }
 
-
+    [ContextMenu("ChangeToSprite")]
+    public void ChangeToSprite()
+    {
+        TextureImporter importer = AssetImporter.GetAtPath(filename) as TextureImporter;
+        importer.textureType = TextureImporterType.Sprite;
+        AssetDatabase.WriteImportSettingsIfDirty(filename);
+    }
     [ContextMenu ("GetIcon")]
     public Sprite GetIcon()
     {
         return Resources.Load<Sprite>("Modules/Icons/"+gameObject.name);
        
     }
+
+
+
+#if UNITY_EDITOR
+    [ExecuteInEditMode]
+    [CustomEditor(typeof(Module))]
+   public class RenderCam : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            if (GUILayout.Button("Render Icon"))
+            {
+                Selection.activeGameObject.GetComponent<Module>().RenderIcon();
+            }
+        }
+    }
+#endif
 }
