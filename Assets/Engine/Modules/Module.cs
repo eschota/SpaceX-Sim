@@ -75,8 +75,7 @@ public class Module : Unit // главное это префаб модуля, �
                     item._cam.gameObject.SetActive(false);
                 }
                 _cam.gameObject.SetActive(true);
-                _cam.gameObject.SetActive(true);
-                _cam.gameObject.SetActive(true);
+                EditorWindow.GetWindow<SceneView>().Repaint();
             }
     }
 
@@ -95,11 +94,10 @@ public class Module : Unit // главное это префаб модуля, �
     }
 
 
-
 #if UNITY_EDITOR
     [ExecuteInEditMode]
     [CustomEditor(typeof(Module))]
-   public class RenderCam : Editor
+    public class RenderCam : Editor
     {
         public override void OnInspectorGUI()
         {
@@ -111,4 +109,6 @@ public class Module : Unit // главное это префаб модуля, �
         }
     }
 #endif
+
+
 }
