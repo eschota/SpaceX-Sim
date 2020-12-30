@@ -13,7 +13,7 @@ public class UIButtonSelectModule : MonoBehaviour
         set
         {
             _module = value;
-            image.sprite = value.moduleIcon;
+            image.sprite = value.Icon;
         }
     }
     private Module _module;

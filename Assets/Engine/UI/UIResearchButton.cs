@@ -82,7 +82,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         for (int i = 0; i < research.ModulesOpen.Count; i++)
         {
             modules.Add(Instantiate(ModulesIcons, ModulesIconsRootTransform));
-            modules[modules.Count - 1].imgSprite.sprite = research.ModulesOpen[i].moduleIcon;
+            modules[modules.Count - 1].imgSprite.sprite = research.ModulesOpen[i].Icon;
         }
         
         

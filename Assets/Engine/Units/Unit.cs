@@ -7,6 +7,7 @@ public class Unit : MonoBehaviour
 {
     public int ID;
     public string Name;
+    [SerializeField] public GameObject Prefab;
     [HideInInspector]
     public Vector3 localPosition, localRotation, localScale;
     [HideInInspector]
@@ -78,5 +79,6 @@ public class Unit : MonoBehaviour
     {
         public int ID;
         public string Name;
+        public string PrefabName;
     }
 }

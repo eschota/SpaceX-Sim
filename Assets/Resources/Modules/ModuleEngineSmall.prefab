@@ -42,7 +42,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.8018868, g: 0, b: 0.066061966, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -63,16 +63,16 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 512
-  m_RenderingPath: 3
-  m_TargetTexture: {fileID: 0}
+    m_Bits: 4294967295
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 8600000, guid: 82ffb94b73b2929418595ada4b1fd3e6, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &4516779019384452428
@@ -128,7 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0521b0f567d1a4f933cd733149436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   Name: ModuleEngineSmall
+  Prefab: {fileID: 4415929715899408177}
   localPosition: {x: 0, y: 0, z: 0}
   localRotation: {x: -0, y: 0, z: 0}
   localScale: {x: 1, y: 1, z: 1}
@@ -136,14 +138,21 @@ MonoBehaviour:
   Class: ModuleEngineSmall (ModuleEngine)
   CreationDate: 000000000000000000000000
   type: 0
-  moduleCost: 1
-  moduleIcon: {fileID: 21300000, guid: b91e56fdd4e0e424eae106fe36019d01, type: 3}
+  Cost: 1
+  Icon: {fileID: 21300000, guid: b91e56fdd4e0e424eae106fe36019d01, type: 3}
   ProductionTime: 0a0000000a0000000a000000
   Description: Description
-  moduleCamera: {fileID: 9213648798529508545}
-  modulePrefab: {fileID: 4415929715899408177}
+  Camera: {fileID: 9213648798529508545}
   Power: 100
   FuelTaking: 1
+  SD:
+    ID: 0
+    Name: 
+    PrefabName: 
+    Cost: 0
+    ProductionTime: 
+    Power: 0
+    FuelTaking: 0
 --- !u!1001 &3569632119293190752
 PrefabInstance:
   m_ObjectHideFlags: 0

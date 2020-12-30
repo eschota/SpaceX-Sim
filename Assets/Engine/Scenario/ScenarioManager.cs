@@ -223,18 +223,29 @@ public class ScenarioManager : MonoBehaviour
         }
         foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
         // загружаем модули
+        LoadModuleEngines();
 
-       
+
     }
     public void LoadModuleEngines()
     {
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        FileInfo[] info = dir.GetFiles("*.ModuleEngine");
-
+        FileInfo[] info = dir.GetFiles("*.Module");
+        List<Module> modules = new List<Module>();
+        modules.AddRange(Resources.LoadAll<Module>("Modules"));
         foreach (FileInfo f in info)
         {
-            string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            ModuleEngine.SaveDataEngine SD;
+               string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            SD = JsonUtility.FromJson<ModuleEngine.SaveDataEngine>(temp);
+           if( modules.Exists(X => X.Prefab.name == SD.PrefabName))
+            {
+                Module ins= Instantiate(modules.Find(X => X.Prefab.name == SD.PrefabName));
+                ins.FilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
+                
+            }
           // SaveData
         }
+        
     }
 }

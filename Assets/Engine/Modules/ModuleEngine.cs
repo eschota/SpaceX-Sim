@@ -20,10 +20,10 @@ public class ModuleEngine : Module
     {
         ID = GetInstanceID();
 
-        SD = new SaveDataEngine( Name, GetInstanceID(), modulePrefab.name , Cost, ProductionTime, FuelTaking, Power);
+        SD = new SaveDataEngine( Name, GetInstanceID(), Prefab.name , Cost, ProductionTime, FuelTaking, Power);
         string jsonData = JsonUtility.ToJson(SD, true);
-        File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".ModuleEngine"), jsonData);
-        Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".ModuleEngine"));
+        File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".Module"), jsonData);
+        Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".Module"));
     }
 
     public override void LoadJSON()
@@ -35,13 +35,14 @@ public class ModuleEngine : Module
         Power = SD.Power;
         FuelTaking = SD.FuelTaking;
         Cost = SD.Cost;
-        modulePrefab = Resources.Load<GameObject>("Modules/" + SD.PrefabName);
+        Prefab = Resources.Load<GameObject>("Modules/" + SD.PrefabName);
         foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
         {
             if (item.SD.ModulesID.Exists(X => X == SD.ID))
             {
                 item.ModulesOpen.Add(this);
                 item.researchButton.Refresh();
+                transform.SetParent(item.transform);
             }
         }
     }
@@ -50,7 +51,7 @@ public class ModuleEngine : Module
     [System.Serializable]
     public class SaveDataEngine: SaveData
     {
-        public string PrefabName;
+        
         public int Cost;
         public int[] ProductionTime;
         public int Power;
@@ -77,16 +78,16 @@ public class ModuleEngine : Module
             base.OnInspectorGUI();
             if (GUILayout.Button("Render Icon"))
             {
-                foreach (var item in FindObjectsOfType<Module>())
-                {
-                    item.modulePrefab.SetActive(false);
-                    item.moduleCamera.enabled = false;
-                }
-                Selection.activeGameObject.GetComponent<ModuleEngine>().modulePrefab.SetActive(true);
-                Selection.activeGameObject.GetComponent<ModuleEngine>().moduleCamera.enabled = true;
+                //foreach (var item in FindObjectsOfType<Module>())
+                //{
+                //    item.Prefab?.SetActive(false);
+                //    item.Camera.enabled = false;
+                //}
+                Selection.activeGameObject.GetComponent<ModuleEngine>().Prefab.SetActive(true);
+                Selection.activeGameObject.GetComponent<ModuleEngine>().Camera.enabled = true;
                 Selection.activeGameObject.GetComponent<ModuleEngine>().RenderIcon();
                 AssetDatabase.Refresh();
-                Selection.activeGameObject.GetComponent<ModuleEngine>().moduleIcon = Resources.Load("Modules/Icons/" + Selection.activeGameObject.GetComponent<ModuleEngine>().name) as Sprite;
+                Selection.activeGameObject.GetComponent<ModuleEngine>().Icon = Resources.Load("Modules/Icons/" + Selection.activeGameObject.GetComponent<ModuleEngine>().name) as Sprite;
             }
 
             // if (GUILayout.Button("IsolateThisModule"))

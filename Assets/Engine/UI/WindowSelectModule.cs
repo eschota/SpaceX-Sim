@@ -79,7 +79,7 @@ public class WindowSelectModule : UIWindows
             activeButtons.Add( Instantiate(ButtonSelectModule, SelectModuleButtons));
 
 
-            activeButtons[activeButtons.Count - 1].icon.sprite=CurrentShow[i].moduleIcon;
+            activeButtons[activeButtons.Count - 1].icon.sprite=CurrentShow[i].Icon;
             
 
             activeButtons[activeButtons.Count - 1].ModuleName.text= CurrentShow[i].Name;
