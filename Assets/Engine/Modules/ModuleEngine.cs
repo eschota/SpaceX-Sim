@@ -65,8 +65,21 @@ public class ModuleEngine : Module
 
 
 
-  
 
 
-
+#if UNITY_EDITOR
+    [ExecuteInEditMode]
+    [CustomEditor(typeof(ModuleEngine))]
+    public class RenderCamEngine : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            if (GUILayout.Button("Render Icon"))
+            {
+                Selection.activeGameObject.GetComponent<Module>().RenderIcon();
+            }
+        }
+    }
+#endif
 }
