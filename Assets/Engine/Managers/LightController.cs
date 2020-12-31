@@ -125,7 +125,9 @@ public class LightController : MonoBehaviour
             if (emissivMatColors != null)                
                 for (int i = 0; i < emissivMatColors.Length; i++)
                 {
-                 if(emissivMatColors[i]!=null)   emissivMat[i].SetColor("_EmissionColor", emissivMatColors[i]* EmissiveIntensity.Evaluate(localTimer / 24f));
+                     if (emissivMatColors[i] != null) emissivMat[i].SetColor("_EmissiveColor", emissivMatColors[i] * EmissiveIntensity.Evaluate(localTimer / 24f));
+                     // это для URP рендера 
+                  //  if (emissivMatColors[i]!=null)   emissivMat[i].SetColor("_EmissionColor", emissivMatColors[i]* EmissiveIntensity.Evaluate(localTimer / 24f));
                 }
     }
     void ProcessSun()
