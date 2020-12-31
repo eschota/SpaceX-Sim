@@ -30,7 +30,7 @@ public class Module : Unit // главное это префаб модуля, �
     
    public string IconFilePath
     {
-     get =>   Application.dataPath + "/Resources/Modules/Icons/" + gameObject.name ;
+     get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name+".png" ;
     }
         private void Reset()
     {
@@ -46,7 +46,7 @@ public class Module : Unit // главное это префаб модуля, �
 
        
 
-        ScreenCapture.CaptureScreenshot("Modules/Icons/" + Prefab.name);
+        ScreenCapture.CaptureScreenshot(IconFilePath);
         AssetDatabase.Refresh();
         AssetDatabase.ImportAsset(IconFilePath);
         AssetDatabase.Refresh(); 
