@@ -6,24 +6,23 @@ public class LayersController : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Dropdown drop;
     List<string> options;
-    WorldMapManager WM;
+     
     void Awake()
     {
         drop=GetComponent<TMPro.TMP_Dropdown>();
-        drop.onValueChanged.AddListener(OnChange);
-        WM = FindObjectOfType<WorldMapManager>();
+        drop.onValueChanged.AddListener(OnChange); 
         WorldMapManager.EventChangeState += OnChangeState;
     }
     private void OnChange(int id)
     {
        
-        if (id == 0) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Earth;
-        if (id == 1) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Politic;
-        if (id == 2) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Population;
-        if (id == 3) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Science;
-        if (id == 4) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Transport;
-        if (id == 5) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Disaster;
-        if (id == 6) WM.CurrentState = WM.CurrentState = WorldMapManager.State.Climat;
+        if (id == 0) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Earth;
+        if (id == 1) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Politic;
+        if (id == 2) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Population;
+        if (id == 3) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Science;
+        if (id == 4) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Transport;
+        if (id == 5) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Disaster;
+        if (id == 6) WorldMapManager.instance.CurrentState = WorldMapManager.instance.CurrentState = WorldMapManager.State.Climat;
     }
     private void OnDestroy()
     {
@@ -32,8 +31,8 @@ public class LayersController : MonoBehaviour
     }
     void OnChangeState()
     {
-        drop.SetValueWithoutNotify((int)WM.CurrentState);
-        drop.SetValueWithoutNotify((int)WM.CurrentState);
+        drop.SetValueWithoutNotify((int)WorldMapManager.instance.CurrentState);
+        drop.SetValueWithoutNotify((int)WorldMapManager.instance.CurrentState);
     }
     void Update()
     {
