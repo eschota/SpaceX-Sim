@@ -49,19 +49,19 @@ public class ModuleEngine : Module
     //}
 
 
-    [System.Serializable]
-    public class SaveDataEngine: SaveData
-    {
+    //[System.Serializable]
+    //public class SaveDataEngine: SaveData
+    //{
         
-        public int Cost;
-        public int[] ProductionTime;
-        public int Power;
-        public int FuelTaking;
-        public SaveDataEngine(string name, int id, string prefabName, int cost, int []productionTime, int fuelTaking, int power)
-        {
-            ID = id; Name = name; PrefabName = prefabName; Cost = cost; ProductionTime = productionTime; Power = power; FuelTaking = fuelTaking;
-        }
-    }
+    //    public int Cost;
+    //    public int[] ProductionTime;
+    //    public int Power;
+    //    public int FuelTaking;
+    //    public SaveDataEngine(string name, int id, string prefabName, int cost, int []productionTime, int fuelTaking, int power)
+    //    {
+    //        ID = id; Name = name; PrefabName = prefabName; Cost = cost; ProductionTime = productionTime; Power = power; FuelTaking = fuelTaking;
+    //    }
+    //}
 
 
 

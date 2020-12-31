@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraControllerOnEarth : MonoBehaviour
 {
-    private float Speed = 25;
+   
     private float zoom;
     public Vector3 startPos = new Vector3(0, 300, -200);
     public Vector3 currentPos = Vector3.zero;
@@ -73,7 +73,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         //    target = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
         //    //return;
         //}
-        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler(target), 10 * Time.unscaledDeltaTime * Speed);
+        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler(target), 10 * Time.unscaledDeltaTime * GP.CameraEarthSpeed);
     }
     void Drag()
     {
@@ -91,7 +91,7 @@ public class CameraControllerOnEarth : MonoBehaviour
             targetDrag = new Vector3(temp.x, 0, temp.y);
 
         }
-        Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - targetDrag, Time.deltaTime * Speed*0.3f);
+        Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - targetDrag, Time.deltaTime * GP.CameraEarthSpeed*0.3f);
         if (Input.GetMouseButtonUp(0))
         {
             targetDrag = Vector3.zero;
@@ -104,17 +104,25 @@ public class CameraControllerOnEarth : MonoBehaviour
         Vector3 forward = Camera.main.transform.forward;
         Vector3 left = -Camera.main.transform.right;
         left = new Vector3(left.x, 0, left.z);
-        left = left.normalized*Speed;
+        left = left.normalized * GP.CameraEarthSpeed;
         forward = new Vector3(forward.x, 0, forward.z);
-        forward = forward.normalized*Speed;
-        if (Input.mousePosition.x < Screen.width * 0.05f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + left, Time.deltaTime * Speed);
-        if (Input.mousePosition.x > Screen.width * 0.95f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - left, Time.deltaTime * Speed);
-        if (Input.mousePosition.y > Screen.height * 0.95f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position+forward,  Time.deltaTime * Speed);
-        if (Input.mousePosition.y < Screen.height * 0.05f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - forward, Time.deltaTime * Speed);
+        forward = forward.normalized * GP.CameraEarthSpeed;
+        if (Bounds())
+        {
+            if (Input.mousePosition.x < Screen.width * 0.05f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + left, Time.deltaTime * GP.CameraEarthSpeed);
+            if (Input.mousePosition.x > Screen.width * 0.95f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - left, Time.deltaTime * GP.CameraEarthSpeed);
+            if (Input.mousePosition.y > Screen.height * 0.95f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + forward, Time.deltaTime * GP.CameraEarthSpeed);
+            if (Input.mousePosition.y < Screen.height * 0.05f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - forward, Time.deltaTime * GP.CameraEarthSpeed);
+        }
+        else
+        {
+            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Vector3.zero, Time.deltaTime * GP.CameraEarthSpeed);
+        }
     }
     private bool Bounds()
     {
-        if (Pivot.position.magnitude > 100) return false;
+        if (Mathf.Abs( Pivot.position.x) > GP.CameraEarthBoundings.x) return false;
+        if (Mathf.Abs( Pivot.position.z) > GP.CameraEarthBoundings.z) return false;
         else return true;
     }
     private void Zoom()
