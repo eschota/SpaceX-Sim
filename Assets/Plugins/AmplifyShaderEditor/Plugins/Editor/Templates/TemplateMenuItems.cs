@@ -11,6 +11,11 @@ namespace AmplifyShaderEditor
 		{
 			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "0770190933193b94aaa3065e307002fa" );
 		}
+		[MenuItem( "Assets/Create/Amplify Shader/HD/Lit", false, 85 )]
+		public static void ApplyTemplateHDLit()
+		{
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "53b46d85872c5b24c8f4f0a1c3fe4c87" );
+		}
 		[MenuItem( "Assets/Create/Amplify Shader/Legacy/Post Process", false, 85 )]
 		public static void ApplyTemplateLegacyPostProcess()
 		{
@@ -46,10 +51,10 @@ namespace AmplifyShaderEditor
 		{
 			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "e1de45c0d41f68c41b2cc20c8b9c05ef" );
 		}
-		[MenuItem( "Assets/Create/Amplify Shader/Legacy/Lit", false, 85 )]
-		public static void ApplyTemplateLegacyLit()
+		[MenuItem( "Assets/Create/Amplify Shader/HD/Decal", false, 85 )]
+		public static void ApplyTemplateHDDecal()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "ed95fe726fd7b4644bb42f4d1ddd2bcd" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "d345501910c196f4a81c9eff8a0a5ad7" );
 		}
 		[MenuItem( "Assets/Create/Amplify Shader/HD/Fabric", false, 85 )]
 		public static void ApplyTemplateHDFabric()
@@ -66,15 +71,10 @@ namespace AmplifyShaderEditor
 		{
 			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "7f5cb9c3ea6481f469fdd856555439ef" );
 		}
-		[MenuItem( "Assets/Create/Amplify Shader/HD/Lit", false, 85 )]
-		public static void ApplyTemplateHDLit()
+		[MenuItem( "Assets/Create/Amplify Shader/Legacy/Lit", false, 85 )]
+		public static void ApplyTemplateLegacyLit()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "53b46d85872c5b24c8f4f0a1c3fe4c87" );
-		}
-		[MenuItem( "Assets/Create/Amplify Shader/HD/Decal", false, 85 )]
-		public static void ApplyTemplateHDDecal()
-		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "d345501910c196f4a81c9eff8a0a5ad7" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "ed95fe726fd7b4644bb42f4d1ddd2bcd" );
 		}
 	}
 }
