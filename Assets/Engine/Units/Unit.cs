@@ -26,7 +26,7 @@ public class Unit : MonoBehaviour
             if (value != "")
             {
                 _JSONFilePath = value;
-                LoadJSON();
+               // LoadJSON(value);
             }
         }
     }
@@ -72,8 +72,5 @@ public class Unit : MonoBehaviour
         File.WriteAllText(Path.Combine( ScenarioManager.instance.CurrentScenario.CurrentFolder, ID+"."+ GetType().ToString() ), jsonData);
         Debug.Log("File Saved at: "+ Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()));
     }
-    public virtual void LoadJSON()
-    {
-     
-    }
+   
 }

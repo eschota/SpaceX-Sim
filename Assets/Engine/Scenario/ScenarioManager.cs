@@ -196,30 +196,27 @@ public class ScenarioManager : MonoBehaviour
             }
         }
         Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
+        ClearResearchesAndModules(); 
         WindowLoadScenario.instance.LoadScenarios();
     }
     public void LoadScenarioResearchAndModules()
     {
-
+        
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        FileInfo[] info = dir.GetFiles("*.unit");
-        foreach (var item in CurrentScenario.Researches)
-        {
-            if (item != null) Destroy(item.gameObject);
-        }
-        foreach (var item in buttons)
-        {
-            Destroy(item.gameObject);
-        }
-        buttons.Clear();
-        CurrentScenario.Researches.Clear();
+        FileInfo[] info = dir.GetFiles("*Research");
+       
         foreach (FileInfo f in info)
         {
-            string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            // GameManager.Create(Path.Combine(CurrentScenario.CurrentFolder,f.Name));
 
-            CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
-            buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
-            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
+            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            Research R= new GameObject().AddComponent<Research>();
+             JsonUtility.FromJsonOverwrite(jsondata,R);
+            //string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+
+            //CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
+            //buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
+            //CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
 
         }
     //    foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
@@ -227,6 +224,15 @@ public class ScenarioManager : MonoBehaviour
         LoadModules();
 
 
+    }
+
+    private void ClearResearchesAndModules()
+    {
+        foreach (var item in FindObjectsOfType<Research>()) if (item != null) Destroy(item.gameObject);        
+        foreach (var item in FindObjectsOfType<Module>()) if (item != null) Destroy(item.gameObject);
+        
+        buttons.Clear();
+        CurrentScenario.Researches.Clear();
     }
     public void LoadModules()
     {

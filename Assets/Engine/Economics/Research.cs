@@ -58,6 +58,15 @@ public class Research : Unit
     {
         Destroy(researchButton.gameObject);
     }
+    public override void SaveJSON()
+    {
+        ID = GetInstanceID();
+        string jsonData = JsonUtility.ToJson(this, true);
+        File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()), jsonData);
+        Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()));
+    }
+
+
     //public void RestoreDependencies()
     //{
     //    for (int i = 0; i < SD.DependesID.Count; i++)

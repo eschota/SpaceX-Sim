@@ -216,5 +216,35 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public static Unit Create(string FilePath)
+    {
+        string[] strs = FilePath.Split('.');
+        switch (strs[strs.Length-1])
+        {   case "Unit":
+            return JsonUtility.FromJson<Unit>(System.IO.File.ReadAllText(FilePath));
+                break;
+
+            case "Module":
+                return JsonUtility.FromJson<Module>(System.IO.File.ReadAllText(FilePath));
+                break;
+            case "ModuleEngine":
+                return JsonUtility.FromJson<ModuleEngine>(System.IO.File.ReadAllText(FilePath));
+                break;
+            case "ModuleISS":
+                return JsonUtility.FromJson<ModuleISS>(System.IO.File.ReadAllText(FilePath));
+                break;
+            case "Research":
+                return JsonUtility.FromJson<Research>(System.IO.File.ReadAllText(FilePath));
+
+                break;
+
+            default:
+                return null;
+                break;
+        }
+        return null;
+    }
+     
 }
 #endregion
