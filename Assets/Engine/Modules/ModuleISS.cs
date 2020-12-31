@@ -15,50 +15,42 @@ public class ModuleISS : Module
 
 
 
-    public SaveDataEngine SD;
-    public override void SaveJSON()
-    {
-        ID = GetInstanceID();
+    //public SaveDataEngine SD;
+    
 
-        SD = new SaveDataEngine( Name, GetInstanceID(), Prefab.name , Cost, ProductionTime, FuelTaking, Power);
-        string jsonData = JsonUtility.ToJson(SD, true);
-        File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".Module"), jsonData);
-        Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".Module"));
-    }
-
-    public override void LoadJSON()
-    {
-        SD = JsonUtility.FromJson<SaveDataEngine>(File.ReadAllText(JsonFilePath));
-        ID = SD.ID;
-        Name = SD.Name;
-        ProductionTime = SD.ProductionTime;
-        Power = SD.Power;
-        FuelTaking = SD.FuelTaking;
-        Cost = SD.Cost;
-        Prefab = Resources.Load<GameObject>("Modules/" + SD.PrefabName);
-        foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
-        {
-            if (item.SD.ModulesID.Exists(X => X == SD.ID))
-            {
-                item.ModulesOpen.Add(this);
-                item.researchButton.Refresh();
-                transform.SetParent(item.transform);
-            }
-        }
-    }
+    //public override void LoadJSON()
+    //{
+    //    SD = JsonUtility.FromJson<SaveDataEngine>(File.ReadAllText(JsonFilePath));
+    //    ID = SD.ID;
+    //    Name = SD.Name;
+    //    ProductionTime = SD.ProductionTime;
+    //    Power = SD.Power;
+    //    FuelTaking = SD.FuelTaking;
+    //    Cost = SD.Cost;
+    //    Prefab = Resources.Load<GameObject>("Modules/" + SD.PrefabName);
+    //    foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
+    //    {
+    //        if (item.SD.ModulesID.Exists(X => X == SD.ID))
+    //        {
+    //            item.ModulesOpen.Add(this);
+    //            item.researchButton.Refresh();
+    //            transform.SetParent(item.transform);
+    //        }
+    //    }
+    //}
 
 
-    [System.Serializable]
-    public class SaveDataEngine: SaveData
-    {
+    //[System.Serializable]
+    //public class SaveDataEngine: SaveData
+    //{
         
-        public int Cost;
-        public int[] ProductionTime;
-        public int Power;
-        public int FuelTaking;
-        public SaveDataEngine(string name, int id, string prefabName, int cost, int []productionTime, int fuelTaking, int power)
-        {
-            ID = id; Name = name; PrefabName = prefabName; Cost = cost; ProductionTime = productionTime; Power = power; FuelTaking = fuelTaking;
-        }
-    } 
+    //    public int Cost;
+    //    public int[] ProductionTime;
+    //    public int Power;
+    //    public int FuelTaking;
+    //    public SaveDataEngine(string name, int id, string prefabName, int cost, int []productionTime, int fuelTaking, int power)
+    //    {
+    //        ID = id; Name = name; PrefabName = prefabName; Cost = cost; ProductionTime = productionTime; Power = power; FuelTaking = fuelTaking;
+    //    }
+    //} 
 }

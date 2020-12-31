@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameParametres", menuName = "ScriptableObjects/GameParametres", order = 1)]
 public class GameParameters : ScriptableObject
 {
-    public int StartBalance = 100;
-    public Vector3 StartDate = new Vector3(1, 16, 1985);
+    [SerializeField] public Vector3 CameraEarthstartPosition = Vector3.one;
+    [SerializeField] public Vector3 CameraEarthBoundings =100* Vector3.one;
+    [SerializeField] public Vector3 CameraEarthstartRotation = 100* Vector3.one;
     
 }

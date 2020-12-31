@@ -222,7 +222,7 @@ public class ScenarioManager : MonoBehaviour
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
 
         }
-        foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
+    //    foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
         // загружаем модули
         LoadModules();
 

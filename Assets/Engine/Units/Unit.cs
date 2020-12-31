@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+[System.Serializable]
 public class Unit : MonoBehaviour
 {
     public int ID;
@@ -48,6 +49,7 @@ public class Unit : MonoBehaviour
         GameManager.UnitsAll.Add(this);
     }
 
+     
 
     public virtual void Awake()
     {
@@ -67,8 +69,8 @@ public class Unit : MonoBehaviour
     {
         ID = GetInstanceID();
         string jsonData = JsonUtility.ToJson(this, true); 
-        File.WriteAllText(Path.Combine( ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
-        Debug.Log("File Saved at: "+ Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
+        File.WriteAllText(Path.Combine( ScenarioManager.instance.CurrentScenario.CurrentFolder, ID+"."+ GetType().ToString() ), jsonData);
+        Debug.Log("File Saved at: "+ Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()));
     }
     public virtual void LoadJSON()
     {

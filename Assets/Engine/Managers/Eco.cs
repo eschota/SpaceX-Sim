@@ -10,7 +10,7 @@ public class Eco : MonoBehaviour
     {
         if (LoadName == "")
         {
-            Balance = GameManager.GameParam.StartBalance;
+            Balance = 300;
         }
     }
 

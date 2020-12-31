@@ -58,64 +58,64 @@ public class Research : Unit
     {
         Destroy(researchButton.gameObject);
     }
-    public void RestoreDependencies()
-    {
-        for (int i = 0; i < SD.DependesID.Count; i++)
-        {
-            Dependances.Add(ScenarioManager.instance.CurrentScenario.Researches.Find(X=>X.ID==SD.DependesID[i]));
-        }
-        researchButton.RebuildLinks();
-        researchButton.Refresh();
-    }
+    //public void RestoreDependencies()
+    //{
+    //    for (int i = 0; i < SD.DependesID.Count; i++)
+    //    {
+    //        Dependances.Add(ScenarioManager.instance.CurrentScenario.Researches.Find(X=>X.ID==SD.DependesID[i]));
+    //    }
+    //    researchButton.RebuildLinks();
+    //    researchButton.Refresh();
+    //}
 
-    public override void SaveJSON()
-    {
-        ID = GetInstanceID();
-        position = researchButton.Rect.position;
-        SaveDataResearch SD= new SaveDataResearch(GetInstanceID(), Name, researchButton.Rect.position, Dependances, ModulesOpen,TimeCost,Completed);
-        string jsonData = JsonUtility.ToJson(SD, true);
-        File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
-        Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
-    }
-    public SaveDataResearch SD;
-    public override void LoadJSON()
-    {
-        SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(JsonFilePath));
-        ID = SD.ID;
-        Name = SD.Name;
-        TimeCost = SD.TimeCost;
-        Completed = SD.Completed;
-        researchButton.Rect.position = SD.RectPosition;
-        Dependances = new List<Research>();
-        Dependances.Clear();
-        ModulesOpen= new List<Module>();
-        ModulesOpen.Clear();
-    }
+    //public override void SaveJSON()
+    //{
+    //    ID = GetInstanceID();
+    //    position = researchButton.Rect.position;
+    //    SaveDataResearch SD= new SaveDataResearch(GetInstanceID(), Name, researchButton.Rect.position, Dependances, ModulesOpen,TimeCost,Completed);
+    //    string jsonData = JsonUtility.ToJson(SD, true);
+    //    File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
+    //    Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
+    //}
+    //public SaveDataResearch SD;
+    //public override void LoadJSON()
+    //{
+    //    SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(JsonFilePath));
+    //    ID = SD.ID;
+    //    Name = SD.Name;
+    //    TimeCost = SD.TimeCost;
+    //    Completed = SD.Completed;
+    //    researchButton.Rect.position = SD.RectPosition;
+    //    Dependances = new List<Research>();
+    //    Dependances.Clear();
+    //    ModulesOpen= new List<Module>();
+    //    ModulesOpen.Clear();
+    //}
 
-    [System.Serializable]
-    public class SaveDataResearch:SaveData
-    {
-        public Vector3 RectPosition;
-        public List<int> DependesID;
-        public List<int> ModulesID;
-        public int[] TimeCost;
-        public bool Completed;
-        public SaveDataResearch(int id, string name, Vector3 rect, List<Research> dependences, List<Module> modules, int[] timeCost, bool completed)
-        {
-            ID = id; RectPosition = rect;
-            DependesID = new List<int>();
-            foreach (var item in dependences)
-            {
-                DependesID.Add(item.GetInstanceID());
-            }
-            ModulesID = new List<int>();
-            foreach (var item in modules)
-            {
-                ModulesID.Add(item.GetInstanceID());
-            }
-            TimeCost = timeCost;
-            Name = name;
-            Completed = completed;
-        }
-    }
+    //[System.Serializable]
+    //public class SaveDataResearch:SaveData
+    //{
+    //    public Vector3 RectPosition;
+    //    public List<int> DependesID;
+    //    public List<int> ModulesID;
+    //    public int[] TimeCost;
+    //    public bool Completed;
+    //    public SaveDataResearch(int id, string name, Vector3 rect, List<Research> dependences, List<Module> modules, int[] timeCost, bool completed)
+    //    {
+    //        ID = id; RectPosition = rect;
+    //        DependesID = new List<int>();
+    //        foreach (var item in dependences)
+    //        {
+    //            DependesID.Add(item.GetInstanceID());
+    //        }
+    //        ModulesID = new List<int>();
+    //        foreach (var item in modules)
+    //        {
+    //            ModulesID.Add(item.GetInstanceID());
+    //        }
+    //        TimeCost = timeCost;
+    //        Name = name;
+    //        Completed = completed;
+    //    }
+    //}
 }

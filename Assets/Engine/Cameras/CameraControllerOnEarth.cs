@@ -13,16 +13,18 @@ public class CameraControllerOnEarth : MonoBehaviour
     public Vector3 startRot = new Vector3(45, 0, 0);
     Vector3 startDrag, CurrentDrag, targetDrag;
     Transform Pivot;
-  //  DepthOfField dof;
+    //  DepthOfField dof;
+    GameParameters GP;
     void Start()
     {
-
+        GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
     //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
         Pivot = new GameObject("Pivot").transform;
-        Camera.main.transform.position = startPos;
-        Camera.main.transform.rotation = Quaternion.Euler(startRot);
-        Camera.main.fieldOfView = 50;
+        Camera.main.transform.position = GP.CameraEarthstartPosition;
+        Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
+         
         Camera.main.transform.SetParent(Pivot);
+
     }
 
     // Update is called once per frame

@@ -54,9 +54,9 @@ public class TimeManager : MonoBehaviour
 
     public static void Init()
     {
-        Days = Mathf.RoundToInt(GameManager.GameParam.StartDate[0]);
-        Years = Mathf.RoundToInt(GameManager.GameParam.StartDate[1]);
-        Months = Mathf.RoundToInt(GameManager.GameParam.StartDate[2]);
+        Days = Mathf.RoundToInt(1);
+        Years = Mathf.RoundToInt(1);
+        Months = Mathf.RoundToInt(1);
     }
 
     private void Update()
