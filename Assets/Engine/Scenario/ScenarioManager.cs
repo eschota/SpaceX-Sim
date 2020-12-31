@@ -236,15 +236,15 @@ public class ScenarioManager : MonoBehaviour
         modules.AddRange(Resources.LoadAll<Module>("Modules"));
         foreach (FileInfo f in info)
         {
-            Module.SaveData SD;
-               string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            SD = JsonUtility.FromJson<Module.SaveData>(temp);
-           if( modules.Exists(X => X.Prefab.name == SD.PrefabName))
-            {
-                Module ins= new Module();                
-                ins.JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
+           // Module.SaveData SD;
+           //    string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+           // SD = JsonUtility.FromJson<Module.SaveData>(temp);
+           //if( modules.Exists(X => X.Prefab.name == SD.PrefabName))
+           // {
+           //     Module ins= new Module();                
+           //     ins.JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
                 
-            }
+           // }
           // SaveData
         }
         

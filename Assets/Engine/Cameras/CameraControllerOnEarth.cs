@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraControllerOnEarth : MonoBehaviour
 {
-   
+
     private float zoom;
     public Vector3 startPos = new Vector3(0, 300, -200);
     public Vector3 currentPos = Vector3.zero;
@@ -18,11 +18,11 @@ public class CameraControllerOnEarth : MonoBehaviour
     void Start()
     {
         GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
-    //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
+        //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
         Pivot = new GameObject("Pivot").transform;
         Camera.main.transform.position = GP.CameraEarthstartPosition;
         Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
-         
+
         Camera.main.transform.SetParent(Pivot);
 
     }
@@ -52,17 +52,17 @@ public class CameraControllerOnEarth : MonoBehaviour
         {
 
             startPos = Input.mousePosition;
-            currentPos = Pivot.rotation.eulerAngles;
+            currentPos = Camera.main.transform.rotation.eulerAngles;
         }
         else
       if (Input.GetMouseButton(1))
         {
             Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 500;
 
-            target = new Vector3(currentPos.x - temp.y, currentPos.y + temp.x, 0);
+            target = new Vector3(Mathf.Clamp( currentPos.x - temp.y,-90,40), currentPos.y + temp.x, 0);
 
         }
-        else
+        
         {
             Move();
             Drag();
@@ -73,7 +73,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         //    target = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
         //    //return;
         //}
-        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler(target), 10 * Time.unscaledDeltaTime * GP.CameraEarthSpeed);
+        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.Euler(target), 5* Time.unscaledDeltaTime * GP.CameraEarthSpeed);
     }
     void Drag()
     {
@@ -91,13 +91,13 @@ public class CameraControllerOnEarth : MonoBehaviour
             targetDrag = new Vector3(temp.x, 0, temp.y);
 
         }
-        Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - targetDrag, Time.deltaTime * GP.CameraEarthSpeed*0.3f);
+        Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - targetDrag, Time.deltaTime * GP.CameraEarthSpeed * 0.3f);
         if (Input.GetMouseButtonUp(0))
         {
             targetDrag = Vector3.zero;
         }
     }
-    private void Move()
+    private void Move( )
     {
         if (Input.mousePosition.x > Screen.width || Input.mousePosition.x < 0) return;
         if (Input.mousePosition.y > Screen.height || Input.mousePosition.y < 0) return;
@@ -107,30 +107,30 @@ public class CameraControllerOnEarth : MonoBehaviour
         left = left.normalized * GP.CameraEarthSpeed;
         forward = new Vector3(forward.x, 0, forward.z);
         forward = forward.normalized * GP.CameraEarthSpeed;
-        if (Bounds())
-        {
-            if (Input.mousePosition.x < Screen.width * 0.05f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + left, Time.deltaTime * GP.CameraEarthSpeed);
-            if (Input.mousePosition.x > Screen.width * 0.95f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - left, Time.deltaTime * GP.CameraEarthSpeed);
-            if (Input.mousePosition.y > Screen.height * 0.95f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + forward, Time.deltaTime * GP.CameraEarthSpeed);
-            if (Input.mousePosition.y < Screen.height * 0.05f) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - forward, Time.deltaTime * GP.CameraEarthSpeed);
-        }
-        else
-        {
-            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Vector3.zero, Time.deltaTime * GP.CameraEarthSpeed);
-        }
+        
+        if (Input.mousePosition.x < Screen.width * 0.05f || Input.GetKey(KeyCode.A)) if(Bound(Pivot.position+left))Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + left, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.x > Screen.width * 0.95f || Input.GetKey(KeyCode.D)) if (Bound(Pivot.position - left))Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - left, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.y > Screen.height * 0.95f || Input.GetKey(KeyCode.W)) if (Bound(Pivot.position +forward)) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + forward, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.y < Screen.height * 0.05f || Input.GetKey(KeyCode.S)) if (Bound(Pivot.position -forward)) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - forward, Time.deltaTime * GP.CameraEarthSpeed);
+
+
     }
-    private bool Bounds()
-    {
-        if (Mathf.Abs( Pivot.position.x) > GP.CameraEarthBoundings.x) return false;
-        if (Mathf.Abs( Pivot.position.z) > GP.CameraEarthBoundings.z) return false;
-        else return true;
-    }
+
+    
+    
+    private bool Bound(Vector3 pos1)
+{
+        if (Mathf.Abs( pos1.x) > GP.CameraEarthBoundings.x) return false;
+        if (Mathf.Abs( pos1.z) > GP.CameraEarthBoundings.z) return false;
+        return true;
+}
+     
     private void Zoom()
     {
         zoom += 3 * Input.mouseScrollDelta.y;
         if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
 
-        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 2));
+        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 5));
         zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
         if (Input.GetMouseButtonDown(2)) zoom = 0;
     }

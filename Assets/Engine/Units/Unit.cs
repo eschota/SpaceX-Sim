@@ -76,10 +76,4 @@ public class Unit : MonoBehaviour
     {
      
     }
-    public class SaveData
-    {
-        public int ID;
-        public string Name;
-        public string PrefabName;
-    }
 }
