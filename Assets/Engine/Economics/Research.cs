@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
- 
+
 [System.Serializable]
 public class Research : Unit
 {
 
-
-    public List<Research> Dependances = new List<Research>();
     public int[] TimeCost = { 100, 100, 100 };
 
     public Vector2 position;
     public Vector2 pivotStart;
     public Vector2 pivotEnd;
-    public List<Module> ModulesOpen= new List<Module>();
-    public UIResearchButton researchButton;
 
     public int[] TimeCompleted = { 0, 0, 0 };
 
     private bool _completed;
+
+    [System.NonSerialized]
+    public List<Research> Dependances = new List<Research>();
+    public List<int> DependencesID = new List<int>();
+    [System.NonSerialized]
+    public List<Module> Modules = new List<Module>();
+    public List<int> ModulesID = new List<int>();
+    [System.NonSerialized]
+    public UIResearchButton researchButton;
+
     public bool Completed
     {
         get
@@ -49,88 +55,37 @@ public class Research : Unit
             GameManager.EventUnit(this);
         }
     }
-     
+
+    public override void Awake()// 
+    {
+
+    }
     public override void OnDestroy()
     {
-        Destroy(researchButton.gameObject);
+        Destroy(researchButton?.gameObject);
         ScenarioManager.instance.CurrentScenario.Researches.Remove(this);
     }
     public override void Ini()
     {
-       name= Name = "Research " + ScenarioManager.instance.CurrentScenario.Researches.Count.ToString();
+        name = Name = "Research " + ScenarioManager.instance.CurrentScenario.Researches.Count.ToString();
         ScenarioManager.instance.CurrentScenario.Researches.Add(this);
         researchButton = Instantiate(Resources.Load<UIResearchButton>("UI/ScenarioManager/ResearchButton"), ScenarioManager.instance.CameraPivot);
         researchButton.research = this;
+        researchButton.name = name + "_Button";
         researchButton.Refresh();
     }
-
+  
     public override void SaveJSON()
     {
         ID = GetInstanceID();
+        foreach (var item in Modules) ModulesID.Add(item.GetInstanceID());
+        foreach (var item in Dependances) DependencesID.Add(item.GetInstanceID());
+
+
         string jsonData = JsonUtility.ToJson(this, true);
         File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()), jsonData);
         Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()));
     }
 
-
-    //public void RestoreDependencies()
-    //{
-    //    for (int i = 0; i < SD.DependesID.Count; i++)
-    //    {
-    //        Dependances.Add(ScenarioManager.instance.CurrentScenario.Researches.Find(X=>X.ID==SD.DependesID[i]));
-    //    }
-    //    researchButton.RebuildLinks();
-    //    researchButton.Refresh();
-    //}
-
-    //public override void SaveJSON()
-    //{
-    //    ID = GetInstanceID();
-    //    position = researchButton.Rect.position;
-    //    SaveDataResearch SD= new SaveDataResearch(GetInstanceID(), Name, researchButton.Rect.position, Dependances, ModulesOpen,TimeCost,Completed);
-    //    string jsonData = JsonUtility.ToJson(SD, true);
-    //    File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"), jsonData);
-    //    Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, GetInstanceID() + ".unit"));
-    //}
-    //public SaveDataResearch SD;
-    //public override void LoadJSON()
-    //{
-    //    SD= JsonUtility.FromJson<SaveDataResearch>( File.ReadAllText(JsonFilePath));
-    //    ID = SD.ID;
-    //    Name = SD.Name;
-    //    TimeCost = SD.TimeCost;
-    //    Completed = SD.Completed;
-    //    researchButton.Rect.position = SD.RectPosition;
-    //    Dependances = new List<Research>();
-    //    Dependances.Clear();
-    //    ModulesOpen= new List<Module>();
-    //    ModulesOpen.Clear();
-    //}
-
-    //[System.Serializable]
-    //public class SaveDataResearch:SaveData
-    //{
-    //    public Vector3 RectPosition;
-    //    public List<int> DependesID;
-    //    public List<int> ModulesID;
-    //    public int[] TimeCost;
-    //    public bool Completed;
-    //    public SaveDataResearch(int id, string name, Vector3 rect, List<Research> dependences, List<Module> modules, int[] timeCost, bool completed)
-    //    {
-    //        ID = id; RectPosition = rect;
-    //        DependesID = new List<int>();
-    //        foreach (var item in dependences)
-    //        {
-    //            DependesID.Add(item.GetInstanceID());
-    //        }
-    //        ModulesID = new List<int>();
-    //        foreach (var item in modules)
-    //        {
-    //            ModulesID.Add(item.GetInstanceID());
-    //        }
-    //        TimeCost = timeCost;
-    //        Name = name;
-    //        Completed = completed;
-    //    }
-    //}
+  
 }

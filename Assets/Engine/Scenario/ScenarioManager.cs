@@ -32,7 +32,7 @@ public class ScenarioManager : MonoBehaviour
                 case State.PoliticMap:
                     break;
                 case State.LoadScenario:
-                    LoadAllExistenceScenarios();
+                    EnterScenarioManager();
                     break;
                 default:
                     break;
@@ -108,7 +108,7 @@ public class ScenarioManager : MonoBehaviour
     public void AddResearch()
     {
         
-        new GameObject().AddComponent<Research>(); 
+        new GameObject().AddComponent<Research>().Ini(); 
 
         if (CurrentScenario.Researches.Count > 1)
         {
@@ -154,7 +154,7 @@ public class ScenarioManager : MonoBehaviour
             foreach (var item in instance.CurrentScenario.Researches)
             {
                 item.SaveJSON();
-                foreach (var module in item.ModulesOpen)
+                foreach (var module in item.Modules)
                 {
                     module.SaveJSON();
                 }
@@ -173,7 +173,7 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     #endregion
-    public void LoadAllExistenceScenarios()
+    public void EnterScenarioManager()
     {
         LoadedScenarios.Clear();
         DirectoryInfo dir = new DirectoryInfo(ScenariosFolder);
@@ -201,20 +201,12 @@ public class ScenarioManager : MonoBehaviour
        
         foreach (FileInfo f in info)
         {
-            // GameManager.Create(Path.Combine(CurrentScenario.CurrentFolder,f.Name));
-
             string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
             Research R= new GameObject().AddComponent<Research>();
-             JsonUtility.FromJsonOverwrite(jsondata,R);
-            //string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            JsonUtility.FromJsonOverwrite(jsondata,R);
+            R.Ini();     
 
-            //CurrentScenario.Researches.Add(Instantiate(Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject, CameraPivot).GetComponent<Research>());
-            //buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
-            //CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
-
-        }
-    //    foreach (var item in CurrentScenario.Researches) item.RestoreDependencies();
-        // загружаем модули
+        } 
         LoadModules();
 
 

@@ -52,7 +52,7 @@ public class Unit : MonoBehaviour
     public virtual void Awake()
     {
         Name = name;
-        Ini();
+       
     }
     public virtual void OnDestroy()
     {
@@ -70,5 +70,14 @@ public class Unit : MonoBehaviour
         File.WriteAllText(Path.Combine( ScenarioManager.instance.CurrentScenario.CurrentFolder, ID+"."+ GetType().ToString() ), jsonData);
         Debug.Log("File Saved at: "+ Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()));
     }
-   
+    public List<int> GetIDs(List<Unit> units)
+    {
+        List<int> IDs = new List<int>();
+        foreach (var item in units)
+        {
+            IDs.Add(item.GetInstanceID());
+        }
+
+        return IDs;
+    }
 }

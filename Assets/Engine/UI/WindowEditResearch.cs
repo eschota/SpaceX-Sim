@@ -54,7 +54,7 @@ public class WindowEditResearch : UIWindows
     public void RefreshWindow()
     {
         ClearModulesButton();
-        foreach (var item in CurrentResearch.ModulesOpen)
+        foreach (var item in CurrentResearch.Modules)
         {
             AddModuleButton(item);
         }

@@ -46,7 +46,7 @@ public class WindowEditModule : UIWindows
 
     public void DeleteModuleFromResearch()
     {
-        WindowEditResearch.instance.CurrentResearch.ModulesOpen.Remove(currentModule);
+        WindowEditResearch.instance.CurrentResearch.Modules.Remove(currentModule);
         WindowEditResearch.instance.CurrentResearch.researchButton.Refresh();
         WindowEditResearch.instance.RefreshWindow();
         Hide();
