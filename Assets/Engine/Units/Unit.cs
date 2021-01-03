@@ -32,9 +32,7 @@ public class Unit : MonoBehaviour
     }
    
     public virtual void Ini()
-    {
-        //transform.position = unitSO.Position;
-        //Name = unitSO.Name;
+    { 
     }
     public virtual void Start()
     {
@@ -54,7 +52,7 @@ public class Unit : MonoBehaviour
     public virtual void Awake()
     {
         Name = name;
-      
+        Ini();
     }
     public virtual void OnDestroy()
     {

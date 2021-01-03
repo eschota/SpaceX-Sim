@@ -14,7 +14,7 @@ public class ScenarioManager : MonoBehaviour
     public static event Action EventChangeState; 
     public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario  }
     private   State _currentState;
-    [SerializeField] Transform CameraPivot;
+    [SerializeField] public Transform CameraPivot;
     public   State CurrentState
     {
         get => _currentState;
@@ -107,22 +107,23 @@ public class ScenarioManager : MonoBehaviour
     public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public void AddResearch()
     {
-       CurrentScenario.Researches.Add( Instantiate( Resources.Load("UI/ScenarioManager/ResearchButton") as GameObject,CameraPivot).GetComponent<Research>());
-        //  Researches[Researches.Count - 1].name = CurrentResearch.ResearchName.text;
-        buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
+        
+        new GameObject().AddComponent<Research>(); 
+
         if (CurrentScenario.Researches.Count > 1)
         {
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].Dependances.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 2]);
             CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton.Rect.position = CurrentScenario.Researches[CurrentScenario.Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
         }
 
-        
+        buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
         WindowEditResearch.instance.CurrentResearch = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
         WindowEditResearch.instance.OnEditResearch();
         WindowSelectModule.instance.Hide();
         WindowEditModule.instance.Hide();
     }
    
+
     [System.Serializable]
     public class Scenario
     {
@@ -164,15 +165,8 @@ public class ScenarioManager : MonoBehaviour
       
         public void DeleteFilesAndFoldersOfScenario()
         {
-
             if (Directory.Exists(CurrentFolder))
             {
-                //DirectoryInfo dir = new DirectoryInfo(CurrentFolder);
-                //FileInfo[] info = dir.GetFiles("*.unit");
-                //foreach (FileInfo f in info)
-                //{
-                //    f.Delete();
-                //}
                     Directory.Delete(CurrentFolder,true);
             }
             

@@ -8,13 +8,13 @@ public class Research : Unit
 {
 
 
-    public List<Research> Dependances;
+    public List<Research> Dependances = new List<Research>();
     public int[] TimeCost = { 100, 100, 100 };
 
     public Vector2 position;
     public Vector2 pivotStart;
     public Vector2 pivotEnd;
-    public List<Module> ModulesOpen;
+    public List<Module> ModulesOpen= new List<Module>();
     public UIResearchButton researchButton;
 
     public int[] TimeCompleted = { 0, 0, 0 };
@@ -49,15 +49,21 @@ public class Research : Unit
             GameManager.EventUnit(this);
         }
     }
-    public override void Awake()
-    {
-        Name = "Research " + ScenarioManager.instance.CurrentScenario.Researches.Count.ToString();
-
-    }
-    private void OnDestroy()
+     
+    public override void OnDestroy()
     {
         Destroy(researchButton.gameObject);
+        ScenarioManager.instance.CurrentScenario.Researches.Remove(this);
     }
+    public override void Ini()
+    {
+       name= Name = "Research " + ScenarioManager.instance.CurrentScenario.Researches.Count.ToString();
+        ScenarioManager.instance.CurrentScenario.Researches.Add(this);
+        researchButton = Instantiate(Resources.Load<UIResearchButton>("UI/ScenarioManager/ResearchButton"), ScenarioManager.instance.CameraPivot);
+        researchButton.research = this;
+        researchButton.Refresh();
+    }
+
     public override void SaveJSON()
     {
         ID = GetInstanceID();

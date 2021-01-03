@@ -53,12 +53,9 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     Vector3 currentPos;
     
    void Awake()
-    {
-        
-        research = GetComponent<Research>();
-        research.researchButton = this;
+    { 
         GetComponent<Button>().onClick.AddListener(OnClick);
-        Refresh();
+      
         //        research.researchButton.transform.position = new Vector3(200, 200);
 
     }
@@ -74,6 +71,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     List<UIModule> modules = new List<UIModule>();
    public void Refresh()
     {
+        if (!research) return;
         for (int i = 0; i < modules.Count; i++)
         {
             Destroy(modules[i].gameObject);
