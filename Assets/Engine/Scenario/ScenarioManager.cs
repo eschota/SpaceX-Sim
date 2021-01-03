@@ -9,8 +9,8 @@ public class ScenarioManager : MonoBehaviour
     {
         get => Application.streamingAssetsPath + "/Scenarios/";
     }
-    
-  
+
+    public List<Research> Researches = new List<Research>();
     public static event Action EventChangeState; 
     public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario  }
     private   State _currentState;
@@ -59,8 +59,13 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
     [SerializeField] TMPro.TMP_InputField ScenarioStartYear;
     [SerializeField] TMPro.TMP_InputField ScenarioStartBalance;
-    
-    public Scenario CurrentScenario;
+    private Scenario _currentScenario;
+    public Scenario CurrentScenario 
+    {
+        get => _currentScenario;
+        set { _currentScenario = value; 
+        }
+    }
     public void CreateNewCurrentScenario()
     {
         CurrentScenario = new Scenario( ScenarioName.text+LoadedScenarios.Count, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
@@ -110,14 +115,14 @@ public class ScenarioManager : MonoBehaviour
         
         new GameObject().AddComponent<Research>().Ini(); 
 
-        if (CurrentScenario.Researches.Count > 1)
+        if ( Researches.Count > 1)
         {
-            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].Dependances.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 2]);
-            CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton.Rect.position = CurrentScenario.Researches[CurrentScenario.Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
+             Researches[ Researches.Count - 1].Dependances.Add( Researches[ Researches.Count - 2]);
+            Researches[ Researches.Count - 1].researchButton.Rect.position =  Researches[ Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
         }
 
-        buttons.Add(CurrentScenario.Researches[CurrentScenario.Researches.Count - 1].researchButton);
-        WindowEditResearch.instance.CurrentResearch = CurrentScenario.Researches[CurrentScenario.Researches.Count - 1];
+        buttons.Add( Researches[ Researches.Count - 1].researchButton);
+        WindowEditResearch.instance.CurrentResearch =  Researches[ Researches.Count - 1];
         WindowEditResearch.instance.OnEditResearch();
         WindowSelectModule.instance.Hide();
         WindowEditModule.instance.Hide();
@@ -132,7 +137,8 @@ public class ScenarioManager : MonoBehaviour
         public string CurrentFolder => Path.Combine(instance.ScenariosFolder, Name);
         
         public int StartBalance;
-        public List<Research> Researches;
+        
+        
         public Scenario ( string _Name, int  _StartDay, int _StartMonth, int _StartYear, int _StartBalance)
         {
             Name = _Name;
@@ -141,7 +147,7 @@ public class ScenarioManager : MonoBehaviour
             StartDate[0] = _StartDay;
             StartDate[1] = _StartMonth;
             StartDate[2] = _StartYear;
-            Researches = new List<Research>();
+            
         }
         public void SaveNewScenario()
         {
@@ -151,7 +157,7 @@ public class ScenarioManager : MonoBehaviour
 
             if (!Directory.Exists(instance.CurrentScenario.CurrentFolder)) Directory.CreateDirectory(instance.CurrentScenario.CurrentFolder);
             File.WriteAllText(Path.Combine( CurrentFolder,"scenario.dat") , jsonData);
-            foreach (var item in instance.CurrentScenario.Researches)
+            foreach (var item in instance.Researches)
             {
                 item.SaveJSON();
                 foreach (var module in item.Modules)
@@ -190,7 +196,7 @@ public class ScenarioManager : MonoBehaviour
             }
         }
         Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
-        ClearResearchesAndModules(); 
+      if(CurrentScenario!=null)  ClearResearchesAndModules(); 
         WindowLoadScenario.instance.LoadScenarios();
     }
     public void LoadScenarioResearchAndModules()
@@ -218,7 +224,7 @@ public class ScenarioManager : MonoBehaviour
         foreach (var item in FindObjectsOfType<Module>()) if (item != null) Destroy(item.gameObject);
         
         buttons.Clear();
-        CurrentScenario.Researches.Clear();
+        Researches.Clear();
     }
     public void LoadModules()
     {

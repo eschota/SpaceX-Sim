@@ -154,7 +154,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         delta = eventData.pointerCurrentRaycast.screenPosition - new Vector2(Rect.position.x,Rect.position.y);
       //  Debug.Log(delta);
         Rect.position = -delta+ eventData.pointerCurrentRaycast.screenPosition;
-        foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
+        foreach (var item in ScenarioManager.instance.Researches)
         {
             item.researchButton.RebuildLinks();
         }
@@ -165,7 +165,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         
         research.position = Rect.position;
         delta = Vector2.zero;
-        foreach (var item in ScenarioManager.instance.CurrentScenario.Researches)
+        foreach (var item in ScenarioManager.instance.Researches)
         {
             item.researchButton.RebuildLinks();
         }

@@ -106,7 +106,7 @@ public class WindowEditResearch : UIWindows
     public void DeleteResearch()
     {
         Research temp = CurrentResearch;
-        foreach (var item in ScenarioManager.instance.CurrentScenario.Researches.FindAll(X => X.Dependances.Contains(temp)))//удаляем зависимомсти от этого рисерча
+        foreach (var item in ScenarioManager.instance.Researches.FindAll(X => X.Dependances.Contains(temp)))//удаляем зависимомсти от этого рисерча
         {
             item.Dependances.Remove(temp);
             item.researchButton.RebuildLinks();
@@ -114,7 +114,7 @@ public class WindowEditResearch : UIWindows
 
             
             ScenarioManager.instance.buttons.Remove(CurrentResearch.researchButton);//удаляем кнопки
-        ScenarioManager.instance.CurrentScenario.Researches.Remove(CurrentResearch);//удаляем рисерчи
+        ScenarioManager.instance.Researches.Remove(CurrentResearch);//удаляем рисерчи
         Destroy(CurrentResearch.researchButton.gameObject);
         Destroy(CurrentResearch.gameObject);
         CurrentResearch = null;

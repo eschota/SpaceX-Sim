@@ -63,12 +63,12 @@ public class Research : Unit
     public override void OnDestroy()
     {
         Destroy(researchButton?.gameObject);
-        ScenarioManager.instance.CurrentScenario.Researches.Remove(this);
+        ScenarioManager.instance.Researches.Remove(this);
     }
     public override void Ini()
     {
-        name = Name = "Research " + ScenarioManager.instance.CurrentScenario.Researches.Count.ToString();
-        ScenarioManager.instance.CurrentScenario.Researches.Add(this);
+        name = Name = "Research " + ScenarioManager.instance.Researches.Count.ToString();
+        ScenarioManager.instance.Researches.Add(this);
         researchButton = Instantiate(Resources.Load<UIResearchButton>("UI/ScenarioManager/ResearchButton"), ScenarioManager.instance.CameraPivot);
         researchButton.research = this;
         researchButton.name = name + "_Button";
