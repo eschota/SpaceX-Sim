@@ -212,8 +212,10 @@ public class ScenarioManager : MonoBehaviour
             JsonUtility.FromJsonOverwrite(jsondata,R);
             R.Ini();     
 
-        } 
+        }
         LoadModules();
+        foreach (var item in Researches) item.RestoreDependencies();
+        
 
 
     }
@@ -221,6 +223,7 @@ public class ScenarioManager : MonoBehaviour
     private void ClearResearchesAndModules()
     {
         foreach (var item in FindObjectsOfType<Research>()) if (item != null) Destroy(item.gameObject);        
+        foreach (var item in FindObjectsOfType<UIResearchButton>()) if (item != null) Destroy(item.gameObject);        
         foreach (var item in FindObjectsOfType<Module>()) if (item != null) Destroy(item.gameObject);
         
         buttons.Clear();
@@ -229,22 +232,22 @@ public class ScenarioManager : MonoBehaviour
     public void LoadModules()
     {
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        FileInfo[] info = dir.GetFiles("*.Module");
-        List<Module> modules = new List<Module>();
-        modules.AddRange(Resources.LoadAll<Module>("Modules"));
+        FileInfo[] info = dir.GetFiles("*.ModuleEngine"); 
         foreach (FileInfo f in info)
         {
-           // Module.SaveData SD;
-           //    string temp = File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-           // SD = JsonUtility.FromJson<Module.SaveData>(temp);
-           //if( modules.Exists(X => X.Prefab.name == SD.PrefabName))
-           // {
-           //     Module ins= new Module();                
-           //     ins.JsonFilePath = Path.Combine(CurrentScenario.CurrentFolder, f.Name);
-                
-           // }
-          // SaveData
+            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            ModuleEngine R = new GameObject().AddComponent<ModuleEngine>();
+            JsonUtility.FromJsonOverwrite(jsondata, R);
+            R.Ini();
         }
-        
+        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
+        info = dir.GetFiles("*.ModuleISS");
+        foreach (FileInfo f in info)
+        {
+            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            ModuleISS R = new GameObject().AddComponent<ModuleISS>();
+            JsonUtility.FromJsonOverwrite(jsondata, R);
+            R.Ini();
+        }
     }
 }

@@ -32,39 +32,17 @@ public class Module : Unit // главное это префаб модуля, �
     {
      get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name+".png" ;
     }
-        private void Reset()
+ 
+    
+    public override void Ini()
     {
-        gameObject.layer = 9;// Modules
-        Name = gameObject.name;
-        if (_cam == null) _cam = GetComponentInChildren<Camera>();
-        Icon = Resources.Load<Sprite>("Modules/Icons/" + gameObject.name);
-        _cam.targetTexture = Resources.Load<RenderTexture>("Modules/RT");
-
+        name = Name = "Module_ " + Name;
+        ScenarioManager.instance.Modules.Add(this); 
     }
-    public void RenderIcon()
+    public override void OnDestroy()
     {
-
-       
-
-        ScreenCapture.CaptureScreenshot(IconFilePath);
-        AssetDatabase.Refresh();
-        AssetDatabase.ImportAsset(IconFilePath);
-        AssetDatabase.Refresh(); 
+        ScenarioManager.instance.Modules.Remove(this);
     }
-    //Texture2D toTexture2D(RenderTexture rTex)
-    //{
-    //    Texture2D tex = new Texture2D(512, 512, TextureFormat.RGB24, false);
-    //    RenderTexture.active = rTex;
-    //    tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
-    //    tex.Apply();
-    //    return tex;
-    //}
-    private void Awake()
-    {
-        RenderIcon();
-        GetIcon();
-    }
-
     public override void Update()
     {
         if (!Application.isPlaying)
@@ -109,6 +87,24 @@ public class Module : Unit // главное это префаб модуля, �
         }
     }
 #endif
+    private void Reset()
+    {
+        gameObject.layer = 9;// Modules
+        Name = gameObject.name;
+        if (_cam == null) _cam = GetComponentInChildren<Camera>();
+        Icon = Resources.Load<Sprite>("Modules/Icons/" + gameObject.name);
+        _cam.targetTexture = Resources.Load<RenderTexture>("Modules/RT");
 
+    }
+    public void RenderIcon()
+    {
+
+
+
+        ScreenCapture.CaptureScreenshot(IconFilePath);
+        AssetDatabase.Refresh();
+        AssetDatabase.ImportAsset(IconFilePath);
+        AssetDatabase.Refresh();
+    }
 
 }

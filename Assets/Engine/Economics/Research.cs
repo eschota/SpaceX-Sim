@@ -62,7 +62,7 @@ public class Research : Unit
     }
     public override void OnDestroy()
     {
-        Destroy(researchButton?.gameObject);
+        
         ScenarioManager.instance.Researches.Remove(this);
     }
     public override void Ini()
@@ -72,12 +72,21 @@ public class Research : Unit
         researchButton = Instantiate(Resources.Load<UIResearchButton>("UI/ScenarioManager/ResearchButton"), ScenarioManager.instance.CameraPivot);
         researchButton.research = this;
         researchButton.name = name + "_Button";
+        
         researchButton.Refresh();
     }
-  
+    public void RestoreDependencies()
+    {
+        Dependances.Clear(); Modules.Clear();
+        foreach (var item in DependencesID) Dependances.Add(ScenarioManager.instance.Researches.Find(X => X.ID == item));
+        foreach (var item in ModulesID) Modules.Add(ScenarioManager.instance.Modules.Find(X => X.ID == item));
+    }
+
     public override void SaveJSON()
     {
         ID = GetInstanceID();
+        ModulesID.Clear();
+        DependencesID.Clear();
         foreach (var item in Modules) ModulesID.Add(item.GetInstanceID());
         foreach (var item in Dependances) DependencesID.Add(item.GetInstanceID());
 
