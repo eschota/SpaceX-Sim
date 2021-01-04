@@ -16,6 +16,7 @@ public class ButtonSelectScenario : MonoBehaviour
     private void OnClick()
     {
         ScenarioManager.instance.CurrentScenario = scenario;
+        ScenarioManager.instance.SaveNameInputField.SetTextWithoutNotify(scenario.Name);
     }
     private void OnDestroy()
     {

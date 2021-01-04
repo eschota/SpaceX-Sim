@@ -33,7 +33,7 @@ public class CameraControllerScenarioResearch : MonoBehaviour
     }
     void MouseControl()
     {
-        if(GameManager.CurrentState!=GameManager.State.ResearchGlobal&& GameManager.CurrentState != GameManager.State.ScenarioEditor) return;
+        if(GameManager.CurrentState!=GameManager.State.ResearchGlobal&& GameManager.CurrentState != GameManager.State.ScenarioEditorSelection) return;
         if (Input.GetMouseButtonDown(1)|| Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;

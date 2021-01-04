@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     #region Variables
     public static event Action EventChangeState;
     public static event Action <Unit> EventWithUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditor,Settings, Save, Load,PlayEarth }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditorSelection,Settings, Save, Load,PlayEarth, ScenarioEditorGlobal,StartGameSelectScenario}
     private static State _currentState;
     public static State CurrentState
     {
@@ -71,14 +71,41 @@ public class GameManager : MonoBehaviour
                 case State.PlayStation:
                     CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
                     return;
-                case State.ScenarioEditor:
-                    ScenarioManager.instance.CurrentState = ScenarioManager.State.LoadScenario;
-                    break;
+              
                 case State.ResearchGlobal:
-                    // foreach (var item in ScenarioManager.instance.buttons) item.transform.SetParent(ScenarioManager.instance.InGameResearchPanel);
+                 
                     CameraControllerScenarioResearch.instance.CameraPivot.SetParent(ScenarioManager.instance.InGameResearchPanel);
 
                     break;
+                    /////////////////////////////////////////////////////
+                    ////
+                    ////            выбор сохранения загрузки редактирования сценариев
+                    ////
+
+                case State.ScenarioEditorSelection:
+                    _currentState = value;
+                    ScenarioManager.instance.EnterScenarioManager();
+                    break;
+
+                case State.Save:
+                    _currentState = value;
+                    ScenarioManager.instance.EnterScenarioManager();
+                    ScenarioManager.instance.SaveNameInputField.text = DateTime.Today + "_" + DateTime.Now.ToLongTimeString();
+                    break;
+
+                case State.Load:
+                    _currentState = value;
+                    ScenarioManager.instance.EnterScenarioManager();
+                    break;
+
+                case State.StartGameSelectScenario:
+                    _currentState = value;                    
+                    ScenarioManager.instance.EnterScenarioManager();
+                    break;
+                    /////////////////////////////////////////////////////
+                    ////
+                    ////
+                    ////
             }
 
             Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
