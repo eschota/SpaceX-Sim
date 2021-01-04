@@ -217,17 +217,24 @@ public class ScenarioManager : MonoBehaviour
     {
         DirectoryInfo dir;
         LoadedScenarios.Clear();
-        if(GameManager.CurrentState==GameManager.State.StartGameSelectScenario || GameManager.CurrentState == GameManager.State.ScenarioEditorSelection)
-        dir = new DirectoryInfo(ScenariosFolder);
-        else dir = new DirectoryInfo(SaveFolder);
+        string TempFolder;
+        if (GameManager.CurrentState == GameManager.State.StartGameSelectScenario || GameManager.CurrentState == GameManager.State.ScenarioEditorSelection)
+        {
+            TempFolder = ScenariosFolder;            
+        }
+        else
+        {
+            TempFolder = SaveFolder;
+        }
+        dir = new DirectoryInfo(TempFolder);
         DirectoryInfo[] info = dir.GetDirectories("**");
 
         foreach (DirectoryInfo f in info)
         {
             string temp = "";
-            if (File.Exists(Path.Combine(ScenariosFolder, f.Name, "scenario.dat")))
+            if (File.Exists(Path.Combine(TempFolder, f.Name, "scenario.dat")))
             {
-                temp = File.ReadAllText(Path.Combine(ScenariosFolder, f.Name, "scenario.dat"));
+                temp = File.ReadAllText(Path.Combine(TempFolder, f.Name, "scenario.dat"));
                 //  Debug.Log("Scenario Loaded: " + f.Name+"  "+ temp);
                 LoadedScenarios.Add(JsonUtility.FromJson<Scenario>(temp));
             }
