@@ -72,7 +72,7 @@ public class Research : Unit
         researchButton = Instantiate(Resources.Load<UIResearchButton>("UI/ScenarioManager/ResearchButton"), ScenarioManager.instance.CameraPivot);
         researchButton.research = this;
         researchButton.name = name + "_Button";
-        
+        researchButton.Rect.position = localPosition;
         researchButton.Refresh();
     }
     public void RestoreDependencies()
@@ -87,6 +87,7 @@ public class Research : Unit
         ID = GetInstanceID();
         ModulesID.Clear();
         DependencesID.Clear();
+        localPosition = researchButton.Rect.position;
         foreach (var item in Modules) ModulesID.Add(item.GetInstanceID());
         foreach (var item in Dependances) DependencesID.Add(item.GetInstanceID());
 

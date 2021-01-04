@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEditor; 
 public class ScenarioManager : MonoBehaviour
 {
+    #region VARS
     public string ScenariosFolder
     {
         get => Application.streamingAssetsPath + "/Scenarios/";
     }
-
+    public List<Scenario> LoadedScenarios = new List<Scenario>();
+    public List<Module> Modules = new List<Module>();
+    public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public List<Research> Researches = new List<Research>();
     public static event Action EventChangeState; 
     public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario  }
@@ -46,26 +50,35 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     public static ScenarioManager instance;
-    void Start()
-    {
-        instance = this;
-        
-    }
-
    
-    #region  Scenario
     [SerializeField] TMPro.TMP_InputField ScenarioName;
     [SerializeField] TMPro.TMP_InputField ScenarioStartDay;
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
     [SerializeField] TMPro.TMP_InputField ScenarioStartYear;
     [SerializeField] TMPro.TMP_InputField ScenarioStartBalance;
+
     private Scenario _currentScenario;
-    public Scenario CurrentScenario 
+    public Scenario CurrentScenario
     {
         get => _currentScenario;
-        set { _currentScenario = value; 
+        set
+        {
+            _currentScenario = value;
         }
     }
+    #endregion
+
+    #region Start & Update // Отмена выделения ресёрча
+    void Start()
+    {
+        instance = this;
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1)) WindowEditResearch.instance.CurrentResearch = null;
+    }
+    #endregion
+    #region Работа со сценарием
     public void CreateNewCurrentScenario()
     {
         CurrentScenario = new Scenario( ScenarioName.text+LoadedScenarios.Count, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
@@ -95,31 +108,29 @@ public class ScenarioManager : MonoBehaviour
         CurrentScenario.SaveNewScenario();       
     }
 
-    public List<Scenario> LoadedScenarios = new List<Scenario>();
-   
-
     
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(1))  WindowEditResearch.instance.CurrentResearch = null; 
-    }
+    #endregion
+
+
+
     public void AddModule()
     {
         WindowSelectModule.instance.CurrentResearchSelected = WindowEditResearch.instance.CurrentResearch;
     }
-     
-    public List<Module> Modules= new List<Module>();
-    public List<UIResearchButton> buttons = new List<UIResearchButton>();
+ /// <summary>
+ /// 
+ /// </summary>
     public void AddResearch()
     {
         
-        new GameObject().AddComponent<Research>().Ini(); 
+        new GameObject().AddComponent<Research>().Ini();
 
-        if ( Researches.Count > 1)
+        if (Researches.Count > 1)
         {
-             Researches[ Researches.Count - 1].Dependances.Add( Researches[ Researches.Count - 2]);
-            Researches[ Researches.Count - 1].researchButton.Rect.position =  Researches[ Researches.Count - 2].researchButton.Rect.position+ new Vector3(450,0,0);
+            Researches[Researches.Count - 1].Dependances.Add(Researches[Researches.Count - 2]);
+            Researches[Researches.Count - 1].researchButton.Rect.position = Researches[Researches.Count - 2].researchButton.Rect.position + new Vector3(450, 0, 0);
         }
+        else Researches[Researches.Count - 1].researchButton.Rect.position = new Vector3(Screen.width / 5, +Screen.height / 5, 0);// позиция от  угла экрана 
 
         buttons.Add( Researches[ Researches.Count - 1].researchButton);
         WindowEditResearch.instance.CurrentResearch =  Researches[ Researches.Count - 1];
@@ -127,8 +138,11 @@ public class ScenarioManager : MonoBehaviour
         WindowSelectModule.instance.Hide();
         WindowEditModule.instance.Hide();
     }
-   
 
+    #region Scenario Serialize
+
+
+   
     [System.Serializable]
     public class Scenario
     {
@@ -166,6 +180,8 @@ public class ScenarioManager : MonoBehaviour
                 }
             }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
+
+            AssetDatabase.Refresh();
         }
 
       
@@ -179,6 +195,8 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     #endregion
+
+    #region ManageScenario
     public void EnterScenarioManager()
     {
         LoadedScenarios.Clear();
@@ -215,6 +233,8 @@ public class ScenarioManager : MonoBehaviour
         }
         LoadModules();
         foreach (var item in Researches) item.RestoreDependencies();
+        foreach (var item in Researches) { item.researchButton.RebuildLinks(); item.researchButton.Refresh(); }
+        
         
 
 
@@ -250,4 +270,5 @@ public class ScenarioManager : MonoBehaviour
             R.Ini();
         }
     }
+    #endregion
 }
