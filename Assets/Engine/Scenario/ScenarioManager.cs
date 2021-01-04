@@ -16,7 +16,7 @@ public class ScenarioManager : MonoBehaviour
     public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public List<Research> Researches = new List<Research>();
     public static event Action EventChangeState; 
-    public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario  }
+    public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario,LoadGame,SaveGame  }
     private   State _currentState;
     [SerializeField] public Transform CameraPivot;
     public   State CurrentState
@@ -36,6 +36,9 @@ public class ScenarioManager : MonoBehaviour
                 case State.PoliticMap:
                     break;
                 case State.LoadScenario:
+                    EnterScenarioManager();
+                    break;
+                case State.LoadGame:
                     EnterScenarioManager();
                     break;
                 default:
