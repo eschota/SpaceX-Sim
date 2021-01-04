@@ -10,13 +10,16 @@ public class ScenarioManager : MonoBehaviour
     public string ScenariosFolder
     {
         get => Application.streamingAssetsPath + "/Scenarios/";
+    } public string SaveFolder
+    {
+        get => Application.streamingAssetsPath + "/Saves/";
     }
     public List<Scenario> LoadedScenarios = new List<Scenario>();
     public List<Module> Modules = new List<Module>();
     public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public List<Research> Researches = new List<Research>();
     public static event Action EventChangeState; 
-    public enum State {None, StartConditions,Researches,PoliticMap, LoadScenario,LoadGame,SaveGame,StartNewGame  }
+    public enum State {None, StartConditions,Researches }
     private   State _currentState;
     [SerializeField] public Transform CameraPivot;
     public   State CurrentState
@@ -24,7 +27,8 @@ public class ScenarioManager : MonoBehaviour
         get => _currentState;
         set
         {
-
+            Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
+            _currentState = value;
             switch (value)
             {
                 case State.None:
@@ -35,30 +39,21 @@ public class ScenarioManager : MonoBehaviour
                    // foreach (var item in buttons) item.transform.SetParent(CameraPivot.transform);
                     CameraControllerScenarioResearch.instance.CameraPivot.SetParent(CameraPivot.transform);
                     break;
-                case State.PoliticMap:
-                    break;
-                case State.LoadScenario:
-                    EnterScenarioManager();
-                    break;
-                case State.LoadGame:
-                    EnterScenarioManager();
-                    break;
-                 case State.StartNewGame:
-                    EnterScenarioManager();
-                    GameManager.CurrentState = GameManager.State.ScenarioEditor;
-                    break;
+               
+                    
+                  
                 default:
                     break;
             }
 
 
-            Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
-            _currentState = value;
+            
             if (EventChangeState != null) EventChangeState();
 
         }
     }
     public static ScenarioManager instance;
+    [SerializeField] public TMPro.TMP_InputField SaveNameInputField;
     [SerializeField] public Transform InGameResearchPanel; 
     [SerializeField] public Transform ResearchPanel; 
     [SerializeField] TMPro.TMP_InputField ScenarioName;
@@ -92,7 +87,7 @@ public class ScenarioManager : MonoBehaviour
     public void CreateNewCurrentScenario()
     {
         CurrentScenario = new Scenario( ScenarioName.text+LoadedScenarios.Count, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
-        CurrentScenario.SaveNewScenario();
+        
         RefreshScenario();
         
     }
@@ -115,7 +110,7 @@ public class ScenarioManager : MonoBehaviour
     }
      public void SaveCurrentScenario()
     {
-        CurrentScenario.SaveNewScenario();       
+        CurrentScenario.SaveNewScenario( );       
     }
 
     
@@ -158,7 +153,16 @@ public class ScenarioManager : MonoBehaviour
     {
         public int[] StartDate;
         public string Name;
-        public string CurrentFolder => Path.Combine(instance.ScenariosFolder, Name);
+        public string CurrentFolder 
+        {
+            get
+            {
+                if (GameManager.CurrentState == GameManager.State.StartGameSelectScenario || GameManager.CurrentState == GameManager.State.ScenarioEditorSelection)
+                    return Path.Combine(instance.ScenariosFolder, Name);
+            else
+                    return Path.Combine(instance.SaveFolder, Name);
+            }
+        }
         
         public int StartBalance;
         
@@ -178,6 +182,8 @@ public class ScenarioManager : MonoBehaviour
             DeleteFilesAndFoldersOfScenario();
 
             string jsonData = JsonUtility.ToJson(this, true);
+             
+       
 
             if (!Directory.Exists(instance.CurrentScenario.CurrentFolder)) Directory.CreateDirectory(instance.CurrentScenario.CurrentFolder);
             File.WriteAllText(Path.Combine( CurrentFolder,"scenario.dat") , jsonData);
@@ -209,8 +215,11 @@ public class ScenarioManager : MonoBehaviour
     #region ManageScenario
     public void EnterScenarioManager()
     {
+        DirectoryInfo dir;
         LoadedScenarios.Clear();
-        DirectoryInfo dir = new DirectoryInfo(ScenariosFolder);
+        if(GameManager.CurrentState==GameManager.State.StartGameSelectScenario || GameManager.CurrentState == GameManager.State.ScenarioEditorSelection)
+        dir = new DirectoryInfo(ScenariosFolder);
+        else dir = new DirectoryInfo(SaveFolder);
         DirectoryInfo[] info = dir.GetDirectories("**");
 
         foreach (DirectoryInfo f in info)
@@ -289,9 +298,11 @@ public class ScenarioManager : MonoBehaviour
     } 
     public void SaveGame()
     {
-        
+        CurrentScenario.Name = SaveNameInputField.text;
+        CurrentScenario.SaveNewScenario( );
         GameManager.CurrentState = GameManager.State.PlaySpace;
     }
-
+     
+     
     #endregion
 }
