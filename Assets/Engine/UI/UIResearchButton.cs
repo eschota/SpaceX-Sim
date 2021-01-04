@@ -48,6 +48,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         }
 
     }
+    List<UIModule> modules = new List<UIModule>();
 
     Vector3 startPos;
     Vector3 currentPos;
@@ -55,12 +56,13 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
    void Awake()
     { 
         GetComponent<Button>().onClick.AddListener(OnClick);
-      
-        //        research.researchButton.transform.position = new Vector3(200, 200);
+
+        ScenarioManager.instance.buttons.Add(this);
 
     }
     void OnDestroy()
     {
+        ScenarioManager.instance.buttons.Remove(this);
         foreach (var item in Arrows)
         {
             Destroy(item.gameObject);
@@ -68,7 +70,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         GetComponent<Button>().onClick.RemoveAllListeners();
     }
 
-    List<UIModule> modules = new List<UIModule>();
+  
    public void Refresh()
     {
         if (!research) return;
@@ -137,16 +139,6 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     void OnClick()
     {
        if(research!= WindowEditResearch.instance.CurrentResearch) WindowEditResearch.instance.CurrentResearch = research;
-
-
-     //Research res= ScenarioManager.instance.Researches.Find(X => X.researchButton.CreateDependence == true);
-     //   if (res == null) return;
-     //   if (research != res) res.Dependances.Add(research);
-        
-     //   res.researchButton.CreateDependence = false;
-     //   CreateDependence = false;
-     //   res.researchButton.RebuildLinks();
-     //   RebuildLinks();
     }
     Vector2 delta= Vector2.zero;
     public void OnDrag(PointerEventData eventData)
@@ -171,7 +163,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         }
     }
    
-    public List<RaycastResult> RaycastMouse()// здесь обрабатывается клик и ищется зависимость рисерча
+    public List<RaycastResult> FindDependancesOnClick()// здесь обрабатывается клик и ищется зависимость рисерча
     {
 
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
@@ -209,16 +201,12 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
                 }
             }
         }
-
-     //   Debug.Log(results.Count);
-        //if(results.Find(X=>X.GetType()==typeof(UIResearchButton)))
-
         return results;
     }
     void Update()
     {
         ShowArrowsWhenCreateDependance();
-        if (Input.GetMouseButtonDown(0)) RaycastMouse();
+        if (Input.GetMouseButtonDown(0)) FindDependancesOnClick();
     }
         public void RebuildLinks()
     {
