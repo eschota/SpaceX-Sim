@@ -14,7 +14,7 @@ public class UIStateScenario : MonoBehaviour
     private void Awake()
     {
         ScenarioManager.EventChangeState += OnChange; 
-        if (thisState  == null) Debug.LogError("Ни одного стейта не выбрано у ГУЙ объекта : " + name);
+   if(Application.isPlaying) if (thisState  == null) Debug.LogError("Ни одного стейта не выбрано у ГУЙ объекта : " + name);
     }
 
     void Start()
