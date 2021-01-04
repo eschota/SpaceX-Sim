@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
-
-[ExecuteInEditMode]
+ 
 public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, IPointerClickHandler
 {
 
@@ -142,7 +141,10 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     }
     Vector2 delta= Vector2.zero;
     public void OnDrag(PointerEventData eventData)
-    {   if(delta.sqrMagnitude<1)
+    {
+        if (GameManager.CurrentState == GameManager.State.ResearchGlobal) return;
+        
+        if(delta.sqrMagnitude<1)
         delta = eventData.pointerCurrentRaycast.screenPosition - new Vector2(Rect.position.x,Rect.position.y);
       //  Debug.Log(delta);
         Rect.position = -delta+ eventData.pointerCurrentRaycast.screenPosition;
@@ -154,7 +156,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
+        if (GameManager.CurrentState == GameManager.State.ResearchGlobal) return;
         research.position = Rect.position;
         delta = Vector2.zero;
         foreach (var item in ScenarioManager.instance.Researches)
@@ -165,7 +167,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
    
     public List<RaycastResult> FindDependancesOnClick()// здесь обрабатывается клик и ищется зависимость рисерча
     {
-
+        if (GameManager.CurrentState == GameManager.State.ResearchGlobal) return null;
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
         {
             pointerId = -1,

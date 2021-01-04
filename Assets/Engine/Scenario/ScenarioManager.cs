@@ -32,6 +32,8 @@ public class ScenarioManager : MonoBehaviour
                 case State.StartConditions:
                     break;
                 case State.Researches:
+                   // foreach (var item in buttons) item.transform.SetParent(CameraPivot.transform);
+                    CameraControllerScenarioResearch.instance.CameraPivot.SetParent(CameraPivot.transform);
                     break;
                 case State.PoliticMap:
                     break;
@@ -57,7 +59,8 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     public static ScenarioManager instance;
-   
+    [SerializeField] public Transform InGameResearchPanel; 
+    [SerializeField] public Transform ResearchPanel; 
     [SerializeField] TMPro.TMP_InputField ScenarioName;
     [SerializeField] TMPro.TMP_InputField ScenarioStartDay;
     [SerializeField] TMPro.TMP_InputField ScenarioStartMonth;
@@ -277,6 +280,8 @@ public class ScenarioManager : MonoBehaviour
             R.Ini();
         }
     }
+
+     
     public void StartNewGame()
     {
         LoadScenarioResearchAndModules();

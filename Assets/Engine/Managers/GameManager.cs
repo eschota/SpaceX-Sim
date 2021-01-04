@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour
                 case State.ScenarioEditor:
                     ScenarioManager.instance.CurrentState = ScenarioManager.State.LoadScenario;
                     break;
+                case State.ResearchGlobal:
+                    // foreach (var item in ScenarioManager.instance.buttons) item.transform.SetParent(ScenarioManager.instance.InGameResearchPanel);
+                    CameraControllerScenarioResearch.instance.CameraPivot.SetParent(ScenarioManager.instance.InGameResearchPanel);
+
+                    break;
             }
 
             Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
