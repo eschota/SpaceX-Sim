@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000054237706, g: 0.00006937823, b: 0.000048603666,
+    a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -315,6 +316,14 @@ MonoBehaviour:
   Transport: {fileID: 2100000, guid: 679c4b8228a42b84ab14b4638ef1983c, type: 2}
   Disaster: {fileID: 2100000, guid: c0517c46cf5bb784cb6d234da0868ea0, type: 2}
   Climat: {fileID: 2100000, guid: 2cecffb2754d16e419694f960a2c3e93, type: 2}
+  WorldLayers:
+  - {fileID: 2800000, guid: ba7b6ead7212fd14bb35b2db3aaed84a, type: 3}
+  - {fileID: 2800000, guid: c886c23c800bfc045bff214c5b33090d, type: 3}
+  - {fileID: 2800000, guid: 6e47007baef0e5b43a028beef062f5dc, type: 3}
+  - {fileID: 2800000, guid: fce45e1e09106c64aa30ed68081fb9c7, type: 3}
+  - {fileID: 2800000, guid: cef73e47bc48be04b967fa6c3f43ebb7, type: 3}
+  - {fileID: 2800000, guid: ba7b6ead7212fd14bb35b2db3aaed84a, type: 3}
+  - {fileID: 2800000, guid: 8e4ece3dd0a3f5549a83f7350052262e, type: 3}
   CurrentHovered: {fileID: 0}
   CurrenUnitPoint: {fileID: 0}
 --- !u!1 &33017917
@@ -7363,7 +7372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &955305301402208672
 Transform:
   m_ObjectHideFlags: 0

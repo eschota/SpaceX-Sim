@@ -17,6 +17,7 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
     [SerializeField] public Material Climat;
+    [SerializeField] public List<Texture2D> WorldLayers;
     public Country CurrentHovered;
     LayerMask mask;
     public GameObject CurrenUnitPoint;
