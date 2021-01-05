@@ -16,19 +16,16 @@ public class WindowLayerInfo : UIWindows
     {
 
         layersText[0].text = WorldMapManager.instance.CurrentHovered ? WorldMapManager.instance.CurrentHovered.name : "No Country";
-        layersText[1].text = GetPercentByTexture(WorldMapManager.instance.WorldLayers[1], WorldMapManager.instance.HoveredEarthUVCoord).ToString()+"%"; 
-        layersText[2].text = GetPercentByTexture(WorldMapManager.instance.WorldLayers[2], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
-        layersText[3].text = GetPercentByTexture(WorldMapManager.instance.WorldLayers[3], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
-        layersText[4].text = GetPercentByTexture(WorldMapManager.instance.WorldLayers[4], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
-        layersText[5].text = GetPercentByTexture(WorldMapManager.instance.WorldLayers[5], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
-        layersText[6].text = GetPercentByTexture(WorldMapManager.instance.WorldLayers[6], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
-        
-       
+        layersText[1].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[1], WorldMapManager.instance.HoveredEarthUVCoord).ToString()+"%"; 
+        layersText[2].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[2], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
+        layersText[3].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[3], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
+        layersText[4].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[4], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
+        layersText[5].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[5], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%";
+        layersText[6].text = WorldMapManager.instance.ClimatZonesNames[WorldMapManager.instance.GetZone(WorldMapManager.instance.WorldLayers[6], WorldMapManager.instance.HoveredEarthUVCoord)];
+
+
+
     }
 
-    int  GetPercentByTexture(Texture2D tex, Vector2 uv)
-    {
-        Color col=tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.x * tex.height));
-        return Mathf.RoundToInt( col.r*100);
-    }
+    
 }
