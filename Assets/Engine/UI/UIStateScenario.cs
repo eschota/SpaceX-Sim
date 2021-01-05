@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
-[ExecuteInEditMode]
+ 
 [RequireComponent (typeof(CanvasGroup))]
 public class UIStateScenario : MonoBehaviour
 {
