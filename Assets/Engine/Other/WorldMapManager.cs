@@ -17,8 +17,12 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
     [SerializeField] public Material Climat;
+    [SerializeField] public List<Texture2D> WorldLayers;
+    [SerializeField] public List<Color> ClimatZonesColors;
+    [SerializeField] public List<string> ClimatZonesNames;
     public Country CurrentHovered;
-    LayerMask mask;
+    public Country CurrentPointCountry;
+    LayerMask EarthMask;
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
@@ -96,7 +100,7 @@ public class WorldMapManager : MonoBehaviour
         GameManager.EventWithUnit += OnUnitCreated;
          
         HideMap();
-        mask = LayerMask.GetMask("Earth");
+        EarthMask = LayerMask.GetMask("Earth");
     }
     void OnUnitCreated(Unit unit)
     {
@@ -124,18 +128,13 @@ public class WorldMapManager : MonoBehaviour
 
     void ShowMap()
     {
-        foreach (var item in countries)
-        {
-            item.gameObject.SetActive(true);
-        }
-       
+        Camera.main.cullingMask = ~0;
+
+
     }
     void HideMap()
     {
-        foreach (var item in countries)
-        {
-            item.gameObject.SetActive(false);
-        }
+        Camera.main.cullingMask =~LayerMask.GetMask("Country");
 
     }
     void Update()
@@ -147,12 +146,14 @@ public class WorldMapManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5)) CurrentState = State.Transport;
         if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
         if (Input.GetKeyDown(KeyCode.F7)) CurrentState = State.Climat;
-        if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) SelectCountry();
+        
+            SelectCountry();
     }
+    
 
     void SelectCountry()
     {
-        if (Input.GetMouseButton(0)) PlaceUnitPoint();
+        PlaceUnitPoint();
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -188,15 +189,49 @@ public class WorldMapManager : MonoBehaviour
        
 
     }
+    public int GetZone(Texture2D tex, Vector2 uv)
+    {
+        Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
+        float max = 1000000;
+
+        int result=-1;
+        for (int i = 0; i < ClimatZonesColors.Count; i++)       
+        {
+            float temp = Vector3.Distance(new Vector3(col.r, col.g, col.b), new Vector3(ClimatZonesColors[i].r, ClimatZonesColors[i].g, ClimatZonesColors[i].b));
+            if (max > temp)
+            {
+                max = temp;
+                result = i;
+            }
+        }
+        return result;
+    }
+    public int GetPercentByTexture(Texture2D tex, Vector2 uv)
+    {
+        Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
+        return Mathf.RoundToInt(col.r * 100);
+    }
+    public Vector2 HoveredEarthUVCoord;
+    public Vector2 SelectedEarthUVCoord;
     void PlaceUnitPoint()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, mask))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, EarthMask))
         {
             if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
-            CurrenUnitPoint.transform.position = hit.point;
-            CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
+            if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
+                if (Input.GetMouseButton(0))
+            {
+                CurrentPointCountry = CurrentHovered;
+                SelectedEarthUVCoord = HoveredEarthUVCoord;
+
+
+                CurrenUnitPoint.transform.position = hit.point;
+                CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
+            }
+            HoveredEarthUVCoord = hit.textureCoord;
         }
+        
     }
 
             [ContextMenu ("Select AllCountryes")]
