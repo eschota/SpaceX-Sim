@@ -125,18 +125,13 @@ public class WorldMapManager : MonoBehaviour
 
     void ShowMap()
     {
-        foreach (var item in countries)
-        {
-            item.gameObject.SetActive(true);
-        }
-       
+        Camera.main.cullingMask = ~0;
+
+
     }
     void HideMap()
     {
-        foreach (var item in countries)
-        {
-            item.gameObject.SetActive(false);
-        }
+        Camera.main.cullingMask =~LayerMask.GetMask("Country");
 
     }
     void Update()
