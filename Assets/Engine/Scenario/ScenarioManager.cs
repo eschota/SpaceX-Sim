@@ -19,7 +19,7 @@ public class ScenarioManager : MonoBehaviour
     public List<UIResearchButton> buttons = new List<UIResearchButton>();
     public List<Research> Researches = new List<Research>();
     public static event Action EventChangeState; 
-    public enum State {None, StartConditions,Researches }
+    public enum State {None, StartConditions,Researches,WorldMap }
     private   State _currentState;
     [SerializeField] public Transform CameraPivot;
     public   State CurrentState
@@ -163,6 +163,9 @@ public class ScenarioManager : MonoBehaviour
                     return Path.Combine(instance.SaveFolder, Name);
             }
         }
+        public int AreaCostBase = 1;
+        public float ResearchBonusMult = 1; 
+        public float ProductionBonusMult = 1;
         
         public int StartBalance;
         

@@ -15,7 +15,7 @@ public class UISpeedButton : MonoBehaviour
         {
             transform.GetChild(i).localScale = ScaleDown;
         }
-        lastid = 1;
+        click(1);
     }
     public void click (int id)
     {
