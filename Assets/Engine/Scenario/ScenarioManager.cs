@@ -157,7 +157,7 @@ public class ScenarioManager : MonoBehaviour
         {
             get
             {
-                if (GameManager.CurrentState == GameManager.State.StartGameSelectScenario || GameManager.CurrentState == GameManager.State.ScenarioEditorSelection)
+                if (GameManager.CurrentState == GameManager.State.StartGameSelectScenario || GameManager.CurrentState == GameManager.State.ScenarioEditorSelection|| GameManager.CurrentState == GameManager.State.ScenarioEditorGlobal)
                     return Path.Combine(instance.ScenariosFolder, Name);
             else
                     return Path.Combine(instance.SaveFolder, Name);

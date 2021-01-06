@@ -9,13 +9,17 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Edge_HologramEarth
   m_Shader: {fileID: 4800000, guid: c44555513c3e70e4798decef7da6c099, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _ALPHATEST_ON _BLENDMODE_ADD _DISABLE_SSR
+    _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - TransparentBackface
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -84,10 +88,21 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.33
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 1
+    - _AlphaSrcBlend: 1
+    - _BlendMode: 1
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _Cutoff: 0.33
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 1
+    - _EnableFogOnTransparent: 1
     - _Float0: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -100,22 +115,45 @@ Material:
     - _Parallax: 0.02
     - _Power: 0.28
     - _PrimaryPower: 8.65
+    - _ReceivesSSR: 0
+    - _RenderQueueType: 5
+    - _RequireSplitLighting: 0
     - _SecondaryPower: 0.63
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SurfaceType: 1
     - _ThirdPower: 0
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 1
     - _UVSec: 0
+    - _UseShadowThreshold: 0
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 3
+    - _ZTestTransparent: 4
     - _ZWrite: 1
     - __dirty: 0
-    - _powerEmission: 6.06
+    - _powerEmission: 5.86
     - _speed: 0.05
     - _thirdPower: 0.1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 0.08018869, g: 0.66035306, b: 1, a: 0}
     - _Dark: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Light: {r: 1, g: 0, b: 0, a: 0}
     - _PrimaryDark: {r: 0, g: 0, b: 0, a: 0}
     - _PrimaryLight: {r: 1, g: 0, b: 0.23506641, a: 0}
