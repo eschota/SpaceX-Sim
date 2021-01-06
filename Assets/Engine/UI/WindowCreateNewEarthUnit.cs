@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class WindowCreateNewEarthUnit : MonoBehaviour
 {
@@ -42,30 +43,32 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
         obj.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
         obj.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
 
-        CameraManager.FlyToUnit = obj.transform;
+        
         switch (GameManager.CurrentState)
         {
-
             case GameManager.State.CreateLaunchPlace:
-                var unit = obj.AddComponent<UnitLaunchPlace>();
-                unit.EcoRentCost = (SelectSize.value + 1) * 100;
-                GameManager.instance.OpenUnitScene(unit);
+                CreateUnitByType<UnitLaunchPlace>(obj.transform);
                 break;
             case GameManager.State.CreateResearchLab:
-                var unit2 = obj.AddComponent<UnitResearchLab>();
-                unit2.EcoRentCost = (SelectSize.value + 1) * 100;
-                GameManager.instance.OpenUnitScene(unit2);
+                CreateUnitByType<UnitResearchLab>(obj.transform);
                 break;
             case GameManager.State.CreateProductionFactory:
-
-                var unit3 = obj.AddComponent<UnitProductionFactory>();
-                unit3.EcoRentCost = (SelectSize.value + 1) * 100;
-                GameManager.instance.OpenUnitScene(unit3);
+                CreateUnitByType<UnitProductionFactory>(obj.transform);
                 break;
         }
-            
+        Destroy(obj.gameObject);
 
 
     }
-    
+    void CreateUnitByType<T> (Transform transform) where T : MonoBehaviour
+    {
+        var unit = new GameObject(typeof(T).ToString()).AddComponent<T>();
+        (unit as UnitEco).EcoRentCost = (SelectSize.value + 1) * 100;
+        unit.transform.SetParent(GameManager.Earth.transform);
+        unit.transform.position = transform.position;
+        GameManager.instance.OpenUnitScene(unit as Unit);
+        
+        
+        CameraManager.FlyToUnit = unit.transform;
+    }
 }

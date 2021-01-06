@@ -252,25 +252,14 @@ public class ScenarioManager : MonoBehaviour
     }
     public void LoadScenarioResearchAndModules()
     {
-        
-        DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        FileInfo[] info = dir.GetFiles("*Research");
-       
-        foreach (FileInfo f in info)
-        {
-            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            Research R= new GameObject().AddComponent<Research>();
-            JsonUtility.FromJsonOverwrite(jsondata,R);
-            R.Ini();     
-
-        }
-        LoadModules();
+        LoadUnitsByType<ModuleEngine>();
+        LoadUnitsByType<ModuleISS>();
+        LoadUnitsByType<Research>();
+        LoadUnitsByType<UnitLaunchPlace>();
+        LoadUnitsByType<UnitResearchLab>();
+        LoadUnitsByType<UnitProductionFactory>();
         foreach (var item in Researches) item.RestoreDependencies();
-        foreach (var item in Researches) { item.researchButton.RebuildLinks(); item.researchButton.Refresh(); }
-        
-        
-
-
+        foreach (var item in Researches) { item.researchButton.RebuildLinks(); item.researchButton.Refresh(); }     
     }
 
     private void ClearResearchesAndModules()
@@ -281,57 +270,21 @@ public class ScenarioManager : MonoBehaviour
         
         buttons.Clear();
         Researches.Clear();
-    }
-    public void LoadModules()
+    } 
+    void LoadUnitsByType<T>() where T : MonoBehaviour
     {
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        FileInfo[] info = dir.GetFiles("*.ModuleEngine"); 
+        FileInfo[] info = dir.GetFiles("*."+ typeof(T).ToString());
         foreach (FileInfo f in info)
         {
             string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            ModuleEngine R = new GameObject().AddComponent<ModuleEngine>();
+            T R = new GameObject().AddComponent<T>();
             JsonUtility.FromJsonOverwrite(jsondata, R);
-            R.Ini();
-        }
-        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        info = dir.GetFiles("*.ModuleISS");
-        foreach (FileInfo f in info)
-        {
-            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            ModuleISS R = new GameObject().AddComponent<ModuleISS>();
-            JsonUtility.FromJsonOverwrite(jsondata, R);
-            R.Ini();
-        }
-        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        info = dir.GetFiles("*.UnitResearchLab");
-        foreach (FileInfo f in info)
-        {
-            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            UnitResearchLab R = new GameObject().AddComponent<UnitResearchLab>();
-            JsonUtility.FromJsonOverwrite(jsondata, R);
-            R.Ini();
-        }
-        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        info = dir.GetFiles("*.UnitLaunchPlace");
-        foreach (FileInfo f in info)
-        {
-            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            UnitLaunchPlace R = new GameObject().AddComponent<UnitLaunchPlace>();
-            JsonUtility.FromJsonOverwrite(jsondata, R);
-            R.Ini();
-        }
-        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        info = dir.GetFiles("*.UnitProductionFactory");
-        foreach (FileInfo f in info)
-        {
-            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
-            UnitProductionFactory R = new GameObject().AddComponent<UnitProductionFactory>();
-            JsonUtility.FromJsonOverwrite(jsondata, R);
-            R.Ini();
+            (R as Unit).Ini();
         }
     }
 
-     
+
     public void StartNewGame()
     {
         LoadScenarioResearchAndModules();
