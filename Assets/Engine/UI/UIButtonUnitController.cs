@@ -29,7 +29,7 @@ public class UIButtonUnitController : MonoBehaviour
 
     void OnCreateNewUnit(object sender, NotifyCollectionChangedEventArgs e)
     {
-        if (e.NewItems[0] == null) return;
+        if (e.NewItems == null) return;
         Unit unit = e.NewItems[0] as Unit;
         HideEnterButton();
         if (unit.GetType() == typeof(UnitLaunchPlace))
@@ -54,7 +54,7 @@ public class UIButtonUnitController : MonoBehaviour
     public void OnClickEnter()
     {
         GameManager.instance.OpenUnitScene(SelectedUnit);
-        CameraManager.FlyToUnit = SelectedUnit;
+        CameraManager.FlyToUnit = SelectedUnit.transform;
     }
 
     public void ShowEnterButton(Unit unit, Vector3 pos)

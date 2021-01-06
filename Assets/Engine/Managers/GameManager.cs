@@ -45,7 +45,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Variables
-    public static UnitEarth Earth;
+    private static UnitEarth _earth;
+    public static UnitEarth Earth
+    {
+        get
+        {
+            if (_earth == null) _earth = UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)) as UnitEarth;
+            return _earth;
+        }
+    }
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario }
@@ -63,10 +71,10 @@ public class GameManager : MonoBehaviour
                         StartNewGame();
                     }
                     else
-                    if (CurrentState == State.EarthLauchPlace || CurrentState == State.EarthProductionFactory || CurrentState == State.EarthResearchLab)
+                    if (CurrentState == State.PlayEarth)
                     {                        
                      
-                        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+                        SceneManager.LoadScene(0);
                         Earth.gameObject.SetActive(true);
                     }
                     break;
@@ -104,10 +112,15 @@ public class GameManager : MonoBehaviour
                     _currentState = value;
                     ScenarioManager.instance.EnterScenarioManager();
                     break;
-                    /////////////////////////////////////////////////////
-                    ////
-                    ////
-                    ////
+                /////////////////////////////////////////////////////
+                ////
+                ////
+                ////
+                ///
+                case State.PlayEarth:
+                    _currentState = value;
+                    Earth.gameObject.SetActive(false);
+                    break;
             }
 
             Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
@@ -224,23 +237,12 @@ public class GameManager : MonoBehaviour
         TimeManager.LocalHoursOffset = localHoursOffset;
         TimeManager.TimeScale = 1 / 60f;
         
-        earth.gameObject.SetActive(false);
+        
         
         var sceneIndex = 0;
-        switch (unit.name)
-        {
-            case "ProductionFactory":
-                sceneIndex = 2;
-                break;
-            case "LaunchPlace":
-                sceneIndex = 3;
-                break;
-            case "ResearchLab":
-                sceneIndex = 4;
-                break;
-            default:
-                throw new Exception("Unit name not found");
-        }
+        if (unit.GetType() == typeof(UnitLaunchPlace)) sceneIndex = 3;
+        if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 4;
+        if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex = 2;             
 
         StartCoroutine(LoadAsyncScene(sceneIndex));
     }

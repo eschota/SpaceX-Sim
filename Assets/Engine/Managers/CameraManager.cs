@@ -11,8 +11,8 @@ public class CameraManager : MonoBehaviour
     public Vector3 target;
     public Transform TargetObject;
     private Transform Pivot;
-    private static Unit _flyToUnit;
-    public static Unit FlyToUnit
+    private static Transform _flyToUnit;
+    public static Transform FlyToUnit
     {
         get => _flyToUnit;
         set
@@ -31,13 +31,14 @@ public class CameraManager : MonoBehaviour
     }
     void Update()
     {
-          if (GameManager.CurrentState != GameManager.State.PlaySpace && GameManager.CurrentState != GameManager.State.CreateLaunchPlace && GameManager.CurrentState != GameManager.State.CreateResearchLab&&
-            GameManager.CurrentState != GameManager.State.CreateProductionFactory) return;
         if (FlyToUnit != null)
         {
             FlyTo();
             return;
         }
+        if (GameManager.CurrentState != GameManager.State.PlaySpace && GameManager.CurrentState != GameManager.State.CreateLaunchPlace && GameManager.CurrentState != GameManager.State.CreateResearchLab&&
+            GameManager.CurrentState != GameManager.State.CreateProductionFactory) return;
+        
         Zoom();
         NearEarth();
     }
