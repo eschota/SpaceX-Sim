@@ -32,8 +32,8 @@ public class Unit : MonoBehaviour
     }
    
     public virtual void Ini()
-    { 
-        
+    {
+        name = Name;
     }
     public virtual void Start()
     {
@@ -68,6 +68,7 @@ public class Unit : MonoBehaviour
     {
         ID = GetInstanceID();
         string jsonData = JsonUtility.ToJson(this, true);
+        Name = name;
         localPosition = transform.position;
         localRotation = transform.localRotation.eulerAngles;
         File.WriteAllText(Path.Combine( ScenarioManager.instance.CurrentScenario.CurrentFolder, ID+"."+ GetType().ToString() ), jsonData);

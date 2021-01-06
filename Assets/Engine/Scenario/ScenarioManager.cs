@@ -344,6 +344,10 @@ public class ScenarioManager : MonoBehaviour
         GameManager.CurrentState = GameManager.State.PlaySpace;
     }
      
-     
+     public void LoadGame()
+    {
+        LoadScenarioResearchAndModules();
+        GameManager.CurrentState = GameManager.State.PlaySpace;
+    }
     #endregion
 }
