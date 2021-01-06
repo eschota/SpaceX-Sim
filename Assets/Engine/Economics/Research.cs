@@ -58,7 +58,7 @@ public class Research : Unit
 
     public override void Awake()// 
     {
-
+        transform.SetParent(GameManager.instance.transform);
     }
     public override void OnDestroy()
     {

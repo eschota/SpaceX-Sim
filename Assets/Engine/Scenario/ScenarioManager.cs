@@ -198,6 +198,10 @@ public class ScenarioManager : MonoBehaviour
                     module.SaveJSON();
                 }
             }
+            foreach (var item in GameManager.UnitsAll)
+            {
+                item.SaveJSON();
+            }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
 
             AssetDatabase.Refresh();
@@ -295,6 +299,33 @@ public class ScenarioManager : MonoBehaviour
         {
             string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
             ModuleISS R = new GameObject().AddComponent<ModuleISS>();
+            JsonUtility.FromJsonOverwrite(jsondata, R);
+            R.Ini();
+        }
+        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
+        info = dir.GetFiles("*.UnitResearchLab");
+        foreach (FileInfo f in info)
+        {
+            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            UnitResearchLab R = new GameObject().AddComponent<UnitResearchLab>();
+            JsonUtility.FromJsonOverwrite(jsondata, R);
+            R.Ini();
+        }
+        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
+        info = dir.GetFiles("*.UnitLaunchPlace");
+        foreach (FileInfo f in info)
+        {
+            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            UnitLaunchPlace R = new GameObject().AddComponent<UnitLaunchPlace>();
+            JsonUtility.FromJsonOverwrite(jsondata, R);
+            R.Ini();
+        }
+        dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
+        info = dir.GetFiles("*.UnitProductionFactory");
+        foreach (FileInfo f in info)
+        {
+            string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
+            UnitProductionFactory R = new GameObject().AddComponent<UnitProductionFactory>();
             JsonUtility.FromJsonOverwrite(jsondata, R);
             R.Ini();
         }
