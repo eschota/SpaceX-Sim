@@ -5,7 +5,20 @@ using UnityEngine;
 public class Country : MonoBehaviour
 {
     [SerializeField] public Color ColorCountry;
-    public bool Hovered=false;
+    private bool _Hovered;
+    public bool Hovered
+    {
+        get => _Hovered;
+        set
+        {
+            if(value==true)
+            gameObject.layer = 0;
+            else
+                gameObject.layer = 11;
+            _Hovered = value;
+            
+        }
+    }
     void Start()
     {
         ChangeColor();

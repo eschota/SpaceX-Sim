@@ -147,7 +147,7 @@ public class WorldMapManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
         if (Input.GetKeyDown(KeyCode.F7)) CurrentState = State.Climat;
         
-            SelectCountry();
+       if(GameManager.AboveEarth)SelectCountry();
     }
     
 

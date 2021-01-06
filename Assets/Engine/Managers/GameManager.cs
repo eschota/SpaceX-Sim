@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        UnitsAll.CollectionChanged += OnChangeUnits; 
+        UnitsAll.CollectionChanged += OnChangeUnits;
     }
     void Update()
     {
@@ -53,6 +53,14 @@ public class GameManager : MonoBehaviour
             if (_earth == null) _earth = UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)) as UnitEarth;
             return _earth;
         }
+    }
+    public static bool AboveEarth
+    {
+        get {
+            if (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.PlaySpace)
+                return true;
+            else return false;
+            }
     }
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
