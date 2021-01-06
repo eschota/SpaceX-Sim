@@ -37,7 +37,7 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
 
                         launchPlace.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
                     launchPlace.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
-                        GameManager.CreateUnit(launchPlace);
+                        GameManager.UnitsAll.Add(launchPlace);
 
                         GameManager.instance.OpenUnitScene(launchPlace);
                         CameraManager.FlyToUnit = launchPlace;
@@ -49,7 +49,7 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
 
                         unit.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
                     unit.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
-                    GameManager.CreateUnit(unit);
+                    GameManager.UnitsAll.Add(unit);
 
                         GameManager.instance.OpenUnitScene(unit);
                         CameraManager.FlyToUnit = unit;
@@ -61,7 +61,7 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
 
                         unitR.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
                     unitR.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
-                    GameManager.CreateUnit(unitR);
+                    GameManager.UnitsAll.Add(unitR);
 
                         GameManager.instance.OpenUnitScene(unitR);
                         CameraManager.FlyToUnit = unitR;
@@ -72,7 +72,7 @@ public class UIButtonLaunchPlaceOk : MonoBehaviour
          
         else Alert.instance.AlertMessage = "Select Launch Place First!!!";
     }
-    // Update is called once per frame
+    
     void Update()
     {
         

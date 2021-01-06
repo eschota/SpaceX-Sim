@@ -6,9 +6,10 @@ using System;
 using System.Security.Cryptography;
 using UnityEngine.SceneManagement;
 using Object = System.Object;
-
-    #endregion
-    #region Base Functions
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+#endregion
+#region Base Functions
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
     }
-    
+
     private void Awake()
     {
         if (FindObjectsOfType<GameManager>().Length > 1 || instance != null)
@@ -33,9 +34,10 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Instantiate(Resources.Load("Canvas")));
         //GameObject WorldMap= Instantiate( Resources.Load("world_map"))as GameObject;
         //WorldMap.transform.SetParent(transform);
-       
-         
+
+
         SceneManager.sceneLoaded += OnSceneLoaded;
+        UnitsAll.CollectionChanged += OnChangeUnits; 
     }
     void Update()
     {
@@ -44,8 +46,8 @@ public class GameManager : MonoBehaviour
     #endregion
     #region Variables
     public static event Action EventChangeState;
-    public static event Action <Unit> EventWithUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace,CreateResearchLab,CreateProductionFactory, PlayStation, PlayBase,ResearchGlobal,EarthResearchLab, EarthProductionFactory, EarthLauchPlace,ScenarioEditorSelection,Settings, Save, Load,PlayEarth, ScenarioEditorGlobal,StartGameSelectScenario}
+    public static event Action<Unit> EventWithUnit;
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario }
     private static State _currentState;
     public static State CurrentState
     {
@@ -71,16 +73,16 @@ public class GameManager : MonoBehaviour
                 case State.PlayStation:
                     CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
                     return;
-              
+
                 case State.ResearchGlobal:
-                 
+
                     CameraControllerScenarioResearch.instance.CameraPivot.SetParent(ScenarioManager.instance.InGameResearchPanel);
 
                     break;
-                    /////////////////////////////////////////////////////
-                    ////
-                    ////            выбор сохранения загрузки редактирования сценариев
-                    ////
+                /////////////////////////////////////////////////////
+                ////
+                ////            выбор сохранения загрузки редактирования сценариев
+                ////
 
                 case State.ScenarioEditorSelection:
                     _currentState = value;
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour
                     break;
 
                 case State.StartGameSelectScenario:
-                    _currentState = value;                    
+                    _currentState = value;
                     ScenarioManager.instance.EnterScenarioManager();
                     break;
                     /////////////////////////////////////////////////////
@@ -110,7 +112,7 @@ public class GameManager : MonoBehaviour
 
             Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
             _currentState = value;
-            if(EventChangeState!=null) EventChangeState();
+            if (EventChangeState != null) EventChangeState();
 
         }
     }
@@ -121,21 +123,21 @@ public class GameManager : MonoBehaviour
         {
             if (_gameParam == null)
             {
-                _gameParam=(Resources.LoadAll<GameParameters>("GameParametres")[0]) as GameParameters;
+                _gameParam = (Resources.LoadAll<GameParameters>("GameParametres")[0]) as GameParameters;
                 Debug.Log("Loaded GameParams from Default: " + _gameParam.name);
             }
             return _gameParam;
         }
     }
 
-    public enum level { Easy, Medium, Hard}
+    public enum level { Easy, Medium, Hard }
     #endregion
     #region Game Start Load Save etc
     private static void StartNewGame()
     {
         Eco.IniEco("");
         TimeManager.Init();
-       
+
     }
 
     static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -144,7 +146,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Launch") CurrentState = State.PlayEarth;
         if (SceneManager.GetActiveScene().name == "Production") CurrentState = State.PlayEarth;
         if (SceneManager.GetActiveScene().name == "Research") CurrentState = State.PlayEarth;
-        Debug.Log("Loaded Scene: "+ SceneManager.GetActiveScene().name);
+        Debug.Log("Loaded Scene: " + SceneManager.GetActiveScene().name);
     }
     static public void LoadGame(string Name)
     {
@@ -152,21 +154,37 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Unit Events
-    public static void EventUnit(Unit unit)        // здесь мы сообщаем о том что произошло любое событие с юнитом и записываем его в историю
+    
+
+    public static void OnChangeUnits(object sender, NotifyCollectionChangedEventArgs e)
     {
-        EventWithUnit(unit);
+        switch (e.Action)
+        {
+            case NotifyCollectionChangedAction.Add: // если добавление                
+                Console.WriteLine($"Добавлен новый объект: {(e.NewItems[0] as Unit).Name}");
+                EventWithUnit(e.NewItems[0] as Unit);
+                break;
+            case NotifyCollectionChangedAction.Remove: // если удаление
+                 
+                Console.WriteLine($"Удален объект: {e.OldItems[0]}");
+                break;
+            case NotifyCollectionChangedAction.Replace: // если замена
+                //User replacedUser = e.OldItems[0] as User;
+                //User replacingUser = e.NewItems[0] as User;
+                //Console.WriteLine($"Объект {replacedUser.Name} заменен объектом {replacingUser.Name}");
+                break;
+        }
+        
     }
+
     #endregion
     #region LauchPlace ResearchLab Production Factory
-    public static List<Unit> UnitsAll = new List<Unit>();
+    public static ObservableCollection<Unit> UnitsAll = new ObservableCollection<Unit>();
+  
     public static List<Unit> UnitsLaunchPlace = new List<Unit>();
     public static List<Unit> UnitsResearchLab = new List<Unit>();
     public static List<Unit> UnitsProductionFactory = new List<Unit>();
-    public static void CreateUnit(Unit currentUnit)
-    {           
-        EventWithUnit(currentUnit);
-        CurrentState = State.PlaySpace;
-    }
+    
 
    
     #endregion
@@ -278,5 +296,14 @@ public class GameManager : MonoBehaviour
         return null;
     }
      
+}
+public static class ObservableCollectionExtension
+{
+    public static T Find<T>(this ObservableCollection<T> list, Func<T, bool> predicate)
+    {
+        int len = list.Count;
+        for (int i = 0; i < len; i++) if (predicate(list[i])) return list[i];
+        return default;
+    }
 }
 #endregion

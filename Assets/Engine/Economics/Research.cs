@@ -52,7 +52,7 @@ public class Research : Unit
             {
                 TimeCompleted = new int[] { 0, 0, 0 };
             }
-            GameManager.EventUnit(this);
+            //GameManager.EventUnit(this);
         }
     }
 
