@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Variables
+    public static UnitEarth Earth;
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario }
@@ -63,11 +64,10 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     if (CurrentState == State.EarthLauchPlace || CurrentState == State.EarthProductionFactory || CurrentState == State.EarthResearchLab)
-                    {
-                        TimeManager.TimeScale = 1f;
-                        var earth = UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).gameObject;
-                        earth.SetActive(true);
+                    {                        
+                     
                         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+                        Earth.gameObject.SetActive(true);
                     }
                     break;
                 case State.PlayStation:

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 public class UIButtonUnitController : MonoBehaviour
 {
     UIButtonUnit[] units;
@@ -22,12 +23,14 @@ public class UIButtonUnitController : MonoBehaviour
         }
 
         EnterCurrentUnit.onClick.AddListener(OnClickEnter);
-        GameManager.EventWithUnit += OnCreateNewUnit;
+        GameManager.UnitsAll.CollectionChanged += OnCreateNewUnit;
         EnterCurrentUnit.gameObject.SetActive(false);
     }
 
-    void OnCreateNewUnit(Unit unit)
+    void OnCreateNewUnit(object sender, NotifyCollectionChangedEventArgs e)
     {
+        if (e.NewItems[0] == null) return;
+        Unit unit = e.NewItems[0] as Unit;
         HideEnterButton();
         if (unit.GetType() == typeof(UnitLaunchPlace))
         {

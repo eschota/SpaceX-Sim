@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.000056256114, g: 0.00007134751, b: 0.000051015093,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -388,7 +387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &42472673
 MonoBehaviour:
@@ -2841,14 +2840,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904981780}
-  m_LocalRotation: {x: -0.23196098, y: -0.66797763, z: -0.23196098, w: 0.66797763}
+  m_LocalRotation: {x: 0.3663532, y: -0.6048019, z: -0.6048019, w: 0.3663532}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1367467337}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -38.3, y: -90, z: 0}
+  m_Father: {fileID: 5858208103007948609}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &920639321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4085,7 +4084,7 @@ Transform:
   m_GameObject: {fileID: 1367467336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2131989709}
   m_Father: {fileID: 904981781}
@@ -4484,7 +4483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -10.52}
 --- !u!114 &1512619770
 MonoBehaviour:
@@ -5092,7 +5091,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1759593604
 MonoBehaviour:
@@ -5934,7 +5933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131989705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5335, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.556, z: 0}
   m_LocalScale: {x: 0.008332501, y: 0.008332501, z: 0.008332501}
   m_Children: []
   m_Father: {fileID: 1367467337}
@@ -8033,7 +8032,7 @@ Transform:
   m_Children:
   - {fileID: 5858208103007948609}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &1456419654308691207
 MeshFilter:
@@ -14898,6 +14897,7 @@ Transform:
   - {fileID: 2106256609}
   - {fileID: 5858208103602549124}
   - {fileID: 543450652372790307}
+  - {fileID: 904981781}
   m_Father: {fileID: 1456419654308691206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 117.59, z: 0}
