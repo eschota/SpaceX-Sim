@@ -15,6 +15,6 @@ public class GuiCountryChoiceText : MonoBehaviour
         CostBuild.text = country.CostBuild.ToString();
         CostPerMonth.text = country.CostPerMonth.ToString();
         CostPerLaunch.text = country.CostLaunch.ToString();
-        UIButtonLaunchPlaceOk.CurrentLauchPlace = country;
+        WindowCreateNewEarthUnit.CurrentLauchPlace = country;
     }
 }

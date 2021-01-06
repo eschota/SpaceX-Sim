@@ -20,7 +20,7 @@ public class UIButtonSelectLaunchPlace : MonoBehaviour
         CostBuild.text = launchPlace.CostBuild.ToString();
         CostPerMonth.text = launchPlace.CostPerMonth.ToString();
         CostPerLaunch.text = launchPlace.CostLaunch.ToString();
-        UIButtonLaunchPlaceOk.CurrentLauchPlace = launchPlace;
+        WindowCreateNewEarthUnit.CurrentLauchPlace = launchPlace;
     }
 
     public void SetCountryToGUI(CountrySO country)
@@ -29,6 +29,6 @@ public class UIButtonSelectLaunchPlace : MonoBehaviour
         CostBuild.text = country.CostBuild.ToString();
         CostPerMonth.text = country.CostPerMonth.ToString();
         CostPerLaunch.text = country.CostLaunch.ToString();
-        UIButtonLaunchPlaceOk.CurrentLauchPlace = country;
+        WindowCreateNewEarthUnit.CurrentLauchPlace = country;
     }
 }

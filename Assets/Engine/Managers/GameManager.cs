@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
                     break;
             }
 
-            Debug.Log(string.Format("<color=blue> State changed " + _currentState + ":=" + value + "</color>"));
+            Debug.Log(string.Format("<color=yellow> State changed " + _currentState + ":=" + value + "</color>"));
             _currentState = value;
             if (EventChangeState != null) EventChangeState();
 

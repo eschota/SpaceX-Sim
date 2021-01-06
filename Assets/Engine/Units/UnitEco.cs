@@ -9,5 +9,5 @@ public class UnitEco : Unit
     public UIButtonUnit UIbutton;
     public Country Country;
     public bool EcoBilledFirstMonth=false;
-    
+    public int EcoRentCost=1;
 }
