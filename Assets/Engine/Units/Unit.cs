@@ -33,6 +33,7 @@ public class Unit : MonoBehaviour
    
     public virtual void Ini()
     {
+        transform.SetParent(GameManager.instance.transform);
         name = Name;
     }
     public virtual void Start()
@@ -53,7 +54,7 @@ public class Unit : MonoBehaviour
     public virtual void Awake()
     {
         Name = name;
-       
+        transform.SetParent(GameManager.instance.transform);
     }
     public virtual void OnDestroy()
     {

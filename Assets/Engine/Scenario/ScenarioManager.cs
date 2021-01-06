@@ -247,7 +247,7 @@ public class ScenarioManager : MonoBehaviour
             }
         }
         Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
-      if(CurrentScenario!=null)  ClearResearchesAndModules(); 
+      if(CurrentScenario!=null) if(GameManager.CurrentState!=GameManager.State.Save) ClearResearchesAndModules(); 
         WindowLoadScenario.instance.LoadScenarios();
     }
     public void LoadScenarioResearchAndModules()

@@ -23,7 +23,7 @@ public class Research : Unit
     [System.NonSerialized]
     public List<Module> Modules = new List<Module>();
     public List<int> ModulesID = new List<int>();
-    [System.NonSerialized]
+    
     public UIResearchButton researchButton;
 
     public bool Completed

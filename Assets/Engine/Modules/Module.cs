@@ -32,8 +32,11 @@ public class Module : Unit // главное это префаб модуля, �
     {
      get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name+".png" ;
     }
- 
-    
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
     public override void Ini()
     {
         name = Name = "Module_ " + Name;
