@@ -5,6 +5,9 @@ using UnityEngine;
 public class Country : MonoBehaviour
 {
     [SerializeField] public Color ColorCountry;
+    [SerializeField] public string Name;
+    [SerializeField] public float Population;
+    [SerializeField] public float Wealth;
     private bool _Hovered;
     public bool Hovered
     {
@@ -22,7 +25,9 @@ public class Country : MonoBehaviour
     void Start()
     {
         ChangeColor();
+        
     }
+  
 
     void ChangeColor()
     {

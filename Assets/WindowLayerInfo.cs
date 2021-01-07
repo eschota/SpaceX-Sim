@@ -15,7 +15,7 @@ public class WindowLayerInfo : UIWindows
     private void Update()
     {
 
-        layersText[0].text = WorldMapManager.instance.CurrentHovered ? WorldMapManager.instance.CurrentHovered.name : "No Country";
+        layersText[0].text = WorldMapManager.instance.CurrentHovered ? WorldMapManager.instance.CurrentHovered.Name : "No Country";
         layersText[1].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[1], WorldMapManager.instance.HoveredEarthUVCoord).ToString()+"%"; 
         layersText[2].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[2], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
         layersText[3].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayers[3], WorldMapManager.instance.HoveredEarthUVCoord).ToString() + "%"; 
