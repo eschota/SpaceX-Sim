@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PW_Plant_Flower_Mountine_Atlass
+  m_Shader: {fileID: -6465566751694194690, guid: 26e13b92150b60542b5039846beee74c,
+    type: 3}
+  m_ShaderKeywords: _ALPHATEST_ON _PW_COVER_ON _PW_SF_WIND_ON _PW_SSS_OFF
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 0d2c8c2e4e147ac4e8b99e5187bebba0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: ceaf8f336c2af834d8e05e277098fb17, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: bb2d0f05922ed9d438edf6b4a881250a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer0Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer1Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_WorldMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ALPHATEST: 0
+    - _AOPower: 1
+    - _AOPowerExp: 0.3
+    - _AOScale: 1
+    - _AOSlider: 0.865
+    - _AOVertexMask: 1
+    - _AlphaCutoffBias: 0.723
+    - _AlphaTest: 1
+    - _AutumnShift: 1.5
+    - _AutumnShiftDynamicDistanceLength: 3
+    - _AutumnShiftDynamicOffset: -0.25
+    - _AutumnShiftMode: 0
+    - _Brightness: 0.86
+    - _BumpMapScale: 0.553
+    - _ColorMaskFuzziness: 0.03
+    - _ColorMaskRange: 0
+    - _CoverBottomUpOffset: 0.0732467
+    - _CoverBrightness: 2
+    - _CoverDynamicBlendStrength: 0
+    - _CoverDynamicDistanceLength: 3
+    - _CoverDynamicOffset: -0.25
+    - _CoverDynamicScatterScale: 1.5
+    - _CoverIntensity: 2
+    - _CoverMapMode: 0
+    - _CoverNormalStrength: 1
+    - _CoverTiling: 5
+    - _CoverTopDownOffset: -1
+    - _CrossfadeDistanceOffset: 0
+    - _CrossfadeDistancePower: 13.28441
+    - _CrossfadeDistanceRange: 0
+    - _CullMode: 0
+    - _Cutoff: 0.7
+    - _DebugMode: 0
+    - _EnableColorMode: 0
+    - _EnableSSSMode: 0
+    - _Glossiness: 0.081
+    - _LODCrossfadeMode: 0
+    - _Metallic: 0
+    - _MetallicStrength: 0
+    - _NormalMode: 0
+    - _NormalStrength: 1
+    - _OcclusionStrength: 0.5
+    - _OcclusionVertexStrength: 0
+    - _PW_Cover: 0
+    - _PW_CoverEdge: 0.1
+    - _PW_CoverLayer0AlphaAdd: 1
+    - _PW_CoverLayer0AlphaClamp: 1
+    - _PW_CoverLayer0AlphaExpand: 1
+    - _PW_CoverLayer0Edge: 0.1
+    - _PW_CoverLayer0FadeDist: 0
+    - _PW_CoverLayer0FadeStart: 0
+    - _PW_CoverLayer0Metallic: 0
+    - _PW_CoverLayer0NormalScale: 1
+    - _PW_CoverLayer0Progress: 0
+    - _PW_CoverLayer0Smoothness: 0.1
+    - _PW_CoverLayer0Tiling: 64
+    - _PW_CoverLayer0Wrap: 0
+    - _PW_CoverLayer1AlphaAdd: 1
+    - _PW_CoverLayer1AlphaClamp: 1
+    - _PW_CoverLayer1AlphaExpand: 1
+    - _PW_CoverLayer1Edge: 0.1
+    - _PW_CoverLayer1FadeDist: 0
+    - _PW_CoverLayer1FadeStart: 0
+    - _PW_CoverLayer1Metallic: 0
+    - _PW_CoverLayer1NormalScale: 1
+    - _PW_CoverLayer1Progress: 0
+    - _PW_CoverLayer1Smoothness: 0.1
+    - _PW_CoverLayer1Tiling: 64
+    - _PW_CoverLayer1Wrap: 0
+    - _PW_CoverWorldUVScale: 1
+    - _PW_GlobalControl: 1
+    - _PW_Global_Metallic: 0
+    - _PW_Global_SeasonalTintAmount: 0
+    - _PW_Global_Smoothness: 0
+    - _PW_SF_COVER: 0
+    - _PW_SF_GLOBAL_CONTROL: 0
+    - _PW_SF_SSS: 0
+    - _PW_SF_WIND: 0
+    - _PW_SF_WORLDMAP: 0
+    - _PW_SSS: 0
+    - _PW_SSSDistortion: 0.5
+    - _PW_SSSPower: 1
+    - _PW_SSS_1: 0
+    - _PW_SeasonalTintAmount: 0
+    - _PW_ShaderMode: 1
+    - _PW_TerrainSizeX: 2048
+    - _PW_TerrainSizeY: 0
+    - _PW_TerrainSizeZ: 2048
+    - _PW_WindFrequency: 16
+    - _PW_WindGustDistance: 3.37
+    - _PW_WindSpeed: 20
+    - _PW_WindToggle: 1
+    - _PW_WindVertex: 0
+    - _PW_WorldMapToggle: 0
+    - _PW_WorldMapUVScale: 1
+    - _SSSColorContribution: 1
+    - _SSSDistortion: 1
+    - _SSSIntensity: 1
+    - _SSSPower: 1
+    - _Smoothness: 0
+    - _SmoothnessMode: 0
+    - _SmoothnessThreshold: 0
+    - _SmoothnessVariance: 0
+    - _Tiling: 1
+    - _WindMode: 1
+    - _WindPWDirection: 0.042
+    - _WindPWDistanceIntensity: 0.1
+    - _WindPWDistanceMode: 0
+    - _WindPWDistanceOffset: 0
+    - _WindPWDistancePower: 4
+    - _WindPWDistanceRange: 14.06244
+    - _WindPWFrequency: 5.79
+    - _WindPWFrequencyDetail: 2.3
+    - _WindPWIntensity: 0.454
+    - _WindPWMagnitude: 0.645
+    - _WindPWMagnitudeDetail: 1
+    - _WindPWMaskVerticalIntensity: 0.02
+    - _WindPWMaskVerticalOffset: 0.891
+    - _WrapLighting: 0
+    - __dirty: 1
+    m_Colors:
+    - _AlbedoTint: {r: 0.28327242, g: 0.3207547, b: 0.16794232, a: 0}
+    - _Color: {r: 0.5391777, g: 0.6792453, b: 0.509434, a: 1}
+    - _ColorMaskTint: {r: 0, g: 0, b: 0, a: 0}
+    - _CoverTint: {r: 1, g: 1, b: 1, a: 0}
+    - _PW_CoverLayer0Color: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_CoverLayer1Color: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_SSSTint: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_WindDirection: {r: 2, g: 1, b: 2, a: 0}
+    - _PW_WorldMapColorCover0: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_WorldMapColorCover1: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_WorldMapColorObject: {r: 1, g: 1, b: 1, a: 1}
+    - _SSSColor: {r: 0.3411765, g: 0.3294118, b: 0.2509804, a: 1}
