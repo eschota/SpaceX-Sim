@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 using UnityEngine.EventSystems;
 
 public class WorldMapManager : MonoBehaviour
@@ -20,6 +21,11 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public List<Texture2D> WorldLayers;
     [SerializeField] public List<Color> ClimatZonesColors;
     [SerializeField] public List<string> ClimatZonesNames;
+    [SerializeField] public TextAsset CountryNamesJSONFile;
+    [SerializeField] public TextAsset CountryPopulationJSonFile;
+
+    
+
     public Country CurrentHovered;
     public Country CurrentPointCountry;
     LayerMask EarthMask;
@@ -101,6 +107,7 @@ public class WorldMapManager : MonoBehaviour
          
         HideMap();
         EarthMask = LayerMask.GetMask("Earth");
+       
     }
     void OnUnitCreated(Unit unit)
     {
@@ -248,4 +255,43 @@ public class WorldMapManager : MonoBehaviour
             item.ColorCountry = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         }
     }
+    [ContextMenu("SetNames")]
+    void SetNames()
+    {
+        ;
+        string []nms= CountryNamesJSONFile.text.Split('}');
+        foreach (var str in nms)
+            
+
+                foreach (var item in countries)
+                {
+                if (str.Substring(11, 2) == item.name) item.Name = str.Substring(25, str.Length - 26);
+                }
+       
+    }  [ContextMenu("SetPopulation")]
+    void SetPopulationAndWealth()
+    {
+        ;
+        string []nms= CountryPopulationJSonFile.text.Split('\n');
+        foreach (var str in nms)
+        {
+
+            string[] cntr = str.Split('\t');
+        
+            foreach (var item in countries)
+            {
+                if(cntr[0].Trim().ToLower()==item.Name.ToLower())
+                {
+                    float.TryParse(cntr[3], out item.Population);
+                    float.TryParse(cntr[2], out item.Wealth);
+                }
+            }
+
+        }
+
+    }
+
+    
+
+   
 }

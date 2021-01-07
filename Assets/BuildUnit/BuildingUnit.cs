@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class BuildingUnit : MonoBehaviour
+public class BuildingUnit : Unit
 {
     public enum EBuildingState
     {
