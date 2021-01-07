@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48450bd9283419740b30e7d7ad477605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Trajectory: {fileID: 0}
   EarthRenderer: {fileID: 9163425490686331278}
   Clouds: {fileID: 2106256608}
   Glow: {fileID: 5911346358251325976}
@@ -339,6 +340,8 @@ MonoBehaviour:
   - Temperate
   - Sub Arctic/Antarctic
   - Arctic/Antarctic
+  CountryNamesJSONFile: {fileID: 0}
+  CountryPopulationJSonFile: {fileID: 0}
   CurrentHovered: {fileID: 0}
   CurrentPointCountry: {fileID: 0}
   CurrenUnitPoint: {fileID: 0}
@@ -402,6 +405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.80531204, g: 0.63523406, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &42472676
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -429,6 +435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.8655766, b: 0.8967148, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &48454845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -456,6 +465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.5135742, b: 0.48359093, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &55454538
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -483,6 +495,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5529475, g: 0, b: 0.30341804, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &74924908
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -510,6 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5054114, g: 0.78887177, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &90344686
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -537,6 +555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.21841392, g: 0, b: 0.78859305, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &94123794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -564,6 +585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.036138862, g: 0.6344486, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &97267015
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -591,6 +615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.41244203, b: 0.61509126, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &99569650
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -618,6 +645,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.29656467, b: 0.668846, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &115475586
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -645,6 +675,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.83875775, b: 0.77494997, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &116902008
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -672,6 +705,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.39132595, b: 0.9455061, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &119323242
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -699,6 +735,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.6131044, g: 0.2877703, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &131985166
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -726,6 +765,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5445661, g: 0.034711435, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &137578752
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -753,6 +795,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.13285309, b: 0.6433101, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &169773755
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -780,6 +825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.06495423, b: 0.7055378, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &170481016
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -819,6 +867,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.56593364, b: 0.73210216, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &181601948
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -846,6 +897,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5444741, g: 0.5176955, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &188125320
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -873,6 +927,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.13174622, g: 0, b: 0.6119502, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &197632196
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -900,6 +957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.70344937, b: 0.28824642, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &223510348
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -927,6 +987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.15349917, g: 0.6047982, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &252857074
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -954,6 +1017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.91448426, g: 0.6253757, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &261467314
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -981,6 +1047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.57449025, g: 0, b: 0.36345175, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &276678989
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1008,6 +1077,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.6160005, g: 0.15413614, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &308173689
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1035,6 +1107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.24314348, b: 0.9289734, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &336398811
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1062,6 +1137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.8494983, g: 0.517448, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &337079924
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1089,6 +1167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.22512557, g: 0.65271056, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &356654813
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1116,6 +1197,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.90708536, b: 0.7249046, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &378679927
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1143,6 +1227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.82318246, b: 0.26564375, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &384442848
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1170,6 +1257,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.86806107, g: 0.3019057, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &397555611
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1197,6 +1287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9690557, g: 0, b: 0.19552065, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &398049868
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1224,6 +1317,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.022253986, b: 0.6929369, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &400941882
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1251,6 +1347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.64225525, g: 0.73751307, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &426780602
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1278,6 +1377,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.15822615, b: 0.5446519, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &428894960
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1305,6 +1407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9992071, g: 0, b: 0.29770926, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &444482035
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1332,6 +1437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.20073776, g: 0, b: 0.53746647, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &445213392
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1359,6 +1467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7130637, g: 0.57689416, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &445294325
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1386,6 +1497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.74826354, g: 0, b: 0.99572724, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &446046980
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1413,6 +1527,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9769072, g: 0.6004897, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &457064946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1440,6 +1557,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.24834311, b: 0.58283246, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &487589812
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1467,6 +1587,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5603531, g: 0, b: 0.96998423, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &493916784
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1494,6 +1617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.21410887, b: 0.79642785, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &507506470
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1521,6 +1647,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.574074, b: 0.63524413, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &518534479
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1548,6 +1677,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.5306965, b: 0.9501708, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &518947901
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1575,6 +1707,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.019731143, g: 0.6922089, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &518981184
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1602,6 +1737,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.52983975, b: 0.09853307, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &526963113
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1629,6 +1767,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5508787, g: 0, b: 0.36010146, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &530370664
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1656,6 +1797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.4799918, g: 0.84233654, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &563402229
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1683,6 +1827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.4139965, b: 0.82107484, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &575538509
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1710,6 +1857,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.60569304, g: 0.5133622, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &578387009
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1737,6 +1887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.532824, g: 0.8001771, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &590375274
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1764,6 +1917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.511081, g: 0, b: 0.29587469, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &593797543
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1791,6 +1947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.1435058, b: 0.6807701, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &609111390
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1818,6 +1977,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5953804, g: 0, b: 0.43108663, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &621756621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1845,6 +2007,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.3491337, b: 0.67321175, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &629693644
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1872,6 +2037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.04641799, g: 0, b: 0.94893533, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &642164847
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1899,6 +2067,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9440786, g: 0, b: 0.7030576, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &648165571
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1926,6 +2097,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.6049256, g: 0, b: 0.5705402, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &661945813
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1953,6 +2127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.8172463, g: 0.4907192, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &685030034
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1980,6 +2157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.08292379, b: 0.79398334, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &691426847
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2007,6 +2187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.56851315, g: 0.031103715, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &697919591
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2034,6 +2217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.0711852, b: 0.75251126, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &703777615
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2265,6 +2451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.32677832, b: 0.5607459, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &709911820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2292,6 +2481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.2021354, b: 0.8377807, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &710460995
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2319,6 +2511,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.061516464, g: 0, b: 0.5739413, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &713683207
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2346,6 +2541,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.40717784, g: 0, b: 0.9677327, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &717313256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2373,6 +2571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7796861, g: 0.15335561, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &739144213
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2400,6 +2601,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.6080613, b: 0.8124157, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &760272725
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2427,6 +2631,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.31146428, g: 0.62927246, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &775343790
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2454,6 +2661,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.0074847452, b: 0.7811221, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &785134101
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2481,6 +2691,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.42310148, g: 0, b: 0.92391837, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &788352637
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2508,6 +2721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.41659117, g: 0, b: 0.7316872, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &793586036
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2535,6 +2751,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.8689977, b: 0.6364721, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &812219319
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2562,6 +2781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7561975, g: 0, b: 0.83809555, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &855354918
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2589,6 +2811,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.690435, g: 0, b: 0.8778597, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &861433855
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2616,6 +2841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.49467313, g: 0.5918542, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &867876022
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2643,6 +2871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.42949453, g: 0.82853043, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &886075054
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2670,6 +2901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.30186078, g: 0, b: 0.5616997, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &890283356
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2697,6 +2931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.5095622, b: 0.7405286, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &892094423
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2724,6 +2961,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.33854806, g: 0.9330998, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &900675166
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2782,6 +3022,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5174272, g: 0, b: 0.22923349, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &920639324
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2809,6 +3052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.2703222, b: 0.7645198, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &921244720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2836,6 +3082,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.1923113, b: 0.56932044, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &955232693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2863,6 +3112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.5113815, b: 0.7901938, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &962232214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3093,6 +3345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7366482, g: 0.38520172, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &996344592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3120,6 +3375,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.90392405, b: 0.13351288, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1008566046
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3147,6 +3405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9832234, g: 0, b: 0.56383234, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1027711377
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3174,6 +3435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.746792, g: 0.8978212, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1049875989
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3201,6 +3465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.9109196, b: 0.17949918, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1052960164
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3228,6 +3495,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.42549247, b: 0.7111685, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1090559841
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3255,6 +3525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.70968723, g: 0.5183205, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1092503161
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3282,6 +3555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.0066987704, g: 0, b: 0.7546785, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1094961446
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3309,6 +3585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5389319, g: 0.9819825, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1101091244
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3336,6 +3615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.81804883, g: 0.04762303, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1114074786
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3363,6 +3645,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.7475283, b: 0.54929084, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1121978988
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3390,6 +3675,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.6703555, g: 0.53998363, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1165117116
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3417,6 +3705,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.18476523, b: 0.5768624, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1198259634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3444,6 +3735,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7631583, g: 0.76335645, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1203023310
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3471,6 +3765,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.24152042, g: 0.6181553, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1215637551
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3498,6 +3795,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.744992, g: 0.8295435, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1220263867
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3525,6 +3825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.25799212, b: 0.89009494, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1220830061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3552,6 +3855,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.87402236, b: 0.4952951, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1227541860
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3579,6 +3885,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.4576706, b: 0.51707464, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1233804957
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3606,6 +3915,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.62742484, g: 0, b: 0.5058658, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1239907992
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3633,6 +3945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.23639494, b: 0.64280564, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1265732638
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3660,6 +3975,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.017688975, b: 0.77770376, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1268999189
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3687,6 +4005,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5065836, g: 0, b: 0.5106011, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1279048072
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3714,6 +4035,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.54114395, g: 0.16809046, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1282795867
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3741,6 +4065,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7493708, g: 0.2797438, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1299704006
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3768,6 +4095,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.2476323, g: 0, b: 0.53026783, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1323179689
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3795,6 +4125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.8734432, b: 0.88068044, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1328157403
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3822,6 +4155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.44299546, b: 0.5643403, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1339349297
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3849,6 +4185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.74673116, b: 0.6006353, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1352209694
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3876,6 +4215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.3979464, g: 0, b: 0.50894517, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1361076721
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3903,6 +4245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.8009012, g: 0, b: 0.68551826, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1361130639
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3930,6 +4275,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.80842435, g: 0.8013086, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1362270118
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3988,6 +4336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9919964, g: 0, b: 0.09099216, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1376300856
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4036,6 +4387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9931241, g: 0.2937929, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1398400185
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4063,6 +4417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.56393063, g: 0.026326153, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1418270828
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4090,6 +4447,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7820736, g: 0.19995415, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1427710992
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4117,6 +4477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.9978727, b: 0.34179637, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1432629736
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4144,6 +4507,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.051440373, g: 0.74137545, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1447949392
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4171,6 +4537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.12971829, b: 0.53883296, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1454303803
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4198,6 +4567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.27910262, g: 0.7035425, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1462096528
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4225,6 +4597,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.95619035, g: 0.27082512, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1463114297
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4252,6 +4627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.99962616, g: 0.44479144, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1482716886
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4373,6 +4751,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9269318, g: 0.40660852, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1512619773
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4400,6 +4781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.8671074, g: 0, b: 0.4534643, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1528037881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4427,6 +4811,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.6831411, b: 0.7173289, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1530909864
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4454,6 +4841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.092382655, b: 0.8135365, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1540323375
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4481,6 +4871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.74137735, g: 0.058481853, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1552555534
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4508,6 +4901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.5846145, b: 0.1653305, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1556219499
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4535,6 +4931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.57556313, g: 0, b: 0.29125115, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1559176456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4562,6 +4961,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5817847, g: 0.50325483, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1589022860
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4589,6 +4991,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.018671403, g: 0, b: 0.949048, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1597513217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4616,6 +5021,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.9490793, g: 0, b: 0.119074345, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1644645768
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4643,6 +5051,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.27105537, b: 0.57027835, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1654713837
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4670,6 +5081,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.17463532, g: 0.7071909, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1670940206
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4697,6 +5111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.05440698, b: 0.5759208, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1674472153
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4724,6 +5141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.6232342, b: 0.688272, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1679060489
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4751,6 +5171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.3554409, g: 0, b: 0.5014501, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1682865861
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4778,6 +5201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.46046346, g: 0.6584782, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1686416437
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4805,6 +5231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.7677675, b: 0.8600035, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1689394221
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4832,6 +5261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.12608472, b: 0.5264077, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1738800720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4859,6 +5291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.8236972, g: 0.87297344, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1742656815
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4886,6 +5321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.85109127, g: 0.4551828, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1744696989
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4961,6 +5399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.025527151, g: 0, b: 0.7550466, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1759593607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4988,6 +5429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.8849998, g: 0.057670847, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1775730625
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5015,6 +5459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.97166127, g: 0.23317696, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1776900461
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5042,6 +5489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.22946393, g: 0.595026, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1817007476
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5069,6 +5519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.033002272, b: 0.5664472, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1826867240
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5096,6 +5549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.37880465, b: 0.59425735, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1877183573
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5123,6 +5579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.834141, g: 0, b: 0.91070503, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1893131021
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5150,6 +5609,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.2001254, g: 0, b: 0.8259307, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1893350851
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5177,6 +5639,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.61375684, b: 0.6622467, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1898284619
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5204,6 +5669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.6742493, b: 0.5014537, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1898334383
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5231,6 +5699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.58350545, b: 0.56704354, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1919083846
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5258,6 +5729,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.5875227, b: 0.33165675, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1940543282
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5285,6 +5759,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.34840122, g: 0, b: 0.8075242, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1953360052
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5312,6 +5789,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.041310962, b: 0.763435, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1967911451
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5339,6 +5819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.15448467, g: 0.9736813, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1995918244
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5366,6 +5849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.51862985, g: 0, b: 0.8954056, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1997794597
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5393,6 +5879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.64418864, g: 0.17194584, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2013292567
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5420,6 +5909,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.52653956, g: 0.9347007, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2070340129
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5447,6 +5939,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.41023397, g: 0, b: 0.9384898, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2079070304
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5474,6 +5969,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.5964072, g: 0.051278777, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2079217638
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5501,6 +5999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.02410783, b: 0.75391865, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2079912959
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5528,6 +6029,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.77188134, b: 0.9453933, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2083836229
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5555,6 +6059,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.54451525, b: 0.3361607, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2101557484
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5582,6 +6089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.7014375, g: 0.031316064, b: 0, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2101681785
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5806,6 +6316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0.30715907, b: 0.7889023, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2132027279
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5833,6 +6346,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0.94106793, g: 0, b: 0.9095873, a: 1}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2140028761
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5916,6 +6432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &12372385480456309
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5979,6 +6498,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &47547019770977761
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6188,6 +6710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &124316859775483123
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6269,6 +6794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &153026321772149366
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6344,6 +6872,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &180488014443222679
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6431,6 +6962,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &181109937777050898
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6698,6 +7232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &262876028484454177
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6765,6 +7302,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &317268460685013026
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6920,6 +7460,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &374082232455287301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6967,6 +7510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &389070279658843767
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7474,6 +8020,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &477024028187972445
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7557,6 +8106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &508756707018585409
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8167,6 +8719,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &590851509605337495
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8364,6 +8919,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &675864239867455761
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8553,6 +9111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &757764154559858572
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8706,6 +9267,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &799141111097176046
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8847,6 +9411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &866743783936289140
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8914,6 +9481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &868294971099671482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9001,6 +9571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &878775433915169783
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9084,6 +9657,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &894630703313556478
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9144,6 +9720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48450bd9283419740b30e7d7ad477605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Trajectory: {fileID: 6612955109734117839}
   EarthRenderer: {fileID: 9163425490686331278}
   Clouds: {fileID: 2106256608}
   Glow: {fileID: 5911346358251325976}
@@ -9350,6 +9927,8 @@ MonoBehaviour:
   - Temperate
   - Sub Arctic/Antarctic
   - Arctic/Antarctic
+  CountryNamesJSONFile: {fileID: 0}
+  CountryPopulationJSonFile: {fileID: 0}
   CurrentHovered: {fileID: 0}
   CurrentPointCountry: {fileID: 0}
   CurrenUnitPoint: {fileID: 0}
@@ -9530,6 +10109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &976185887349324464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9625,6 +10207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &999559895598916576
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9692,6 +10277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1007429001625523135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9739,6 +10327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1046466243891478770
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9826,6 +10417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1050005396433576823
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9905,6 +10499,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1102011868736944633
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10282,6 +10879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1269662446985299286
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10666,6 +11266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1393157793096422702
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10891,6 +11494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1434478557818718416
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11156,6 +11762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1535200203222867246
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11401,6 +12010,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1610436725406733682
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11666,6 +12278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1697491785427060958
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11713,6 +12328,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1713625918631255131
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11824,6 +12442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1792320972203073875
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12013,6 +12634,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1804895695199510847
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12076,6 +12700,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1855347713066580212
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12167,6 +12794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1907315440139001248
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12248,6 +12878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1913907661173956735
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12335,6 +12968,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1933641024705118776
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12752,6 +13388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &1984834174976707615
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12819,6 +13458,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2001853936384840099
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12984,6 +13626,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2013304840158588534
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13031,6 +13676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2015273467824986921
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13368,6 +14016,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2077051272180828621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13741,6 +14392,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2128473144616389750
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14008,6 +14662,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2202677817369976298
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14141,6 +14798,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2226424595821281228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14266,6 +14926,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2273618761417662666
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14353,6 +15016,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2279555611451319098
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14420,6 +15086,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2281433687606112854
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14577,6 +15246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2315340644976538388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14644,6 +15316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2322887314924250774
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14786,6 +15461,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2325990764334217553
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15038,6 +15716,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2453501223748917825
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15125,6 +15806,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2469312912870912475
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15498,6 +16182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2526603136130306757
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15837,6 +16524,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2608060158342474024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15904,6 +16594,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2617311161811110041
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16081,6 +16774,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2739265919691440189
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16246,6 +16942,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2751415976615620221
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16313,6 +17012,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2772832245461386069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16588,6 +17290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2838724537496378506
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16675,6 +17380,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2842928929133984686
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16764,6 +17472,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2859211069749500180
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16831,6 +17542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2861976222962986712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16898,6 +17612,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &2863431744692920453
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17786,6 +18503,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3278470163544053629
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18037,6 +18757,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3354261747396420071
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18483,6 +19206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3411220370530392154
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18822,6 +19548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3519960072597218261
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19061,6 +19790,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3658240848904396690
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19140,6 +19872,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3703722328200688412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19388,6 +20123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3748149505486668520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20011,6 +20749,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3915229885101478263
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20248,6 +20989,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &3975484394810493291
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20845,6 +21589,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4145608150540771400
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20964,6 +21711,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4165473232193339102
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21125,6 +21875,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4203661736772682207
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21372,6 +22125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4229722701466512498
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21537,6 +22293,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4237981053009301583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21668,6 +22427,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4273014921276895829
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21735,6 +22497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4279394310831407573
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22036,6 +22801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4359021502692055139
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22351,6 +23119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4418848753890096753
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22532,6 +23303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4459890410269050838
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22741,6 +23515,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4576953520449342448
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22930,6 +23707,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4603679232084716275
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23029,6 +23809,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4648899375172202765
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23154,6 +23937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!4 &4694024574913284978
 Transform:
   m_ObjectHideFlags: 0
@@ -23263,6 +24049,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4756010190573446664
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23382,6 +24171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4804444222496675805
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23449,6 +24241,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4813794993198870636
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23584,6 +24379,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4845252732980426343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23647,6 +24445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4875879422117016662
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23828,6 +24629,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4913305496776829541
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23891,6 +24695,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4920736886851007170
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24166,6 +24973,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4941200598106101226
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24233,6 +25043,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &4960790127086424654
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24532,6 +25345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5002266916261152973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24635,6 +25451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5036348801131880905
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24730,6 +25549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5091822742773632007
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24911,6 +25733,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5129079983346967562
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24978,6 +25803,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5158403958000793235
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25137,6 +25965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5251487249429059185
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25240,6 +26071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5322981447677746931
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25826,6 +26660,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5466756375782576602
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26099,6 +26936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5630944887725897498
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26238,6 +27078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5719495763884774966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26409,6 +27252,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &5797877811858300603
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26430,14 +27276,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6612955109734117839}
-  m_LocalRotation: {x: -0.54248935, y: -0.45354754, z: -0.45354757, w: 0.54248935}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6751211798002706874}
   m_Father: {fileID: 1456419654308691206}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -79.795006}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5825682472172662549
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27066,6 +27912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!33 &6057856644462951124
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27201,6 +28050,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6086210498081093061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27296,6 +28148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6104998628543299958
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27363,6 +28218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6105881387598306830
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27450,6 +28308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6129740765368467588
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27651,6 +28512,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6161520626814675821
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27718,6 +28582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6164138864591960812
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27785,6 +28652,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6187568974510568661
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27864,6 +28734,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6221687379354427749
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27967,6 +28840,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6290519982869178839
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28132,6 +29008,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6318348873184675217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28277,6 +29156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6324732585521629345
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28324,6 +29206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6418436966718341878
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28619,6 +29504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6499886607956763657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29380,6 +30268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6611174534468203890
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29477,6 +30368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6632237198187707907
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29642,6 +30536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6650035646902406669
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29689,6 +30586,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6651559353885318343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29776,6 +30676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6660929766189504230
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30115,6 +31018,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6742240949678546142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30164,14 +31070,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5439002061011119165}
-  m_LocalRotation: {x: 0.7071068, y: -0.7071067, z: -0.000000053347183, w: 0.0000002838275}
-  m_LocalPosition: {x: -0.50000006, y: 5.675283e-10, z: 0.000000029802322}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 370375719472072883}
   m_Father: {fileID: 5804646300129307509}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!4 &6752685297332904992
 Transform:
   m_ObjectHideFlags: 0
@@ -30427,6 +31333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6807948263559654012
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30768,6 +31677,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6882535039429880246
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31175,6 +32087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6954153698638554904
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31270,6 +32185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &6995253599878081303
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32023,6 +32941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7236221074329523775
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32257,6 +33178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7301759247766162021
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32756,6 +33680,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7385009859290285790
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32803,6 +33730,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7388494216941069957
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33006,6 +33936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7481970678734887190
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33255,6 +34188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7552933279731521850
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33322,6 +34258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7555205675416739968
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33774,6 +34713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7675818243315371202
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34305,6 +35247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7813115798665900475
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34506,6 +35451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7900006696775255966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34573,6 +35521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7939180618740694296
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34672,6 +35623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7974954464902164693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34739,6 +35693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &7984311821771583466
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34906,6 +35863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8040315060485837055
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35037,6 +35997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8068688450204845350
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35112,6 +36075,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8083845294379466745
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35179,6 +36145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8085780995340945382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35452,6 +36421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8193957555999351794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35566,6 +36538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8244686732688393211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35783,6 +36758,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8278914052644370094
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35928,6 +36906,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8310356262426599739
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36528,6 +37509,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8426527716715108215
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36615,6 +37599,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8441288415126256466
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36726,6 +37713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8497996687081040097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36867,6 +37857,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8562714554702079678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37048,6 +38041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8569064922094030562
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37268,6 +38264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8619123654222204538
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37433,6 +38432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8656866586061320649
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37530,6 +38532,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8692553730182966145
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37753,6 +38758,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8713758363068435172
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37800,6 +38808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8742091196305421950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37867,6 +38878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8743930874195213690
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38694,6 +39708,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8835500808179634139
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38761,6 +39778,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8864935573868047325
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38876,6 +39896,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8891012013527153079
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38923,6 +39946,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8914872569967873935
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39068,6 +40094,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &8947885148957027331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39454,6 +40483,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &9082129865344074718
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39577,6 +40609,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCountry: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  Population: 0
+  Wealth: 0
 --- !u!64 &9130884233668800363
 MeshCollider:
   m_ObjectHideFlags: 0

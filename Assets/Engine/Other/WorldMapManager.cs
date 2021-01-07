@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class WorldMapManager : MonoBehaviour
 {
     #region Variables
+    [SerializeField] GameObject Trajectory;
     [SerializeField] MeshRenderer EarthRenderer;
     [SerializeField] GameObject Clouds;
     [SerializeField] GameObject Glow;
@@ -115,6 +116,7 @@ public class WorldMapManager : MonoBehaviour
     }
     void OnChangeState()
     {
+        if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace) { Trajectory.SetActive(true); } else Trajectory.SetActive(false);
         if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
         {
             ShowMap();
@@ -220,6 +222,8 @@ public class WorldMapManager : MonoBehaviour
     }
     public Vector2 HoveredEarthUVCoord;
     public Vector2 SelectedEarthUVCoord;
+
+
     void PlaceUnitPoint()
     {
         RaycastHit hit;
@@ -231,7 +235,8 @@ public class WorldMapManager : MonoBehaviour
             {
                 CurrentPointCountry = CurrentHovered;
                 SelectedEarthUVCoord = HoveredEarthUVCoord;
-
+                    Trajectory.transform.rotation = Quaternion.LookRotation(-hit.point);
+                    Trajectory.transform.position = hit.point;
 
                 CurrenUnitPoint.transform.position = hit.point;
                 CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
