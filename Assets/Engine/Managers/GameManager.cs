@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
             else return false;
             }
     }
+    public bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab);
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario }

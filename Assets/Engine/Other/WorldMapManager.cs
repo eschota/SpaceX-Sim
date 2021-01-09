@@ -19,12 +19,12 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] public Material Transport;
     [SerializeField] public Material Disaster;
     [SerializeField] public Material Climat;
-    [SerializeField] public List<Texture2D> WorldLayers;
+    [SerializeField] public List<Texture2D> WorldLayersTextures;
     [SerializeField] public List<Color> ClimatZonesColors;
     [SerializeField] public List<string> ClimatZonesNames;
     [SerializeField] public TextAsset CountryNamesJSONFile;
     [SerializeField] public TextAsset CountryPopulationJSonFile;
-
+    [SerializeField] public Transform[] RocketDangerZone;
     
 
     public Country CurrentHovered;
@@ -158,8 +158,21 @@ public class WorldMapManager : MonoBehaviour
         
        if(GameManager.AboveEarth)SelectCountry();
     }
-    
+    public float MaxDamage = 0;
+    void RocketDangerZoneCompute()
+    {
+        MaxDamage = 0;
+        foreach (var item in RocketDangerZone)
+        {
+            RaycastHit hit;
 
+            Debug.DrawRay(item.position, (-item.position + transform.position).normalized,Color.yellow);
+            if (Physics.Raycast(item.position, (-item.position+transform.position).normalized, out hit, Mathf.Infinity, EarthMask))
+            {
+                MaxDamage+= GetPercentByTexture(WorldLayersTextures[2], hit.textureCoord);
+            }
+        }
+    }
     void SelectCountry()
     {
         PlaceUnitPoint();
@@ -212,11 +225,13 @@ public class WorldMapManager : MonoBehaviour
             if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
                 if (Input.GetMouseButton(0))
             {
-                CurrentPointCountry = CurrentHovered;
+                    RocketDangerZoneCompute();
+
+                    CurrentPointCountry = CurrentHovered;
                 SelectedEarthUVCoord = HoveredEarthUVCoord;
                     Trajectory.transform.rotation = Quaternion.LookRotation(-hit.point);
                     Trajectory.transform.position = hit.point;
-
+                
                 CurrenUnitPoint.transform.position = hit.point;
                 CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
             }

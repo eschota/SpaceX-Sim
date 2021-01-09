@@ -10,11 +10,13 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI TotalCost;
     public static CountrySO CurrentLauchPlace;
     [SerializeField] GameObject CancelButton;
+    [SerializeField] Button OkButton;
+    [SerializeField] TMPro.TextMeshProUGUI DangerZone;
     private GameObject UnitLaunchPrefab;
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnClick);
 
+        OkButton.onClick.AddListener(OnClick);
         SelectSize.onValueChanged.AddListener(OnChangeValue);
         OnChangeValue(0);
     }
@@ -25,6 +27,7 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
     }
     private void OnDestroy()
     {
+        OkButton.onClick.RemoveAllListeners();
         SelectSize.onValueChanged.RemoveAllListeners();
     }
     void OnClick()
@@ -59,6 +62,11 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
         Destroy(obj.gameObject);
 
 
+    }
+    private void Update()
+    {
+        if(GameManager.instance.Creation)
+        DangerZone.text = WorldMapManager.instance.MaxDamage.ToString();   
     }
     void CreateUnitByType<T> (Transform transform) where T : MonoBehaviour
     {
