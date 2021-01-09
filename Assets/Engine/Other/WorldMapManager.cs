@@ -166,7 +166,7 @@ public class WorldMapManager : MonoBehaviour
         {
             RaycastHit hit;
 
-            Debug.DrawRay(item.position, (-item.position + transform.position).normalized,Color.yellow);
+          //  Debug.DrawRay(item.position, (-item.position + transform.position).normalized,Color.yellow);
             if (Physics.Raycast(item.position, (-item.position+transform.position).normalized, out hit, Mathf.Infinity, EarthMask))
             {
                 MaxDamage+= GetPercentByTexture(WorldLayersTextures[2], hit.textureCoord);
