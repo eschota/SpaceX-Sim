@@ -372,7 +372,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -408,7 +408,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 4
   m_ColorTemperature: 6650
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 1
+  m_Intensity: 2
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -831,9 +831,9 @@ MonoBehaviour:
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
   m_AngularDiameter: 1.41
-  m_FlareSize: 0.96
+  m_FlareSize: 1.04
   m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
-  m_FlareFalloff: 2.86
+  m_FlareFalloff: 1.3
   m_SurfaceTexture: {fileID: 0}
   m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
   m_Distance: 1.5e+11
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 2
+    m_Level: 1
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -970,7 +970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1048171189
 PrefabInstance:
@@ -1564,6 +1564,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032498388973, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_LocalReferencePoint.x
+      value: -0.113886595
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032498388973, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_LocalReferencePoint.y
+      value: 0.03158325
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032498388973, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_Size
+      value: 4.499502
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032514759077, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032514759079, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032514759081, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053970032514759083, guid: d4cd1810614306e42b0f125fe27c56e8,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4cd1810614306e42b0f125fe27c56e8, type: 3}
