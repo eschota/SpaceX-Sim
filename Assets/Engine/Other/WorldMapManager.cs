@@ -198,28 +198,7 @@ public class WorldMapManager : MonoBehaviour
        
 
     }
-    public int GetZone(Texture2D tex, Vector2 uv)
-    {
-        Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
-        float max = 1000000;
 
-        int result=-1;
-        for (int i = 0; i < ClimatZonesColors.Count; i++)       
-        {
-            float temp = Vector3.Distance(new Vector3(col.r, col.g, col.b), new Vector3(ClimatZonesColors[i].r, ClimatZonesColors[i].g, ClimatZonesColors[i].b));
-            if (max > temp)
-            {
-                max = temp;
-                result = i;
-            }
-        }
-        return result;
-    }
-    public int GetPercentByTexture(Texture2D tex, Vector2 uv)
-    {
-        Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
-        return Mathf.RoundToInt(col.r * 100);
-    }
     public Vector2 HoveredEarthUVCoord;
     public Vector2 SelectedEarthUVCoord;
 
@@ -296,7 +275,28 @@ public class WorldMapManager : MonoBehaviour
 
     }
 
-    
+    public int GetZone(Texture2D tex, Vector2 uv)
+    {
+        Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
+        float max = 1000000;
 
-   
+        int result = -1;
+        for (int i = 0; i < ClimatZonesColors.Count; i++)
+        {
+            float temp = Vector3.Distance(new Vector3(col.r, col.g, col.b), new Vector3(ClimatZonesColors[i].r, ClimatZonesColors[i].g, ClimatZonesColors[i].b));
+            if (max > temp)
+            {
+                max = temp;
+                result = i;
+            }
+        }
+        return result;
+    }
+    public int GetPercentByTexture(Texture2D tex, Vector2 uv)
+    {
+        Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
+        return Mathf.RoundToInt(col.r * 100);
+    }
+
+
 }

@@ -59,7 +59,13 @@ public class CameraControllerOnEarth : MonoBehaviour
         {
             Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 500;
 
-            target = new Vector3(Mathf.Clamp( currentPos.x - temp.y,-90,40), currentPos.y + temp.x, 0);
+            target = new Vector3(currentPos.x - temp.y, currentPos.y + temp.x, 0);
+       //     target = new Vector3(Mathf.Clamp( currentPos.x - temp.y,-90,40), currentPos.y + temp.x, 0);
+
+        } if (Input.GetMouseButtonUp(1))
+        {
+            startPos = Input.mousePosition;
+            currentPos = Camera.main.transform.rotation.eulerAngles;
 
         }
         
@@ -73,7 +79,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         //    target = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
         //    //return;
         //}
-        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.Euler(target), 5* Time.unscaledDeltaTime * GP.CameraEarthSpeed);
+        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.Euler(target), 5 * Time.unscaledDeltaTime * GP.CameraEarthSpeed);
     }
     void Drag()
     {
