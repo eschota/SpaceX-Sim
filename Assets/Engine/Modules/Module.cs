@@ -10,19 +10,8 @@ public class Module : Unit // главное это префаб модуля, �
     
      
     public int Cost = 1;
-    private Sprite _icon;
-    public Sprite Icon
-    {
-        get
-        {
-            if (_icon == null) _icon=GetIcon();
-            return _icon;
-        }
-        set
-        {
-            _icon = value;
-        }
-    }
+    [SerializeField] public Sprite Icon;
+    
 
     public int[] ProductionTime = new int[] { 10,10,10};
     public string Description="Description";
@@ -30,12 +19,13 @@ public class Module : Unit // главное это префаб модуля, �
     
    public string IconFilePath
     {
-     get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name;
+     get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name+".png";
     }
 
     public override void Awake()
     {
         base.Awake();
+        Icon = Resources.Load<Sprite>("Modules/Icons/" + Prefab.name);
     }
     public override void Ini()
     {
@@ -67,12 +57,7 @@ public class Module : Unit // главное это префаб модуля, �
         importer.textureType = TextureImporterType.Sprite;
         AssetDatabase.WriteImportSettingsIfDirty(IconFilePath);
     }
-    [ContextMenu ("GetIcon")]
-    public Sprite GetIcon()
-    {
-        return Resources.Load<Sprite>("Modules/Icons/"+Prefab.name);
-       
-    }
+   
 
 
 #if UNITY_EDITOR

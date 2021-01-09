@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-
+[ExecuteInEditMode]
 public class SECSEditor : EditorWindow
 {
     string myString = "Hello World";
@@ -25,14 +25,19 @@ public class SECSEditor : EditorWindow
         GUILayout.Label("Выделенный модуль", EditorStyles.boldLabel);
 
         myString = EditorGUILayout.TextField("M", modName);
-        if (GUILayout.Button("RenderIcon"))
+        if (GUILayout.Button("GetIcon"))
+        {
+
+          
+        }
+            if (GUILayout.Button("RenderIcon"))
         {
 
             mod = Selection.activeGameObject.GetComponent<Module>();
             if (mod == null) return;
-            ScreenCapture.CaptureScreenshot(mod.IconFilePath + ".png");
+            ScreenCapture.CaptureScreenshot(mod.IconFilePath);
             AssetDatabase.Refresh();
-            AssetDatabase.ImportAsset(mod.IconFilePath + ".png");
+            AssetDatabase.ImportAsset(mod.IconFilePath);
             AssetDatabase.Refresh();
 
 
@@ -47,9 +52,9 @@ public class SECSEditor : EditorWindow
             //EditorUtility.SetDirty(importer);
             //AssetDatabase.SaveAssets();
             //AssetDatabase.Refresh();
-            mod.Icon = Resources.Load<Sprite>(mod.IconFilePath);
-            modName = mod.Name;
+            Module modul = Selection.activeGameObject.GetComponent<Module>();
 
+            modul.Icon = Resources.Load<Sprite>("Modules/Icons/" + modul.Prefab.name);
 
         }
 

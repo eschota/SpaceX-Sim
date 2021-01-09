@@ -45,8 +45,7 @@ public class BuildingUnit : Module
     }
     
     [SerializeField] private int size;
-    [SerializeField] private string title;
-    [SerializeField] private Sprite icon;
+    [SerializeField] private string title;    
     [SerializeField] private Renderer rootRenderer;
     
     private BuildCell[] _cells;
@@ -59,5 +58,4 @@ public class BuildingUnit : Module
     }
 
     public string Title => title;
-    public Sprite Icon => icon;
 }
