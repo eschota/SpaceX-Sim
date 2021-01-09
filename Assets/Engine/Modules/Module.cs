@@ -30,7 +30,7 @@ public class Module : Unit // главное это префаб модуля, �
     
    public string IconFilePath
     {
-     get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name+".png" ;
+     get =>   Application.dataPath + "/Resources/Modules/Icons/" + Prefab.name;
     }
 
     public override void Awake()
@@ -48,16 +48,16 @@ public class Module : Unit // главное это префаб модуля, �
     }
     public override void Update()
     {
-        if (!Application.isPlaying)
-            if (Selection.activeGameObject == gameObject)
-            {
-                foreach (var item in FindObjectsOfType<Module>())
-                {
-                    item._cam.gameObject.SetActive(false);
-                }
-                _cam.gameObject.SetActive(true);
-                EditorWindow.GetWindow<SceneView>().Repaint();
-            }
+        //if (!Application.isPlaying)
+        //    if (Selection.activeGameObject == gameObject)
+        //    {
+        //        foreach (var item in FindObjectsOfType<Module>())
+        //        {
+        //            item._cam.gameObject.SetActive(false);
+        //        }
+        //        _cam.gameObject.SetActive(true);
+        //        EditorWindow.GetWindow<SceneView>().Repaint();
+        //    }
     }
 
     [ContextMenu("ChangeToSprite")]

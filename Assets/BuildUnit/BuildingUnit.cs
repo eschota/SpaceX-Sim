@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class BuildingUnit : Unit
+public class BuildingUnit : Module
 {
     public enum EBuildingState
     {
@@ -11,7 +11,8 @@ public class BuildingUnit : Unit
         Working,
         NotWorking
     }
-    
+    public enum EBuildingType { Launch, Research, Factory}
+    [SerializeField] public EBuildingType[] Types;
     [SerializeField] private EBuildingState _currentState;
     public static event Action EventChangeState;
 
