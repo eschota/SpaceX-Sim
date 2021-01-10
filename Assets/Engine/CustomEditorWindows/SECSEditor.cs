@@ -52,9 +52,7 @@ public class SECSEditor : EditorWindow
             //EditorUtility.SetDirty(importer);
             //AssetDatabase.SaveAssets();
             //AssetDatabase.Refresh();
-            Module modul = Selection.activeGameObject.GetComponent<Module>();
-
-            modul.Icon = Resources.Load<Sprite>("Modules/Icons/" + modul.Prefab.name);
+        
 
         }     if (GUILayout.Button("GetIconFromPreview"))
         {
@@ -62,13 +60,12 @@ public class SECSEditor : EditorWindow
             mod = Selection.activeGameObject.GetComponent<Module>();
             if (mod == null) return;
 
-            Texture2D tex= AssetPreview.GetAssetPreview(mod.gameObject) as Texture2D;
+            Texture2D tex= AssetPreview.GetAssetPreview(mod.Prefab) as Texture2D;
 
             System.IO.File.WriteAllBytes(mod.IconFilePath, tex.EncodeToPNG());
             AssetDatabase.Refresh();
             AssetDatabase.ImportAsset(mod.IconFilePath);
-            mod.Icon = Resources.Load<Sprite>("Modules/Icons/" + mod.Prefab.name);
-
+        
         }
 
 
