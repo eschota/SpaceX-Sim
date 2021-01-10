@@ -56,6 +56,19 @@ public class SECSEditor : EditorWindow
 
             modul.Icon = Resources.Load<Sprite>("Modules/Icons/" + modul.Prefab.name);
 
+        }     if (GUILayout.Button("GetIconFromPreview"))
+        {
+
+            mod = Selection.activeGameObject.GetComponent<Module>();
+            if (mod == null) return;
+
+            Texture2D tex= AssetPreview.GetAssetPreview(mod.gameObject) as Texture2D;
+
+            System.IO.File.WriteAllBytes(mod.IconFilePath, tex.EncodeToPNG());
+            AssetDatabase.Refresh();
+            AssetDatabase.ImportAsset(mod.IconFilePath);
+            mod.Icon = Resources.Load<Sprite>("Modules/Icons/" + mod.Prefab.name);
+
         }
 
 

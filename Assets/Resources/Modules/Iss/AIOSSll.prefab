@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2220947522473852348}
-  m_Layer: 0
+  - component: {fileID: 7322028264127321581}
+  m_Layer: 9
   m_Name: AIOSSll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,6 +44,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7322028264127321581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181342444527304505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb84813048208a40b2a51a662ead2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  Name: AIOSSll
+  Prefab: {fileID: 3181342444527304505}
+  localPosition: {x: 0, y: 0, z: 0}
+  localRotation: {x: 0, y: 0, z: 0}
+  localScale: {x: 0, y: 0, z: 0}
+  ParentName: 
+  Class: 
+  CreationDate: 
+  type: 0
+  Cost: 1
+  Icon: {fileID: 0}
+  ProductionTime: 0a0000000a0000000a000000
+  Description: Description
+  _cam: {fileID: 4851722403292845344}
+  Power: 100
+  FuelTaking: 1
 --- !u!1001 &387409907356594173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,6 +84,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IssModule_I
+      objectReference: {fileID: 0}
+    - target: {fileID: 904338508366354940, guid: bc328e928d25b134aa1a481fbfd587a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4573602557842151835, guid: bc328e928d25b134aa1a481fbfd587a2,
         type: 3}
@@ -185,6 +220,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IssModule_H
       objectReference: {fileID: 0}
+    - target: {fileID: 6817809794940248378, guid: 38185478ba68fb6488e2f838a4534fbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38185478ba68fb6488e2f838a4534fbe, type: 3}
 --- !u!4 &8637812405060918507 stripped
@@ -200,10 +240,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2220947522473852348}
     m_Modifications:
+    - target: {fileID: -12755101963170305, guid: 3e1f82848458ee342bec826a9ebf52ae,
+        type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6160057746732586372, guid: 3e1f82848458ee342bec826a9ebf52ae,
         type: 3}
       propertyPath: m_Name
       value: Module_Zvezda
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160057746732586372, guid: 3e1f82848458ee342bec826a9ebf52ae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6788960171748216638, guid: 3e1f82848458ee342bec826a9ebf52ae,
         type: 3}
@@ -279,6 +329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IssModule_G
+      objectReference: {fileID: 0}
+    - target: {fileID: 305650595465733587, guid: a8101470a01f373428590af450c319bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1114134258310414185, guid: a8101470a01f373428590af450c319bc,
         type: 3}
@@ -409,6 +464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IssModule_F
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170860076776167595, guid: ff1903b2968d141438e1e8a318a44932,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff1903b2968d141438e1e8a318a44932, type: 3}
@@ -648,6 +708,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3892781229985389702}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &4851722403292845344 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8453582190570457510, guid: 55965db5911570b4f8683023ca806547,
+    type: 3}
+  m_PrefabInstance: {fileID: 3892781229985389702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3892781230318008911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -714,6 +780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IssModule_E
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230049060481380885, guid: 6859d287eeeba5645b2657406ea7ca77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6859d287eeeba5645b2657406ea7ca77, type: 3}
@@ -810,6 +881,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IssModule_K
       objectReference: {fileID: 0}
+    - target: {fileID: 7286660427049166139, guid: 51e23eac64830be40ade889d2cb1239a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7950185545795714945, guid: 51e23eac64830be40ade889d2cb1239a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -880,10 +956,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2220947522473852348}
     m_Modifications:
+    - target: {fileID: -1306277949639879621, guid: ac86d7d03cc430048b7a4d7fbfcf1723,
+        type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 285312284406729313, guid: ac86d7d03cc430048b7a4d7fbfcf1723,
         type: 3}
       propertyPath: m_Name
       value: Module_Zarya
+      objectReference: {fileID: 0}
+    - target: {fileID: 285312284406729313, guid: ac86d7d03cc430048b7a4d7fbfcf1723,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 630067090747691227, guid: ac86d7d03cc430048b7a4d7fbfcf1723,
         type: 3}
@@ -955,6 +1041,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2220947522473852348}
     m_Modifications:
+    - target: {fileID: 2310928696704486496, guid: b76688a37ad9c004684861786f46f7c3,
+        type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2758955398979209472, guid: b76688a37ad9c004684861786f46f7c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1015,6 +1106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Rassvet
       objectReference: {fileID: 0}
+    - target: {fileID: 3243181060308931514, guid: b76688a37ad9c004684861786f46f7c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76688a37ad9c004684861786f46f7c3, type: 3}
 --- !u!4 &7413649134472149776 stripped
@@ -1034,6 +1130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IssModule_J
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821552982416110757, guid: e4e1a61b9e06a3b499b4567d59f1f631,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6593726407022964255, guid: e4e1a61b9e06a3b499b4567d59f1f631,
         type: 3}
