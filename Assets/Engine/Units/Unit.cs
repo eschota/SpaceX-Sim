@@ -5,7 +5,9 @@ using System.IO;
 [System.Serializable]
 public class Unit : MonoBehaviour
 {
+    [HideInInspector]
     public int ID;
+    [HideInInspector]
     public string Name;
     [SerializeField] public GameObject Prefab;
     [HideInInspector]

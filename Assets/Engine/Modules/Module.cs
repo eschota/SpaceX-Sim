@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Module : Unit // главное это префаб модуля, по нему мы ищем и создаем необходимые ГО в игре 
 {
-
+    [HideInInspector]
     public string PrefabName="";
     
     public enum ModuleType { None=-1, Engine=0, FirstStage=1, SecondStage=2, IssModule=3,EarthModules =4}
