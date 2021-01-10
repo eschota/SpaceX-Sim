@@ -250,7 +250,7 @@ public class ScenarioManager : MonoBehaviour
       if(CurrentScenario!=null) if(GameManager.CurrentState!=GameManager.State.Save) ClearResearchesAndModules(); 
         WindowLoadScenario.instance.LoadScenarios();
     }
-    public void LoadScenarioResearchAndModules()
+    public void LoadScenarioResearchAndModules()// не забывать добавлять новые модули
     {
         LoadUnitsByType<ModuleEngine>();
         LoadUnitsByType<ModuleISS>();

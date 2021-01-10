@@ -19,7 +19,10 @@ public class Eco : MonoBehaviour
     {
         
     }
-
+    private void Awake()
+    {
+        TimeManager.EventChangeDay += OnNewDay;
+    }
     public static event Action EventChangeBalance;
     private static int _balance;
     public static int Balance
@@ -46,5 +49,8 @@ public class Eco : MonoBehaviour
             return false;
         }
     }
+    void OnNewDay()
+    {
 
+    }
 }

@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
         set
         {
             _years = value;
-            EventChangeDay();
+            
         }
     }
 
@@ -41,7 +41,7 @@ public class TimeManager : MonoBehaviour
         set
         {
             _months = value;
-            EventChangeDay();
+            
         }
     }
 
