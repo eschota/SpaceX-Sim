@@ -8,17 +8,32 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ocean
-  m_Shader: {fileID: 4800000, guid: 1be580443f8d30b4a984e11d988ba04e, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3f60ac688e4b30442b56b93b4cbb94d3,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_27C39EA9:
+        m_Texture: {fileID: 2800000, guid: 3e77c538df295e84280aedc8012dd868, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_88BC3C96:
+        m_Texture: {fileID: 2800000, guid: 3e77c538df295e84280aedc8012dd868, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F9252EEF:
+        m_Texture: {fileID: 2800000, guid: a02e0633e07f6d74c9c29fcb7f350719, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,6 +87,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_240E7E5B: 1
+    - Vector1_37104F24: 0
+    - Vector1_3ADC81D6: 0.1
+    - Vector1_58B8B750: 0
+    - Vector1_59BE556: 0.5
+    - Vector1_5BC7A994: 1
+    - Vector1_AF37EC8D: 1
+    - Vector1_B806211E: 1
+    - Vector1_D125789D: 1
+    - Vector1_D9776B89: 20
+    - Vector1_EB53E051: 1
+    - Vector1_FC033A00: 1
     - _BumpScale: 1
     - _ChromaticAberration: 0.1
     - _Cutoff: 0.5
@@ -117,6 +144,12 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - Color_1735B991: {r: 0.089622594, g: 0.8717781, b: 1, a: 0}
+    - Color_94DF2312: {r: 0, g: 0.7176471, b: 0.8352941, a: 0}
+    - Color_AB547F38: {r: 0.054067224, g: 0.4881332, b: 0.764151, a: 0}
+    - Color_E80201D9: {r: 0.47659308, g: 0.8403894, b: 0.9622641, a: 0}
+    - Vector2_13ED51C8: {r: -1, g: 0, b: 0, a: 0}
+    - Vector2_EC843130: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
     - _Color1: {r: 0.8632076, g: 0.9895919, b: 1, a: 0}
