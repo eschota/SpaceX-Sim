@@ -259,7 +259,11 @@ public class ScenarioManager : MonoBehaviour
         LoadUnitsByType<UnitResearchLab>();
         LoadUnitsByType<UnitProductionFactory>();
         foreach (var item in Researches) item.RestoreDependencies();
-        foreach (var item in Researches) { item.researchButton.RebuildLinks(); item.researchButton.Refresh(); }     
+        foreach (var item in Researches) 
+        {
+            item.researchButton.RebuildLinks(); 
+            item.researchButton.Refresh();
+        }     
     }
 
     private void ClearResearchesAndModules()

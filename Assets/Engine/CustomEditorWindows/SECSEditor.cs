@@ -24,12 +24,7 @@ public class SECSEditor : EditorWindow
 
         GUILayout.Label("Выделенный модуль", EditorStyles.boldLabel);
 
-        myString = EditorGUILayout.TextField("M", modName);
-        if (GUILayout.Button("GetIcon"))
-        {
-
-          
-        }
+      
             if (GUILayout.Button("RenderIcon"))
         {
 
@@ -66,6 +61,28 @@ public class SECSEditor : EditorWindow
             AssetDatabase.Refresh();
             AssetDatabase.ImportAsset(mod.IconFilePath);
         
+        } 
+        
+        if (GUILayout.Button("GetIconFromPreviewALL"))
+        {
+
+            foreach (var item in Resources.LoadAll<Module>("Modules"))
+            {
+                if (item.Prefab == null) { Debug.LogError(item.name); return; }
+                item.PrefabName = item.Prefab.name;
+             
+                Texture2D tex = AssetPreview.GetAssetPreview(item.Prefab) as Texture2D;
+
+
+           //     if (System.IO.File.Exists(item.IconFilePath)) System.IO.File.Delete(item.IconFilePath);
+                System.IO.File.WriteAllBytes(item.IconFilePath, tex.EncodeToPNG());
+              
+            }
+            AssetDatabase.Refresh();
+
+            Debug.Log("TotalFiles: " + Resources.LoadAll<Module>("Modules").Length);
+
+
         }
 
 

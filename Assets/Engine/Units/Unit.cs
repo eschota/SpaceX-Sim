@@ -58,7 +58,7 @@ public class Unit : MonoBehaviour
     }
     public virtual void OnDestroy()
     {
-        GameManager.UnitsAll.Remove(this);
+       if( GameManager.UnitsAll.Contains(this) ) GameManager.UnitsAll.Remove(this);
     }
 
     public virtual void Update()
