@@ -14,6 +14,7 @@ public class Module : Unit // главное это префаб модуля, �
         get 
         {
             if (_icon == null) _icon = Resources.Load<Sprite>("Modules/Icons/" + Prefab.name  );
+            if (_icon == null) Debug.LogError("Нет иконки! " + gameObject.name);            
             return _icon;
         }
     }
@@ -35,6 +36,7 @@ public class Module : Unit // главное это префаб модуля, �
     }
     public override void Ini()
     {
+        
         name = Name = "Module_ " + Name;
         ScenarioManager.instance.Modules.Add(this); 
     }

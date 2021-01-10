@@ -67,13 +67,13 @@ public class Research : Unit
     }
     public override void Ini()
     {
-        name = Name = "Research " + ScenarioManager.instance.Researches.Count.ToString();
+        name = Name;
         ScenarioManager.instance.Researches.Add(this);
         researchButton = Instantiate(Resources.Load<UIResearchButton>("UI/ScenarioManager/ResearchButton"), ScenarioManager.instance.CameraPivot);
         researchButton.research = this;
         researchButton.name = name + "_Button";
         researchButton.Rect.position = localPosition;
-        researchButton.Refresh();
+        
     }
     public void RestoreDependencies()
     {
