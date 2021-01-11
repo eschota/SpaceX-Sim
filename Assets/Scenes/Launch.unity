@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0067504914, g: 0.09286631, b: 0.12440905, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -550,7 +550,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.900804
+  m_Intensity: 1.9232081
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -606,7 +606,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427735440}
-  m_LocalRotation: {x: 0.000000071309856, y: 0.9584015, z: -0.28542358, w: -0.000000016940538}
+  m_LocalRotation: {x: -0.06957519, y: 0.8819027, z: -0.1377424, w: -0.4454593}
   m_LocalPosition: {x: 72.98224, y: 15.277069, z: 12.859337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -632,7 +632,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0.0069767437
-      value: 0.045345943
+      value: 0.5
       inSlope: -0
       outSlope: -0
       tangentMode: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
       outWeight: 0.38394794
     - serializedVersion: 3
       time: 0.21046512
-      value: 0.045345943
+      value: 0.5
       inSlope: -0.0069991574
       outSlope: -0.0069991574
       tangentMode: 0
@@ -659,7 +659,7 @@ MonoBehaviour:
       outWeight: 0.3508412
     - serializedVersion: 3
       time: 0.8081395
-      value: 0.045345943
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1.0069767
-      value: 0.045345943
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -683,16 +683,16 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0.002910614
-      value: 0.94973755
-      inSlope: 0.2772809
-      outSlope: 0.2772809
+      value: 0.9701843
+      inSlope: 0.15938802
+      outSlope: 0.15938802
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5177604
-      value: 1.0924956
+      time: 0.4993888
+      value: 1.049317
       inSlope: 0.0016556402
       outSlope: 0.0016556402
       tangentMode: 0
@@ -700,10 +700,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.6234462
     - serializedVersion: 3
-      time: 0.9957913
-      value: 0.95015603
-      inSlope: -0.2977622
-      outSlope: -0.2977622
+      time: 0.99118316
+      value: 0.9696873
+      inSlope: -0.1619167
+      outSlope: -0.1619167
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -715,19 +715,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      time: -0.0069770813
+      value: 0.49639893
+      inSlope: 0.30077043
+      outSlope: 0.30077043
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      time: 0.99765015
+      value: 0.7985611
+      inSlope: 0.30077043
+      outSlope: 0.30077043
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 2
+  m_Intensity: 1
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -1343,7 +1343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009844440}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Continent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1831,3 +1831,72 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 338790362}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6669037169919916011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804864, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669037169184804865, guid: 7182a9015042ef84cbe15459413c9370,
+        type: 3}
+      propertyPath: m_Name
+      value: vfx_explosion_001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7182a9015042ef84cbe15459413c9370, type: 3}
