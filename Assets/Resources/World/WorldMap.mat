@@ -20,6 +20,8 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - TransparentBackface
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -122,6 +124,8 @@ Material:
     - _TessValue: 16
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: -1
     - _TransparentZWrite: 1
     - _UVSec: 0
