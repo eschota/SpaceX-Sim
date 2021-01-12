@@ -19779,10 +19779,6 @@ MonoBehaviour:
   m_Script: {fileID: 1648830136}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 1480115283}
 --- !u!4 &911368578
 Transform:
   m_ObjectHideFlags: 19
@@ -20316,7 +20312,7 @@ Cloth:
   m_WorldVelocityScale: 0.5
   m_WorldAccelerationScale: 1
   m_Friction: 0.5
-  m_CollisionMassScale: 0
+  m_CollisionMassScale: 0.24
   m_UseContinuousCollision: 1
   m_UseVirtualParticles: 1
   m_SolverFrequency: 120
@@ -20564,7 +20560,8 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 3.4028235e+38
     collisionSphereDistance: 3.4028235e+38
-  m_CapsuleColliders: []
+  m_CapsuleColliders:
+  - {fileID: 1686068935}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0
   m_SelfCollisionStiffness: 0.2
@@ -35597,13 +35594,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665434449}
-  m_LocalRotation: {x: 0.02268737, y: 0, z: 0, w: 0.9997426}
+  m_LocalRotation: {x: -0.011868038, y: 0, z: 0, w: 0.9999296}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 2.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.36, y: 0, z: 0}
 --- !u!1 &1686068930 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3243181060308931514, guid: b76688a37ad9c004684861786f46f7c3,
