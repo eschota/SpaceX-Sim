@@ -22,20 +22,18 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: vfx_Explosion_002
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ShaderKeywords: _BLENDMODE_ALPHA _BLENDMODE_PRESERVE_SPECULAR_LIGHTING _DOUBLESIDED_ON
-    _EMISSIVE_COLOR_MAP _ENABLE_FOG_ON_TRANSPARENT _MASKMAP _SURFACE_TYPE_TRANSPARENT
+  m_ShaderKeywords: _BLENDMODE_ALPHA _EMISSIVE_COLOR_MAP _ENABLE_FOG_ON_TRANSPARENT
+    _MASKMAP _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3002
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2751
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
   - TransparentDepthPrepass
-  - TransparentDepthPostpass
-  - TransparentBackface
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -140,7 +138,7 @@ Material:
     - _AORemapMin: 0
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
-    - _AlbedoAffectEmissive: 0
+    - _AlbedoAffectEmissive: 1
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaCutoffPostpass: 0.5
@@ -157,8 +155,8 @@ Material:
     - _CameraNearFadeDistance: 1
     - _CoatMask: 0
     - _Cull: 2
-    - _CullMode: 0
-    - _CullModeForward: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -187,15 +185,15 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
-    - _DoubleSidedEnable: 1
+    - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
     - _EmissionEnabled: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
-    - _EmissiveIntensity: 128
+    - _EmissiveIntensity: 110.66076
     - _EmissiveIntensityUnit: 1
-    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
@@ -255,13 +253,13 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _TransmissionEnable: 1
-    - _TransparentBackfaceEnable: 0
+    - _TransmissionEnable: 0
+    - _TransparentBackfaceEnable: 1
     - _TransparentCullMode: 2
-    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPostpassEnable: 1
     - _TransparentDepthPrepassEnable: 0
-    - _TransparentSortPriority: 2
-    - _TransparentWritingMotionVec: 0
+    - _TransparentSortPriority: 1
+    - _TransparentWritingMotionVec: 1
     - _TransparentZWrite: 0
     - _UVBase: 0
     - _UVDetail: 0
@@ -274,15 +272,15 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 0.78411096, b: 0.6462264, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.78411096, b: 0.6462264, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 128}
-    - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 109.61678, g: 72.91068, b: 51.18896, a: 110.66076}
+    - _EmissiveColorLDR: {r: 0.99056596, g: 0.65886664, b: 0.46257555, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
