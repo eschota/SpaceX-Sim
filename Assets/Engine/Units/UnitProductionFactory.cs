@@ -10,4 +10,9 @@ public class UnitProductionFactory : UnitEco
         id = GameManager.UnitsProductionFactory.Count;
         GameManager.UnitsProductionFactory.Add(this);
     }
+    public override void IniAfterJSONRead()
+    {
+        base.IniAfterJSONRead();
+        UIButtonPlay.number.text = (GameManager.UnitsProductionFactory.Count ).ToString();
+    }
 }

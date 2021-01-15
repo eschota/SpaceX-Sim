@@ -15,13 +15,17 @@ public class TimeManager : MonoBehaviour
     private static float _hours;
     private static float _elapsedTime;
 
+    public static int TotalDays;
+
     public static int Days
     {
         get => _days;
         set
         {
             _days = value;
+            TotalDays++;
             EventChangeDay();
+            
         }
     }
 

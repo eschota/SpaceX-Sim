@@ -10,4 +10,9 @@ public class UnitResearchLab : UnitEco
         id = GameManager.UnitsResearchLab.Count;
         GameManager.UnitsResearchLab.Add(this);
     }
+    public override void IniAfterJSONRead()
+    {
+        base.IniAfterJSONRead();
+        UIButtonPlay.number.text = (GameManager.UnitsResearchLab.Count ).ToString();
+    }
 }

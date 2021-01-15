@@ -17,7 +17,7 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public string Class;
     [HideInInspector]
-    public int[] CreationDate;
+    public int CreationDate;// дата создания юнита в игре 
 
     private string _JSONFilePath;
     public string JsonFilePath
@@ -41,8 +41,8 @@ public class Unit : MonoBehaviour
     public virtual void Start()
     {
         Class = this.ToString();
-        CreationDate = new int [3];
-        CreationDate[0] = TimeManager.Days; CreationDate[1] = TimeManager.Months; CreationDate[2]= TimeManager.Years;
+         
+        CreationDate = TimeManager.TotalDays;
         localPosition = transform.localPosition;
         localRotation = transform.rotation.eulerAngles;
         localScale = transform.localScale;

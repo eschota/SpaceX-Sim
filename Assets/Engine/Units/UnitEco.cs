@@ -8,7 +8,7 @@ public class UnitEco : Unit
     public int id = -1;    
     public Country Country;
     public bool EcoBilledFirstMonth=false;
-    public int EcoRentCost=1;
+    public int EcoRentCost=1;    
     private UIButtonUnit _UIButtonPlay;
     public UIButtonUnit UIButtonPlay
     {
@@ -35,6 +35,7 @@ public class UnitEco : Unit
         transform.localRotation= Quaternion.Euler( localRotation);
         UIButtonPlay.name = "UIButton" + Name;
         UIButtonPlay.unit = this;
+        
     }
     public override void Awake()
     {
