@@ -7,8 +7,8 @@ public class UIButtonUnit : MonoBehaviour
 {
     [SerializeField] object UnitClass;
     public Unit unit;    
-    Button btn;
-    [SerializeField] TMPro.TextMeshProUGUI number;
+   public Button btn;
+    [SerializeField] TMPro.TextMeshProUGUI number; 
     void Start()
     {
         btn = GetComponent<Button>();

@@ -18,6 +18,10 @@ public class UnitEco : Unit
             {
 
                 _UIButtonPlay = Instantiate(Resources.Load<UIButtonUnit>("UI/ButtonUnits/" + GetType().ToString()));
+                UIButtonUnitOnEarth alter= Instantiate(Resources.Load<UIButtonUnitOnEarth>("UI/ButtonUnits/" + GetType().ToString()+"Earth"));
+                alter.transform.SetParent(UIButtonUnitController.instance.transform);
+                alter.mainNutton = _UIButtonPlay.btn;
+                alter.unit = this;
                 _UIButtonPlay.transform.SetParent(UIButtonUnitController.instance.UnitsGrid);
             }
             return _UIButtonPlay;
