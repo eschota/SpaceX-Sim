@@ -50,11 +50,14 @@ public class Unit : MonoBehaviour
         Debug.Log(string.Format("<color=green> Created new Unit:" + name + "</color>"));
         GameManager.UnitsAll.Add(this);
         
-        transform.SetParent(GameManager.instance.transform);
+       
     }
 
 
-    public virtual void Awake() { }
+    public virtual void Awake()
+    {
+        transform.SetParent(GameManager.instance.transform);
+    }
 
     
     public virtual void OnDestroy()
