@@ -264,7 +264,8 @@ public class ScenarioManager : MonoBehaviour
         {
             item.researchButton.RebuildLinks(); 
             item.researchButton.Refresh();
-        }     
+        }
+        gameObject.AddComponent<ResearchManager>();// инициация системы рисерчей
     }
 
     private void ClearResearchesAndModules()
