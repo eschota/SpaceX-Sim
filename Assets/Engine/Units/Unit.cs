@@ -49,15 +49,14 @@ public class Unit : MonoBehaviour
        if(transform.parent!=null) ParentName = transform.parent.name;
         Debug.Log(string.Format("<color=green> Created new Unit:" + name + "</color>"));
         GameManager.UnitsAll.Add(this);
-    }
-
-     
-
-    public virtual void Awake()
-    {
         Name = name;
         transform.SetParent(GameManager.instance.transform);
     }
+
+
+    public virtual void Awake() { }
+
+    
     public virtual void OnDestroy()
     {
        if( GameManager.UnitsAll.Contains(this) ) GameManager.UnitsAll.Remove(this);
