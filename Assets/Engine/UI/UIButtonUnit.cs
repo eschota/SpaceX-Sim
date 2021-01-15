@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class UIButtonUnit : MonoBehaviour
 {
     [SerializeField] object UnitClass;
-    public Unit unit;
+    public Unit unit;    
     Button btn;
     [SerializeField] TMPro.TextMeshProUGUI number;
     void Start()
     {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
+        UIButtonUnitController.instance.buttons.Add(this);
     }
 
     void OnClick()
@@ -20,6 +21,10 @@ public class UIButtonUnit : MonoBehaviour
         CameraManager.instance.TargetObject = unit.transform;
         FindObjectOfType<UIButtonUnitController>().ShowEnterButton(unit,btn.transform.position);
     }
-    
-   
+
+    private void OnDestroy()
+    {
+        UIButtonUnitController.instance.buttons.Remove(this);
+        btn.onClick.RemoveAllListeners();
+    }
 }

@@ -10,47 +10,17 @@ public class UIButtonUnitController : MonoBehaviour
     private Unit SelectedUnit;
 
     [SerializeField] Button EnterCurrentUnit;
-    [SerializeField] List<UIButtonUnit> UIButtonsUnitLaunchPlace;
-    [SerializeField] List<UIButtonUnit> UIButtonsUnitResearch;
-    [SerializeField] List<UIButtonUnit> UIButtonsUnitProduction;
-
+    [SerializeField] public List<UIButtonUnit> buttons;
+    
+    [SerializeField] public Transform UnitsGrid;
+    public static UIButtonUnitController instance;
     void Start()
     {
-        units = GetComponentsInChildren<UIButtonUnit>();
-        foreach (var item in units)
-        {
-            item.gameObject.SetActive(false);
-        }
-
+        instance = this;
         EnterCurrentUnit.onClick.AddListener(OnClickEnter);
-        GameManager.UnitsAll.CollectionChanged += OnCreateNewUnit;
+     
         EnterCurrentUnit.gameObject.SetActive(false);
     }
-
-    void OnCreateNewUnit(object sender, NotifyCollectionChangedEventArgs e)
-    {
-        if (e.NewItems == null) return;
-        Unit unit = e.NewItems[0] as Unit;
-        HideEnterButton();
-        if (unit.GetType() == typeof(UnitLaunchPlace))
-        {
-            UIButtonsUnitLaunchPlace[(unit as UnitEco).id].gameObject.SetActive(true);
-            UIButtonsUnitLaunchPlace[(unit as UnitEco).id].unit = unit;
-        }
-
-        if (unit.GetType() == typeof(UnitResearchLab))
-        {
-            UIButtonsUnitResearch[(unit as UnitEco).id].gameObject.SetActive(true);
-            UIButtonsUnitResearch[(unit as UnitEco).id].unit = unit;
-        }
-
-        if (unit.GetType() == typeof(UnitProductionFactory))
-        {
-            UIButtonsUnitProduction[(unit as UnitEco).id].gameObject.SetActive(true);
-            UIButtonsUnitProduction[(unit as UnitEco).id].unit = unit;
-        }
-    }
-
     public void OnClickEnter()
     {
         GameManager.instance.OpenUnitScene(SelectedUnit);

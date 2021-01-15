@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class UnitLaunchPlace : UnitEco
 {
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         id = GameManager.UnitsLaunchPlace.Count;
         GameManager.UnitsLaunchPlace.Add(this);
     }

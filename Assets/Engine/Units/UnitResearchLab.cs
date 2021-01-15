@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class UnitResearchLab : UnitEco
 {
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         id = GameManager.UnitsResearchLab.Count;
         GameManager.UnitsResearchLab.Add(this);
     }
