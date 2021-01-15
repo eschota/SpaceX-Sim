@@ -44,6 +44,7 @@ public class ResearchAndProductionManager : MonoBehaviour
         }
     }
     public List<Module> ModulesAvailable = new List<Module>();        
+    public List<BuildingUnit> BuildingsAvailable = new List<BuildingUnit>();
 
 
 }

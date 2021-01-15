@@ -39,7 +39,7 @@ public class BuildController : MonoBehaviour
 
         _buildUnitCanvas = FindObjectOfType<BuildUnitCanvas>();
 
-        for (var i = 0; i < UnitManager.instance.BuildingUnitPrefabs.Length; i++)
+        for (var i = 0; i < UnitManager.instance.BuildingUnitPrefabs.Count; i++)
         {
             var item = Instantiate(_buildUnitCanvas.BuildItemPrefab, _buildUnitCanvas.BuildItemsContainer);
             var index = i;

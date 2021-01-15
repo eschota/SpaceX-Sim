@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingUnit : Module
@@ -11,9 +13,9 @@ public class BuildingUnit : Module
         Working,
         NotWorking
     }
-    public enum EBuildingType { Launch, Research, Factory}
-    [SerializeField] public EBuildingType[] Types;
-    [SerializeField] private EBuildingState _currentState;
+    public enum BuildinType { Launch, Research, Factory}
+    [SerializeField] public List< BuildinType> Types;
+    private EBuildingState _currentState;
     public static event Action EventChangeState;
 
     public EBuildingState CurrentState
