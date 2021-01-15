@@ -67,7 +67,7 @@ public class UnitManager : MonoBehaviour
         BuildingUnit newUnit= Instantiate(unit);
         newUnit.transform.position = pos;
         newUnit.transform.rotation= Quaternion.Euler(rot);
-        ResearchAndProductionManager.instance.AddBuilding(newUnit);
+        ResearchAndProductionManager.instance?.AddBuilding(newUnit);
     }
     void GetAvailableBuildingsIn()
     {
@@ -75,6 +75,7 @@ public class UnitManager : MonoBehaviour
         if (GameManager.instance == null) 
         {
             if (buildingUnitPrefabs.Count > 0) if (buildingUnitPrefabs[0] != null) return;
+            buildingUnitPrefabs.Clear();
             buildingUnitPrefabs.AddRange(Resources.LoadAll<BuildingUnit>(""));
             return;
         }

@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour
        if(transform.parent!=null) ParentName = transform.parent.name;
         Debug.Log(string.Format("<color=green> Created new Unit:" + name + "</color>"));
         GameManager.UnitsAll.Add(this);
-        Name = name;
+        
         transform.SetParent(GameManager.instance.transform);
     }
 

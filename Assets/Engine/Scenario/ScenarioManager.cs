@@ -259,6 +259,9 @@ public class ScenarioManager : MonoBehaviour
         LoadUnitsByType<UnitResearchLab>();
         LoadUnitsByType<UnitProductionFactory>();
         LoadUnitsByType<BuildingUnit>();        
+        LoadUnitsByType<BuildingProductionFactory>();        
+        LoadUnitsByType<BuildingResearchLab>();        
+        LoadUnitsByType<BuildingRocketLaunch>();        
         foreach (var item in Researches) item.RestoreDependencies();
         foreach (var item in Researches) 
         {
