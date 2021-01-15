@@ -4,10 +4,9 @@ using UnityEngine;
 using System.IO;
 
 
-public class ResearchManager : MonoBehaviour
+public class ResearchAndProductionManager : MonoBehaviour
 {
-    public static ResearchManager instance;
-    bool ini = false;
+    public static ResearchAndProductionManager instance;   
     private void Awake()
     {
         if (instance != null) DestroyImmediate(instance);
@@ -35,6 +34,7 @@ public class ResearchManager : MonoBehaviour
             {
                 Temp.Add(item);                
                 Debug.Log("Research Completed: " + item.Name);
+                ModulesAvailable.AddRange(item.Modules);
             }
         }
         foreach (var item in Temp)
@@ -43,7 +43,7 @@ public class ResearchManager : MonoBehaviour
             ResearchesCompleted.Add(item);
         }
     }
+    public List<Module> ModulesAvailable = new List<Module>();        
 
 
-    
 }

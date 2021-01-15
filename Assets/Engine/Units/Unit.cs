@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
 {
     [HideInInspector]
     public int ID;
-    [HideInInspector]
+     
     public string Name;
     [SerializeField] public GameObject Prefab;
     [HideInInspector]
@@ -33,7 +33,7 @@ public class Unit : MonoBehaviour
         }
     }
    
-    public virtual void Ini()
+    public virtual void IniAfterJSONRead()
     {
         transform.SetParent(GameManager.instance.transform);
         name = Name;

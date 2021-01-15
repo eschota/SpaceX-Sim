@@ -12,9 +12,9 @@ public class UnitEco : Unit
     public int EcoRentCost=1;
 
 
-    public override void Ini()
+    public override void IniAfterJSONRead()
     {
-        base.Ini();
+        base.IniAfterJSONRead();
         transform.SetParent(GameManager.Earth.transform);
         transform.localPosition = localPosition;
         transform.localRotation= Quaternion.Euler( localRotation);

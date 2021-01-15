@@ -58,4 +58,10 @@ public class BuildingUnit : Module
     }
 
     public string Title => title;
+
+
+    public override void IniAfterJSONRead()
+    {
+        base.IniAfterJSONRead();
+    }
 }

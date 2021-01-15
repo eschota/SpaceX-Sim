@@ -65,7 +65,7 @@ public class Research : Unit
         
         ScenarioManager.instance.Researches.Remove(this);
     }
-    public override void Ini()
+    public override void IniAfterJSONRead()
     {
         name = Name;
         ScenarioManager.instance.Researches.Add(this);

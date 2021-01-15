@@ -17,7 +17,7 @@ public class Module : Unit // главное это префаб модуля, �
         get
         {
             _icon= Resources.Load<Sprite>("Modules/Icons/" + PrefabName);           
-            if (_icon == null) Debug.LogError("Нет иконки! " + name);            
+            if (_icon == null) Debug.LogError("Нет иконки! " + PrefabName);            
             return _icon;
         }
     }
@@ -43,7 +43,7 @@ public class Module : Unit // главное это префаб модуля, �
         base.Awake();
       
     }
-    public override void Ini()
+    public override void IniAfterJSONRead()
     {
         
         name =  "Module_ "+ Name ;
