@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 public class ResearchAndProductionManager : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class ResearchAndProductionManager : MonoBehaviour
         TimeManager.EventChangeDay += OnChangeDay;
 
         ResearchesAvailable = ScenarioManager.instance.Researches;
+        foreach (var r in ResearchesAvailable)
+            foreach (var m in r.Modules)
+                if (m.GetType() == typeof(BuildingUnit)) BuildingsAvailable.Add(m as BuildingUnit);
         CalculateResearchesProgress();
+         
     }
     void OnChangeDay()
     { 
@@ -45,6 +50,16 @@ public class ResearchAndProductionManager : MonoBehaviour
     }
     public List<Module> ModulesAvailable = new List<Module>();        
     public List<BuildingUnit> BuildingsAvailable = new List<BuildingUnit>();
+    
+    public List<BuildingResearchLab> ResearchLabs = new List<BuildingResearchLab>();
+    public List<BuildingRocketLaunch> RocketLauches = new List<BuildingRocketLaunch>();
+    public List<BuildingProductionFactory> ProductionFactories = new List<BuildingProductionFactory>();
+    
 
-
+    public void AddBuilding( BuildingUnit unit)
+    {
+        if (unit.GetType() == typeof(BuildingResearchLab)) ResearchLabs.Add(unit as BuildingResearchLab);
+        if (unit.GetType() == typeof(BuildingRocketLaunch)) RocketLauches.Add(unit as BuildingRocketLaunch);
+        if (unit.GetType() == typeof(BuildingProductionFactory)) ProductionFactories.Add(unit as BuildingProductionFactory);
+    }
 }
