@@ -192,4 +192,11 @@ public class LightController : MonoBehaviour
         else if (localTimer < 0f)
             localTimer = 24f - localTimer;
     }
+
+    [ContextMenu ("Добавить все лайты внутри этого префаба")]
+    void AddInnerLights()
+    {
+        Lights.Clear();
+        Lights.AddRange(GetComponentsInChildren<Light>());
+    }
 }
