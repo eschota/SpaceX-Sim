@@ -128,7 +128,7 @@ public class ScenarioManager : MonoBehaviour
     public void AddResearch()
     {
         
-        new GameObject().AddComponent<Research>().Ini();
+        new GameObject().AddComponent<Research>().IniAfterJSONRead();
 
         if (Researches.Count > 1)
         {
@@ -265,7 +265,7 @@ public class ScenarioManager : MonoBehaviour
             item.researchButton.RebuildLinks(); 
             item.researchButton.Refresh();
         }
-        gameObject.AddComponent<ResearchManager>();// инициация системы рисерчей
+        gameObject.AddComponent<ResearchAndProductionManager>();// инициация системы рисерчей
     }
 
     private void ClearResearchesAndModules()
@@ -286,7 +286,7 @@ public class ScenarioManager : MonoBehaviour
             string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
             T R = new GameObject().AddComponent<T>();
             JsonUtility.FromJsonOverwrite(jsondata, R);
-            (R as Unit).Ini();
+            (R as Unit).IniAfterJSONRead();
         }
     }
 
