@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BuildingUnit : Module
 {
+
+
+    
     public enum EBuildingState
     {
         AcceptForBuilding,
@@ -12,7 +15,9 @@ public class BuildingUnit : Module
         BuildingNow,
         Working,
         NotWorking
-    }
+    } 
+    public enum BuildingClass{ Light=0, Medium=1,Heavy=2}
+    public BuildingClass CurrentClass;
     public enum BuildinType { Launch, Research, Factory}
     [SerializeField] public List< BuildinType> Types;
     private EBuildingState _currentState;
@@ -66,4 +71,7 @@ public class BuildingUnit : Module
     {
         base.IniAfterJSONRead();
     }
+
+
+    
 }
