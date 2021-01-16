@@ -26,6 +26,8 @@ public class UnitManager : MonoBehaviour
         GetAvailableBuildingsIn();
 
         terra = FindObjectOfType<Terrain>();
+        PlanarPlane.GetComponent<MeshRenderer>().enabled = false;
+        PlanarPlane.layer = 2;
     }
 
 

@@ -5,6 +5,7 @@ public class Module : Unit // главное это префаб модуля, �
 {
     [HideInInspector]
     public string PrefabName="";
+    public string PrefabPath="";
     
     public enum ModuleType { None=-1, Engine=0, FirstStage=1, SecondStage=2, IssModule=3,EarthModules =4}
     public ModuleType type;

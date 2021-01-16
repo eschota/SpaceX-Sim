@@ -17,7 +17,7 @@ public class ButtonBuilding : MonoBehaviour
 
     void OnClick()
     {
-
+        WindowBuildingConstruction.instance.CurrentBuilding = building;
     }
 
 
