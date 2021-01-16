@@ -114,9 +114,9 @@ public class LightController : MonoBehaviour
             {
                 float tempIntensity = AllLight.Evaluate((localTimer + RandomTimersForLights[i]) / 24f);
                 if (tempIntensity < 0.1f)
-                    Lights[i].enabled = true;
+                    if(Lights[i]!=null)Lights[i].enabled = true;
                 else
-                    Lights[i].enabled = false;
+                    if (Lights[i] != null) Lights[i].enabled = false;
             }
     }
     void ProcessEmissive()

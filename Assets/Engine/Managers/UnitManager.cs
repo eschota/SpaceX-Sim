@@ -9,30 +9,9 @@ public class UnitManager : MonoBehaviour
     [SerializeField] BuildingUnit.BuildinType ThisType;
     [SerializeField] private List <BuildingUnit> buildingUnitPrefabs;
 
-    public static event Action EventChangeState;
-    public static event Action<Unit> EventCreatedNewUnit;
-
-    public enum State
-    {
-    }
-
-    private State _currentState;
-
-    public State CurrentState
-    {
-        get => _currentState;
-        set
-        {
-            switch (value)
-            {
-            }
-
-            _currentState = value;
-            EventChangeState();
-        }
-    }
-
-    public List <BuildingUnit > BuildingUnitPrefabs => buildingUnitPrefabs;
+   
+   
+   
 
     private void Awake()
     {
@@ -46,12 +25,7 @@ public class UnitManager : MonoBehaviour
         
         GetAvailableBuildingsIn();
         
-        var canvas = Instantiate(Resources.Load("BuildUnitCanvas"));
-        var buildUnitCanvas = FindObjectOfType<BuildUnitCanvas>();
-
-        buildUnitCanvas.BuildButton.onClick.AddListener(() => BuildController.instance.OnBuildClick());
-        buildUnitCanvas.DeleteUnitYesButton.onClick.AddListener(() => BuildController.instance.DeleteUnitAccept());
-        buildUnitCanvas.DeleteUnitNoButton.onClick.AddListener(() => BuildController.instance.DeleteUnitCancel());
+       
     }
 
 
