@@ -295,7 +295,7 @@ public class ScenarioManager : MonoBehaviour
 
 
     public void StartNewGame()
-    {
+    { if (CurrentScenario == null) return;
         LoadScenarioResearchAndModules();
         GameManager.CurrentState = GameManager.State.PlaySpace;
     } 
@@ -308,6 +308,7 @@ public class ScenarioManager : MonoBehaviour
      
      public void LoadGame()
     {
+        if (CurrentScenario == null) return;
         LoadScenarioResearchAndModules();
         GameManager.CurrentState = GameManager.State.PlaySpace;
     }
