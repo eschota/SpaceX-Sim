@@ -6,7 +6,7 @@ using UnityEngine;
 public class BuildingUnit : Module
 {
 
-
+    [SerializeField] public Vector2 Size;
     
     public enum EBuildingState
     {
@@ -31,13 +31,13 @@ public class BuildingUnit : Module
             switch (value)
             {
                 case EBuildingState.AcceptForBuilding:
-                    rootRenderer.material.SetColor("_Color", Color.green);
+                    
                     break;
                 case EBuildingState.NotAcceptForBuilding:
-                    rootRenderer.material.SetColor("_Color", Color.red);
+                   
                     break;
                 case EBuildingState.BuildingNow:
-                    rootRenderer.material.SetColor("_Color", Color.white);
+                  
                     break;
                 case EBuildingState.Working:
                     break;
@@ -51,21 +51,8 @@ public class BuildingUnit : Module
         }
     }
     
-    [SerializeField] private int size;
-    [SerializeField] private string title;    
-    [SerializeField] private Renderer rootRenderer;
-    
-    private BuildCell[] _cells;
-    
-    public int Size => size;
-    public BuildCell[] Cells
-    {
-        get => _cells;
-        set => _cells = value;
-    }
-
-    public string Title => title;
-
+ 
+     
 
     public override void IniAfterJSONRead()
     {

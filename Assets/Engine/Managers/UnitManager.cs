@@ -7,7 +7,7 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager instance;
     [SerializeField] BuildingUnit.BuildinType ThisType;
-    [SerializeField] private List <BuildingUnit> buildingUnitPrefabs;
+    [SerializeField] public List <BuildingUnit> buildingUnitPrefabs;
     [SerializeField] GameObject PlanarPlane;
 
 
