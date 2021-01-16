@@ -8,10 +8,10 @@ public class UnitManager : MonoBehaviour
     public static UnitManager instance;
     [SerializeField] BuildingUnit.BuildinType ThisType;
     [SerializeField] private List <BuildingUnit> buildingUnitPrefabs;
+    [SerializeField] GameObject PlanarPlane;
 
-   
-   
-   
+
+    Terrain terra;
 
     private void Awake()
     {
@@ -24,8 +24,8 @@ public class UnitManager : MonoBehaviour
         } 
         
         GetAvailableBuildingsIn();
-        
-       
+
+        terra = FindObjectOfType<Terrain>();
     }
 
 
@@ -34,6 +34,7 @@ public class UnitManager : MonoBehaviour
     {
         //удалить после тестов
         if (Input.GetKeyDown(KeyCode.Z)) PlaceBuilding(buildingUnitPrefabs[0], Vector3.zero, Vector3.zero);
+     
     }
 
     void PlaceBuilding(BuildingUnit unit, Vector3 pos, Vector3 rot)
@@ -57,5 +58,9 @@ public class UnitManager : MonoBehaviour
         buildingUnitPrefabs.AddRange(ResearchAndProductionManager.instance.BuildingsAvailable.FindAll(X => X.Types.Contains(ThisType)));
     }
 
-   
+    void SliceTerrain()
+    {
+        TreeInstance[] originalTreeInstances;
+        originalTreeInstances = Terrain.activeTerrain.terrainData.treeInstances;
+    }
 }
