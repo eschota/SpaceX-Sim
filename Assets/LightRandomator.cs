@@ -26,5 +26,9 @@ public class LightRandomator : MonoBehaviour
         }
 
         l.intensity = Mathf.Lerp(l.intensity, target, 10*Time.deltaTime);
+
+
+
+
     }
 }
