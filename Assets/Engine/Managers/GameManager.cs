@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
     public static List<Unit> UnitsLaunchPlace = new List<Unit>();
     public static List<Unit> UnitsResearchLab = new List<Unit>();
     public static List<Unit> UnitsProductionFactory = new List<Unit>();
-    
+    public static List<BuildingUnit> Buildings = new List<BuildingUnit>();
 
    
     #endregion

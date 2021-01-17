@@ -58,7 +58,11 @@ public class BuildingUnit : Module
     {
         base.IniAfterJSONRead();
     }
+    public override void Awake()
+    {
+        base.Awake();
+        GameManager.Buildings.Add(this);
+    }
 
 
-    
 }
