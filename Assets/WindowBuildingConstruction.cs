@@ -18,11 +18,17 @@ public class WindowBuildingConstruction : MonoBehaviour
         get => _CurrentBuilding;
         set
         {
+            if (value == null)
+            {
+                _CurrentBuilding = null;
+                return;
+            }
             if (CurrentBuildingGameObject != null)
             {
                 DestroyImmediate(CurrentBuildingGameObject);
                 
             }
+            
             CurrentBuildingGameObject = Instantiate(value.Prefab);
             _CurrentBuilding = value;
         }
@@ -65,9 +71,16 @@ public class WindowBuildingConstruction : MonoBehaviour
             {
                 target = new Vector3(hit.point.x, 0, hit.point.z);
                 target = new Vector3(100 * (Mathf.RoundToInt(target.x / 100f)), 0, 100 * (Mathf.RoundToInt(target.z / 100f)));
-                
-                
 
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        
+                       Instantiate(CurrentBuilding).transform.position=target;
+                        CurrentBuilding = null;                        
+                        CurrentBuildingGameObject = null;
+                        return;
+                    }
             }
               
             CurrentBuildingGameObject.transform.position = Vector3.Lerp(CurrentBuildingGameObject.transform.position, target, Time.unscaledDeltaTime * 23);
