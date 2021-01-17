@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 public class Module : Unit // главное это префаб модуля, по нему мы ищем и создаем необходимые ГО в игре 
 {
     [HideInInspector]
@@ -57,5 +58,8 @@ public class Module : Unit // главное это префаб модуля, �
 
 
 
-    
+    public virtual void OnValidate()
+    {
+        PrefabPath = AssetDatabase.GetAssetPath(Prefab);
+    }
 }

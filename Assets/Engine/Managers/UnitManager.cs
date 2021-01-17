@@ -28,6 +28,7 @@ public class UnitManager : MonoBehaviour
         terra = FindObjectOfType<Terrain>();
         PlanarPlane.GetComponent<MeshRenderer>().enabled = false;
         PlanarPlane.layer = 2;
+        LoadBuildings();
     }
 
 
@@ -64,5 +65,16 @@ public class UnitManager : MonoBehaviour
     {
         TreeInstance[] originalTreeInstances;
         originalTreeInstances = Terrain.activeTerrain.terrainData.treeInstances;
+    }
+
+
+
+    void LoadBuildings()
+    {
+        if (GameManager.instance == null) return;
+        foreach (var item in GameManager.Buildings)
+        {
+            Instantiate(Resources.Load<GameObject>(item.PrefabPath));
+        }
     }
 }
