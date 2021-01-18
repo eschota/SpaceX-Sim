@@ -268,11 +268,13 @@ public class ScenarioManager : MonoBehaviour
             item.researchButton.RebuildLinks(); 
             item.researchButton.Refresh();
         }
+        SplitResearchedModulesAndReal();
         gameObject.AddComponent<ResearchAndProductionManager>();// инициация системы рисерчей
     }
 
     private void ClearResearchesAndModules()
     {
+        WindowEditResearch.instance.CurrentResearch = null;
         foreach (var item in FindObjectsOfType<Research>()) if (item != null) Destroy(item.gameObject);        
         foreach (var item in FindObjectsOfType<UIResearchButton>()) if (item != null) Destroy(item.gameObject);        
         foreach (var item in FindObjectsOfType<Module>()) if (item != null) Destroy(item.gameObject);
@@ -292,7 +294,27 @@ public class ScenarioManager : MonoBehaviour
             (R as Unit).IniAfterJSONRead();
         }
     }
-
+    private void SplitResearchedModulesAndReal()
+    {
+        foreach (var item in FindObjectsOfType<BuildingUnit>())
+        {
+            item.transform.SetParent(GameManager.instance.BuildingsTransform);
+        }
+        foreach (var item in FindObjectsOfType<Module>())
+        {
+            item.transform.SetParent(GameManager.instance.ModulesTransform);
+        }
+        foreach (var item in Researches)
+        {
+            item.transform.SetParent(GameManager.instance.ResearchesTransform);
+            foreach (var modules in item.Modules)
+            {
+                modules.name = "ResearchedModule_" + modules.Name;
+                modules.transform.SetParent(GameManager.instance.ResearchModulesTransform);
+            }
+        }
+     
+    }
 
     public void StartNewGame()
     { if (CurrentScenario == null) return;

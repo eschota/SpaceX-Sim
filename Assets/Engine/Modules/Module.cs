@@ -59,7 +59,8 @@ public class Module : Unit // главное это префаб модуля, �
 
 
     public virtual void OnValidate()
-    {
-        PrefabPath = AssetDatabase.GetAssetPath(Prefab);
+    { if (Application.isPlaying) return;
+        string path = AssetDatabase.GetAssetPath(Prefab);
+        PrefabPath = path.Substring(17,path.Length-24);
     }
 }

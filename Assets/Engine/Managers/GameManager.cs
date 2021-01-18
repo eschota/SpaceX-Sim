@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
-
+        CreateRoots();
         DontDestroyOnLoad(gameObject.AddComponent<Eco>());
         DontDestroyOnLoad(gameObject.AddComponent<TimeManager>());
         if (FindObjectOfType<Canvas>() == null)
@@ -137,6 +137,26 @@ public class GameManager : MonoBehaviour
             if (EventChangeState != null) EventChangeState();
 
         }
+    }
+
+    public Transform ResearchesTransform, ResearchModulesTransform, ModulesTransform, BuildingsTransform,EarthUnits;
+    private void CreateRoots()
+    {
+        ResearchesTransform = new GameObject("Researches").transform;
+        ResearchesTransform.SetAsFirstSibling();
+        DontDestroyOnLoad(ResearchesTransform);
+        ResearchModulesTransform = new GameObject("ResearchedModules").transform;
+        ResearchModulesTransform.SetAsFirstSibling();
+        DontDestroyOnLoad(ResearchModulesTransform);
+        ModulesTransform = new GameObject("Modules").transform;
+        ModulesTransform.SetAsFirstSibling();
+        DontDestroyOnLoad(ModulesTransform);
+        BuildingsTransform = new GameObject("Buildings").transform;
+        BuildingsTransform.SetAsFirstSibling();
+        DontDestroyOnLoad(BuildingsTransform);   
+        EarthUnits= new GameObject("EarthUnits").transform;
+        EarthUnits.SetAsFirstSibling();
+        DontDestroyOnLoad(EarthUnits);
     }
     private static GameParameters _gameParam;
     public static GameParameters GameParam

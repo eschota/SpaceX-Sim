@@ -10,7 +10,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] public List <BuildingUnit> buildingUnitPrefabs;
     [SerializeField] GameObject PlanarPlane;
 
-
+    public List<Selectable> Selectables = new List<Selectable>();
     Terrain terra;
 
     private void Awake()
@@ -35,17 +35,16 @@ public class UnitManager : MonoBehaviour
 
     private void Update()
     {
-        //удалить после тестов
-        if (Input.GetKeyDown(KeyCode.Z)) PlaceBuilding(buildingUnitPrefabs[0], Vector3.zero, Vector3.zero);
+      
      
     }
 
-    void PlaceBuilding(BuildingUnit unit, Vector3 pos, Vector3 rot)
+   public void PlaceBuilding(BuildingUnit unit,GameObject prefab, Vector3 pos, Vector3 rot)
     {
-        BuildingUnit newUnit= Instantiate(unit);
-        newUnit.transform.position = pos;
-        newUnit.transform.rotation= Quaternion.Euler(rot);
-        ResearchAndProductionManager.instance?.AddBuilding(newUnit);
+        Selectable S = prefab.GetComponent<Selectable>();
+        S.transform.position = pos;
+        S.RootUnit = Instantiate( unit); 
+        //
     }
     void GetAvailableBuildingsIn()
     {

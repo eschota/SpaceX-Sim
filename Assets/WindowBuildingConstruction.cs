@@ -75,9 +75,9 @@ public class WindowBuildingConstruction : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0))
                     {
-                        
-                       Instantiate(CurrentBuilding).transform.position=target;
-                        CurrentBuilding = null;                        
+
+                        UnitManager.instance.PlaceBuilding(CurrentBuilding as BuildingUnit, CurrentBuildingGameObject, target, Vector3.zero);
+                        CurrentBuilding = null;
                         CurrentBuildingGameObject = null;
                         return;
                     }
