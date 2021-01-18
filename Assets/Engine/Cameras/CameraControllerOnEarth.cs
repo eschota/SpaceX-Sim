@@ -15,8 +15,10 @@ public class CameraControllerOnEarth : MonoBehaviour
     Transform Pivot;
     //  DepthOfField dof;
     GameParameters GP;
+    public static CameraControllerOnEarth instance;
     void Start()
     {
+        instance = this;
         GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
         //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
         Pivot = new GameObject("Pivot").transform;
@@ -24,7 +26,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
 
         Camera.main.transform.SetParent(Pivot);
-
+        LoadPos();
     }
 
     // Update is called once per frame
@@ -71,7 +73,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         
         {
             Move();
-            Drag();
+          //  Drag();
         }
         //if (TargetObject != null)
         //{
@@ -79,7 +81,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         //    target = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
         //    //return;
         //}
-        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.Euler(target), 5 * Time.unscaledDeltaTime * GP.CameraEarthSpeed);
+//        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.Euler(target), 5 * Time.unscaledDeltaTime * GP.CameraEarthSpeed);
     }
     void Drag()
     {
@@ -140,4 +142,24 @@ public class CameraControllerOnEarth : MonoBehaviour
         zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
         if (Input.GetMouseButtonDown(2)) zoom = 0;
     }
+
+    public void SavePos()
+    {
+        string SceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetFloat(SceneName+"x", Pivot.transform.position.x);
+        PlayerPrefs.SetFloat(SceneName+"y", Pivot.transform.position.y);
+        PlayerPrefs.SetFloat(SceneName+"z", Pivot.transform.position.z);
+        PlayerPrefs.SetFloat(SceneName+"s", Pivot.transform.localScale.z);
+        PlayerPrefs.Save();
+    }
+    void LoadPos()
+    {
+        string SceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (PlayerPrefs.HasKey(SceneName + "x"))
+        {
+            Pivot.transform.position = new Vector3(PlayerPrefs.GetFloat(SceneName + "x"), PlayerPrefs.GetFloat(SceneName + "y"), PlayerPrefs.GetFloat(SceneName + "z"));
+            Pivot.transform.localScale =Vector3.one* PlayerPrefs.GetFloat(SceneName + "s");
+        }
+    }
+    
 }

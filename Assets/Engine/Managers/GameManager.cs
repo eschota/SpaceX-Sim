@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
     }
-
+    public static GameObject Canvas;
     private void Awake()
     {
         if (FindObjectsOfType<GameManager>().Length > 1 || instance != null)
@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
         CreateRoots();
         DontDestroyOnLoad(gameObject.AddComponent<Eco>());
         DontDestroyOnLoad(gameObject.AddComponent<TimeManager>());
-        if (FindObjectOfType<Canvas>() == null)
-            DontDestroyOnLoad(Instantiate(Resources.Load("Canvas")));
+        Canvas= Instantiate(Resources.Load<GameObject>("Canvas"));
+        DontDestroyOnLoad(Canvas);
         //GameObject WorldMap= Instantiate( Resources.Load("world_map"))as GameObject;
         //WorldMap.transform.SetParent(transform);
 
@@ -257,6 +257,7 @@ public class GameManager : MonoBehaviour
     
     public void OpenUnitScene(Unit unit)
     {
+        if(CameraControllerOnEarth.instance!=null) CameraControllerOnEarth.instance.SavePos();
         var position = unit.transform.position;
         var earth = UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform;
         var earthDirection = earth.right;

@@ -62,5 +62,6 @@ public class Module : Unit // главное это префаб модуля, �
     { if (Application.isPlaying) return;
         string path = AssetDatabase.GetAssetPath(Prefab);
         PrefabPath = path.Substring(17,path.Length-24);
+        PrefabName = Prefab.name;
     }
 }

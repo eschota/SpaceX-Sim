@@ -83,7 +83,8 @@ public class WindowBuildingConstruction : MonoBehaviour
                     }
             }
               
-            CurrentBuildingGameObject.transform.position = Vector3.Lerp(CurrentBuildingGameObject.transform.position, target, Time.unscaledDeltaTime * 23);
+         //   CurrentBuildingGameObject.transform.position = Vector3.Lerp(CurrentBuildingGameObject.transform.position, target, Time.unscaledDeltaTime * 23);
+            CurrentBuildingGameObject.transform.position =  target ;
         }
     }
 

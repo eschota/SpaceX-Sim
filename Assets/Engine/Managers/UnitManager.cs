@@ -41,10 +41,12 @@ public class UnitManager : MonoBehaviour
 
    public void PlaceBuilding(BuildingUnit unit,GameObject prefab, Vector3 pos, Vector3 rot)
     {
+        unit.ConsctructionProcess = 0;
         Selectable S = prefab.GetComponent<Selectable>();
         S.transform.position = pos;
-        S.RootUnit = Instantiate( unit); 
-        //
+        S.RootUnit = Instantiate( unit);
+        S.IniSelectable();
+         
     }
     void GetAvailableBuildingsIn()
     {
@@ -54,6 +56,8 @@ public class UnitManager : MonoBehaviour
             if (buildingUnitPrefabs.Count > 0) if (buildingUnitPrefabs[0] != null) return;
             buildingUnitPrefabs.Clear();
             buildingUnitPrefabs.AddRange(Resources.LoadAll<BuildingUnit>(""));
+
+            
             return;
         }
         buildingUnitPrefabs.Clear();
@@ -73,7 +77,12 @@ public class UnitManager : MonoBehaviour
         if (GameManager.instance == null) return;
         foreach (var item in GameManager.Buildings)
         {
-            Instantiate(Resources.Load<GameObject>(item.PrefabPath));
+            if (item.ConsctructionProcess > -1)
+            {
+                Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();
+                temp.RootUnit = item;
+                temp.transform.position = item.transform.position;
+            }
         }
     }
 }

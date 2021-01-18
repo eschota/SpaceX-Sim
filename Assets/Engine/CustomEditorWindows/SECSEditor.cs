@@ -69,7 +69,6 @@ public class SECSEditor : EditorWindow
             foreach (var item in Resources.LoadAll<Module>("Modules"))
             {
                 if (item.Prefab == null) { Debug.LogError(item.name); return; }
-                item.PrefabName = item.Prefab.name;
                 
              
                 Texture2D tex = AssetPreview.GetAssetPreview(item.Prefab) as Texture2D;
