@@ -22,8 +22,12 @@ public class CameraControllerOnEarth : MonoBehaviour
         GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
         //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
         Pivot = new GameObject("Pivot").transform;
-        Camera.main.transform.position = GP.CameraEarthstartPosition;
-        Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
+        Pivot.rotation = Camera.main.transform.rotation;
+        Pivot.Translate(Pivot.forward * Camera.main.transform.position.y * 1.5f);
+        
+        //Pivot.position =  //GP.CameraEarthstartPosition;
+        //Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
+      //  Camera.main.transform.LookAt(Pivot.transform);
 
         Camera.main.transform.SetParent(Pivot);
         LoadPos();
@@ -71,10 +75,10 @@ public class CameraControllerOnEarth : MonoBehaviour
 
         }
         
-        {
+        
             Move();
           //  Drag();
-        }
+       
         //if (TargetObject != null)
         //{
         //    // Pivot.transform.LookAt(-TargetObject.transform.position);
@@ -116,10 +120,10 @@ public class CameraControllerOnEarth : MonoBehaviour
         forward = new Vector3(forward.x, 0, forward.z);
         forward = forward.normalized * GP.CameraEarthSpeed;
         
-        if (Input.mousePosition.x < Screen.width * 0.05f || Input.GetKey(KeyCode.A)) if(Bound(Pivot.position+left))Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + left, Time.deltaTime * GP.CameraEarthSpeed);
-        if (Input.mousePosition.x > Screen.width * 0.95f || Input.GetKey(KeyCode.D)) if (Bound(Pivot.position - left))Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - left, Time.deltaTime * GP.CameraEarthSpeed);
-        if (Input.mousePosition.y > Screen.height * 0.95f || Input.GetKey(KeyCode.W)) if (Bound(Pivot.position +forward)) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + forward, Time.deltaTime * GP.CameraEarthSpeed);
-        if (Input.mousePosition.y < Screen.height * 0.05f || Input.GetKey(KeyCode.S)) if (Bound(Pivot.position -forward)) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - forward, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.x < Screen.width * 0.02f || Input.GetKey(KeyCode.A)) if(Bound(Pivot.position+left))Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + left, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.x > Screen.width * 0.98f || Input.GetKey(KeyCode.D)) if (Bound(Pivot.position - left))Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - left, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.y > Screen.height * 0.98f || Input.GetKey(KeyCode.W)) if (Bound(Pivot.position +forward)) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position + forward, Time.deltaTime * GP.CameraEarthSpeed);
+        if (Input.mousePosition.y < Screen.height * 0.02f || Input.GetKey(KeyCode.S)) if (Bound(Pivot.position -forward)) Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, Pivot.transform.position - forward, Time.deltaTime * GP.CameraEarthSpeed);
 
 
     }
@@ -136,10 +140,11 @@ public class CameraControllerOnEarth : MonoBehaviour
     private void Zoom()
     {
         zoom += 3 * Input.mouseScrollDelta.y;
-        if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
+        //if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
 
-        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 5));
-        zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
+        //Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 5));
+        //zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
+        Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, Vector3.forward * zoom, Time.unscaledDeltaTime*10);
         if (Input.GetMouseButtonDown(2)) zoom = 0;
     }
 
@@ -149,7 +154,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         PlayerPrefs.SetFloat(SceneName+"x", Pivot.transform.position.x);
         PlayerPrefs.SetFloat(SceneName+"y", Pivot.transform.position.y);
         PlayerPrefs.SetFloat(SceneName+"z", Pivot.transform.position.z);
-        PlayerPrefs.SetFloat(SceneName+"s", Pivot.transform.localScale.z);
+        PlayerPrefs.SetFloat(SceneName+"s", Camera.main.transform.localPosition.z);
         PlayerPrefs.Save();
     }
     void LoadPos()
@@ -158,7 +163,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         if (PlayerPrefs.HasKey(SceneName + "x"))
         {
             Pivot.transform.position = new Vector3(PlayerPrefs.GetFloat(SceneName + "x"), PlayerPrefs.GetFloat(SceneName + "y"), PlayerPrefs.GetFloat(SceneName + "z"));
-            Pivot.transform.localScale =Vector3.one* PlayerPrefs.GetFloat(SceneName + "s");
+            Camera.main.transform.localScale =Vector3.forward* PlayerPrefs.GetFloat(SceneName + "s");
         }
     }
     
