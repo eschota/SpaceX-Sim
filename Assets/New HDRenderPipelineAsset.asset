@@ -190,7 +190,7 @@ MonoBehaviour:
     materialQuality: 0
   m_RenderPipelineSettings:
     supportShadowMask: 1
-    supportSSR: 0
+    supportSSR: 1
     supportSSAO: 1
     supportSubsurfaceScattering: 1
     increaseSssSampleCount: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
     supportTransparentBackface: 1
     supportTransparentDepthPrepass: 1
     supportTransparentDepthPostpass: 1
-    colorBufferFormat: 74
+    colorBufferFormat: 48
     supportCustomPass: 1
     customBufferFormat: 12
     supportedLitShaderMode: 2
@@ -221,7 +221,7 @@ MonoBehaviour:
     supportTerrainHole: 0
     supportRayTracing: 0
     lightLoopSettings:
-      cookieAtlasSize: 2048
+      cookieAtlasSize: 4096
       cookieFormat: 74
       pointCookieSize: 128
       cubeCookieTexArraySize: 16
@@ -230,7 +230,7 @@ MonoBehaviour:
       planarReflectionAtlasSize: 1024
       reflectionProbeCacheSize: 64
       reflectionCubemapSize: 256
-      reflectionCacheCompressed: 0
+      reflectionCacheCompressed: 1
       planarReflectionCacheCompressed: 0
       skyReflectionSize: 2048
       skyLightingOverrideLayerMask:
@@ -270,7 +270,7 @@ MonoBehaviour:
       maxDirectionalShadowMapResolution: 2048
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
-      supportScreenSpaceShadows: 0
+      supportScreenSpaceShadows: 1
       maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
     decalSettings:
