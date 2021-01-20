@@ -30,7 +30,7 @@ public class Selectable : MonoBehaviour
     {
         UnitManager.instance.Selectables.Remove(this);
         TimeManager.EventChangeDay -= OnChangeDay;
-        DestroyImmediate(progress?.gameObject);
+        DestroyImmediate(progress);
     }
 
    
