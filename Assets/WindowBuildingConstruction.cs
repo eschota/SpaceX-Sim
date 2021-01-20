@@ -46,6 +46,16 @@ public class WindowBuildingConstruction : MonoBehaviour
     private void Update()
     {
         ConstructPositioning();
+        Deselection();
+    }
+    
+    void Deselection()
+    {
+        if(Input.GetMouseButtonDown(1))
+        {
+            CurrentBuilding = null;
+            BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
+        }
     }
     public static bool IsPointerOverUIObject()
     {

@@ -17,7 +17,7 @@ public class Selectable : MonoBehaviour
         UnitManager.instance.Selectables.Add(this);
        selectable= Resources.Load<Material>("SelectableMesh");
         TimeManager.EventChangeDay += OnChangeDay;
-        ChangeMats(true);
+       
     }
     public void IniSelectable()
     {
@@ -54,20 +54,37 @@ public class Selectable : MonoBehaviour
 
 
     }
+    void OnMouseOver()
+    {
+        ChangeMats(true);
+        Debug.Log("Mouse is over GameObject.");
+    }
 
+    void OnMouseExit()
+    {
+        ChangeMats(false);
+        //The mouse is no longer hovering over the GameObject so output this message each frame
+        Debug.Log("Mouse is no longer on GameObject.");
+    }
 
     void ChangeMats(bool _is)
     {
+        if(_is)
         foreach (var item in MRS)
         {
             item.sharedMaterial = selectable;
         }
+        else
+            for (int i = 0; i < MRS.Count; i++)
+                MRS[i].sharedMaterial = MTS[i];
+            
     }
 
 
     private void OnValidate()
     {
         MRS.Clear();
+        MTS.Clear();
         MRS.AddRange(GetComponentsInChildren<MeshRenderer>());
         foreach (var item in MRS)
         {
