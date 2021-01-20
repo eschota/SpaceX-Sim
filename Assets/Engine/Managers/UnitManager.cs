@@ -17,13 +17,14 @@ public class UnitManager : MonoBehaviour
         {
             if (value == null)
             {
-                CurrentState = State.None;
                 _CurrentSelected = value;
+                UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
+
                 return;
             }
-            CurrentState = State.SelectBuilding;
-
-            _CurrentSelected = value;
+            _CurrentSelected = value;            
+            UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.show;
+            
         }
     }
     public enum State {None, SelectBuilding, PlaceBuilding }
@@ -35,12 +36,10 @@ public class UnitManager : MonoBehaviour
         {
             switch (value)
             {
-                case State.None:
-                    UIUnitManager.instance.CurrentBuilding = null;
-                    UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
+                case State.None: 
+                    CurrentSelected = null;
                     break;
                 case State.SelectBuilding:
-                    UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.show;
                     UIUnitManager.instance.BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
                     break;
                 case State.PlaceBuilding:

@@ -21,7 +21,7 @@ public class UIUnitManager : MonoBehaviour
         {
             if (value == null)
             {
-                _CurrentBuilding = null;
+                _CurrentBuilding = value;
                 return;
             }
             if (CurrentBuildingGameObject != null)
