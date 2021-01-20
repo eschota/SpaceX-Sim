@@ -9,12 +9,15 @@ public class Selectable : MonoBehaviour
     Collider Col;
     [SerializeField] UICircleProgress progress;
     [SerializeField] GameObject[] Phases;
+    [SerializeField] List<Material> MTS;
+    [SerializeField] List<MeshRenderer> MRS;
+    Material selectable;
     void Start()
     {
         UnitManager.instance.Selectables.Add(this);
-       
+       selectable= Resources.Load<Material>("SelectableMesh");
         TimeManager.EventChangeDay += OnChangeDay;
-     
+        ChangeMats(true);
     }
     public void IniSelectable()
     {
@@ -50,5 +53,26 @@ public class Selectable : MonoBehaviour
         }
 
 
+    }
+
+
+    void ChangeMats(bool _is)
+    {
+        foreach (var item in MRS)
+        {
+            item.sharedMaterial = selectable;
+        }
+    }
+
+
+    private void OnValidate()
+    {
+        MRS.Clear();
+        MRS.AddRange(GetComponentsInChildren<MeshRenderer>());
+        foreach (var item in MRS)
+        {
+            MTS.Add(item.sharedMaterial);
+        }
+        
     }
 }
