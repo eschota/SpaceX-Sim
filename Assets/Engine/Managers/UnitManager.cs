@@ -24,8 +24,8 @@ public class UnitManager : MonoBehaviour
         } 
         
         GetAvailableBuildingsIn();
-
-        terra = FindObjectOfType<Terrain>();
+        if (GameManager.instance == null) gameObject.AddComponent<GameManager>();
+            terra = FindObjectOfType<Terrain>();
        
         LoadBuildings();
     }

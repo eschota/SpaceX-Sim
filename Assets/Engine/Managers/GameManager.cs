@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
                 ///
                 case State.PlayEarth:
                     _currentState = value;
-                    Earth.gameObject.SetActive(false);
+                    Earth?.gameObject.SetActive(false);
                     break;
             }
 
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
         {
             case NotifyCollectionChangedAction.Add: // если добавление                
                 Console.WriteLine($"Добавлен новый объект: {(e.NewItems[0] as Unit).Name}");
-                EventWithUnit(e.NewItems[0] as Unit);
+                if(EventWithUnit!=null)EventWithUnit(e.NewItems[0] as Unit);
                 break;
             case NotifyCollectionChangedAction.Remove: // если удаление
                  

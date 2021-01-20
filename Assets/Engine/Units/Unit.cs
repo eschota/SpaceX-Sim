@@ -56,7 +56,7 @@ public class Unit : MonoBehaviour
 
     public virtual void Awake()
     {
-        transform.SetParent(GameManager.instance.transform);
+        
     }
 
     

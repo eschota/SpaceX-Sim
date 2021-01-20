@@ -18,7 +18,7 @@ public class Selectable : MonoBehaviour
     }
     public void IniSelectable()
     {
-        progress = Instantiate(progress,GameManager.Canvas.transform);
+        progress = Instantiate(progress,GameManager.Canvas?.transform);
         progress.Root = this.transform;
         progress.Progress.fillAmount = RootUnit.ConsctructionProcess / 100f;
         ShowPhase();
@@ -27,7 +27,7 @@ public class Selectable : MonoBehaviour
     {
         UnitManager.instance.Selectables.Remove(this);
         TimeManager.EventChangeDay -= OnChangeDay;
-        Destroy(progress?.gameObject);
+        DestroyImmediate(progress?.gameObject);
     }
 
    
