@@ -12,7 +12,7 @@ public class CameraControllerOnEarth : MonoBehaviour
     public Vector3 target = Vector3.zero;
     public Vector3 startRot = new Vector3(45, 0, 0);
     Vector3 startDrag, CurrentDrag, targetDrag;
-    Transform Pivot;
+    [SerializeField]Transform Pivot;
     //  DepthOfField dof;
     GameParameters GP;
     public static CameraControllerOnEarth instance;
@@ -21,9 +21,6 @@ public class CameraControllerOnEarth : MonoBehaviour
         instance = this;
         GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
         //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
-        Pivot = new GameObject("Pivot").transform;
-        Pivot.rotation = Camera.main.transform.rotation;
-        Pivot.Translate(Pivot.forward * Camera.main.transform.position.y * 1.5f);
         
         //Pivot.position =  //GP.CameraEarthstartPosition;
         //Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
@@ -139,7 +136,7 @@ public class CameraControllerOnEarth : MonoBehaviour
      
     private void Zoom()
     {
-        zoom += 3 * Input.mouseScrollDelta.y;
+        zoom += 10 * Input.mouseScrollDelta.y;
         //if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
 
         //Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 5));
