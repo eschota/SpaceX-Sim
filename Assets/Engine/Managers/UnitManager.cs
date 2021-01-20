@@ -9,6 +9,23 @@ public class UnitManager : MonoBehaviour
     [SerializeField] BuildingUnit.BuildinType ThisType;
     [SerializeField] public List <BuildingUnit> buildingUnitPrefabs;
     [SerializeField] GameObject PlanarPlane;
+    private Unit _CurrentSelected;
+    public Unit CurrentSelected
+    {
+        get => _CurrentSelected;
+        set
+        {
+            if (value == null)
+            {
+                CurrentState = State.None;
+                _CurrentSelected = value;
+                return;
+            }
+            CurrentState = State.SelectBuilding;
+
+            _CurrentSelected = value;
+        }
+    }
     public enum State {None, SelectBuilding, PlaceBuilding }
     private State _CurrentState;
     public State CurrentState
@@ -19,9 +36,11 @@ public class UnitManager : MonoBehaviour
             switch (value)
             {
                 case State.None:
-                    WindowBuildingConstruction.instance.CurrentBuilding = null;
+                    UIUnitManager.instance.CurrentBuilding = null;
+                    UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
                     break;
                 case State.SelectBuilding:
+                    UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.show;
                     break;
                 case State.PlaceBuilding:
                     break;

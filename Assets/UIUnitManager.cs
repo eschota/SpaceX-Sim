@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
 
-public class WindowBuildingConstruction : MonoBehaviour 
+public class UIUnitManager : MonoBehaviour 
 {
-    [SerializeField] ButtonBuilding baseButton;
-    [SerializeField] UIWindows BuildingsPanel;
+    [SerializeField] ButtonBuilding SelectUnitExampleButton;
+    [SerializeField] public UIWindows BuildingsPanel;
+    [SerializeField] public UIWindows WindowSelectUnit;
 
     private GameObject CurrentBuildingGameObject;
     private Unit _CurrentBuilding;
@@ -35,11 +36,12 @@ public class WindowBuildingConstruction : MonoBehaviour
     }
     List<ButtonBuilding> buttons = new List<ButtonBuilding>();
 
-    public static WindowBuildingConstruction instance;
+    public static UIUnitManager instance;
     void Start()
     {
         instance = this; 
-        baseButton.gameObject.SetActive(false);
+        SelectUnitExampleButton.gameObject.SetActive(false);
+        WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
         BuildingsPanel.Hide();
     }
 
@@ -47,6 +49,7 @@ public class WindowBuildingConstruction : MonoBehaviour
     {
         ConstructPositioning();
         Deselection();
+        
     }
     
     void Deselection()
@@ -124,7 +127,7 @@ public class WindowBuildingConstruction : MonoBehaviour
         
         foreach (var item in UnitManager.instance.buildingUnitPrefabs)
         {
-            buttons.Add(Instantiate(baseButton, baseButton.transform.parent));
+            buttons.Add(Instantiate(SelectUnitExampleButton, SelectUnitExampleButton.transform.parent));
             buttons[buttons.Count - 1].building = item;
             buttons[buttons.Count - 1].icon.sprite= item.Icon;
             buttons[buttons.Count - 1].Name.text= item.Name;
