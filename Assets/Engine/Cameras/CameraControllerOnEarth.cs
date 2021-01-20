@@ -20,14 +20,8 @@ public class CameraControllerOnEarth : MonoBehaviour
     {
         instance = this;
         GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
-        //    FindObjectOfType<PostProcessVolume>().profile.TryGetSettings(out dof);
-        
-        //Pivot.position =  //GP.CameraEarthstartPosition;
-        //Camera.main.transform.rotation = Quaternion.Euler(GP.CameraEarthstartRotation);
-      //  Camera.main.transform.LookAt(Pivot.transform);
-
-        Camera.main.transform.SetParent(Pivot);
-        LoadPos();
+        zoom = Camera.main.transform.localPosition.z;
+       LoadPos();
     }
 
     // Update is called once per frame
@@ -36,7 +30,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         Zoom();
 
         Rotate();
-
+        Move();
     }
     void DOF()
     {
@@ -51,29 +45,29 @@ public class CameraControllerOnEarth : MonoBehaviour
     }
     void Rotate()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
+      //  if (Input.GetMouseButtonDown(1))
+      //  {
 
-            startPos = Input.mousePosition;
-            currentPos = Camera.main.transform.rotation.eulerAngles;
-        }
-        else
-      if (Input.GetMouseButton(1))
-        {
-            Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 500;
+      //      startPos = Input.mousePosition;
+      //      currentPos = Camera.main.transform.rotation.eulerAngles;
+      //  }
+      //  else
+      //if (Input.GetMouseButton(1))
+      //  {
+      //      Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 500;
 
-            target = new Vector3(currentPos.x - temp.y, currentPos.y + temp.x, 0);
-       //     target = new Vector3(Mathf.Clamp( currentPos.x - temp.y,-90,40), currentPos.y + temp.x, 0);
+      //      target = new Vector3(currentPos.x - temp.y, currentPos.y + temp.x, 0);
+      // //     target = new Vector3(Mathf.Clamp( currentPos.x - temp.y,-90,40), currentPos.y + temp.x, 0);
 
-        } if (Input.GetMouseButtonUp(1))
-        {
-            startPos = Input.mousePosition;
-            currentPos = Camera.main.transform.rotation.eulerAngles;
+      //  } if (Input.GetMouseButtonUp(1))
+      //  {
+      //      startPos = Input.mousePosition;
+      //      currentPos = Camera.main.transform.rotation.eulerAngles;
 
-        }
+      //  }
         
         
-            Move();
+           
           //  Drag();
        
         //if (TargetObject != null)
