@@ -9,7 +9,29 @@ public class UnitManager : MonoBehaviour
     [SerializeField] BuildingUnit.BuildinType ThisType;
     [SerializeField] public List <BuildingUnit> buildingUnitPrefabs;
     [SerializeField] GameObject PlanarPlane;
-
+    public enum State {None, SelectBuilding, PlaceBuilding }
+    private State _CurrentState;
+    public State CurrentState
+    {
+        get => _CurrentState;
+        set
+        {
+            switch (value)
+            {
+                case State.None:
+                    WindowBuildingConstruction.instance.CurrentBuilding = null;
+                    break;
+                case State.SelectBuilding:
+                    break;
+                case State.PlaceBuilding:
+                    break;
+                default:
+                    break;
+            }
+            _CurrentState = value;
+        }
+        
+    }
     public List<Selectable> Selectables = new List<Selectable>();
     Terrain terra;
 
@@ -34,8 +56,8 @@ public class UnitManager : MonoBehaviour
 
     private void Update()
     {
-      
-     
+
+        if (Input.GetMouseButtonDown(1)) CurrentState = State.None;
     }
 
    public void PlaceBuilding(BuildingUnit unit,GameObject prefab, Vector3 pos, Vector3 rot)

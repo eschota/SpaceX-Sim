@@ -97,8 +97,14 @@ public class WindowBuildingConstruction : MonoBehaviour
                         return true;
         return false;
     }
-    public void GetBuildings()
+    public void ShowSelectBuildingPanel()
     {
+
+        if (BuildingsPanel.CurrentMode == UIWindows.Mode.show)
+        {
+            BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
+            return;
+        }
         for (int i = 0; i < buttons.Count; i++)
         {
             DestroyImmediate( buttons[i].gameObject);
@@ -113,6 +119,6 @@ public class WindowBuildingConstruction : MonoBehaviour
             buttons[buttons.Count - 1].Name.text= item.Name;
             buttons[buttons.Count - 1].gameObject.SetActive(true);
         }
-        BuildingsPanel.Show();
+        BuildingsPanel.CurrentMode = UIWindows.Mode.show;
     }
 }
