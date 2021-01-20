@@ -41,8 +41,11 @@ public class UnitManager : MonoBehaviour
                     break;
                 case State.SelectBuilding:
                     UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.show;
+                    UIUnitManager.instance.BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
                     break;
                 case State.PlaceBuilding:
+                    UIUnitManager.instance.CurrentBuilding = null;
+                    UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
                     break;
                 default:
                     break;
@@ -86,7 +89,8 @@ public class UnitManager : MonoBehaviour
         S.transform.position = pos;
         S.RootUnit = Instantiate( unit);
         S.IniSelectable();
-         
+        CurrentSelected = S.RootUnit;
+        
     }
     void GetAvailableBuildingsIn()
     {

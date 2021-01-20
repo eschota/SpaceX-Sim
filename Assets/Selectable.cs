@@ -57,13 +57,13 @@ public class Selectable : MonoBehaviour
     }
     void OnMouseEnter()
     {
-     //   if (UnitManager.instance.CurrentState != UnitManager.State.None) return;
+        if (UnitManager.instance.CurrentState == UnitManager.State.PlaceBuilding) return;
         ChangeMats(true);
         Debug.Log("Mouse is over GameObject.");
     }
     private void OnMouseDown()
     {
-        if (UnitManager.instance.CurrentState != UnitManager.State.None) return;
+       if (UnitManager.instance.CurrentState == UnitManager.State.PlaceBuilding) return;
         UnitManager.instance.CurrentSelected = RootUnit;
     }
     void OnMouseExit()

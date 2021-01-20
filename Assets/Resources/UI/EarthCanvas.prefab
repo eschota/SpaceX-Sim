@@ -1,5 +1,106 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &610323157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 610323161}
+  - component: {fileID: 610323160}
+  - component: {fileID: 610323159}
+  - component: {fileID: 610323158}
+  - component: {fileID: 610323162}
+  m_Layer: 5
+  m_Name: WindowSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &610323161
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610323157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2551966084083251459}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -540}
+  m_SizeDelta: {x: 500, y: 800}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!222 &610323160
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610323157}
+  m_CullTransparentMesh: 0
+--- !u!114 &610323159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610323157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5b03506c2d64f424c8b8b77cf6a62388, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &610323158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610323157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0174fd5440518dd4e8b307dfa5c6ff45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+--- !u!225 &610323162
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610323157}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2551966082318982941
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,8 +687,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2551966083438864501}
   m_HandleRect: {fileID: 2551966083438864490}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.99999267
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -605,7 +706,7 @@ GameObject:
   - component: {fileID: 2551966082797593682}
   - component: {fileID: 2551966082797593683}
   m_Layer: 5
-  m_Name: Build
+  m_Name: BuildButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -712,8 +813,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2551966084083251463}
-        m_MethodName: GetBuildings
+      - m_Target: {fileID: 1670718949}
+        m_MethodName: ShowSelectBuildingPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -890,7 +991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00087428786}
+  m_AnchoredPosition: {x: 0, y: -0.000076293945}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7541084716477686165
@@ -1351,7 +1452,7 @@ GameObject:
   - component: {fileID: 2551966084083251456}
   - component: {fileID: 2551966084083251457}
   - component: {fileID: 2551966084083251462}
-  - component: {fileID: 2551966084083251463}
+  - component: {fileID: 1670718949}
   m_Layer: 5
   m_Name: EarthCanvas
   m_TagString: Untagged
@@ -1371,6 +1472,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2551966082388508577}
+  - {fileID: 610323161}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1439,7 +1541,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2551966084083251463
+--- !u!114 &1670718949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1448,11 +1550,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2551966084083251460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42318e269f7b6fd45908a5d332b55008, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fa33c2d12aa3dc4f940b3de8fcf9980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseButton: {fileID: 2551966082631840993}
+  SelectUnitExampleButton: {fileID: 2551966082631840993}
   BuildingsPanel: {fileID: 2551966082547163661}
+  WindowSelectUnit: {fileID: 610323158}
 --- !u!1 &2551966084150409077
 GameObject:
   m_ObjectHideFlags: 0
