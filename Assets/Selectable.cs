@@ -41,7 +41,8 @@ public class Selectable : MonoBehaviour
     }
 
     void ShowPhase()
-    { if (Phases.Length <= 1) return;
+    {
+        if (Phases.Length <= 1) return;
         int num = Mathf.RoundToInt(Phases.Length * RootUnit.ConsctructionProcess / 100f);
         for (int i = 0; i < Phases.Length; i++)
         {
@@ -54,14 +55,16 @@ public class Selectable : MonoBehaviour
 
 
     }
-    void OnMouseOver()
+    void OnMouseEnter()
     {
+        if (UnitManager.instance.CurrentState != UnitManager.State.None) return;
         ChangeMats(true);
         Debug.Log("Mouse is over GameObject.");
     }
 
     void OnMouseExit()
     {
+    //    if (UnitManager.instance.CurrentState != UnitManager.State.None) return;
         ChangeMats(false);
         //The mouse is no longer hovering over the GameObject so output this message each frame
         Debug.Log("Mouse is no longer on GameObject.");
@@ -69,15 +72,17 @@ public class Selectable : MonoBehaviour
 
     void ChangeMats(bool _is)
     {
-        if(_is)
-        foreach (var item in MRS)
-        {
-            item.sharedMaterial = selectable;
-        }
+        if (_is)
+            foreach (var item in MRS)
+            {
+                item.sharedMaterial = selectable;
+            }
         else
+        {
+            if (MRS[0].sharedMaterial == MTS[0]) return;
             for (int i = 0; i < MRS.Count; i++)
                 MRS[i].sharedMaterial = MTS[i];
-            
+        }
     }
 
 

@@ -110,9 +110,10 @@ public class WindowBuildingConstruction : MonoBehaviour
     public void ShowSelectBuildingPanel()
     {
 
-        if (BuildingsPanel.CurrentMode == UIWindows.Mode.show)
+        if (UnitManager.instance.CurrentState==UnitManager.State.PlaceBuilding)
         {
             BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
+            UnitManager.instance.CurrentState = UnitManager.State.None;
             return;
         }
         for (int i = 0; i < buttons.Count; i++)
@@ -130,5 +131,7 @@ public class WindowBuildingConstruction : MonoBehaviour
             buttons[buttons.Count - 1].gameObject.SetActive(true);
         }
         BuildingsPanel.CurrentMode = UIWindows.Mode.show;
+        UnitManager.instance.CurrentState = UnitManager.State.PlaceBuilding;
+
     }
 }
