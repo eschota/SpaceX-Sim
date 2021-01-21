@@ -38,12 +38,15 @@ public class UnitManager : MonoBehaviour
             {
                 case State.None: 
                     CurrentSelected = null;
+                    SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
                     break;
                 case State.SelectBuilding:
                     UIUnitManager.instance.BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
+                    
                     break;
                 case State.PlaceBuilding:
                     UIUnitManager.instance.CurrentBuilding = null;
+                    SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Stop;
                     UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
                     break;
                 default:
@@ -89,7 +92,7 @@ public class UnitManager : MonoBehaviour
         S.RootUnit = Instantiate( unit);
         S.IniSelectable();
         CurrentSelected = S.RootUnit;
-        
+        SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
     }
     void GetAvailableBuildingsIn()
     {
