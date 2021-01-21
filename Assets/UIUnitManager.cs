@@ -10,7 +10,7 @@ public class UIUnitManager : MonoBehaviour
     [SerializeField] ButtonBuilding SelectUnitExampleButton;
     [SerializeField] public UIWindows BuildingsPanel;
     [SerializeField] public UIWindows WindowSelectUnit;
-
+    List<EarthCollider> colliders = new List<EarthCollider>();
     private Selectable CurrentBuildingGameObject;
     private Unit _CurrentBuilding;
     public Unit CurrentBuilding
@@ -39,6 +39,7 @@ public class UIUnitManager : MonoBehaviour
     public static UIUnitManager instance;
     void Start()
     {
+        colliders.AddRange(FindObjectsOfType<EarthCollider>());
         instance = this; 
         SelectUnitExampleButton.gameObject.SetActive(false);
         WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
@@ -56,6 +57,7 @@ public class UIUnitManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1))
         {
+            Destroy(CurrentBuildingGameObject.gameObject);
             CurrentBuilding = null;
             BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
         }
@@ -110,6 +112,10 @@ public class UIUnitManager : MonoBehaviour
     bool isObjectOverOther(Vector3 pos)
     {
         foreach (var item in UnitManager.instance.Selectables)
+        {
+            if(item!=CurrentBuildingGameObject)
+            if (Vector3.Distance(pos, item.transform.position) < 50) return false;
+        } foreach (var item in colliders)
         {
             if(item!=CurrentBuildingGameObject)
             if (Vector3.Distance(pos, item.transform.position) < 50) return false;
