@@ -117,7 +117,6 @@ public class UIUnitManager : MonoBehaviour
             if (Vector3.Distance(pos, item.transform.position) < 50) return false;
         } foreach (var item in colliders)
         {
-            if(item!=CurrentBuildingGameObject)
             if (Vector3.Distance(pos, item.transform.position) < 50) return false;
         }
         return true;
