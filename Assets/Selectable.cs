@@ -12,10 +12,12 @@ public class Selectable : MonoBehaviour
     [SerializeField] List<Material> MTS;
     [SerializeField] List<MeshRenderer> MRS;
     Material selectable;
+    Material selectableCancel;
     void Start()
     {
         UnitManager.instance.Selectables.Add(this);
-       selectable= Resources.Load<Material>("SelectableMesh");
+       selectable= Resources.Load<Material>("UI/SelectableMesh");
+       selectableCancel= Resources.Load<Material>("UI/SelectableMeshCantPlace");
         TimeManager.EventChangeDay += OnChangeDay;
        
     }
@@ -74,7 +76,7 @@ public class Selectable : MonoBehaviour
         Debug.Log("Mouse is no longer on GameObject.");
     }
 
-    void ChangeMats(bool _is)
+ public    void ChangeMats(bool _is)
     {
         if (_is)
             foreach (var item in MRS)
@@ -88,7 +90,13 @@ public class Selectable : MonoBehaviour
                 MRS[i].sharedMaterial = MTS[i];
         }
     }
-
+    public void ChangeMatsCancel()
+    {        
+            foreach (var item in MRS)
+            {
+                item.sharedMaterial = selectableCancel;
+            }
+    }
 
     private void OnValidate()
     {

@@ -11,7 +11,7 @@ public class UIUnitManager : MonoBehaviour
     [SerializeField] public UIWindows BuildingsPanel;
     [SerializeField] public UIWindows WindowSelectUnit;
 
-    private GameObject CurrentBuildingGameObject;
+    private Selectable CurrentBuildingGameObject;
     private Unit _CurrentBuilding;
     public Unit CurrentBuilding
     {
@@ -30,7 +30,7 @@ public class UIUnitManager : MonoBehaviour
                 
             }
             
-            CurrentBuildingGameObject = Instantiate(value.Prefab);
+            CurrentBuildingGameObject = Instantiate(value.Prefab).GetComponent<Selectable>();
             _CurrentBuilding = value;
         }
     }
@@ -85,14 +85,21 @@ public class UIUnitManager : MonoBehaviour
                 target = new Vector3(hit.point.x, 0, hit.point.z);
                 target = new Vector3(100 * (Mathf.RoundToInt(target.x / 100f)), 0, 100 * (Mathf.RoundToInt(target.z / 100f)));
 
-
-                    if (Input.GetMouseButtonDown(0))
+                    if (!isObjectOverOther(target))
                     {
+                        CurrentBuildingGameObject.ChangeMatsCancel();
+                    }
+                    else
+                    {
+                        CurrentBuildingGameObject.ChangeMats(false);
+                        if (Input.GetMouseButtonDown(0))
+                        {
 
-                        UnitManager.instance.PlaceBuilding(CurrentBuilding as BuildingUnit, CurrentBuildingGameObject, target, Vector3.zero);
-                        CurrentBuilding = null;
-                        CurrentBuildingGameObject = null;
-                        return;
+                            UnitManager.instance.PlaceBuilding(CurrentBuilding as BuildingUnit, CurrentBuildingGameObject.gameObject, target, Vector3.zero);
+                            CurrentBuilding = null;
+                            CurrentBuildingGameObject = null;
+                            return;
+                        }
                     }
             }
               
@@ -100,7 +107,15 @@ public class UIUnitManager : MonoBehaviour
             CurrentBuildingGameObject.transform.position =  target ;
         }
     }
-
+    bool isObjectOverOther(Vector3 pos)
+    {
+        foreach (var item in UnitManager.instance.Selectables)
+        {
+            if(item!=CurrentBuildingGameObject)
+            if (Vector3.Distance(pos, item.transform.position) < 50) return false;
+        }
+        return true;
+    }
     public bool inside(Vector2 bounds)
     {
         if (Input.mousePosition.x > Screen.width * bounds.x)
