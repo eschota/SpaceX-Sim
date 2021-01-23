@@ -123,7 +123,7 @@ public class UnitManager : MonoBehaviour
         if (GameManager.instance == null) return;
         foreach (var item in GameManager.Buildings)
         {
-            if (item.ConsctructionProcess > -1)
+            if (item.ConsctructionProcess > 0)
             {
                 Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();
                 temp.RootUnit = item;
