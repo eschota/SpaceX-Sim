@@ -56,7 +56,7 @@ public class UIUnitManager : MonoBehaviour
     void Deselection()
     {
         if(Input.GetMouseButtonDown(1))
-        {
+        {if(CurrentBuildingGameObject!=null)
             Destroy(CurrentBuildingGameObject.gameObject);
             CurrentBuilding = null;
             BuildingsPanel.CurrentMode = UIWindows.Mode.hide;

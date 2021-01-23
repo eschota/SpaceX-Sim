@@ -23,7 +23,7 @@ public class Selectable : MonoBehaviour
     }
     public void IniSelectable()
     {
-        progress = Instantiate(progress,GameManager.Canvas?.transform);
+        progress = Instantiate(progress,UIUnitManager.instance.transform);
         progress.Root = this.transform;
         progress.Progress.fillAmount = RootUnit.ConsctructionProcess / 100f;
         ShowPhase();
