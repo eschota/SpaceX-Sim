@@ -59,6 +59,7 @@ public class UnitManager : MonoBehaviour
                 default:
                     break;
             }
+            Debug.Log("State Changed: => " + value);
             _CurrentState = value;
         }
         

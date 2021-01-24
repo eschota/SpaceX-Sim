@@ -77,14 +77,15 @@ public class TimeManager : MonoBehaviour
      
 
         Timer += Time.deltaTime * Time.timeScale;
+        if (SpeedManager.instance.CurrenSpeed == SpeedManager.Speed.Stop) return;
         CalendarControl();
     }
 
     private static void CalendarControl()
     {
         Hours += Time.deltaTime * Time.timeScale;
-        if (_hours >= 24)
-            _hours = 0;
+        if (Hours >= 24)
+            Hours = 0;
 
         var days = Timer / 24f;
 
