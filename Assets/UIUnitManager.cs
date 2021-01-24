@@ -37,7 +37,7 @@ public class UIUnitManager : MonoBehaviour
     List<ButtonBuilding> buttons = new List<ButtonBuilding>();
 
     public static UIUnitManager instance;
-    void Start()
+    void Awake()
     {
         colliders.AddRange(FindObjectsOfType<EarthCollider>());
         instance = this; 

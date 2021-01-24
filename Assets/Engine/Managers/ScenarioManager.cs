@@ -202,7 +202,7 @@ public class ScenarioManager : MonoBehaviour
             }
             foreach (var item in GameManager.UnitsAll)
             {
-                item.SaveJSON();
+             if(item!=null)   item.SaveJSON();
             }
             Debug.Log("File Saved at: " + instance.ScenariosFolder);
 
@@ -311,12 +311,13 @@ public class ScenarioManager : MonoBehaviour
         {
             item.transform.SetParent(GameManager.instance.ResearchesTransform);
             foreach (var modules in item.Modules)
-            {
-                modules.isResearch = true;
-                modules.name = "ResearchedModule_" + modules.Name;
+            { 
+                modules.name = modules.Name;
                 modules.transform.SetParent(GameManager.instance.ResearchModulesTransform);
             }
         }
+        foreach (var item in FindObjectsOfType<BuildingUnit>()) item.transform.SetParent(GameManager.instance.BuildingsTransform);
+        
      
     }
 
