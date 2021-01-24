@@ -33,13 +33,15 @@ public class SpeedManager : MonoBehaviour
                 }
                 if ((int)value == 2)
                 {
-                    Time.timeScale = 30;
+                    Time.timeScale = 5;
                 }
                 if ((int)value == 3)
                 {
-                    Time.timeScale = 100;
+                    Time.timeScale = 30;
                 }
             }
+            Debug.Log("Speed Changed: " + value);
+            _CurrenSpeed = value;
         }
     }
     public static SpeedManager instance;

@@ -31,6 +31,7 @@ public class ResearchAndProductionManager : MonoBehaviour
     void OnChangeDay()
     { 
         CalculateResearchesProgress();
+        CalculateConstructions();
     }
     
 

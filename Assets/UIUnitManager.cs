@@ -101,6 +101,7 @@ public class UIUnitManager : MonoBehaviour
                             CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
                             (CurrentBuilding as BuildingUnit). ConsctructionProcess = 1;
                             GameManager.Buildings.Add(CurrentBuilding as BuildingUnit);
+                            CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
                             CurrentBuilding = null;
 
                             CurrentBuildingGameObject = null;
