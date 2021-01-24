@@ -15,12 +15,13 @@ public class CameraControllerOnEarth : MonoBehaviour
     [SerializeField]Transform Pivot;
     //  DepthOfField dof;
     GameParameters GP;
+    float startZoom;
     public static CameraControllerOnEarth instance;
     void Start()
     {
         instance = this;
         GP = Resources.Load<GameParameters>("GameParametres/GameParametresBase");
-        zoom = Camera.main.transform.localPosition.z;
+        startZoom=zoom = Camera.main.transform.localPosition.z;
        LoadPos();
     }
 
@@ -136,7 +137,7 @@ public class CameraControllerOnEarth : MonoBehaviour
         //Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.25f, 5));
         //zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
         Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, Vector3.forward * zoom, Time.unscaledDeltaTime*10);
-        if (Input.GetMouseButtonDown(2)) zoom = 0;
+        if (Input.GetMouseButtonDown(2)) zoom = startZoom;
     }
 
     public void SavePos()
