@@ -22,6 +22,7 @@ public class BuildingUnit : Module
     {
         base.Awake();
         transform.SetParent(GameManager.instance.BuildingsTransform);
+        if (!GameManager.Buildings.Contains(this)) GameManager.Buildings.Add(this);
     }
     public int ConstructionCompleted => (Mathf.RoundToInt(ConsctructionProcess/ ProductionTime[0] ));
 
