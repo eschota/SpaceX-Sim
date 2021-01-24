@@ -279,7 +279,14 @@ public class ScenarioManager : MonoBehaviour
         WindowEditResearch.instance.CurrentResearch = null;
         foreach (var item in FindObjectsOfType<Research>()) if (item != null) Destroy(item.gameObject);        
         foreach (var item in FindObjectsOfType<UIResearchButton>()) if (item != null) Destroy(item.gameObject);        
-        foreach (var item in FindObjectsOfType<Module>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<UnitLaunchPlace>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<UnitResearchLab>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<UnitProductionFactory>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<BuildingUnit>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<BuildingProductionFactory>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<BuildingResearchLab>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<BuildingRocketLaunch>()) if (item != null) Destroy(item.gameObject);
+        
         
         buttons.Clear();
         Researches.Clear();
@@ -340,6 +347,7 @@ public class ScenarioManager : MonoBehaviour
      public void LoadGame()
     {
         if (CurrentScenario == null) return;
+        ClearResearchesAndModules();
         LoadScenarioResearchAndModules();
         GameManager.CurrentState = GameManager.State.PlaySpace;
         Debug.LogWarning("Game Loaded:" + CurrentScenario);
