@@ -10,7 +10,7 @@ public class Module : Unit // главное это префаб модуля, �
     
     public enum ModuleType { None=-1, Engine=0, FirstStage=1, SecondStage=2, IssModule=3,EarthModules =4}
     public ModuleType type;
-    public bool isResearch = false;
+    public bool isResearch = true;
     
     public int Cost = 1;
     private Sprite _icon;

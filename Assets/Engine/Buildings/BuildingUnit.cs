@@ -21,7 +21,7 @@ public class BuildingUnit : Module
     public override void Awake()
     {
         base.Awake();
-        GameManager.Buildings.Add(this);
+        transform.SetParent(GameManager.instance.BuildingsTransform);
     }
     public int ConstructionCompleted => (Mathf.RoundToInt(ConsctructionProcess/ ProductionTime[0] ));
 

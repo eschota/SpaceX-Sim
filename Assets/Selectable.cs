@@ -7,7 +7,7 @@ public class Selectable : MonoBehaviour
     public BuildingUnit RootUnit;
     MeshRenderer MR;
     Collider Col;
-    [SerializeField] UICircleProgress progress;
+    UICircleProgress progress;
     [SerializeField] GameObject[] Phases;
     [SerializeField] List<Material> MTS;
     [SerializeField] List<MeshRenderer> MRS;
@@ -23,7 +23,7 @@ public class Selectable : MonoBehaviour
     }
     public void IniSelectable()
     {
-        progress = Instantiate(progress,UIUnitManager.instance.transform);
+        progress = Instantiate(Resources.Load<UICircleProgress>("UI/ButtonUnits/UICircleProgress" ),UIUnitManager.instance.transform);
         progress.Root = this.transform;
         progress.Progress.fillAmount = RootUnit.ConstructionCompleted / 100f;
         progress.percentage.text = RootUnit.ConstructionCompleted.ToString() + "%";
@@ -34,7 +34,7 @@ public class Selectable : MonoBehaviour
     {
         UnitManager.instance.Selectables.Remove(this);
         TimeManager.EventChangeDay -= OnChangeDay;
-        Destroy(progress);
+      //  Destroy(progress);
     }
 
    
