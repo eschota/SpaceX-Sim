@@ -25,7 +25,9 @@ public class Selectable : MonoBehaviour
     {
         progress = Instantiate(progress,UIUnitManager.instance.transform);
         progress.Root = this.transform;
-        progress.Progress.fillAmount = RootUnit.ConsctructionProcess / 100f;
+        progress.Progress.fillAmount = RootUnit.ConstructionCompleted / 100f;
+        progress.percentage.text = RootUnit.ConstructionCompleted.ToString() + "%";
+
         ShowPhase();
     }
     private void OnDestroy()
@@ -38,7 +40,8 @@ public class Selectable : MonoBehaviour
    
     void OnChangeDay()
     {
-        progress.Progress.fillAmount = RootUnit.ConsctructionProcess / 100f;
+        progress.Progress.fillAmount = RootUnit.ConstructionCompleted/100f;
+        progress.percentage.text = RootUnit.ConstructionCompleted.ToString() + "%";
         ShowPhase();
     }
 

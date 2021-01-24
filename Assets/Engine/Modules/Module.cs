@@ -34,6 +34,7 @@ public class Module : Unit // главное это префаб модуля, �
         }
     }
 
+    
     public int[] ProductionTime = new int[] { 10,10,10};
     public string Description="Description";
     [SerializeField] public Camera _cam;

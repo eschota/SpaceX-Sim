@@ -23,6 +23,7 @@ public class BuildingUnit : Module
         base.Awake();
         GameManager.Buildings.Add(this);
     }
+    public int ConstructionCompleted => (Mathf.RoundToInt(ConsctructionProcess/ ProductionTime[0] ));
 
-  
+
 }

@@ -8,9 +8,11 @@ public class UICircleProgress : MonoBehaviour
     public Transform Root;
     [SerializeField] RectTransform rect;
     [SerializeField] public Image Progress;
+    [SerializeField] public TMPro.TextMeshProUGUI percentage;
     private void Awake()
     {
         Progress.fillAmount = 0;
+        percentage.text = "0%";
     }
     private void Update()
     {
