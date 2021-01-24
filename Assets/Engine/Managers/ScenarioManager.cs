@@ -81,6 +81,8 @@ public class ScenarioManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(1)) WindowEditResearch.instance.CurrentResearch = null;
+        if (Input.GetKeyDown(KeyCode.F8)) { SaveNameInputField.text = "QuickSave"; SaveGame(); }
+       // if (Input.GetKeyDown(KeyCode.F4)) { CurrentScenario.Name = "QuickSave";LoadGame();
     }
     #endregion
     #region Работа со сценарием
@@ -319,15 +321,19 @@ public class ScenarioManager : MonoBehaviour
     }
 
     public void StartNewGame()
-    { if (CurrentScenario == null) return;
+    { 
+        if (CurrentScenario == null) return;
         LoadScenarioResearchAndModules();
         GameManager.CurrentState = GameManager.State.PlaySpace;
-    } 
+        Debug.LogWarning("Game Started:" + CurrentScenario);
+
+    }
     public void SaveGame()
     {
         CurrentScenario.Name = SaveNameInputField.text;
         CurrentScenario.SaveNewScenario( );
         GameManager.CurrentState = GameManager.State.PlaySpace;
+        Debug.LogWarning("Game Saved:" + SaveNameInputField.text);
     }
      
      public void LoadGame()
@@ -335,6 +341,7 @@ public class ScenarioManager : MonoBehaviour
         if (CurrentScenario == null) return;
         LoadScenarioResearchAndModules();
         GameManager.CurrentState = GameManager.State.PlaySpace;
+        Debug.LogWarning("Game Loaded:" + CurrentScenario);
     }
     #endregion
 }
