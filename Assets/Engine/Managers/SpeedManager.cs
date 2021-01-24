@@ -9,7 +9,7 @@ public class SpeedManager : MonoBehaviour
     [SerializeField] Image play;
     [SerializeField] Image pause;
     int lastid;
-    public enum Speed {Stop, Normal, Fast,UltraFast  }
+    public enum Speed {Stop=0, Normal=1, Fast=2,UltraFast=3  }
     public Speed LastSpeed;
     private Speed _CurrenSpeed;
     public Speed CurrenSpeed

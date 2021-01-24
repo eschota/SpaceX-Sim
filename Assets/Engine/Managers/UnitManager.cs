@@ -49,8 +49,9 @@ public class UnitManager : MonoBehaviour
                     terra.gameObject.SetActive(true);
                     break;
                 case State.PlaceBuilding:
-                    UIUnitManager.instance.CurrentBuilding = null;
                     SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Stop;
+                    UIUnitManager.instance.CurrentBuilding = null;
+                   
                     ConstructionGrid.SetActive(true);
                     terra.gameObject.SetActive(false);
                     UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
@@ -93,7 +94,7 @@ public class UnitManager : MonoBehaviour
 
    public void PlaceBuilding(BuildingUnit unit,GameObject prefab, Vector3 pos, Vector3 rot)
     {
-        unit.ConsctructionProcess = 0;
+        
         Selectable S = prefab.GetComponent<Selectable>();
         S.transform.position = pos;
         S.RootUnit = Instantiate( unit);
@@ -130,8 +131,8 @@ public class UnitManager : MonoBehaviour
     {
         if (GameManager.instance == null) return;
         foreach (var item in GameManager.Buildings)
-        {
-            if (item.ConsctructionProcess > 0)
+        {if(item.isResearch==false)
+            if (item.ConsctructionProcess >=0.99f)
             {
                 Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();
                 temp.RootUnit = item;
