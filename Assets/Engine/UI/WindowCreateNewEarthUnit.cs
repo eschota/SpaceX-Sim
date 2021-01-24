@@ -17,13 +17,23 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
     {
 
         OkButton.onClick.AddListener(OnClick);
-        SelectSize.onValueChanged.AddListener(OnChangeValue);
-        OnChangeValue(0);
+        SelectSize.onValueChanged.AddListener(OnSizeChange);
+        OnSizeChange(0);
     }
     
-    void OnChangeValue(int id)
+    private void OnSizeChange(int id)
     {
-        TotalCost.text = ((id + 1) * 100).ToString()+"K$";
+        OnChangeLabel();
+    }
+
+    private void OnValueChange()
+    {
+        OnChangeLabel();
+    }
+
+    void OnChangeLabel()
+    {
+        TotalCost.text = Mathf.FloorToInt((SelectSize.value + 1) * 50 * (1 + WorldMapManager.instance.currentPointValue * 2))+"K$";
     }
     private void OnDestroy()
     {
@@ -32,20 +42,12 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
     }
     void OnClick()
     {
-
         if (WorldMapManager.instance.CurrenUnitPoint == null) { Alert.instance.AlertMessage = "Select Place First!!!";  return; }
 
-            GameObject obj = Instantiate(Resources.Load<GameObject>("UnitPoint/UnitPoint"));
-
-             
-           
-           
-
-           
+        GameObject obj = Instantiate(Resources.Load<GameObject>("UnitPoint/UnitPoint"));
         
         obj.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
         obj.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
-
         
         switch (GameManager.CurrentState)
         {
@@ -60,13 +62,15 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
                 break;
         }
         Destroy(obj.gameObject);
-
-
     }
+
     private void Update()
     {
-        if(GameManager.instance.Creation)
-        DangerZone.text = WorldMapManager.instance.MaxDamage.ToString();   
+        if (GameManager.instance.Creation)
+        {
+            DangerZone.text = WorldMapManager.instance.MaxDamage.ToString();
+            OnValueChange();
+        }
     }
     void CreateUnitByType<T> (Transform transform) where T : MonoBehaviour
     {

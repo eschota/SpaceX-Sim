@@ -29,6 +29,7 @@ public class WorldMapManager : MonoBehaviour
 
     public Country CurrentHovered;
     public Country CurrentPointCountry;
+    public float currentPointValue;
     LayerMask EarthMask;
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
@@ -97,11 +98,23 @@ public class WorldMapManager : MonoBehaviour
     
     }
     #endregion
-    public static WorldMapManager instance;
+    public static WorldMapManager _instance;
+    public static WorldMapManager instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType<WorldMapManager>();
+            }
+            return _instance;
+        }
+        set { _instance = value; }
+    }
     void Awake()
     {
         if (instance == null) instance = this;
-        else { DestroyImmediate(this.gameObject); return; };
+        else if (instance != this){ Destroy(gameObject); return; };
        
         GameManager.EventChangeState += OnChangeState;
         GameManager.EventWithUnit += OnUnitCreated;
@@ -223,21 +236,20 @@ public class WorldMapManager : MonoBehaviour
         {
             if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
             if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
-                if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0))
             {
-                    RocketDangerZoneCompute();
+                RocketDangerZoneCompute();
 
-                    CurrentPointCountry = CurrentHovered;
+                CurrentPointCountry = CurrentHovered;
                 SelectedEarthUVCoord = HoveredEarthUVCoord;
-                    Trajectory.transform.rotation = Quaternion.LookRotation(-hit.point);
-                    Trajectory.transform.position = hit.point;
+                Trajectory.transform.rotation = Quaternion.LookRotation(-hit.point);
+                Trajectory.transform.position = hit.point;
                 
                 CurrenUnitPoint.transform.position = hit.point;
                 CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
             }
             HoveredEarthUVCoord = hit.textureCoord;
         }
-        
     }
 
             [ContextMenu ("Select AllCountryes")]
