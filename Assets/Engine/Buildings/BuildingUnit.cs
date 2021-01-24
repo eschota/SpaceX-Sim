@@ -13,7 +13,7 @@ public class BuildingUnit : Module
     public BuildingClass CurrentClass;
     public enum BuildinType { Launch, Research, Factory}
     [SerializeField] public List< BuildinType> Types;
-    public float ConsctructionProcess = -1;
+    public float ConsctructionProcess = -10;
     public override void IniAfterJSONRead()
     {
         base.IniAfterJSONRead();

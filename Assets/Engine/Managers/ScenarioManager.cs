@@ -285,7 +285,8 @@ public class ScenarioManager : MonoBehaviour
     void LoadUnitsByType<T>() where T : MonoBehaviour
     {
         DirectoryInfo dir = new DirectoryInfo(CurrentScenario.CurrentFolder);
-        FileInfo[] info = dir.GetFiles("*."+ typeof(T).ToString());
+        string type = typeof(T).ToString();
+        FileInfo[] info = dir.GetFiles( "*"+ type,SearchOption.AllDirectories);
         foreach (FileInfo f in info)
         {
             string jsondata = System.IO.File.ReadAllText(Path.Combine(CurrentScenario.CurrentFolder, f.Name));
@@ -309,6 +310,7 @@ public class ScenarioManager : MonoBehaviour
             item.transform.SetParent(GameManager.instance.ResearchesTransform);
             foreach (var modules in item.Modules)
             {
+                modules.isResearch = true;
                 modules.name = "ResearchedModule_" + modules.Name;
                 modules.transform.SetParent(GameManager.instance.ResearchModulesTransform);
             }

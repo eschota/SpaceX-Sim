@@ -7,8 +7,9 @@ public class TimeManager : MonoBehaviour
 
     public static float LocalHoursOffset;
     public static float TimeScale = 1f;
+    public static float Timer =0;
 
-    private static float _timer;
+    
     private static int _days;
     private static int _years;
     private static int _months;
@@ -54,7 +55,7 @@ public class TimeManager : MonoBehaviour
         get => _elapsedTime;
     }
 
-    public static float Hours => _hours;
+    public static float Hours;
 
     public static void Init()
     {
@@ -73,25 +74,24 @@ public class TimeManager : MonoBehaviour
                 GameManager.CurrentState = GameManager.State.PlaySpace;
         }
 
-        if (GameManager.CurrentState != GameManager.State.PlaySpace)
-            return;
+     
 
-        _timer += Time.deltaTime * TimeScale;
+        Timer += Time.deltaTime * Time.timeScale;
         CalendarControl();
     }
 
     private static void CalendarControl()
     {
-        _hours += Time.deltaTime * TimeScale;
+        Hours += Time.deltaTime * Time.timeScale;
         if (_hours >= 24)
             _hours = 0;
 
-        var days = _timer / 24f;
+        var days = Timer / 24f;
 
         if (days > 365)
         {
             Years++;
-            _timer = 0;
+            Timer = 0;
         }
 
         if (days > 0 && days <= 31)
