@@ -8,7 +8,7 @@ public class UnitManager : MonoBehaviour
     public static UnitManager instance;
     [SerializeField] BuildingUnit.BuildinType ThisType;
     [SerializeField] public List <BuildingUnit> buildingUnitPrefabs;
-    [SerializeField] GameObject PlanarPlane;
+    [SerializeField] GameObject ConstructionGrid;
     private Unit _CurrentSelected;
     public Unit CurrentSelected
     {
@@ -39,25 +39,33 @@ public class UnitManager : MonoBehaviour
                 case State.None: 
                     CurrentSelected = null;
                     SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
+                    ConstructionGrid.SetActive(false);
+                    terra.gameObject.SetActive(true);
+                    UIUnitManager.instance. BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
                     break;
                 case State.SelectBuilding:
                     UIUnitManager.instance.BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
-                    
+                    ConstructionGrid.SetActive(false);
+                    terra.gameObject.SetActive(true);
                     break;
                 case State.PlaceBuilding:
-                    UIUnitManager.instance.CurrentBuilding = null;
                     SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Stop;
+                    UIUnitManager.instance.CurrentBuilding = null;
+                   
+                    ConstructionGrid.SetActive(true);
+                    terra.gameObject.SetActive(false);
                     UIUnitManager.instance.WindowSelectUnit.CurrentMode = UIWindows.Mode.hide;
                     break;
                 default:
                     break;
             }
+            Debug.Log("State Changed: => " + value);
             _CurrentState = value;
         }
         
     }
     public List<Selectable> Selectables = new List<Selectable>();
-    Terrain terra;
+    Transform terra;
 
     private void Awake()
     {
@@ -67,11 +75,12 @@ public class UnitManager : MonoBehaviour
         {
             DestroyImmediate(gameObject);
             return;
-        } 
-        
+        }
+        ConstructionGrid.transform.position = new Vector3(ConstructionGrid.transform.position.x, 0, ConstructionGrid.transform.position.z);
+        ConstructionGrid.SetActive(false);
         GetAvailableBuildingsIn();
         if (GameManager.instance == null) gameObject.AddComponent<GameManager>();
-            terra = FindObjectOfType<Terrain>();
+            terra = FindObjectOfType<Terrain>().transform.parent;
        
         LoadBuildings();
     }
@@ -86,13 +95,14 @@ public class UnitManager : MonoBehaviour
 
    public void PlaceBuilding(BuildingUnit unit,GameObject prefab, Vector3 pos, Vector3 rot)
     {
-        unit.ConsctructionProcess = 0;
+        
         Selectable S = prefab.GetComponent<Selectable>();
         S.transform.position = pos;
         S.RootUnit = Instantiate( unit);
         S.IniSelectable();
         CurrentSelected = S.RootUnit;
         SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
+        CurrentState = State.None;
     }
     void GetAvailableBuildingsIn()
     {
@@ -122,8 +132,8 @@ public class UnitManager : MonoBehaviour
     {
         if (GameManager.instance == null) return;
         foreach (var item in GameManager.Buildings)
-        {
-            if (item.ConsctructionProcess > 0)
+        {if(item.isResearch==false)
+            if (item.ConsctructionProcess >=0.99f)
             {
                 Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();
                 temp.RootUnit = item;

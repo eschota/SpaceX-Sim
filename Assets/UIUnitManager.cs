@@ -94,11 +94,17 @@ public class UIUnitManager : MonoBehaviour
                     else
                     {
                         CurrentBuildingGameObject.ChangeMats(false);
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButtonDown(0))// создание наземного здания
                         {
 
                             UnitManager.instance.PlaceBuilding(CurrentBuilding as BuildingUnit, CurrentBuildingGameObject.gameObject, target, Vector3.zero);
+                            CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
+                            (CurrentBuilding as BuildingUnit). ConsctructionProcess = 1;
+                            GameManager.Buildings.Add(CurrentBuilding as BuildingUnit);
+                            CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
+                            (CurrentBuilding as BuildingUnit).isResearch = false;
                             CurrentBuilding = null;
+
                             CurrentBuildingGameObject = null;
                             return;
                         }
@@ -137,6 +143,7 @@ public class UIUnitManager : MonoBehaviour
         {
             BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
             UnitManager.instance.CurrentState = UnitManager.State.None;
+            SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
             return;
         }
         for (int i = 0; i < buttons.Count; i++)
@@ -155,6 +162,10 @@ public class UIUnitManager : MonoBehaviour
         }
         BuildingsPanel.CurrentMode = UIWindows.Mode.show;
         UnitManager.instance.CurrentState = UnitManager.State.PlaceBuilding;
+
+    }
+    public void HideSelectBuildingPanel()
+    {
 
     }
 }

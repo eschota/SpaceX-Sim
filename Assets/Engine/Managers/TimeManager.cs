@@ -7,8 +7,9 @@ public class TimeManager : MonoBehaviour
 
     public static float LocalHoursOffset;
     public static float TimeScale = 1f;
+    public static float Timer =0;
 
-    private static float _timer;
+    
     private static int _days;
     private static int _years;
     private static int _months;
@@ -54,7 +55,7 @@ public class TimeManager : MonoBehaviour
         get => _elapsedTime;
     }
 
-    public static float Hours => _hours;
+    public static float Hours;
 
     public static void Init()
     {
@@ -73,86 +74,106 @@ public class TimeManager : MonoBehaviour
                 GameManager.CurrentState = GameManager.State.PlaySpace;
         }
 
-        if (GameManager.CurrentState != GameManager.State.PlaySpace)
-            return;
+     
 
-        _timer += Time.deltaTime * TimeScale;
+        
+        if (SpeedManager.instance.CurrenSpeed == SpeedManager.Speed.Stop) return;
         CalendarControl();
     }
-
+    private static int days;
     private static void CalendarControl()
     {
-        _hours += Time.deltaTime * TimeScale;
-        if (_hours >= 24)
-            _hours = 0;
-
-        var days = _timer / 24f;
+        Hours += Time.deltaTime * Time.timeScale/24;
+         
+        if (Hours >= 24)
+        {
+            Hours = 0;
+            Days++;
+            days++;
+        }
+        if (Months > 12 || Months==0)
+        {
+            Months = 1;
+            Years++;
+        }
 
         if (days > 365)
         {
             Years++;
-            _timer = 0;
+            Timer = 0;
+            days = 1;
+            Days = 1;
         }
 
         if (days > 0 && days <= 31)
-        {
-            Days = (int) (days + 1);
+        { 
             Months = 1;
         }
         else if (days > 31 && days <= 60)
         {
+            if (Days > 31) Days = 1;
             Months = 2;
-            Days = (int) (days - 31);
+             
         }
         else if (days > 59 && days <= 90)
         {
+            if (Days > 31) Days = 1;
             Months = 3;
-            Days = (int) (days - 59);
+           
         }
         else if (days > 90 && days <= 121)
         {
+            if (Days > 31) Days = 1;
             Months = 4;
-            Days = (int) (days - 90);
+         
         }
         else if (days > 120 && days <= 150)
         {
+            if (Days > 30) Days = 1;
             Months = 5;
-            Days = (int) (days - 120);
+            
         }
         else if (days > 151 && days <= 181)
         {
+            if (Days > 30) Days = 1;
             Months = 6;
-            Days = (int) (days - 151);
+           
         }
         else if (days > 181 && days <= 212)
         {
+            if (Days > 31) Days = 1;
             Months = 7;
-            Days = (int) (days - 181);
+          
         }
         else if (days > 212 && days <= 243)
         {
+            if (Days > 31) Days = 1;
             Months = 8;
-            Days = (int) (days - 212);
+           
         }
         else if (days > 243 && days <= 273)
         {
+            if (Days > 28) Days = 1;
             Months = 9;
-            Days = (int) (days - 242);
+          
         }
         else if (days > 273 && days <= 304)
         {
+            if (Days > 31) Days = 1;
             Months = 10;
-            Days = (int) (days - 273);
+          
         }
         else if (days > 304 && days <= 334)
         {
+            if (Days > 30) Days = 1;
             Months = 11;
-            Days = (int) (days - 303);
+           
         }
         else if (days > 334 && days <= 365)
         {
+            if (Days > 31) Days = 1;
             Months = 12;
-            Days = (int) (days - 333);
+            
         }
     }
 }

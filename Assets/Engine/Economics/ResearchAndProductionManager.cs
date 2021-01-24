@@ -26,11 +26,12 @@ public class ResearchAndProductionManager : MonoBehaviour
 
 
         CalculateResearchesProgress();
-         
+        CalculateConstructions();
     }
     void OnChangeDay()
     { 
         CalculateResearchesProgress();
+        CalculateConstructions();
     }
     
 
@@ -68,6 +69,15 @@ public class ResearchAndProductionManager : MonoBehaviour
         {
             ResearchesAvailable.Remove(item);
             ResearchesCompleted.Add(item);
+        }
+    }
+
+
+    void CalculateConstructions()
+    {
+        foreach (var item in GameManager.Buildings)
+        {
+            item.ConsctructionProcess++;
         }
     }
 }

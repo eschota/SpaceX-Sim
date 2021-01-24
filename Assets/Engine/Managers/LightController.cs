@@ -83,8 +83,8 @@ public class LightController : MonoBehaviour
     {
          if (!Application.isPlaying) localTimer = 12;
 
-                if (Application.isPlaying) if (FindObjectOfType<CameraControllerOnEarth>() == null) gameObject.AddComponent<CameraControllerOnEarth>();
-        Time.timeScale = 1;
+        //        if (Application.isPlaying) if (FindObjectOfType<CameraControllerOnEarth>() == null) gameObject.AddComponent<CameraControllerOnEarth>();
+        //Time.timeScale = 1;
         if (TimeManager.Hours <= 0.1f)
             localTimer = 12;
         else
