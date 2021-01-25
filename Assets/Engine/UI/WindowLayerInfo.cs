@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class WindowLayerInfo : UIWindows
 {
@@ -60,26 +61,33 @@ public class WindowLayerInfo : UIWindows
         }
         layersText[1].text = country ? country.Wealth +"$" : "N/A";
         layersText[2].text = country ? country.Population.ToString() + "K" : "N/A";
-        layersText[3].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[3], uvCoords).ToString() + "%";
-        layersText[4].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[4], uvCoords).ToString() + "%";
-        layersText[5].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[5], uvCoords).ToString() + "%";
-        layersText[6].text = WorldMapManager.instance.ClimatZonesNames[WorldMapManager.instance.GetZone(WorldMapManager.instance.WorldLayersTextures[6], uvCoords)];
+        layersText[3].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Population), uvCoords).ToString() + "%";
+        layersText[4].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Transportation), uvCoords).ToString() + "%";
+        layersText[5].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Disaster), uvCoords).ToString() + "%";
+        layersText[6].text = WorldMapManager.instance.ClimatZonesNames[WorldMapManager.instance.GetZone(WorldMapManager.instance.GetTexture(PlaceInfoType.Climat), uvCoords)];
 
         List<float> values = new List<float>();
+        List<PlaceInfoType> types = new List<PlaceInfoType>();
         values.Add(1f - (country ? country.Wealth / maxWealth : 0));
-        values.Add(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[3], uvCoords) / 100f);
+        types.Add(PlaceInfoType.Wealth);
+        values.Add(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Population), uvCoords) / 100f);
+        types.Add(PlaceInfoType.Population);
         if (GameManager.CurrentState == GameManager.State.PlaySpace || GameManager.CurrentState == GameManager.State.CreateResearchLab)
         {
-            values.Add(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[1], uvCoords) / 100f);
+            values.Add(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Science), uvCoords) / 100f);
+            types.Add(PlaceInfoType.Science);
         }
         if (GameManager.CurrentState == GameManager.State.PlaySpace || GameManager.CurrentState != GameManager.State.CreateResearchLab)
         {
-            values.Add(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[4], uvCoords) / 100f);
+            values.Add(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Transportation), uvCoords) / 100f);
+            types.Add(PlaceInfoType.Transportation);
         }
-        values.Add((100f - WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[5], uvCoords)) / 100f);
+        values.Add((100f - WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Disaster), uvCoords)) / 100f);
+        types.Add(PlaceInfoType.Disaster);
         float maxClimatZone = (WorldMapManager.instance.ClimatZonesNames.Count - 1f) / 2f;
-        float normalizedClimat = 1f - Mathf.Abs(WorldMapManager.instance.GetZone(WorldMapManager.instance.WorldLayersTextures[6], uvCoords) - maxClimatZone) / maxClimatZone;
+        float normalizedClimat = 1f - Mathf.Abs(WorldMapManager.instance.GetZone(WorldMapManager.instance.GetTexture(PlaceInfoType.Climat), uvCoords) - maxClimatZone) / maxClimatZone;
         values.Add(normalizedClimat);
+        types.Add(PlaceInfoType.Climat);
         float averageValue = 0;
         for (int i = 0; i < values.Count; i++)
         {
@@ -89,6 +97,6 @@ public class WindowLayerInfo : UIWindows
         }
         averageValue /= values.Count;
         WorldMapManager.instance.currentPointValue = averageValue;
-        windRose.UpdateValues(values.ToArray());
+        windRose.UpdateValues(values.ToArray(), types.ToArray());
     }
 }

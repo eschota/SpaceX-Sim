@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class UIWindRose : Graphic
 {
@@ -15,15 +17,32 @@ public class UIWindRose : Graphic
     private float lerpSpeed = 1f;
     [SerializeField]
     private Vector2[] points = new Vector2[0];
+    [SerializeField]
+    private InfoTypeIcon[] infoTypeIcons;
 
     private Vector2[] nextPoints = new Vector2[0];
+    private Dictionary<PlaceInfoType, RectTransform> typeToIcon = new Dictionary<PlaceInfoType, RectTransform>();
 
-    public void UpdateValues(float[] values)
+    protected override void Awake()
+    {
+        for (int i = 0; i < infoTypeIcons.Length; i++)
+        {
+            typeToIcon[infoTypeIcons[i].type] = infoTypeIcons[i].icon;
+        }
+    }
+
+    public void UpdateValues(float[] values, PlaceInfoType[] types)
     {
         Vector2[] points = new Vector2[values.Length];
         for (int i = 0; i < values.Length; i++)
         {
-            points[i] = Quaternion.Euler(0, 0, (float) i / values.Length * 360f) * new Vector2(0, .1f + values[i] * .9f);
+            Quaternion rotation = Quaternion.Euler(0, 0, (float)i / values.Length * 360f);
+            points[i] = rotation * new Vector2(0, .1f + values[i] * .9f);
+            typeToIcon[types[i]].anchoredPosition = rotation * Vector2.up * rectTransform.rect.height / 2f;
+        }
+        for (int i = 0; i < infoTypeIcons.Length; i++)
+        {
+            infoTypeIcons[i].icon.gameObject.SetActive(Array.IndexOf(types, infoTypeIcons[i].type) != -1);
         }
         nextPoints = points;
     }
@@ -83,5 +102,12 @@ public class UIWindRose : Graphic
         vertex.position = new Vector2(dirFromCenter.x * thickness / 2f + rectTransform.rect.width * .5f * point.x, dirFromCenter.y * thickness / 2f + rectTransform.rect.height * .5f * point.y);
         vh.AddVert(vertex);
 
+    }
+
+    [Serializable]
+    private class InfoTypeIcon
+    {
+        public PlaceInfoType type;
+        public RectTransform icon;
     }
 }

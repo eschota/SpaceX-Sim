@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.EventSystems;
+using Utils;
 
 public class WorldMapManager : MonoBehaviour
 {
@@ -12,19 +13,22 @@ public class WorldMapManager : MonoBehaviour
     [SerializeField] MeshRenderer EarthRenderer;
     [SerializeField] GameObject Clouds;
     [SerializeField] GameObject Glow;
-    [SerializeField] public List<Country> countries;
-    [SerializeField] public Material Earth;
-    [SerializeField] public Material Population;
-    [SerializeField] public Material Science;
-    [SerializeField] public Material Transport;
-    [SerializeField] public Material Disaster;
-    [SerializeField] public Material Climat;
-    [SerializeField] public List<Texture2D> WorldLayersTextures;
-    [SerializeField] public List<Color> ClimatZonesColors;
-    [SerializeField] public List<string> ClimatZonesNames;
-    [SerializeField] public TextAsset CountryNamesJSONFile;
-    [SerializeField] public TextAsset CountryPopulationJSonFile;
-    [SerializeField] public Transform[] RocketDangerZone;
+    [SerializeField]
+    private List<Texture2D> WorldLayersTextures;
+    [SerializeField]
+    private PlaceInfoType[] textureTypes;
+    public List<Country> countries;
+    public Material Earth;
+    public Material Population;
+    public Material Science;
+    public Material Transport;
+    public Material Disaster;
+    public Material Climat;
+    public List<Color> ClimatZonesColors;
+    public List<string> ClimatZonesNames;
+    public TextAsset CountryNamesJSONFile;
+    public TextAsset CountryPopulationJSonFile;
+    public Transform[] RocketDangerZone;
     
 
     public Country CurrentHovered;
@@ -34,6 +38,8 @@ public class WorldMapManager : MonoBehaviour
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
+
+    private Dictionary<PlaceInfoType, Texture2D> typeToInfoTexture = new Dictionary<PlaceInfoType, Texture2D>();
 
     public Action<bool> OnAllowedBuildChanged;
     private bool _isAllowedToBuild;
@@ -131,6 +137,12 @@ public class WorldMapManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else if (instance != this){ Destroy(gameObject); return; };
+
+        for (int i = 0; i < textureTypes.Length; i++)
+        {
+            if (textureTypes[i] == PlaceInfoType.None) continue;
+            typeToInfoTexture[textureTypes[i]] = WorldLayersTextures[i];
+        }
        
         GameManager.EventChangeState += OnChangeState;
         GameManager.EventWithUnit += OnUnitCreated;
@@ -138,6 +150,10 @@ public class WorldMapManager : MonoBehaviour
         HideMap();
         EarthMask = LayerMask.GetMask("Earth");
        
+    }
+    public Texture2D GetTexture(PlaceInfoType type)
+    {
+        return typeToInfoTexture[type];
     }
     void OnUnitCreated(Unit unit)
     {
@@ -167,8 +183,6 @@ public class WorldMapManager : MonoBehaviour
     void ShowMap()
     {
         Camera.main.cullingMask = ~0;
-
-
     }
     void HideMap()
     {
@@ -198,7 +212,7 @@ public class WorldMapManager : MonoBehaviour
           //  Debug.DrawRay(item.position, (-item.position + transform.position).normalized,Color.yellow);
             if (Physics.Raycast(item.position, (-item.position+transform.position).normalized, out hit, Mathf.Infinity, EarthMask))
             {
-                MaxDamage+= GetPercentByTexture(WorldLayersTextures[2], hit.textureCoord);
+                MaxDamage+= GetPercentByTexture(GetTexture(PlaceInfoType.Population), hit.textureCoord);
             }
         }
     }
@@ -339,6 +353,4 @@ public class WorldMapManager : MonoBehaviour
         Color col = tex.GetPixel(Mathf.RoundToInt(uv.x * tex.width), Mathf.RoundToInt(uv.y * tex.height));
         return Mathf.RoundToInt(col.r * 100);
     }
-
-
 }
