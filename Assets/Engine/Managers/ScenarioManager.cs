@@ -312,7 +312,7 @@ public class ScenarioManager : MonoBehaviour
     {
         foreach (var item in FindObjectsOfType<BuildingUnit>())
         {
-            item.transform.SetParent(GameManager.instance.BuildingsTransform);
+          if(item.isResearch==false)  item.transform.SetParent(GameManager.instance.BuildingsTransform); else item.transform.SetParent(GameManager.instance.ResearchModulesTransform);
         }
         foreach (var item in FindObjectsOfType<Module>())
         {
@@ -327,7 +327,6 @@ public class ScenarioManager : MonoBehaviour
                 modules.transform.SetParent(GameManager.instance.ResearchModulesTransform);
             }
         }
-        foreach (var item in FindObjectsOfType<BuildingUnit>()) item.transform.SetParent(GameManager.instance.BuildingsTransform);
         
      
     }
