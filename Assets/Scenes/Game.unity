@@ -2504,10 +2504,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.38823533, b: 0.40000004, a: 0}
+  ColorCountry: {r: 0.6056375, g: 0.22936709, b: 0, a: 1}
   Name: Suriname
   Population: 373
   Wealth: 6.089
+  _isOcean: 0
 --- !u!64 &12372385480456309
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2562,10 +2563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.31764707, b: 0.60784316, a: 0}
+  ColorCountry: {r: 0, g: 0.5162703, b: 0.72082365, a: 1}
   Name: Serbia
   Population: 6.798
   Wealth: 25.046
+  _isOcean: 0
 --- !u!64 &47547019770977761
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2712,10 +2714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8941177, g: 0.67058825, b: 1, a: 0}
+  ColorCountry: {r: 0.9684574, g: 0.24952321, b: 0, a: 1}
   Name: Ecuador
   Population: 10.725
   Wealth: 19.144
+  _isOcean: 0
 --- !u!64 &124316859775483123
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2780,10 +2783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8705883, g: 1, b: 0.454902, a: 0}
+  ColorCountry: {r: 0.83552516, g: 0, b: 0.4203562, a: 1}
   Name: Hungary
   Population: 7.803
   Wealth: 44.321
+  _isOcean: 0
 --- !u!64 &153026321772149366
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2844,10 +2848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6784314, g: 1, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0.8764269, g: 0, b: 0.32604644, a: 1}
   Name: Belarus
   Population: 7.39
   Wealth: 16.59
+  _isOcean: 0
 --- !u!64 &180488014443222679
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2894,10 +2899,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.98823535, g: 0.22352943, b: 0.23137257, a: 0}
+  ColorCountry: {r: 0.18667561, g: 0, b: 0.56661385, a: 1}
   Name: Kuwait
   Population: 3.086
   Wealth: 131.269
+  _isOcean: 0
 --- !u!64 &181109937777050898
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3058,10 +3064,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.45098042, g: 0.8705883, b: 0.27450982, a: 0}
+  ColorCountry: {r: 0.30175793, g: 0, b: 0.8128532, a: 1}
   Name: Brazil
   Population: 150.089
   Wealth: 23.55
+  _isOcean: 0
 --- !u!64 &262876028484454177
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3108,10 +3115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 0.6509804, b: 0.2901961, a: 0}
+  ColorCountry: {r: 0.5047904, g: 0.35582876, b: 0, a: 1}
   Name: Afghanistan
   Population: 16.838
   Wealth: 1463
+  _isOcean: 0
 --- !u!64 &317268460685013026
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3174,6 +3182,7 @@ GameObject:
   - component: {fileID: 9010603126093781425}
   - component: {fileID: 3339979124946980027}
   - component: {fileID: 369890544995279535}
+  - component: {fileID: 369890544995279536}
   m_Layer: 0
   m_Name: ocean_Arctic
   m_TagString: Untagged
@@ -3195,6 +3204,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 337614441325929659, guid: f9caccfefc82abf41a5bc417ab259a12, type: 3}
+--- !u!114 &369890544995279536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369890544995279534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorCountry: {r: 0, g: 0.64509016, b: 0.5562372, a: 1}
+  Name: Arctic
+  Population: 0
+  Wealth: 0
+  _isOcean: 1
 --- !u!1 &374082232455287299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,10 +3253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8470589, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.12284786, b: 0.79633605, a: 1}
   Name: Austria
   Population: 7.092
   Wealth: 274.919
+  _isOcean: 0
 --- !u!64 &374082232455287301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3277,10 +3304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.2627451, b: 0.9058824, a: 0}
+  ColorCountry: {r: 0.38196182, g: 0, b: 0.7552303, a: 1}
   Name: Malawi
   Population: 8.798
   Wealth: 1.313
+  _isOcean: 0
 --- !u!64 &389070279658843767
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3547,10 +3575,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8588236, g: 0.7372549, b: 0.18823531, a: 0}
+  ColorCountry: {r: 0, g: 0.5292451, b: 0.99483746, a: 1}
   Name: Liberia
   Population: 2.35
   Wealth: 2.169
+  _isOcean: 0
 --- !u!64 &477024028187972445
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3605,10 +3634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.62352943, g: 0.86274517, b: 0.9803922, a: 0}
+  ColorCountry: {r: 0, g: 0.883023, b: 0.19558026, a: 1}
   Name: Kiribati
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &508756707018585409
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3845,7 +3875,11 @@ Transform:
   - {fileID: 2539726285837333919}
   - {fileID: 2075744018900452074}
   - {fileID: 5572266170060077584}
-  - {fileID: 1967859302678009454}
+  - {fileID: 3862623914999053732}
+  - {fileID: 3238815327413462043}
+  - {fileID: 7161738758988532368}
+  - {fileID: 7254762635867800101}
+  - {fileID: 8804531197155309117}
   m_Father: {fileID: 5858208103007948609}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3928,10 +3962,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.3529412, g: 0.8588236, b: 0.14901961, a: 0}
+  ColorCountry: {r: 0.019750243, g: 0.7253684, b: 0, a: 1}
   Name: Bulgaria
   Population: 5.697
   Wealth: 42.686
+  _isOcean: 0
 --- !u!64 &590851509605337495
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4039,10 +4074,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5254902, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0, g: 0.012659856, b: 0.5566663, a: 1}
   Name: Romania
   Population: 15.517
   Wealth: 43.074
+  _isOcean: 0
 --- !u!64 &675864239867455761
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4150,10 +4186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5529412, b: 0.56078434, a: 0}
+  ColorCountry: {r: 0.9076927, g: 0, b: 0.12224396, a: 1}
   Name: Malaysia
   Population: 21.823
   Wealth: 31.27
+  _isOcean: 0
 --- !u!64 &757764154559858572
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4253,10 +4290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8431373, g: 0.627451, b: 0.9450981, a: 0}
+  ColorCountry: {r: 0.8789464, g: 0.39377597, b: 0, a: 1}
   Name: Falkland Islands (Malvinas)
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &799141111097176046
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4350,10 +4388,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5372549, b: 0.227451, a: 0}
+  ColorCountry: {r: 0.1656087, g: 0.6872283, b: 0, a: 1}
   Name: C\u00f4te d'Ivoire
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &866743783936289140
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4400,10 +4439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.5254902, g: 0.86274517, b: 0.16078432, a: 0}
+  ColorCountry: {r: 0, g: 0.13197458, b: 0.6562499, a: 1}
   Name: Montenegro
   Population: 477
   Wealth: 53.484
+  _isOcean: 0
 --- !u!64 &868294971099671482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4450,10 +4490,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.77647066, g: 1, b: 0.22352943, a: 0}
+  ColorCountry: {r: 0, g: 0.85276675, b: 0.4200456, a: 1}
   Name: Guyana
   Population: 482
   Wealth: 11.349
+  _isOcean: 0
 --- !u!64 &878775433915169783
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4508,10 +4549,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8078432, g: 0.45882356, b: 0.19215688, a: 0}
+  ColorCountry: {r: 0.637528, g: 0.37586355, b: 0, a: 1}
   Name: Qatar
   Population: 2.223
   Wealth: 147.745
+  _isOcean: 0
 --- !u!64 &894630703313556478
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4771,6 +4813,11 @@ MonoBehaviour:
   - {fileID: 8068688450204845349}
   - {fileID: 6995253599878081302}
   - {fileID: 8914872569967873934}
+  - {fileID: 369890544995279536}
+  - {fileID: 4806931910034719492}
+  - {fileID: 8486419280854053294}
+  - {fileID: 5851015976364369360}
+  - {fileID: 7157487317805881104}
   Earth: {fileID: 2100000, guid: f72df2c248e02df4fb2299c5191b68f9, type: 2}
   Population: {fileID: 2100000, guid: 4ee9dab2566bad141b1c7aeaafeaaae9, type: 2}
   Science: {fileID: 2100000, guid: d3428b661ef08544f992d221acf8970a, type: 2}
@@ -4916,10 +4963,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0.003921569, a: 0}
+  ColorCountry: {r: 0.6907449, g: 0, b: 0.27395684, a: 1}
   Name: Uganda
   Population: 18.65
   Wealth: 1.603
+  _isOcean: 0
 --- !u!64 &976185887349324464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4980,10 +5028,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.65882355, b: 0.427451, a: 0}
+  ColorCountry: {r: 0.5467937, g: 0.60100293, b: 0, a: 1}
   Name: Egypt
   Population: 58.309
   Wealth: 15.395
+  _isOcean: 0
 --- !u!64 &999559895598916576
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5030,10 +5079,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.4156863, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.18649875, b: 0.682643, a: 1}
   Name: Morocco
   Population: 23.613
   Wealth: 12.929
+  _isOcean: 0
 --- !u!64 &1007429001625523135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5080,10 +5130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.39607847, b: 0.9215687, a: 0}
+  ColorCountry: {r: 0, g: 0.033913936, b: 0.5559239, a: 1}
   Name: Burkina Faso
   Population: 8.862
   Wealth: 1.44
+  _isOcean: 0
 --- !u!64 &1046466243891478770
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5130,10 +5181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.91372555, g: 0.73333335, b: 1, a: 0}
+  ColorCountry: {r: 0, g: 0.97587216, b: 0.16592999, a: 1}
   Name: Mongolia
   Population: 1.986
   Wealth: 6.135
+  _isOcean: 0
 --- !u!64 &1050005396433576823
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5196,10 +5248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.49803925, g: 1, b: 0.2901961, a: 0}
+  ColorCountry: {r: 0, g: 0.08769792, b: 0.678709, a: 1}
   Name: Mali
   Population: 8.088
   Wealth: 1.955
+  _isOcean: 0
 --- !u!64 &1102011868736944633
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5230,22 +5283,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8193957555999351792}
   m_Mesh: {fileID: -802187632204463219, guid: c0f0350e1ad8e4046a749312e9dacaef, type: 3}
---- !u!1 &1154308197253795028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1967859302678009454}
-  m_Layer: 0
-  m_Name: oceans
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &1192101871838781454
 Transform:
   m_ObjectHideFlags: 0
@@ -5397,10 +5434,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9058824, g: 0.6666667, b: 0.9921569, a: 0}
+  ColorCountry: {r: 0, g: 0.7971455, b: 0.41109467, a: 1}
   Name: Papua New Guinea
   Population: 4.611
   Wealth: 6.485
+  _isOcean: 0
 --- !u!64 &1269662446985299286
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5608,10 +5646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.30980393, g: 0.7843138, b: 0.1137255, a: 0}
+  ColorCountry: {r: 0.7962716, g: 0.9625409, b: 0, a: 1}
   Name: Guinea-Bissau
   Population: 936
   Wealth: 1.647
+  _isOcean: 0
 --- !u!64 &1393157793096422702
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5727,10 +5766,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.36862746, b: 0.38823533, a: 0}
+  ColorCountry: {r: 0, g: 0.9815294, b: 0.90756434, a: 1}
   Name: Honduras
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &1434478557818718416
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5910,10 +5950,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.31764707, b: 0.30980393, a: 0}
+  ColorCountry: {r: 0.3369838, g: 0, b: 0.5010204, a: 1}
   Name: Congo, the Democratic Republic of the
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &1535200203222867246
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6049,10 +6090,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7960785, g: 0.44705886, b: 0.96470594, a: 0}
+  ColorCountry: {r: 0.7639166, g: 0, b: 0.25118032, a: 1}
   Name: Haiti
   Population: 6.426
   Wealth: 723
+  _isOcean: 0
 --- !u!64 &1610436725406733682
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6205,10 +6247,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8431373, b: 0.050980397, a: 0}
+  ColorCountry: {r: 0.16606045, g: 0.69063413, b: 0, a: 1}
   Name: China
   Population: 0
   Wealth: 58.544
+  _isOcean: 0
 --- !u!64 &1697491785427060958
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6255,10 +6298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8941177, g: 0.82745105, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0.6541521, g: 0, b: 0.9328815, a: 1}
   Name: Indonesia
   Population: 172.908
   Wealth: 10.545
+  _isOcean: 0
 --- !u!64 &1713625918631255131
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6327,10 +6371,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8470589, b: 0.050980397, a: 0}
+  ColorCountry: {r: 0, g: 0.91724676, b: 0.17866689, a: 1}
   Name: Angola
   Population: 13.403
   Wealth: 3.649
+  _isOcean: 0
 --- !u!64 &1792320972203073875
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6432,10 +6477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9921569, g: 0.8431373, b: 0.003921569, a: 0}
+  ColorCountry: {r: 0.9821395, g: 0, b: 0.781851, a: 1}
   Name: Chile
   Population: 13.331
   Wealth: 56.972
+  _isOcean: 0
 --- !u!64 &1804895695199510847
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6490,10 +6536,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.6627451, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0, g: 0.6991637, b: 0.46984428, a: 1}
   Name: Venezuela, Bolivarian Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &1855347713066580212
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6556,10 +6603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.30980393, g: 0.9921569, b: 0, a: 0}
+  ColorCountry: {r: 0.8237487, g: 0, b: 0.2725574, a: 1}
   Name: Oman
   Population: 3.608
   Wealth: 43.291
+  _isOcean: 0
 --- !u!64 &1907315440139001248
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6620,10 +6668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7490196, g: 1, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0.6703333, g: 0, b: 0.09971996, a: 1}
   Name: Colombia
   Population: 34.254
   Wealth: 16.411
+  _isOcean: 0
 --- !u!64 &1913907661173956735
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6670,10 +6719,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.87843144, b: 0.2784314, a: 0}
+  ColorCountry: {r: 0.58279663, g: 0.7886299, b: 0, a: 1}
   Name: Spain
   Population: 37.45
   Wealth: 207.531
+  _isOcean: 0
 --- !u!64 &1933641024705118776
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6819,25 +6869,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!4 &1967859302678009454
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154308197253795028}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3862623914999053732}
-  - {fileID: 3238815327413462043}
-  - {fileID: 7161738758988532368}
-  - {fileID: 7254762635867800101}
-  - {fileID: 8804531197155309117}
-  m_Father: {fileID: 543450653087807007}
-  m_RootOrder: 172
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1968529356191215369
 Transform:
   m_ObjectHideFlags: 0
@@ -6931,10 +6962,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0.03529412, a: 0}
+  ColorCountry: {r: 0, g: 0.5922715, b: 0.4044235, a: 1}
   Name: United Arab Emirates
   Population: 7.874
   Wealth: 117.06
+  _isOcean: 0
 --- !u!64 &1984834174976707615
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6981,10 +7013,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5568628, b: 0.25882354, a: 0}
+  ColorCountry: {r: 0, g: 0.38818148, b: 0.8726982, a: 1}
   Name: Argentina
   Population: 30.32
   Wealth: 10.256
+  _isOcean: 0
 --- !u!64 &2001853936384840099
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7070,10 +7103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9803922, g: 0.5686275, b: 0.2901961, a: 0}
+  ColorCountry: {r: 0, g: 0.6057338, b: 0.5770833, a: 1}
   Name: Cuba
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2013304840158588534
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7120,10 +7154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.5803922, g: 0.8352942, b: 0.9568628, a: 0}
+  ColorCountry: {r: 0, g: 0.068254985, b: 0.7772057, a: 1}
   Name: French Polynesia
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2015273467824986921
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7315,10 +7350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.45098042, g: 0.8588236, b: 0.28235295, a: 0}
+  ColorCountry: {r: 0, g: 0.37453517, b: 0.5104073, a: 1}
   Name: Portugal
   Population: 8.373
   Wealth: 131.088
+  _isOcean: 0
 --- !u!64 &2077051272180828621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7504,10 +7540,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8431373, b: 0.023529414, a: 0}
+  ColorCountry: {r: 0.8996203, g: 0.44288164, b: 0, a: 1}
   Name: Lithuania
   Population: 2.296
   Wealth: 50.254
+  _isOcean: 0
 --- !u!64 &2128473144616389750
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7654,10 +7691,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.8431373, b: 0.0627451, a: 0}
+  ColorCountry: {r: 0.6825733, g: 0.40114737, b: 0, a: 1}
   Name: Jamaica
   Population: 2.002
   Wealth: 20.878
+  _isOcean: 0
 --- !u!64 &2202677817369976298
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7743,10 +7781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.67058825, b: 0.96470594, a: 0}
+  ColorCountry: {r: 0.54050523, g: 0.7607765, b: 0, a: 1}
   Name: New Caledonia
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2226424595821281228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7847,10 +7886,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.2901961, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.7450764, b: 0.99184614, a: 1}
   Name: Latvia
   Population: 1.536
   Wealth: 60.347
+  _isOcean: 0
 --- !u!64 &2273618761417662666
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7897,10 +7937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.5176471, g: 0.87843144, b: 0.36862746, a: 0}
+  ColorCountry: {r: 0, g: 0.62437695, b: 0.40870324, a: 1}
   Name: Turkmenistan
   Population: 3.607
   Wealth: 15.691
+  _isOcean: 0
 --- !u!64 &2279555611451319098
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7947,10 +7988,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.52156866, b: 0.7294118, a: 0}
+  ColorCountry: {r: 0.31047705, g: 0, b: 0.8321161, a: 1}
   Name: Uruguay
   Population: 2.501
   Wealth: 30.32
+  _isOcean: 0
 --- !u!64 &2281433687606112854
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8052,10 +8094,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.77647066, g: 0.7686275, b: 0.77647066, a: 0}
+  ColorCountry: {r: 0.8271687, g: 0.8257558, b: 0, a: 1}
   Name: Antarctica
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2315340644976538388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8102,10 +8145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.76470596, g: 0.3372549, b: 0.07450981, a: 0}
+  ColorCountry: {r: 0.6738029, g: 0.31109995, b: 0, a: 1}
   Name: Equatorial Guinea
   Population: 724
   Wealth: 17.023
+  _isOcean: 0
 --- !u!64 &2322887314924250774
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8160,10 +8204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5254902, b: 0.2392157, a: 0}
+  ColorCountry: {r: 0, g: 0.44925103, b: 0.62816966, a: 1}
   Name: India
   Population: 865.783
   Wealth: 14.569
+  _isOcean: 0
 --- !u!64 &2325990764334217553
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8293,10 +8338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.83921576, g: 0.37647063, b: 0.0627451, a: 0}
+  ColorCountry: {r: 0.9684939, g: 0.031688515, b: 0, a: 1}
   Name: Togo
   Population: 3.909
   Wealth: 1.241
+  _isOcean: 0
 --- !u!64 &2453501223748917825
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8343,10 +8389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9058824, g: 0.6784314, b: 1, a: 0}
+  ColorCountry: {r: 0.37448052, g: 0.5009751, b: 0, a: 1}
   Name: Viet Nam
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2469312912870912475
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8546,10 +8593,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.60784316, b: 0.60784316, a: 0}
+  ColorCountry: {r: 0.29243058, g: 0, b: 0.9671616, a: 1}
   Name: Sudan
   Population: 20.474
   Wealth: 534
+  _isOcean: 0
 --- !u!64 &2526603136130306757
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8732,10 +8780,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 0.49411768, b: 0.32156864, a: 0}
+  ColorCountry: {r: 0.007973679, g: 0.5783564, b: 0, a: 1}
   Name: Israel
   Population: 5.499
   Wealth: 196.568
+  _isOcean: 0
 --- !u!64 &2608060158342474024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8782,10 +8831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7058824, g: 0.3647059, b: 0.86274517, a: 0}
+  ColorCountry: {r: 0, g: 0.52987504, b: 0.5552522, a: 1}
   Name: Brunei Darussalam
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2617311161811110041
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8888,10 +8938,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8352942, g: 0.43137258, b: 0.1137255, a: 0}
+  ColorCountry: {r: 0.49644256, g: 0, b: 0.8953052, a: 1}
   Name: 
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2739265919691440189
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8977,10 +9028,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.86274517, g: 0.5411765, b: 0.9921569, a: 0}
+  ColorCountry: {r: 0.8870407, g: 0.6798383, b: 0, a: 1}
   Name: Yemen
   Population: 14.58
   Wealth: 4.926
+  _isOcean: 0
 --- !u!64 &2751415976615620221
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9027,10 +9079,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.69803923, g: 1, b: 0.5803922, a: 0}
+  ColorCountry: {r: 0, g: 0.23786965, b: 0.83283746, a: 1}
   Name: Ethiopia
   Population: 52.97
   Wealth: 3.085
+  _isOcean: 0
 --- !u!64 &2772832245461386069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9191,10 +9244,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.4431373, b: 0.63529414, a: 0}
+  ColorCountry: {r: 0.38431725, g: 0, b: 0.8154843, a: 1}
   Name: Sri Lanka
   Population: 14.408
   Wealth: 20.628
+  _isOcean: 0
 --- !u!64 &2838724537496378506
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9241,10 +9295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.87843144, b: 0.32156864, a: 0}
+  ColorCountry: {r: 0.23211423, g: 0.59602296, b: 0, a: 1}
   Name: Cyprus
   Population: 918
   Wealth: 116.207
+  _isOcean: 0
 --- !u!64 &2842928929133984686
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9305,10 +9360,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.6745098, b: 0.46274513, a: 0}
+  ColorCountry: {r: 0.35352248, g: 0, b: 0.86369574, a: 1}
   Name: Germany
   Population: 67.668
   Wealth: 216.654
+  _isOcean: 0
 --- !u!64 &2859211069749500180
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9355,10 +9411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.54901963, g: 0.7960785, b: 0.31764707, a: 0}
+  ColorCountry: {r: 0.48597348, g: 0, b: 0.88072294, a: 1}
   Name: Lao People's Democratic Republic
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &2861976222962986712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9405,10 +9462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.80392164, b: 0.65882355, a: 0}
+  ColorCountry: {r: 0, g: 0.07334729, b: 0.5057487, a: 1}
   Name: Kazakhstan
   Population: 12.147
   Wealth: 26.317
+  _isOcean: 0
 --- !u!64 &2863431744692920453
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9807,12 +9865,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806931910034719490}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.0001905}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.00019049644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1967859302678009454}
-  m_RootOrder: 1
+  m_Father: {fileID: 543450653087807007}
+  m_RootOrder: 173
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3242543571124482324
 MeshFilter:
@@ -9862,10 +9920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8941177, g: 0.67058825, b: 1, a: 0}
+  ColorCountry: {r: 0, g: 0.09325167, b: 0.5786005, a: 1}
   Name: Syrian Arab Republic
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &3278470163544053629
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10053,10 +10112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.89019614, b: 0.37647063, a: 0}
+  ColorCountry: {r: 0.6349419, g: 0.43227878, b: 0, a: 1}
   Name: Bangladesh
   Population: 104.872
   Wealth: 6.643
+  _isOcean: 0
 --- !u!64 &3354261747396420071
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10312,10 +10372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.38823533, g: 1, b: 0.10980393, a: 0}
+  ColorCountry: {r: 0, g: 0.7886815, b: 0.760628, a: 1}
   Name: Mozambique
   Population: 13.814
   Wealth: 880
+  _isOcean: 0
 --- !u!64 &3411220370530392154
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10532,10 +10593,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.4431373, g: 0.854902, b: 0.27450982, a: 0}
+  ColorCountry: {r: 0, g: 0.7058953, b: 0.6528739, a: 1}
   Name: Palestine, State of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &3519960072597218261
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10668,10 +10730,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.9176471, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0, g: 0.57800496, b: 0.52483344, a: 1}
   Name: Norway
   Population: 4.1
   Wealth: 267.348
+  _isOcean: 0
 --- !u!64 &3658240848904396690
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10734,10 +10797,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.9215687, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0.5177921, g: 0.47983077, b: 0, a: 1}
   Name: South Sudan
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &3703722328200688412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10909,10 +10973,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.2901961, g: 0.854902, b: 0.043137256, a: 0}
+  ColorCountry: {r: 0, g: 0.8021127, b: 0.7327191, a: 1}
   Name: Switzerland
   Population: 6.866
   Wealth: 564.653
+  _isOcean: 0
 --- !u!64 &3748149505486668520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11161,12 +11226,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369890544995279534}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.0001905}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.00019049644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1967859302678009454}
-  m_RootOrder: 0
+  m_Father: {fileID: 543450653087807007}
+  m_RootOrder: 172
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3882534394186473258
 MeshFilter:
@@ -11261,10 +11326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8313726, g: 0.6, b: 0.9568628, a: 0}
+  ColorCountry: {r: 0, g: 0.6221158, b: 0.64361376, a: 1}
   Name: Bhutan
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &3915229885101478263
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11386,10 +11452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.9215687, b: 0.54509807, a: 0}
+  ColorCountry: {r: 0, g: 0.8475282, b: 0.4539092, a: 1}
   Name: Cambodia
   Population: 9.797
   Wealth: 5.395
+  _isOcean: 0
 --- !u!64 &3975484394810493291
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11715,10 +11782,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.7411765, b: 0.043137256, a: 0}
+  ColorCountry: {r: 0.08039249, g: 0.88844705, b: 0, a: 1}
   Name: Senegal
   Population: 7.763
   Wealth: 4.265
+  _isOcean: 0
 --- !u!64 &4145608150540771400
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11781,10 +11849,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.2901961, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.8451884, b: 0.2297444, a: 1}
   Name: Chad
   Population: 6.551
   Wealth: 1.167
+  _isOcean: 0
 --- !u!64 &4165473232193339102
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11878,10 +11947,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8941177, g: 0.6627451, b: 0.5372549, a: 0}
+  ColorCountry: {r: 0, g: 0.48561162, b: 0.53017384, a: 1}
   Name: Puerto Rico
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &4203661736772682207
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12028,10 +12098,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.85098046, b: 0, a: 0}
+  ColorCountry: {r: 0.9179044, g: 0, b: 0.7550313, a: 1}
   Name: Australia
   Population: 18.655
   Wealth: 386.058
+  _isOcean: 0
 --- !u!64 &4229722701466512498
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12117,10 +12188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.31764707, b: 0.32156864, a: 0}
+  ColorCountry: {r: 0.82722896, g: 0.88658655, b: 0, a: 1}
   Name: Croatia
   Population: 3.329
   Wealth: 62.804
+  _isOcean: 0
 --- !u!64 &4237981053009301583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12195,10 +12267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.49411768, b: 0.70980394, a: 0}
+  ColorCountry: {r: 0.7063679, g: 0.9530586, b: 0, a: 1}
   Name: Kyrgyzstan
   Population: 3.721
   Wealth: 5.758
+  _isOcean: 0
 --- !u!64 &4273014921276895829
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12245,10 +12318,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.28235295, b: 0.2784314, a: 0}
+  ColorCountry: {r: 0, g: 0.7013709, b: 0.79777396, a: 1}
   Name: Peru
   Population: 21.132
   Wealth: 17.843
+  _isOcean: 0
 --- !u!64 &4279394310831407573
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12439,10 +12513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.34901962, g: 0.9450981, b: 0.098039225, a: 0}
+  ColorCountry: {r: 0, g: 0.71362734, b: 0.8757767, a: 1}
   Name: Belgium
   Population: 8.913
   Wealth: 246.135
+  _isOcean: 0
 --- !u!64 &4359021502692055139
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12645,10 +12720,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.76470596, g: 1, b: 0.6627451, a: 0}
+  ColorCountry: {r: 0, g: 0.6881347, b: 0.49538594, a: 1}
   Name: Pakistan
   Population: 113.388
   Wealth: 4.096
+  _isOcean: 0
 --- !u!64 &4418848753890096753
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12781,10 +12857,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8862746, g: 0.5764706, b: 0.38823533, a: 0}
+  ColorCountry: {r: 0.15491459, g: 0.62421054, b: 0, a: 1}
   Name: Estonia
   Population: 1.028
   Wealth: 78.458
+  _isOcean: 0
 --- !u!64 &4459890410269050838
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12916,10 +12993,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9450981, g: 0.32941177, b: 0.34117648, a: 0}
+  ColorCountry: {r: 0, g: 0.6544681, b: 0.5113622, a: 1}
   Name: Macedonia, the Former Yugoslav Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &4576953520449342448
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13027,10 +13105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8313726, g: 0.54901963, b: 0.34901962, a: 0}
+  ColorCountry: {r: 0.66446704, g: 0.98825985, b: 0, a: 1}
   Name: Bahamas
   Population: 292
   Wealth: 76.507
+  _isOcean: 0
 --- !u!64 &4603679232084716275
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13101,10 +13180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.69411767, b: 0.49411768, a: 0}
+  ColorCountry: {r: 0.88188225, g: 0.5484703, b: 0, a: 1}
   Name: United States
   Population: 245.14
   Wealth: 432.365
+  _isOcean: 0
 --- !u!64 &4648899375172202765
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13187,10 +13267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.43921572, b: 0.45098042, a: 0}
+  ColorCountry: {r: 0.2846844, g: 0, b: 0.8644664, a: 1}
   Name: Niger
   Population: 8.909
   Wealth: 1.126
+  _isOcean: 0
 --- !u!4 &4694024576333238606
 Transform:
   m_ObjectHideFlags: 0
@@ -13251,10 +13332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.63529414, g: 0.9215687, b: 0.35686275, a: 0}
+  ColorCountry: {r: 0, g: 0.47208294, b: 0.6686751, a: 1}
   Name: Tanzania, United Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &4756010190573446664
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13337,10 +13419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.6745098, b: 0.45098042, a: 0}
+  ColorCountry: {r: 0.2553568, g: 0, b: 0.5707614, a: 1}
   Name: Greece
   Population: 9.021
   Wealth: 96.11
+  _isOcean: 0
 --- !u!64 &4804444222496675805
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13367,6 +13450,7 @@ GameObject:
   - component: {fileID: 8319440334673797798}
   - component: {fileID: 4359201558869127601}
   - component: {fileID: 4806931910034719491}
+  - component: {fileID: 4806931910034719492}
   m_Layer: 0
   m_Name: ocean_Atlantic
   m_TagString: Untagged
@@ -13388,6 +13472,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3904106947758900186, guid: f9caccfefc82abf41a5bc417ab259a12, type: 3}
+--- !u!114 &4806931910034719492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806931910034719490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorCountry: {r: 0.40777078, g: 0, b: 0.5891286, a: 1}
+  Name: Atlantic
+  Population: 0
+  Wealth: 0
+  _isOcean: 1
 --- !u!1 &4813794993198870634
 GameObject:
   m_ObjectHideFlags: 0
@@ -13420,10 +13521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.46274513, g: 0.68235296, b: 0.2784314, a: 0}
+  ColorCountry: {r: 0, g: 0.36048448, b: 0.78022695, a: 1}
   Name: Iraq
   Population: 19.788
   Wealth: 16.54
+  _isOcean: 0
 --- !u!64 &4813794993198870636
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13494,10 +13596,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.5921569, g: 0.97647065, b: 0.427451, a: 0}
+  ColorCountry: {r: 0.49530676, g: 0.8444717, b: 0, a: 1}
   Name: Fiji
   Population: 580
   Wealth: 15.598
+  _isOcean: 0
 --- !u!64 &4845252732980426343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13552,10 +13655,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.427451, g: 0.9725491, b: 0.20784315, a: 0}
+  ColorCountry: {r: 0.848052, g: 0.0891294, b: 0, a: 1}
   Name: Costa Rica
   Population: 3.547
   Wealth: 33.683
+  _isOcean: 0
 --- !u!64 &4875879422117016662
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13649,10 +13753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.31764707, b: 0.60784316, a: 0}
+  ColorCountry: {r: 0, g: 0.9043941, b: 0.31429535, a: 1}
   Name: 
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &4913305496776829541
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13707,10 +13812,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.54901963, g: 0.8078432, b: 0.3019608, a: 0}
+  ColorCountry: {r: 0, g: 0.86722517, b: 0.5774759, a: 1}
   Name: Poland
   Population: 30.598
   Wealth: 57.873
+  _isOcean: 0
 --- !u!64 &4920736886851007170
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13857,10 +13963,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8941177, b: 0.37647063, a: 0}
+  ColorCountry: {r: 0.51817304, g: 0.78482366, b: 0, a: 1}
   Name: Iran, Islamic Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &4941200598106101226
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13907,10 +14014,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.5058824, g: 0.49803925, b: 0.5058824, a: 0}
+  ColorCountry: {r: 0.6364751, g: 0.25902525, b: 0, a: 1}
   Name: French Southern Territories
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &4960790127086424654
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14073,10 +14181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7411765, g: 0.9803922, b: 0.20000002, a: 0}
+  ColorCountry: {r: 0.7814797, g: 0.2791911, b: 0, a: 1}
   Name: Albania
   Population: 2.225
   Wealth: 31.366
+  _isOcean: 0
 --- !u!64 &5002266916261152973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14151,10 +14260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.62352943, g: 0.87843144, b: 0.5176471, a: 0}
+  ColorCountry: {r: 0.0902913, g: 0.5725309, b: 0, a: 1}
   Name: Turkey
   Population: 55.543
   Wealth: 24.398
+  _isOcean: 0
 --- !u!64 &5036348801131880905
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14215,10 +14325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.45098042, g: 0.87843144, b: 0.25882354, a: 0}
+  ColorCountry: {r: 0, g: 0.99647534, b: 0.6107357, a: 1}
   Name: Tunisia
   Population: 8.111
   Wealth: 13.853
+  _isOcean: 0
 --- !u!64 &5091822742773632007
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14312,10 +14423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.62352943, g: 1, b: 0.4784314, a: 0}
+  ColorCountry: {r: 0.9241451, g: 0.48858884, b: 0, a: 1}
   Name: Congo
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &5129079983346967562
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14362,10 +14474,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.48235297, g: 0.8000001, b: 0.34901962, a: 0}
+  ColorCountry: {r: 0, g: 0.55109495, b: 0.0030133275, a: 1}
   Name: Korea, Democratic People's Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &5158403958000793235
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14466,10 +14579,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.89019614, b: 0.3529412, a: 0}
+  ColorCountry: {r: 0.99266416, g: 0, b: 0.30035073, a: 1}
   Name: French Guiana
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &5251487249429059185
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14544,10 +14658,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.882353, g: 0.6, b: 1, a: 0}
+  ColorCountry: {r: 0.9185719, g: 0.11633154, b: 0, a: 1}
   Name: Paraguay
   Population: 4.268
   Wealth: 11.865
+  _isOcean: 0
 --- !u!64 &5322981447677746931
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14864,10 +14979,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8078432, g: 0.31764707, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.64397764, b: 0.27099085, a: 1}
   Name: Denmark
   Population: 4.475
   Wealth: 284.022
+  _isOcean: 0
 --- !u!64 &5466756375782576602
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15074,10 +15190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.7803922, b: 0.34901962, a: 0}
+  ColorCountry: {r: 0.9272901, g: 0, b: 0.47944984, a: 1}
   Name: Ghana
   Population: 15.377
   Wealth: 4.292
+  _isOcean: 0
 --- !u!64 &5630944887725897498
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15160,10 +15277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.49803925, g: 0.6901961, b: 0.76470596, a: 0}
+  ColorCountry: {r: 0.6195972, g: 0, b: 0.99679536, a: 1}
   Name: Vanuatu
   Population: 157
   Wealth: 15.09
+  _isOcean: 0
 --- !u!64 &5719495763884774966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15252,10 +15370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6784314, g: 0.31764707, b: 0.07450981, a: 0}
+  ColorCountry: {r: 0.4032282, g: 0.91443026, b: 0, a: 1}
   Name: Slovenia
   Population: 1.675
   Wealth: 122.508
+  _isOcean: 0
 --- !u!64 &5797877811858300603
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15349,6 +15468,7 @@ GameObject:
   - component: {fileID: 7667071330595228411}
   - component: {fileID: 897446669690739740}
   - component: {fileID: 5851015976364369359}
+  - component: {fileID: 5851015976364369360}
   m_Layer: 0
   m_Name: ocean_Pacific
   m_TagString: Untagged
@@ -15370,6 +15490,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7698126188064581232, guid: f9caccfefc82abf41a5bc417ab259a12, type: 3}
+--- !u!114 &5851015976364369360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851015976364369358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorCountry: {r: 0.254014, g: 0, b: 0.9598893, a: 1}
+  Name: Pocific
+  Population: 0
+  Wealth: 0
+  _isOcean: 1
 --- !u!4 &5858208103007948609
 Transform:
   m_ObjectHideFlags: 0
@@ -15663,10 +15800,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.89019614, b: 0.3372549, a: 0}
+  ColorCountry: {r: 0.93376225, g: 0, b: 0.7008765, a: 1}
   Name: Nigeria
   Population: 90.731
   Wealth: 4.881
+  _isOcean: 0
 --- !u!33 &6057856644462951124
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15754,10 +15892,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6117647, g: 0.87843144, b: 0.52156866, a: 0}
+  ColorCountry: {r: 0.37974924, g: 0, b: 0.7510878, a: 1}
   Name: Moldova, Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &6086210498081093061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15818,10 +15957,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.854902, g: 0.54901963, b: 1, a: 0}
+  ColorCountry: {r: 0.59228724, g: 0, b: 0.7522421, a: 1}
   Name: Gabon
   Population: 1.149
   Wealth: 15.113
+  _isOcean: 0
 --- !u!64 &6104998628543299958
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15868,10 +16008,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.93725497, g: 0.7294118, b: 1, a: 0}
+  ColorCountry: {r: 0, g: 0.81898487, b: 0.6364902, a: 1}
   Name: Sweden
   Population: 7.723
   Wealth: 265.26
+  _isOcean: 0
 --- !u!64 &6105881387598306830
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15918,10 +16059,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8235295, g: 0.54509807, b: 0.9294118, a: 0}
+  ColorCountry: {r: 0.8425604, g: 0, b: 0.81198454, a: 1}
   Name: Timor-Leste
   Population: 602
   Wealth: 5.143
+  _isOcean: 0
 --- !u!64 &6129740765368467588
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16035,10 +16177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.63529414, g: 0.8862746, b: 0.5137255, a: 0}
+  ColorCountry: {r: 0.930475, g: 0.940847, b: 0, a: 1}
   Name: Solomon Islands
   Population: 321
   Wealth: 12.933
+  _isOcean: 0
 --- !u!64 &6161520626814675821
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16085,10 +16228,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8941177, b: 0.3529412, a: 0}
+  ColorCountry: {r: 0.5621378, g: 0, b: 0.66395825, a: 1}
   Name: Ukraine
   Population: 34.998
   Wealth: 8.792
+  _isOcean: 0
 --- !u!64 &6164138864591960812
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16135,10 +16279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7411765, g: 0.8941177, b: 0.34509805, a: 0}
+  ColorCountry: {r: 0.46487278, g: 0, b: 0.69939137, a: 1}
   Name: Swaziland
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &6187568974510568661
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16201,10 +16346,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8431373, b: 0, a: 0}
+  ColorCountry: {r: 0.38026008, g: 0, b: 0.6302861, a: 1}
   Name: Mexico
   Population: 85.594
   Wealth: 31.553
+  _isOcean: 0
 --- !u!64 &6221687379354427749
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16265,10 +16411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9333334, g: 0.29803923, b: 0.29803923, a: 0}
+  ColorCountry: {r: 0.08549073, g: 0, b: 0.50477093, a: 1}
   Name: Guinea
   Population: 6.268
   Wealth: 2.185
+  _isOcean: 0
 --- !u!64 &6290519982869178839
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16354,10 +16501,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7411765, g: 0.50980395, b: 0.83921576, a: 0}
+  ColorCountry: {r: 0.7120937, g: 0.29392013, b: 0, a: 1}
   Name: Guatemala
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &6318348873184675217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16443,10 +16591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8980393, g: 0.16078432, b: 0.7843138, a: 0}
+  ColorCountry: {r: 0, g: 0.7265545, b: 0.53097034, a: 1}
   Name: Rwanda
   Population: 6.313
   Wealth: 3.435
+  _isOcean: 0
 --- !u!64 &6324732585521629345
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16493,10 +16642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.87843144, g: 0.61960787, b: 0.9921569, a: 0}
+  ColorCountry: {r: 0.6476069, g: 0.6622622, b: 0, a: 1}
   Name: Bosnia and Herzegovina
   Population: 2.815
   Wealth: 27.873
+  _isOcean: 0
 --- !u!64 &6418436966718341878
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16657,10 +16807,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9568628, g: 0.6745098, b: 0.6862745, a: 0}
+  ColorCountry: {r: 0.31324843, g: 0, b: 0.9509844, a: 1}
   Name: Slovakia
   Population: 4.34
   Wealth: 66.171
+  _isOcean: 0
 --- !u!64 &6499886607956763657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17054,10 +17205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9960785, g: 0.8431373, b: 0.03529412, a: 0}
+  ColorCountry: {r: 0, g: 0.102946915, b: 0.5271847, a: 1}
   Name: Ireland
   Population: 3.491
   Wealth: 272.31
+  _isOcean: 0
 --- !u!64 &6611174534468203890
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17120,10 +17272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.2901961, g: 1, b: 0.003921569, a: 0}
+  ColorCountry: {r: 0, g: 0.5086993, b: 0.4283658, a: 1}
   Name: Jordan
   Population: 5.512
   Wealth: 26.475
+  _isOcean: 0
 --- !u!64 &6632237198187707907
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17209,10 +17362,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.85098046, b: 0, a: 0}
+  ColorCountry: {r: 0.91514516, g: 0, b: 0.40401974, a: 1}
   Name: Algeria
   Population: 26.983
   Wealth: 9.348
+  _isOcean: 0
 --- !u!64 &6650035646902406669
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17259,10 +17413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5882353, b: 0.5803922, a: 0}
+  ColorCountry: {r: 0.9684078, g: 0.26188686, b: 0, a: 1}
   Name: Saudi Arabia
   Population: 23.208
   Wealth: 67.032
+  _isOcean: 0
 --- !u!64 &6651559353885318343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17309,10 +17464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.86274517, g: 1, b: 0.4784314, a: 0}
+  ColorCountry: {r: 0, g: 0.448734, b: 0.6501445, a: 1}
   Name: Nepal
   Population: 17.585
   Wealth: 3.87
+  _isOcean: 0
 --- !u!64 &6660929766189504230
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17509,10 +17665,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.6, b: 0.32156864, a: 0}
+  ColorCountry: {r: 0, g: 0.45777887, b: 0.5791426, a: 1}
   Name: Azerbaijan
   Population: 6.997
   Wealth: 11.865
+  _isOcean: 0
 --- !u!64 &6742240949678546142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17680,10 +17837,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.89019614, b: 0.4156863, a: 0}
+  ColorCountry: {r: 0.62827957, g: 0, b: 0.70252025, a: 1}
   Name: Panama
   Population: 2.711
   Wealth: 39.98
+  _isOcean: 0
 --- !u!64 &6807948263559654012
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17882,10 +18040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9725491, g: 0.39607847, b: 0, a: 0}
+  ColorCountry: {r: 0.5579125, g: 0.7563019, b: 0, a: 1}
   Name: Benin
   Population: 5.475
   Wealth: 2.166
+  _isOcean: 0
 --- !u!64 &6882535039429880246
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18102,10 +18261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.854902, b: 0.14509805, a: 0}
+  ColorCountry: {r: 0, g: 0.1569834, b: 0.73006094, a: 1}
   Name: Uzbekistan
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &6954153698638554904
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18166,10 +18326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.854902, g: 0.54901963, b: 1, a: 0}
+  ColorCountry: {r: 0, g: 0.642529, b: 0.008678415, a: 1}
   Name: Zambia
   Population: 7.926
   Wealth: 2.565
+  _isOcean: 0
 --- !u!64 &6995253599878081303
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18424,6 +18585,7 @@ GameObject:
   - component: {fileID: 8810738238087673144}
   - component: {fileID: 8567608576634603385}
   - component: {fileID: 7157487317805881103}
+  - component: {fileID: 7157487317805881104}
   m_Layer: 0
   m_Name: ocean_Southern
   m_TagString: Untagged
@@ -18445,6 +18607,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -120054523022785825, guid: f9caccfefc82abf41a5bc417ab259a12, type: 3}
+--- !u!114 &7157487317805881104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157487317805881102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorCountry: {r: 0, g: 0.13585417, b: 0.9387344, a: 1}
+  Name: Southern
+  Population: 0
+  Wealth: 0
+  _isOcean: 1
 --- !u!4 &7161738758988532368
 Transform:
   m_ObjectHideFlags: 0
@@ -18452,12 +18631,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8486419280854053292}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.00019050001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.00019049644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1967859302678009454}
-  m_RootOrder: 2
+  m_Father: {fileID: 543450653087807007}
+  m_RootOrder: 174
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &7178014715389328378
 MeshRenderer:
@@ -18594,10 +18773,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.882353, g: 0.61960787, b: 1, a: 0}
+  ColorCountry: {r: 0.8518069, g: 0, b: 0.7599622, a: 1}
   Name: Tajikistan
   Population: 5.118
   Wealth: 3.602
+  _isOcean: 0
 --- !u!64 &7236221074329523775
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18658,12 +18838,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5851015976364369358}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.0001905}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.00019049644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1967859302678009454}
-  m_RootOrder: 3
+  m_Father: {fileID: 543450653087807007}
+  m_RootOrder: 175
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7256789124944787973
 Transform:
@@ -18761,10 +18941,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0.8722296, g: 0, b: 0.80469805, a: 1}
   Name: Bolivia
   Population: 6.678
   Wealth: 11.672
+  _isOcean: 0
 --- !u!64 &7301759247766162021
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19027,10 +19208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6509804, g: 1, b: 0.54509807, a: 0}
+  ColorCountry: {r: 0, g: 0.665157, b: 0.49893722, a: 1}
   Name: Italy
   Population: 48.509
   Wealth: 234.139
+  _isOcean: 0
 --- !u!64 &7385009859290285790
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19077,10 +19259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8862746, g: 0.89019614, b: 0.882353, a: 0}
+  ColorCountry: {r: 0.9586552, g: 0, b: 0.33872086, a: 1}
   Name: Greenland
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &7388494216941069957
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19213,10 +19396,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.39607847, b: 0.09411766, a: 0}
+  ColorCountry: {r: 0.24302028, g: 0, b: 0.5165359, a: 1}
   Name: Czech Republic
   Population: 8.509
   Wealth: 64.663
+  _isOcean: 0
 --- !u!64 &7481970678734887190
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19354,10 +19538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.69803923, b: 0.69803923, a: 0}
+  ColorCountry: {r: 0.28531235, g: 0.91868806, b: 0, a: 1}
   Name: Russia
   Population: 111.481
   Wealth: 27.381
+  _isOcean: 0
 --- !u!64 &7552933279731521850
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19404,10 +19589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.37254903, g: 0.7607844, b: 0.21176472, a: 0}
+  ColorCountry: {r: 0.849167, g: 0.38780072, b: 0, a: 1}
   Name: Belize
   Population: 228
   Wealth: 10.864
+  _isOcean: 0
 --- !u!64 &7555205675416739968
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19684,10 +19870,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.77647066, g: 0.49411768, b: 0.60784316, a: 0}
+  ColorCountry: {r: 0, g: 0.41531754, b: 0.560874, a: 1}
   Name: El Salvador
   Population: 4.087
   Wealth: 29.87
+  _isOcean: 0
 --- !u!64 &7675818243315371202
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19956,10 +20143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.97647065, g: 0.61960787, b: 0.39607847, a: 0}
+  ColorCountry: {r: 0.5778023, g: 0.88437563, b: 0, a: 1}
   Name: Korea, Republic of
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &7813115798665900475
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20073,10 +20261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8117648, b: 0.6862745, a: 0}
+  ColorCountry: {r: 0.2977299, g: 0, b: 0.8317956, a: 1}
   Name: Eritrea
   Population: 2.526
   Wealth: 4.134
+  _isOcean: 0
 --- !u!64 &7900006696775255966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20123,10 +20312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.8313726, b: 0, a: 0}
+  ColorCountry: {r: 0.55258095, g: 0, b: 0.8114517, a: 1}
   Name: Madagascar
   Population: 12.909
   Wealth: 1.61
+  _isOcean: 0
 --- !u!64 &7939180618740694296
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20189,10 +20379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.67058825, b: 0.45098042, a: 0}
+  ColorCountry: {r: 0.509025, g: 0.63805354, b: 0, a: 1}
   Name: Central African Republic
   Population: 2.183
   Wealth: 749
+  _isOcean: 0
 --- !u!64 &7974954464902164693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20239,10 +20430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8862746, g: 0.63529414, b: 1, a: 0}
+  ColorCountry: {r: 0.68212754, g: 0, b: 0.41013741, a: 1}
   Name: Libya
   Population: 4.169
   Wealth: 19.473
+  _isOcean: 0
 --- !u!64 &7984311821771583466
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20339,10 +20531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.4666667, g: 0.68235296, b: 0.27450982, a: 0}
+  ColorCountry: {r: 0, g: 0.7017878, b: 0.8340776, a: 1}
   Name: Somalia
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &8040315060485837055
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20411,10 +20604,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.69803923, b: 0.69803923, a: 0}
+  ColorCountry: {r: 0.9342412, g: 0.45812795, b: 0, a: 1}
   Name: South Africa
   Population: 36.027
   Wealth: 21.38
+  _isOcean: 0
 --- !u!64 &8068688450204845350
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20475,10 +20669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.9725491, g: 0.8431373, b: 0.09411766, a: 0}
+  ColorCountry: {r: 0.60423696, g: 0, b: 0.87681997, a: 1}
   Name: Burundi
   Population: 5.131
   Wealth: 609
+  _isOcean: 0
 --- !u!64 &8083845294379466745
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20525,10 +20720,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.5111015, b: 0.3014644, a: 1}
   Name: Dominican Republic
   Population: 0
   Wealth: 0
+  _isOcean: 0
 --- !u!64 &8085780995340945382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20658,10 +20854,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8745099, g: 0.57254905, b: 0.38823533, a: 0}
+  ColorCountry: {r: 0.20878743, g: 0, b: 0.57992876, a: 1}
   Name: Sierra Leone
   Population: 3.698
   Wealth: 693
+  _isOcean: 0
 --- !u!64 &8193957555999351794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20722,10 +20919,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.4156863, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.71321416, b: 0.085495666, a: 1}
   Name: Botswana
   Population: 1.409
   Wealth: 14.684
+  _isOcean: 0
 --- !u!64 &8244686732688393211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20847,10 +21045,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.43921572, g: 1, b: 0.20392159, a: 0}
+  ColorCountry: {r: 0.655012, g: 0.7400776, b: 0, a: 1}
   Name: Canada
   Population: 29.136
   Wealth: 294.255
+  _isOcean: 0
 --- !u!64 &8278914052644370094
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20936,10 +21135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6784314, g: 1, b: 0.53333336, a: 0}
+  ColorCountry: {r: 0.46260896, g: 0.8490354, b: 0, a: 1}
   Name: Finland
   Population: 4.341
   Wealth: 183.124
+  _isOcean: 0
 --- !u!64 &8310356262426599739
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21241,10 +21441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.5411765, b: 0.22352943, a: 0}
+  ColorCountry: {r: 0, g: 0.9160619, b: 0.66996664, a: 1}
   Name: Kenya
   Population: 25.384
   Wealth: 9.791
+  _isOcean: 0
 --- !u!64 &8426527716715108215
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21291,10 +21492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.7137255, g: 0.98823535, b: 0.039215688, a: 0}
+  ColorCountry: {r: 0, g: 0.7914715, b: 0.07440859, a: 1}
   Name: Nicaragua
   Population: 3.937
   Wealth: 9.279
+  _isOcean: 0
 --- !u!64 &8441288415126256466
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21329,6 +21531,7 @@ GameObject:
   - component: {fileID: 1358836429346289284}
   - component: {fileID: 8540746727783690401}
   - component: {fileID: 8486419280854053293}
+  - component: {fileID: 8486419280854053294}
   m_Layer: 0
   m_Name: ocean_Indian
   m_TagString: Untagged
@@ -21350,6 +21553,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8660716499456559849, guid: f9caccfefc82abf41a5bc417ab259a12, type: 3}
+--- !u!114 &8486419280854053294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486419280854053292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorCountry: {r: 0.94326377, g: 0.5554154, b: 0, a: 1}
+  Name: Indian
+  Population: 0
+  Wealth: 0
+  _isOcean: 1
 --- !u!4 &8494803375081619949
 Transform:
   m_ObjectHideFlags: 0
@@ -21396,10 +21616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.8431373, g: 0.98823535, b: 0.4156863, a: 0}
+  ColorCountry: {r: 0.46498048, g: 0, b: 0.9997485, a: 1}
   Name: Armenia
   Population: 2.177
   Wealth: 19.517
+  _isOcean: 0
 --- !u!64 &8497996687081040097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21532,10 +21753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6509804, g: 1, b: 0.4901961, a: 0}
+  ColorCountry: {r: 0.32571855, g: 0.6879586, b: 0, a: 1}
   Name: Philippines
   Population: 63.365
   Wealth: 12.063
+  _isOcean: 0
 --- !u!64 &8562714554702079678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21668,10 +21890,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.81568635, g: 0.24705884, b: 0.23529413, a: 0}
+  ColorCountry: {r: 0.6630164, g: 0, b: 0.09298344, a: 1}
   Name: Djibouti
   Population: 583
   Wealth: 2.936
+  _isOcean: 0
 --- !u!64 &8569064922094030562
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21824,10 +22047,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 1, g: 0.3803922, b: 0.37647063, a: 0}
+  ColorCountry: {r: 0.9750053, g: 0.098854065, b: 0, a: 1}
   Name: Myanmar
   Population: 34.915
   Wealth: 3.323
+  _isOcean: 0
 --- !u!64 &8619123654222204538
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21913,10 +22137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.77647066, g: 0.49411768, b: 0.60784316, a: 0}
+  ColorCountry: {r: 0, g: 0.043268066, b: 0.71999645, a: 1}
   Name: Georgia
   Population: 2.932
   Wealth: 12.609
+  _isOcean: 0
 --- !u!64 &8656866586061320649
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21971,10 +22196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0.015686275, a: 0}
+  ColorCountry: {r: 0, g: 0.032197285, b: 0.68452877, a: 1}
   Name: Netherlands
   Population: 13.326
   Wealth: 279.077
+  _isOcean: 0
 --- !u!64 &8692553730182966145
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22099,10 +22325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.6509804, g: 1, b: 0.4784314, a: 0}
+  ColorCountry: {r: 0.9516137, g: 0.14000098, b: 0, a: 1}
   Name: Namibia
   Population: 1.395
   Wealth: 17.22
+  _isOcean: 0
 --- !u!64 &8713758363068435172
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22149,10 +22376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.82745105, g: 0.46274513, b: 0.9921569, a: 0}
+  ColorCountry: {r: 0.11080765, g: 0, b: 0.8016603, a: 1}
   Name: Japan
   Population: 104.963
   Wealth: 238.104
+  _isOcean: 0
 --- !u!64 &8742091196305421950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22199,10 +22427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.2901961, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0.63419336, g: 0, b: 0.35992053, a: 1}
   Name: New Zealand
   Population: 3.525
   Wealth: 304.124
+  _isOcean: 0
 --- !u!64 &8743930874195213690
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22714,12 +22943,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7157487317805881102}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.0001905}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33491677, y: 0, z: 0.00019049644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1967859302678009454}
-  m_RootOrder: 4
+  m_Father: {fileID: 543450653087807007}
+  m_RootOrder: 176
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8810738238087673144
 MeshFilter:
@@ -22775,10 +23004,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.2901961, g: 0.8745099, b: 0.043137256, a: 0}
+  ColorCountry: {r: 0.62712026, g: 0, b: 0.40145287, a: 1}
   Name: Thailand
   Population: 53.073
   Wealth: 21.853
+  _isOcean: 0
 --- !u!64 &8835500808179634139
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22825,10 +23055,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.91372555, g: 0.73333335, b: 1, a: 0}
+  ColorCountry: {r: 0, g: 0.24764273, b: 0.6574979, a: 1}
   Name: France
   Population: 49.722
   Wealth: 276.121
+  _isOcean: 0
 --- !u!64 &8864935573868047325
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22889,10 +23120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.45098042, g: 0.87843144, b: 0.25882354, a: 0}
+  ColorCountry: {r: 0.40436128, g: 0, b: 0.77932227, a: 1}
   Name: Lesotho
   Population: 1.233
   Wealth: 1.313
+  _isOcean: 0
 --- !u!64 &8891012013527153079
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22939,10 +23171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0.5034971, g: 0, b: 0.11662064, a: 1}
   Name: Zimbabwe
   Population: 8.34
   Wealth: 4.734
+  _isOcean: 0
 --- !u!64 &8914872569967873935
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23028,10 +23261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.98823535, g: 0.4156863, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.55831105, b: 0.66145974, a: 1}
   Name: Iceland
   Population: 250
   Wealth: 380.868
+  _isOcean: 0
 --- !u!64 &8947885148957027331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23255,10 +23489,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0.9510025, g: 0, b: 0.17876054, a: 1}
   Name: Mauritania
   Population: 2.31
   Wealth: 2.397
+  _isOcean: 0
 --- !u!64 &9082129865344074718
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23347,10 +23582,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1647b672f433914b8fbc8df1c03135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorCountry: {r: 0.70980394, g: 1, b: 0, a: 0}
+  ColorCountry: {r: 0, g: 0.43595052, b: 0.58151656, a: 1}
   Name: Cameroon
   Population: 11.754
   Wealth: 2.84
+  _isOcean: 0
 --- !u!64 &9130884233668800363
 MeshCollider:
   m_ObjectHideFlags: 0

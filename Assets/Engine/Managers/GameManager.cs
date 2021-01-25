@@ -270,9 +270,11 @@ public class GameManager : MonoBehaviour
         
         
         var sceneIndex = 0;
-        if (unit.GetType() == typeof(UnitLaunchPlace)) sceneIndex = 3;
-        if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 4;
-        if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex = 2;             
+        if (unit.GetType() == typeof(UnitLaunchPlace)) { 
+            sceneIndex = WorldMapManager.instance.CurrentPointCountry.isOcean ? 1 : 3; 
+        }
+        else if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 4;
+        else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex = 2;             
 
         StartCoroutine(LoadAsyncScene(sceneIndex));
     }

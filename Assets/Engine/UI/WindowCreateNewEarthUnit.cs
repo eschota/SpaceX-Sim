@@ -13,32 +13,47 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
     [SerializeField] Button OkButton;
     [SerializeField] TMPro.TextMeshProUGUI DangerZone;
     private GameObject UnitLaunchPrefab;
+    private int cost;
     void Start()
     {
 
         OkButton.onClick.AddListener(OnClick);
         SelectSize.onValueChanged.AddListener(OnSizeChange);
+        WorldMapManager.instance.OnAllowedBuildChanged += OnAllowedBuildChanged;
         OnSizeChange(0);
+    }
+
+    private void OnAllowedBuildChanged(bool allowed)
+    {
+        OkButton.interactable = allowed;
+    }
+
+    private void UpdateCost()
+    {
+        cost = Mathf.FloorToInt((SelectSize.value + 1) * 50 * (1 + WorldMapManager.instance.currentPointValue * 2));
     }
     
     private void OnSizeChange(int id)
     {
+        UpdateCost();
         OnChangeLabel();
     }
 
     private void OnValueChange()
     {
+        UpdateCost();
         OnChangeLabel();
     }
 
     void OnChangeLabel()
     {
-        TotalCost.text = Mathf.FloorToInt((SelectSize.value + 1) * 50 * (1 + WorldMapManager.instance.currentPointValue * 2))+"K$";
+        TotalCost.text = cost + "K$";
     }
     private void OnDestroy()
     {
         OkButton.onClick.RemoveAllListeners();
         SelectSize.onValueChanged.RemoveAllListeners();
+        if (WorldMapManager.instance) WorldMapManager.instance.OnAllowedBuildChanged -= OnAllowedBuildChanged;
     }
     void OnClick()
     {
@@ -75,7 +90,7 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
     void CreateUnitByType<T> (Transform transform) where T : MonoBehaviour
     {
         var unit = new GameObject(typeof(T).ToString()).AddComponent<T>();
-        (unit as UnitEco).EcoRentCost = (SelectSize.value + 1) * 100;
+        (unit as UnitEco).EcoRentCost = cost;
         unit.transform.SetParent(GameManager.Earth.transform);
         unit.transform.position = transform.position;
         GameManager.instance.OpenUnitScene(unit as Unit);

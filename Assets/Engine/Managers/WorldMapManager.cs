@@ -34,6 +34,22 @@ public class WorldMapManager : MonoBehaviour
     public GameObject CurrenUnitPoint;
     public static event Action EventChangeState;
     public static event Action<Unit> EventCreatedNewUnit;
+
+    public Action<bool> OnAllowedBuildChanged;
+    private bool _isAllowedToBuild;
+    public bool isAllowedToBuild {
+        set
+        {
+            bool prevValue = _isAllowedToBuild;
+            _isAllowedToBuild = value;
+            if (_isAllowedToBuild != prevValue) OnAllowedBuildChanged?.Invoke(_isAllowedToBuild);
+        }
+        get
+        {
+            return _isAllowedToBuild;
+        }
+    }
+
     public enum State { Earth=0, Politic=1, Population=2, Science=3, Transport=4,Disaster=5,Climat=6 }
     private  State _currentState;
     public  State CurrentState
@@ -235,8 +251,7 @@ public class WorldMapManager : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, EarthMask))
         {
             if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
-            if (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab)
-            if (Input.GetMouseButton(0))
+            if ((GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) && Input.GetMouseButton(0))
             {
                 RocketDangerZoneCompute();
 
@@ -247,12 +262,14 @@ public class WorldMapManager : MonoBehaviour
                 
                 CurrenUnitPoint.transform.position = hit.point;
                 CurrenUnitPoint.transform.SetParent(GameManager.UnitsAll.Find(u => u.GetType() == typeof(UnitEarth)).transform);
+
+                isAllowedToBuild = CurrentPointCountry && (GameManager.CurrentState == GameManager.State.CreateLaunchPlace || !CurrentPointCountry.isOcean);
             }
             HoveredEarthUVCoord = hit.textureCoord;
         }
     }
 
-            [ContextMenu ("Select AllCountryes")]
+    [ContextMenu ("Select AllCountryes")]
     void SelectAllCountriesInEditor()
     {
         countries.Clear();
@@ -269,17 +286,15 @@ public class WorldMapManager : MonoBehaviour
     [ContextMenu("SetNames")]
     void SetNames()
     {
-        ;
-        string []nms= CountryNamesJSONFile.text.Split('}');
+        string[] nms = CountryNamesJSONFile.text.Split('}');
         foreach (var str in nms)
-            
-
-                foreach (var item in countries)
-                {
+            foreach (var item in countries)
+            {
                 if (str.Substring(11, 2) == item.name) item.Name = str.Substring(25, str.Length - 26);
-                }
+            }
        
-    }  [ContextMenu("SetPopulation")]
+    }
+    [ContextMenu("SetPopulation")]
     void SetPopulationAndWealth()
     {
         ;

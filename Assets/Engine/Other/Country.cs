@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Country : MonoBehaviour
 {
-    [SerializeField] public Color ColorCountry;
-    [SerializeField] public string Name;
-    [SerializeField] public float Population;
-    [SerializeField] public float Wealth;
+    public Color ColorCountry;
+    public string Name;
+    public float Population;
+    public float Wealth;
+    [SerializeField]
+    private bool _isOcean;
+
     private bool _Hovered;
+
+    public bool isOcean => _isOcean;
     public bool Hovered
     {
         get => _Hovered;

@@ -7,6 +7,7 @@ public class WindowLayerInfo : UIWindows
     public static WindowLayerInfo instance;
 
     [SerializeField] public List<TMPro.TextMeshProUGUI> layersText;
+    [SerializeField] public List<TMPro.TextMeshProUGUI> layersLabels;
     [SerializeField]
     private UIWindRose windRose;
 
@@ -41,7 +42,22 @@ public class WindowLayerInfo : UIWindows
             country = WorldMapManager.instance.CurrentPointCountry;
             uvCoords = WorldMapManager.instance.SelectedEarthUVCoord;
         }
-        layersText[0].text = country ? country.Name : "No Country";
+        if (!country)
+        {
+            layersText[0].text = "No Country";
+        }
+        else
+        {
+            if (country.isOcean)
+            {
+                layersLabels[0].text = "Ocean:";
+            }
+            else
+            {
+                layersLabels[0].text = "Country:";
+            }
+            layersText[0].text = country.Name;
+        }
         layersText[1].text = country ? country.Wealth +"$" : "N/A";
         layersText[2].text = country ? country.Population.ToString() + "K" : "N/A";
         layersText[3].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.WorldLayersTextures[3], uvCoords).ToString() + "%";
