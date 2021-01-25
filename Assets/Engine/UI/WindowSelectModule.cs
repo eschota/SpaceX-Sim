@@ -86,6 +86,8 @@ public class WindowSelectModule : UIWindows
 
             activeButtons[activeButtons.Count - 1].thisModule= CurrentShow[i];
 
+            activeButtons[activeButtons.Count - 1].thisModule.isResearch = true;
+
 
         }
 

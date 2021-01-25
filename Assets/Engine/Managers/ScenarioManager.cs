@@ -304,6 +304,10 @@ public class ScenarioManager : MonoBehaviour
             (R as Unit).IniAfterJSONRead();
         }
     }
+
+
+
+
     private void SplitResearchedModulesAndReal()
     {
         foreach (var item in FindObjectsOfType<BuildingUnit>())
