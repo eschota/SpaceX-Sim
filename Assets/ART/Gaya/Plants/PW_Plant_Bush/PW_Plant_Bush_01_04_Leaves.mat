@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1280587641726231766
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -8,20 +21,36 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PW_Plant_Bush_01_04_Leaves
-  m_Shader: {fileID: -6465566751694194690, guid: 26e13b92150b60542b5039846beee74c,
+  m_Shader: {fileID: -6465566751694194690, guid: 67eb84563e031ca40b1256198f297801,
     type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _PW_SF_COVER_ON _PW_SF_SSS_ON _PW_SF_WIND_ON _PW_SF_WORLDMAP_ON
+  m_ShaderKeywords: _ALPHATEST_ON _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2450
   stringTagMap:
     MotionVector: User
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_14205AF2:
+        m_Texture: {fileID: 2800000, guid: b13c2a4a7dac58e46b1767f9c016ad06, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8DEBBAFF:
+        m_Texture: {fileID: 2800000, guid: c0f2c1b950a8396428f43a85ef43cd62, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F2C07AEA:
+        m_Texture: {fileID: 2800000, guid: 342f318a3328154449d7a37c068ba1ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: c0f2c1b950a8396428f43a85ef43cd62, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -71,6 +100,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_78215E6F: 0.5
+    - Vector1_87D2995A: 0
+    - Vector1_BD1D6FD5: 0.5
+    - Vector1_C34C3D45: 0.3
+    - Vector1_CBC1AA88: 2
+    - Vector1_D3AA0C1: 0.1
     - _ALPHATEST: 0
     - _AOPower: 0.5
     - _AOPowerExp: 0.3
@@ -78,11 +113,15 @@ Material:
     - _AOSlider: 0.645
     - _AOVertexMask: 1
     - _AlphaCutoffBias: 0.99
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
     - _AlphaTest: 1
     - _AutumnShift: 1.5
     - _AutumnShiftDynamicDistanceLength: 3
     - _AutumnShiftDynamicOffset: -0.25
     - _AutumnShiftMode: 0
+    - _BlendMode: 0
     - _Brightness: 1
     - _BumpMapScale: 1
     - _ColorMaskFuzziness: 0.03
@@ -102,9 +141,14 @@ Material:
     - _CrossfadeDistancePower: 13.28441
     - _CrossfadeDistanceRange: 0
     - _CullMode: 0
+    - _CullModeForward: 0
     - _Cutoff: 0.3
     - _DebugMode: 0
+    - _DoubleSidedEnable: 1
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
     - _EnableColorMode: 0
+    - _EnableFogOnTransparent: 1
     - _EnableSSSMode: 1
     - _Glossiness: 0.238
     - _LODCrossfadeMode: 0
@@ -162,6 +206,9 @@ Material:
     - _PW_WindVertex: 0
     - _PW_WorldMapToggle: 1
     - _PW_WorldMapUVScale: 256
+    - _ReceivesSSR: 1
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
     - _SSSColorContribution: 1
     - _SSSDistortion: 1
     - _SSSIntensity: 1
@@ -170,7 +217,26 @@ Material:
     - _SmoothnessMode: 0
     - _SmoothnessThreshold: 0
     - _SmoothnessVariance: 0
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SurfaceType: 0
     - _Tiling: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 0
+    - _UseShadowThreshold: 0
     - _WindMode: 1
     - _WindPWDirection: 0.042
     - _WindPWDistanceIntensity: 0.1
@@ -186,12 +252,19 @@ Material:
     - _WindPWMaskVerticalIntensity: 0.169
     - _WindPWMaskVerticalOffset: 0.289
     - _WrapLighting: 0.196
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 3
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
     - __dirty: 1
     m_Colors:
+    - Vector2_926CBA82: {r: 1, g: 0, b: 0, a: 0}
     - _AlbedoTint: {r: 0.41509432, g: 0.3098185, b: 0.25649697, a: 1}
     - _Color: {r: 0.6301175, g: 0.754717, b: 0.65968347, a: 1}
     - _ColorMaskTint: {r: 0, g: 0, b: 0, a: 0}
     - _CoverTint: {r: 1, g: 1, b: 1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _PW_CoverLayer0Color: {r: 1, g: 1, b: 1, a: 1}
     - _PW_CoverLayer1Color: {r: 1, g: 1, b: 1, a: 1}
     - _PW_SSSTint: {r: 1, g: 1, b: 1, a: 1}

@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8105045400908968313
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -8,19 +21,37 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PW_Plant_Bush_01_04_Billboard
-  m_Shader: {fileID: -6465566751694194690, guid: 26e13b92150b60542b5039846beee74c,
+  m_Shader: {fileID: -6465566751694194690, guid: 67eb84563e031ca40b1256198f297801,
     type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _PW_COVER_OFF _PW_SF_COVER_ON _PW_SF_WORLDMAP_ON
-    _PW_SSS_OFF
+  m_ShaderKeywords: _ALPHATEST_ON _BLENDMODE_ALPHA _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT
+    _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_14205AF2:
+        m_Texture: {fileID: 2800000, guid: 5ef6807f25782474ba06ee15218639a9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8DEBBAFF:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F2C07AEA:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -58,6 +89,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_78215E6F: 0.5
+    - Vector1_87D2995A: 0
+    - Vector1_BD1D6FD5: 0.5
+    - Vector1_C34C3D45: 0.3
+    - Vector1_CBC1AA88: 2
+    - Vector1_D3AA0C1: 0.1
     - _ALPHATEST: 0
     - _AOPower: 0.494
     - _AOPowerExp: 0.61
@@ -65,11 +102,20 @@ Material:
     - _AOSlider: 1
     - _AOVertexMask: 0.419
     - _AlphaCutoffBias: 0.273
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 10
+    - _AlphaSrcBlend: 1
     - _AlphaTest: 1
+    - _BlendMode: 0
     - _Brightness: 2
     - _BumpMapScale: 1
     - _CullMode: 0
+    - _CullModeForward: 0
     - _Cutoff: 0.412
+    - _DoubleSidedEnable: 1
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 10
+    - _EnableFogOnTransparent: 1
     - _Glossiness: 0.05
     - _GlossyReflections: 1
     - _Metallic: 0
@@ -126,14 +172,43 @@ Material:
     - _PW_WindVertex: 0
     - _PW_WorldMapToggle: 1
     - _PW_WorldMapUVScale: 256
+    - _ReceivesSSR: 1
+    - _RenderQueueType: 5
+    - _RequireSplitLighting: 0
     - _Smoothness: 0.01
     - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SurfaceType: 1
     - _Tiling: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 0
+    - _UseShadowThreshold: 0
     - _WrapLighting: 0.519
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 3
+    - _ZTestTransparent: 4
+    - _ZWrite: 0
     - __dirty: 1
     m_Colors:
+    - Vector2_926CBA82: {r: 1, g: 0, b: 0, a: 0}
     - _AlbedoTint: {r: 0.41509432, g: 0.3098185, b: 0.25649697, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _PW_CoverLayer0Color: {r: 1, g: 1, b: 1, a: 1}
     - _PW_CoverLayer1Color: {r: 1, g: 1, b: 1, a: 1}
     - _PW_SSSTint: {r: 1, g: 1, b: 1, a: 1}
