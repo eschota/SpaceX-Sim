@@ -82,6 +82,7 @@ public class UnitManager : MonoBehaviour
         if (GameManager.instance == null) gameObject.AddComponent<GameManager>();
 
         if (terra == null) terra = FindObjectOfType<Terrain>().transform.parent;
+        
         LoadBuildings();
     }
 
@@ -132,7 +133,9 @@ public class UnitManager : MonoBehaviour
     {
         if (GameManager.instance == null) return;
         foreach (var item in GameManager.Buildings)
-        {if(item.isResearch==false)
+        {
+            if(item.isResearch==false)
+                if(item.Types.Contains(ThisType))
             if (item.ConsctructionProcess >=0.99f)
             {
                 Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();

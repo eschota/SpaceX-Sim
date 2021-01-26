@@ -260,6 +260,7 @@ public class ScenarioManager : MonoBehaviour
         LoadUnitsByType<UnitLaunchPlace>();
         LoadUnitsByType<UnitResearchLab>();
         LoadUnitsByType<UnitProductionFactory>();
+        LoadUnitsByType<UnitSeaLaunch>();
         LoadUnitsByType<BuildingUnit>();        
         LoadUnitsByType<BuildingProductionFactory>();        
         LoadUnitsByType<BuildingResearchLab>();        
@@ -281,6 +282,7 @@ public class ScenarioManager : MonoBehaviour
         foreach (var item in FindObjectsOfType<UIResearchButton>()) if (item != null) Destroy(item.gameObject);        
         foreach (var item in FindObjectsOfType<UnitLaunchPlace>()) if (item != null) Destroy(item.gameObject);
         foreach (var item in FindObjectsOfType<UnitResearchLab>()) if (item != null) Destroy(item.gameObject);
+        foreach (var item in FindObjectsOfType<UnitSeaLaunch>()) if (item != null) Destroy(item.gameObject);
         foreach (var item in FindObjectsOfType<UnitProductionFactory>()) if (item != null) Destroy(item.gameObject);
         foreach (var item in FindObjectsOfType<BuildingUnit>()) if (item != null) Destroy(item.gameObject);
         foreach (var item in FindObjectsOfType<BuildingProductionFactory>()) if (item != null) Destroy(item.gameObject);
