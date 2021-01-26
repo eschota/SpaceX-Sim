@@ -265,7 +265,7 @@ public class WorldMapManager : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, EarthMask))
         {
             if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
-            if ((GameManager.CurrentState == GameManager.State.CreateLaunchPlace || GameManager.CurrentState == GameManager.State.CreateProductionFactory || GameManager.CurrentState == GameManager.State.CreateResearchLab) && Input.GetMouseButton(0))
+            if (GameManager.Creation && Input.GetMouseButton(0))
             {
                 RocketDangerZoneCompute();
 

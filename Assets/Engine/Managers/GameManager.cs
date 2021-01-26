@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             else return false;
             }
     }
-    public bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.CreateSeaLaunch);
+    public static bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.CreateSeaLaunch);
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
     public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario,CreateSeaLaunch,Back }
@@ -86,12 +86,14 @@ public class GameManager : MonoBehaviour
                 case State.PlaySpace:
                     if (CurrentState == State.MenuStartGame)
                     {
+                        SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Normal;
                         StartNewGame();
                     }
                     else
                     if (CurrentState == State.PlayEarth)
                     {
                         SceneManager.LoadScene(0);
+                        Earth.gameObject.SetActive(true);
                     }
                     break;
                 case State.PlayStation:
@@ -242,7 +244,7 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        if (Input.GetKeyDown(KeyCode.Escape)) CurrentState = State.PlaySpace;
+        
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
         //if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(1);
         //if (Input.GetKeyDown(KeyCode.X)) SceneManager.LoadScene(2);
