@@ -65,13 +65,22 @@ public class GameManager : MonoBehaviour
     public bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.CreateSeaLaunch);
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario,CreateSeaLaunch }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario,CreateSeaLaunch,Back }
     private static State _currentState;
+
+    public static State LastState;
     public static State CurrentState
     {
         get => _currentState;
         set
         {
+            if (value == State.Back)
+            {
+                _currentState = LastState;
+                if (EventChangeState != null) EventChangeState();
+                return;
+            }
+            if (_currentState!= LastState) LastState = _currentState;
             switch (value)
             {
                 case State.PlaySpace:

@@ -90,8 +90,7 @@ public class ScenarioManager : MonoBehaviour
     {
         CurrentScenario = new Scenario( ScenarioName.text+LoadedScenarios.Count, int.Parse(ScenarioStartDay.text), int.Parse(ScenarioStartMonth.text), int.Parse(ScenarioStartYear.text), int.Parse(ScenarioStartBalance.text));
         
-        RefreshScenario();
-        
+        RefreshScenario();        
     }
     public void RefreshScenario()
     {
@@ -249,7 +248,7 @@ public class ScenarioManager : MonoBehaviour
             }
         }
         Debug.Log("Scenarios Loaded: " + LoadedScenarios.Count);
-      if(CurrentScenario!=null) if(GameManager.CurrentState!=GameManager.State.Save) ClearResearchesAndModules(); 
+    //  if(CurrentScenario!=null) if(GameManager.CurrentState!=GameManager.State.Save) ClearResearchesAndModules(); 
         WindowLoadScenario.instance.LoadScenarios();
     }
     public void LoadScenarioResearchAndModules()// не забывать добавлять новые модули
@@ -288,6 +287,7 @@ public class ScenarioManager : MonoBehaviour
         foreach (var item in FindObjectsOfType<BuildingProductionFactory>()) if (item != null) Destroy(item.gameObject);
         foreach (var item in FindObjectsOfType<BuildingResearchLab>()) if (item != null) Destroy(item.gameObject);
         foreach (var item in FindObjectsOfType<BuildingRocketLaunch>()) if (item != null) Destroy(item.gameObject);
+        
         
         
         buttons.Clear();
