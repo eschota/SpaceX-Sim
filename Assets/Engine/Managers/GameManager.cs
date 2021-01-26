@@ -91,9 +91,7 @@ public class GameManager : MonoBehaviour
                     else
                     if (CurrentState == State.PlayEarth)
                     {                        
-                     
-                        SceneManager.LoadScene(0);
-                        Earth.gameObject.SetActive(true);
+                      
                     }
                     break;
                 case State.PlayStation:

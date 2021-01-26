@@ -53,8 +53,78 @@ public class SpeedManager : MonoBehaviour
             transform.GetChild(i).localScale = ScaleDown;
         }
      CurrenSpeed=Speed.Normal;
+
+
+        GameManager.EventChangeState += OnChangeState;
     }
  
+    void OnChangeState()
+    {
+        switch (GameManager.CurrentState)
+        {
+            case GameManager.State.MenuStartGame:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.Pause:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.MenuLoadGame:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.PlaySpace:
+                break;
+            case GameManager.State.CreateLaunchPlace:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.CreateResearchLab:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.CreateProductionFactory:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.PlayStation:
+                break;
+            case GameManager.State.PlayBase:
+                break;
+            case GameManager.State.ResearchGlobal:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.EarthResearchLab:
+
+                break;
+            case GameManager.State.EarthProductionFactory:
+                break;
+            case GameManager.State.EarthLauchPlace:
+                break;
+            case GameManager.State.ScenarioEditorSelection:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.Settings:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.Save:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.Load:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.PlayEarth:
+                break;
+            case GameManager.State.ScenarioEditorGlobal:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.StartGameSelectScenario:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.CreateSeaLaunch:
+                CurrenSpeed = Speed.Stop;
+                break;
+            case GameManager.State.Back:
+                break;
+            default:
+                break;
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
