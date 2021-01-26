@@ -25,10 +25,8 @@ public class Selectable : MonoBehaviour
     {
         progress = Instantiate(Resources.Load<UICircleProgress>("UI/ButtonUnits/UICircleProgress" ),UIUnitManager.instance.transform);
         progress.Root = this.transform;
-        progress.Progress.fillAmount = RootUnit.ConstructionCompleted / 100f;
-        progress.percentage.text = RootUnit.ConstructionCompleted.ToString() + "%";
-
         ShowPhase();
+        
     }
     private void OnDestroy()
     {
@@ -38,20 +36,21 @@ public class Selectable : MonoBehaviour
     }
 
    
-    void OnChangeDay()
+   public void OnChangeDay()
     {
-        progress.Progress.fillAmount = RootUnit.ConstructionCompleted/100f;
-        progress.percentage.text = RootUnit.ConstructionCompleted.ToString() + "%";
+        progress.Progress.fillAmount = RootUnit.ConstructionCompletedPercentage/100f;
+        progress.percentage.text = (Mathf.RoundToInt( RootUnit.ConstructionCompletedPercentage).ToString()) + "%";
         ShowPhase();
     }
 
     void ShowPhase()
     {
         if (Phases.Length <= 1) return;
-        int num = Mathf.RoundToInt(Phases.Length * RootUnit.ConsctructionProcess / 100f);
+        int num = Mathf.RoundToInt(Phases.Length * (RootUnit.ConstructionCompletedPercentage) / 100f);
+        if (num == 0) num = 1;
         for (int i = 0; i < Phases.Length; i++)
         {
-            if(i!=num)
+            if(i!=num-1)
             Phases[i].SetActive(false);
             else
         

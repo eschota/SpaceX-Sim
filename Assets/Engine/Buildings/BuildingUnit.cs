@@ -25,7 +25,7 @@ public class BuildingUnit : Module
         if (!GameManager.Buildings.Contains(this)) GameManager.Buildings.Add(this);
         
     }
-    public int ConstructionCompleted => (Mathf.RoundToInt(ConsctructionProcess/ ProductionTime[0] ));
+    public int ConstructionCompletedPercentage => Mathf.Clamp( Mathf.RoundToInt(100 * ((float)ConsctructionProcess / (float)ProductionTime[0])),0,100);
 
 
 }
