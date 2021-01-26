@@ -98,14 +98,18 @@ public class UIUnitManager : MonoBehaviour
                         {
 
                             UnitManager.instance.PlaceBuilding(CurrentBuilding as BuildingUnit, CurrentBuildingGameObject.gameObject, target, Vector3.zero);
+
                             CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
-                            (CurrentBuilding as BuildingUnit). ConsctructionProcess = 1;
-                            GameManager.Buildings.Add(CurrentBuilding as BuildingUnit);
-                            CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
-                            (CurrentBuilding as BuildingUnit).isResearch = false;
+
+                            (CurrentBuilding as BuildingUnit). ConsctructionProcess = 0;
+
+                            GameManager.Buildings.Add(CurrentBuilding as BuildingUnit); 
+
                             CurrentBuilding = null;
 
                             CurrentBuildingGameObject = null;
+
+                            ShowSelectBuildingPanel();
                             return;
                         }
                     }
@@ -163,9 +167,5 @@ public class UIUnitManager : MonoBehaviour
         BuildingsPanel.CurrentMode = UIWindows.Mode.show;
         UnitManager.instance.CurrentState = UnitManager.State.PlaceBuilding;
 
-    }
-    public void HideSelectBuildingPanel()
-    {
-
-    }
+    } 
 }

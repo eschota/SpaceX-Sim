@@ -77,7 +77,7 @@ public class ResearchAndProductionManager : MonoBehaviour
     {
         foreach (var item in GameManager.Buildings)
         {
-            item.ConsctructionProcess++;
+         if(item.isResearch==false)   item.ConsctructionProcess++;
         }
     }
 }
