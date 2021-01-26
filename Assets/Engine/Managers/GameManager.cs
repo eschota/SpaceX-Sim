@@ -57,15 +57,15 @@ public class GameManager : MonoBehaviour
     public static bool AboveEarth
     {
         get {
-            if (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.PlaySpace)
+            if (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.PlaySpace || CurrentState == State.CreateSeaLaunch)
                 return true;
             else return false;
             }
     }
-    public bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab);
+    public bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.CreateSeaLaunch);
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario,CreateSeaLaunch }
     private static State _currentState;
     public static State CurrentState
     {
@@ -270,11 +270,11 @@ public class GameManager : MonoBehaviour
         
         
         var sceneIndex = 0;
-        if (unit.GetType() == typeof(UnitLaunchPlace)) { 
-            sceneIndex = WorldMapManager.instance.CurrentPointCountry.isOcean ? 1 : 3; 
-        }
-        else if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 4;
-        else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex = 2;             
+        if (unit.GetType() == typeof(UnitLaunchPlace)) sceneIndex = 1;
+        if (unit.GetType() == typeof(UnitSeaLaunch)) sceneIndex = 2;
+
+        else if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 3;
+        else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex =4;             
 
         StartCoroutine(LoadAsyncScene(sceneIndex));
     }
