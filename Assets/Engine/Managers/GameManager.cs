@@ -90,8 +90,8 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     if (CurrentState == State.PlayEarth)
-                    {                        
-                      
+                    {
+                        SceneManager.LoadScene(0);
                     }
                     break;
                 case State.PlayStation:
@@ -283,10 +283,11 @@ public class GameManager : MonoBehaviour
         else if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 3;
         else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex =4;             
 
-        StartCoroutine(LoadAsyncScene(sceneIndex));
+        SceneManager.LoadScene(sceneIndex);
+      //  StartCoroutine(LoadAsyncScene(sceneIndex));
     }
 
-    private const float MinTimeBeforeLoadScene = 1.1f;
+    private const float MinTimeBeforeLoadScene = 0.9f;
     
     private static IEnumerator LoadAsyncScene(int sceneIndex)
     {
