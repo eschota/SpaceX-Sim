@@ -11,7 +11,7 @@ public class BuildingUnit : Module
    
     public enum BuildingClass{ Light=0, Medium=1,Heavy=2}
     public BuildingClass CurrentClass;
-    public enum BuildinType { Launch, Research, Factory}
+    public enum BuildinType { Launch, Research, Factory,SeaLaunch}
     [SerializeField] public List< BuildinType> Types;
     public float ConsctructionProcess = -10;
     public override void IniAfterJSONRead()

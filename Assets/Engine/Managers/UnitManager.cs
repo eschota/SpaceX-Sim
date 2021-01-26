@@ -65,7 +65,7 @@ public class UnitManager : MonoBehaviour
         
     }
     public List<Selectable> Selectables = new List<Selectable>();
-    Transform terra;
+  [SerializeField]  Transform terra;
 
     private void Awake()
     {
@@ -80,8 +80,8 @@ public class UnitManager : MonoBehaviour
         ConstructionGrid.SetActive(false);
         GetAvailableBuildingsIn();
         if (GameManager.instance == null) gameObject.AddComponent<GameManager>();
-            terra = FindObjectOfType<Terrain>().transform.parent;
-       
+
+        if (terra == null) terra = FindObjectOfType<Terrain>().transform.parent;
         LoadBuildings();
     }
 

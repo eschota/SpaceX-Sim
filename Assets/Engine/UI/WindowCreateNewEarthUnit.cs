@@ -63,7 +63,12 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
         
         obj.transform.parent = GameManager.UnitsAll.Find(X => X.GetType() == typeof(UnitEarth)).transform;
         obj.transform.position = WorldMapManager.instance.CurrenUnitPoint.transform.position;
-        
+
+        if (WorldMapManager.instance.CurrentPointCountry.isOcean)// Если строим на океане, то создаем силонч несмотря ни на что
+        {
+            CreateUnitByType<UnitSeaLaunch>(obj.transform);
+        }
+        else
         switch (GameManager.CurrentState)
         {
             case GameManager.State.CreateLaunchPlace:
