@@ -26,7 +26,7 @@ public class Selectable : MonoBehaviour
         progress = Instantiate(Resources.Load<UICircleProgress>("UI/ButtonUnits/UICircleProgress" ),UIUnitManager.instance.transform);
         progress.Root = this.transform;
         ShowPhase();
-        
+        OnChangeDay();
     }
     private void OnDestroy()
     {

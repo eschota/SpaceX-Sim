@@ -141,8 +141,9 @@ public class UnitManager : MonoBehaviour
             {
                 Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();
                 temp.RootUnit = item;
+                temp.transform.localPosition = item.localPosition;
                 temp.IniSelectable();
-                temp.transform.position = item.transform.position;
+              
             }
         }
     }

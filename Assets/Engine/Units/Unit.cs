@@ -37,6 +37,8 @@ public class Unit : MonoBehaviour
     {
         transform.SetParent(GameManager.instance.transform);
         name = Name;
+        transform.localPosition = localPosition;
+        transform.localRotation = Quaternion.Euler(localRotation);
     }
     public virtual void Start()
     {
