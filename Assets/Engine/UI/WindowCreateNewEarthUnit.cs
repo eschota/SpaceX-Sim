@@ -86,7 +86,7 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.Creation)
+        if (GameManager.Creation)
         {
             DangerZone.text = WorldMapManager.instance.MaxDamage.ToString();
             OnValueChange();
