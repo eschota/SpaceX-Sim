@@ -72,6 +72,8 @@ public class SpeedManager : MonoBehaviour
                 CurrenSpeed = Speed.Stop;
                 break;
             case GameManager.State.PlaySpace:
+
+                if (GameManager.LastState == GameManager.State.StartGameSelectScenario) CurrenSpeed = Speed.Normal;
                 break;
             case GameManager.State.CreateLaunchPlace:
                 CurrenSpeed = Speed.Stop;
@@ -111,7 +113,7 @@ public class SpeedManager : MonoBehaviour
             case GameManager.State.PlayEarth:
                 break;
             case GameManager.State.ScenarioEditorGlobal:
-                CurrenSpeed = Speed.Stop;
+                
                 break;
             case GameManager.State.StartGameSelectScenario:
                 CurrenSpeed = Speed.Stop;

@@ -26,11 +26,11 @@ public class UIUnitManager : MonoBehaviour
             }
             if (CurrentBuildingGameObject != null)
             {
-                DestroyImmediate(CurrentBuildingGameObject);
+                DestroyImmediate(CurrentBuildingGameObject.gameObject);
                 
             }
             
-            CurrentBuildingGameObject = Instantiate(value.Prefab).GetComponent<Selectable>();
+            CurrentBuildingGameObject = Instantiate(Resources.Load<GameObject>((value as Module).PrefabPath)).GetComponent<Selectable>();
             _CurrentBuilding = value;
         }
     }

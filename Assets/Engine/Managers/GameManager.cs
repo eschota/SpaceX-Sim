@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
                 case State.PlaySpace:
                     if (CurrentState == State.MenuStartGame)
                     {
-                        SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Normal;
+                        
                         StartNewGame();
                     }
                     else
@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
     {
         Eco.IniEco("");
         TimeManager.Init();
+        SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Normal;
 
     }
 
