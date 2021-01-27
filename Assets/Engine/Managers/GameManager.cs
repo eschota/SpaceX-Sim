@@ -286,8 +286,8 @@ public class GameManager : MonoBehaviour
         else if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 3;
         else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex =4;             
 
-        SceneManager.LoadScene(sceneIndex);
-      //  StartCoroutine(LoadAsyncScene(sceneIndex));
+      //  SceneManager.LoadScene(sceneIndex);
+        StartCoroutine(LoadAsyncScene(sceneIndex));
     }
 
     private const float MinTimeBeforeLoadScene = 0.9f;
@@ -300,7 +300,7 @@ public class GameManager : MonoBehaviour
         asyncLoad.allowSceneActivation = false;
         while (!asyncLoad.isDone)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             if (asyncLoad.progress >= 0.9f && timer >= MinTimeBeforeLoadScene)
             {
