@@ -17,13 +17,15 @@ public class CameraControllerInSpace : MonoBehaviour
     private Vector3 StartPositionOverUnit;
     private Quaternion targetRotationOverUnit;
     private Quaternion StartRotationOverUnit;
+    [SerializeField] ParticleSystem PodledEffect;
     public  Transform FlyToUnit
     {
         get => _flyToUnit;
         set
         {
 
-         if(value!=null)   SetTargets(value);
+            if (value != null) SetTargets(value);
+            else if (PodledEffect != null) PodledEffect.Stop();
             FlyToTimer = 0;
             _flyToUnit= value;
         }
@@ -31,6 +33,8 @@ public class CameraControllerInSpace : MonoBehaviour
 
     public void SetTargets(Transform thisValue)
     {
+        if (PodledEffect != null) PodledEffect.Stop();
+        if (PodledEffect != null) PodledEffect.Play();
         Camera.main.transform.SetParent(null);
         targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
         StartPositionOverUnit = Camera.main.transform.position;
@@ -47,6 +51,7 @@ public class CameraControllerInSpace : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this; else DestroyImmediate(this.gameObject);
+        if (PodledEffect != null) PodledEffect.Stop();
         transform.SetParent( Pivot = new GameObject("Pivot").transform);
         target = transform.rotation.eulerAngles ;
     }
