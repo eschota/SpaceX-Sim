@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- [DefaultExecutionOrder(-10)]
+ [DefaultExecutionOrder(-100)]
 public class CameraControllerInSpace : MonoBehaviour
 {
     [SerializeField]public Camera thisCamera;
@@ -173,12 +173,15 @@ void OnChangeState()
             {
                 thisCamera.enabled = true;
                 flyBack = true;
+               
+
             }
 
         }
         if(GameManager.CurrentState == GameManager.State.PlayEarth)
         {
            thisCamera.enabled = false;
+          
         }
 }
 }
