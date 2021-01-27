@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ [DefaultExecutionOrder(-10)]
 public class CameraControllerInSpace : MonoBehaviour
 {
+    [SerializeField]public Camera thisCamera;
     private float Speed = 1;
     [SerializeField] float distanceToEarthFly = 0.8f;
     private float zoom;
@@ -18,6 +19,7 @@ public class CameraControllerInSpace : MonoBehaviour
     private Quaternion targetRotationOverUnit;
     private Quaternion StartRotationOverUnit;
     [SerializeField] ParticleSystem PodledEffect;
+    bool flyBack = false;
     public  Transform FlyToUnit
     {
         get => _flyToUnit;
@@ -35,14 +37,14 @@ public class CameraControllerInSpace : MonoBehaviour
     {
         if (PodledEffect != null) PodledEffect.Stop();
         if (PodledEffect != null) PodledEffect.Play();
-        Camera.main.transform.SetParent(null);
+        
         targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
-        StartPositionOverUnit = Camera.main.transform.position;
+        StartPositionOverUnit = thisCamera.transform.position;
         Transform temp = new GameObject().transform;
-        temp.position = Camera.main.transform.position;
+        temp.position = thisCamera.transform.position;
         temp.LookAt(thisValue.transform.position);
         targetRotationOverUnit = temp.rotation;
-        StartRotationOverUnit = Camera.main.transform.rotation;
+        StartRotationOverUnit = thisCamera.transform.rotation;
     }
 
     public float FlyToTimer;
@@ -50,13 +52,31 @@ public class CameraControllerInSpace : MonoBehaviour
     [SerializeField] public AnimationCurve FlyToCurve;
     private void Awake()
     {
-        if (instance == null) instance = this; else DestroyImmediate(this.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            IniCamera();
+        }
+        else
+        {
+            DestroyImmediate(this.gameObject);
+            return;
+        }
+       
+    }
+    public void IniCamera()
+    {
+        instance = this;
         if (PodledEffect != null) PodledEffect.Stop();
-        transform.SetParent( Pivot = new GameObject("Pivot").transform);
-        target = transform.rotation.eulerAngles ;
+        transform.SetParent(Pivot = new GameObject("Pivot").transform);
+        target = transform.rotation.eulerAngles;
+        DontDestroyOnLoad(Pivot);
+         
+        GameManager.EventChangeState += OnChangeState;
     }
     void Update()
-    {
+    {   if (flyBack) FlyBack();
+
         if (FlyToUnit != null)
         {
             FlyTo();
@@ -68,15 +88,27 @@ public class CameraControllerInSpace : MonoBehaviour
         Zoom();
         NearEarth();
     }
+    private void FlyBack()
+    {
+        FlyToTimer += Time.unscaledDeltaTime / FlyToTime;
+        if (FlyToTimer < 1)
+        {
 
+            thisCamera.transform.position = Vector3.Lerp(targetPositionOverUnit,StartPositionOverUnit, FlyToCurve.Evaluate(FlyToTimer));
+            thisCamera.transform.rotation = Quaternion.Lerp(targetRotationOverUnit,StartRotationOverUnit, FlyToCurve.Evaluate(FlyToTimer));
+
+        }
+        else flyBack=false;
+
+    }
     private void FlyTo()
     {
         FlyToTimer += Time.unscaledDeltaTime/FlyToTime;
         if (FlyToTimer<1)
         {
 
-            Camera.main.transform.position = Vector3.Lerp(StartPositionOverUnit, targetPositionOverUnit, FlyToCurve.Evaluate( FlyToTimer));
-            Camera.main.transform.rotation= Quaternion.Lerp(StartRotationOverUnit, targetRotationOverUnit, FlyToCurve.Evaluate( FlyToTimer));
+            thisCamera.transform.position = Vector3.Lerp(StartPositionOverUnit, targetPositionOverUnit, FlyToCurve.Evaluate( FlyToTimer));
+            thisCamera.transform.rotation= Quaternion.Lerp(StartRotationOverUnit, targetRotationOverUnit, FlyToCurve.Evaluate( FlyToTimer));
                
         }
         else FlyToUnit = null;
@@ -133,6 +165,22 @@ public class CameraControllerInSpace : MonoBehaviour
                 //      if (LastBlock != null) GUI.Label(new Rect(100, 300, 100, 100), LastBlock.transform.position.y.ToString());
             }
     }
+void OnChangeState()
+{
+        if (GameManager.CurrentState==GameManager.State.PlaySpace)
+        {
+            if (GameManager.LastState == GameManager.State.PlayEarth)
+            {
+                thisCamera.enabled = true;
+                flyBack = true;
+            }
 
-    
+        }
+        if(GameManager.CurrentState == GameManager.State.PlayEarth)
+        {
+           thisCamera.enabled = false;
+        }
 }
+}
+
+

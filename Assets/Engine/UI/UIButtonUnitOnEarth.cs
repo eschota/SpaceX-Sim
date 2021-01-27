@@ -29,7 +29,7 @@ public class UIButtonUnitOnEarth : MonoBehaviour
 
     private void Update()
     {
-        transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, Vector3.Distance(Camera.main.transform.position, unit.transform.position) / Camera.main.transform.position.magnitude);
-        transform.position = Camera.main.WorldToScreenPoint(unit.transform.position);
+        transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, Vector3.Distance(CameraControllerInSpace.instance.thisCamera.transform.position, unit.transform.position) / CameraControllerInSpace.instance.thisCamera.transform.position.magnitude);
+        transform.position = CameraControllerInSpace.instance.thisCamera.WorldToScreenPoint(unit.transform.position);
     }
 }

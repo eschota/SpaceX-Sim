@@ -147,9 +147,13 @@ public class WorldMapManager : MonoBehaviour
         GameManager.EventChangeState += OnChangeState;
         GameManager.EventWithUnit += OnUnitCreated;
          
-        HideMap();
+        
         EarthMask = LayerMask.GetMask("Earth");
        
+    }
+    private void Start()
+    {
+        HideMap(); 
     }
     public Texture2D GetTexture(PlaceInfoType type)
     {
@@ -182,12 +186,12 @@ public class WorldMapManager : MonoBehaviour
 
     void ShowMap()
     {
-        Camera.main.cullingMask = ~0;
+        CameraControllerInSpace.instance.thisCamera.cullingMask = ~0;
     }
     void HideMap()
     {
-        Camera.main.cullingMask =~LayerMask.GetMask("Country");
-
+       
+        CameraControllerInSpace.instance.thisCamera.cullingMask = ~LayerMask.GetMask("Country");
     }
     void Update()
     {
@@ -221,7 +225,7 @@ public class WorldMapManager : MonoBehaviour
         PlaceUnitPoint();
 
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = CameraControllerInSpace.instance.thisCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
@@ -262,7 +266,7 @@ public class WorldMapManager : MonoBehaviour
     void PlaceUnitPoint()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000, EarthMask))
+        if (Physics.Raycast(CameraControllerInSpace.instance.thisCamera.ScreenPointToRay(Input.mousePosition), out hit, 1000, EarthMask))
         {
             if (CurrenUnitPoint == null) CurrenUnitPoint = Instantiate(Resources.Load("UnitPoint/UnitPoint")) as GameObject;
             if (GameManager.Creation && Input.GetMouseButton(0))
