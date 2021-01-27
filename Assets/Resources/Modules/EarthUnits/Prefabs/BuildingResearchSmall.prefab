@@ -388,6 +388,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3258176120178368489}
+  - component: {fileID: -6964504366616090560}
+  - component: {fileID: -4327640619829127540}
   m_Layer: 0
   m_Name: BuildingResearchSmall
   m_TagString: Untagged
@@ -416,6 +418,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6964504366616090560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334233153111851557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cd5397d6bbd8542b1a0afb29ef449f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RootUnit: {fileID: 0}
+  Phases:
+  - {fileID: 5334233153111851557}
+  MTS:
+  - {fileID: 2100000, guid: 14151bc1d6dccb04b91c6a3f0e550066, type: 2}
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 77fb8d11dcc626441aea739c818b3ccf, type: 2}
+  - {fileID: 2100000, guid: f4bb3cf1686097f4f96f9e4b377c4e8a, type: 2}
+  - {fileID: 2100000, guid: 35f533960ad5db444a35dc457f30c46d, type: 2}
+  - {fileID: 2100000, guid: e7293409045ce604382ef29cacc7d042, type: 2}
+  - {fileID: 2100000, guid: d8e4a85a4033bbb47b6b6cf22079ca36, type: 2}
+  MRS:
+  - {fileID: 303297487158318981}
+  - {fileID: 7007977737598473743}
+  - {fileID: 4877870217450373503}
+  - {fileID: 8112178149796553274}
+  - {fileID: 9111161782272899841}
+  - {fileID: 8325895133827045670}
+  - {fileID: 8261754125982604923}
+  col: {fileID: 0}
+--- !u!65 &-4327640619829127540
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334233153111851557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5749750022626554954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1244,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1437794886906907393}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &303297487158318981 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d96b4f61d683c4848bf5be49e29d1664,
+    type: 3}
+  m_PrefabInstance: {fileID: 1437794886906907393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1684132262911972579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1272,6 +1325,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1684132262911972579}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &8325895133827045670 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7265635361492995525, guid: 8bfc71497b8d2ab43bcd66daee2c1d31,
+    type: 3}
+  m_PrefabInstance: {fileID: 1684132262911972579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4334880103515164814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1341,6 +1400,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97933c7e09322ca4392c66654958c661, type: 3}
+--- !u!23 &4877870217450373503 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9194445409743294961, guid: 97933c7e09322ca4392c66654958c661,
+    type: 3}
+  m_PrefabInstance: {fileID: 4334880103515164814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6051291723031230992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8057528789848533662, guid: 97933c7e09322ca4392c66654958c661,
@@ -1561,6 +1626,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f5cbddb99c72140ba6cda5155f4abb, type: 3}
+--- !u!23 &9111161782272899841 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 59f5cbddb99c72140ba6cda5155f4abb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7615812369261733765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7942790096701505646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 59f5cbddb99c72140ba6cda5155f4abb,

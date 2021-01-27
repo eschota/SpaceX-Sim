@@ -100,15 +100,31 @@ public class Selectable : MonoBehaviour
             }
     }
 
-    private void OnValidate()
+    public void OnValidate()
     {
+        GetAllDependance();
+    }
+
+    public void GetAllDependance()
+    {
+        MRS = new List<MeshRenderer>();
         MRS.Clear();
+        MTS = new List<Material>();
         MTS.Clear();
         MRS.AddRange(GetComponentsInChildren<MeshRenderer>());
         foreach (var item in MRS)
         {
             MTS.Add(item.sharedMaterial);
         }
-        
+    }
+    [SerializeField] public BoxCollider col;
+    private void Reset()
+    {
+        if (col == null)
+        {
+            col = gameObject.AddComponent<BoxCollider>();
+            col.size = Vector3.one * 100;
+        }
+        col.isTrigger = true;
     }
 }

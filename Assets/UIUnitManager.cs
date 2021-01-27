@@ -30,7 +30,7 @@ public class UIUnitManager : MonoBehaviour
                 
             }
             
-            CurrentBuildingGameObject = Instantiate(Resources.Load<GameObject>((value as Module).PrefabPath)).GetComponent<Selectable>();
+            CurrentBuildingGameObject = CreateMeshAndSelectable((value as Module).PrefabPath);
             _CurrentBuilding = value;
         }
     }
@@ -52,7 +52,22 @@ public class UIUnitManager : MonoBehaviour
         Deselection();
         
     }
-    
+    Selectable CreateMeshAndSelectable(string path)
+    {
+        GameObject temp=Instantiate(Resources.Load<GameObject>(path));
+        Selectable tempSelectable = temp.GetComponent<Selectable>();
+        if (tempSelectable == null)
+        {
+           tempSelectable= temp.AddComponent<Selectable>();
+           tempSelectable.gameObject.AddComponent<BoxCollider>().size = Vector3.one * 100;
+            tempSelectable.GetAllDependance();
+            Debug.LogError("No Selectable on Object: " + temp);
+        
+        }
+        return tempSelectable;
+        return null;
+
+    }
     void Deselection()
     {
         if(Input.GetMouseButtonDown(1))
