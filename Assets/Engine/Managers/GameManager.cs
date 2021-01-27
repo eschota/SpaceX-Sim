@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        AsyncLoadFunc();
         Hack();
     }
     #endregion
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
                     }
                     break;
                 case State.PlayStation:
-                    CameraManager.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
+                    CameraControllerInSpace.instance.TargetObject = UnitsAll.Find(X => X.GetType() == typeof(UnitStation)).transform;
                     return;
 
                 case State.ResearchGlobal:
@@ -264,7 +265,7 @@ public class GameManager : MonoBehaviour
                 //      if (LastBlock != null) GUI.Label(new Rect(100, 300, 100, 100), LastBlock.transform.position.y.ToString());
             }
     }
-    
+    public int sceneIndex;
     public void OpenUnitScene(Unit unit)
     {
         if(CameraControllerOnEarth.instance!=null) CameraControllerOnEarth.instance.SavePos();
@@ -279,36 +280,41 @@ public class GameManager : MonoBehaviour
         
         
         
-        var sceneIndex = 0;
+        
         if (unit.GetType() == typeof(UnitLaunchPlace)) sceneIndex = 1;
         if (unit.GetType() == typeof(UnitSeaLaunch)) sceneIndex = 2;
 
         else if (unit.GetType() == typeof(UnitResearchLab)) sceneIndex = 3;
-        else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex =4;             
+        else if (unit.GetType() == typeof(UnitProductionFactory)) sceneIndex =4;
 
-      //  SceneManager.LoadScene(sceneIndex);
-        StartCoroutine(LoadAsyncScene(sceneIndex));
+        //  SceneManager.LoadScene(sceneIndex);
+
+        CameraControllerInSpace.instance.FlyToUnit = unit.transform;
+      
+        StartCoroutine(LoadScene());
+    }
+    public AsyncOperation asyncLoad ;
+    private AsyncOperation async;
+     
+    IEnumerator LoadScene()
+    {
+        
+
+        async = Application.LoadLevelAsync(sceneIndex);
+        async.allowSceneActivation = false;
+
+        Debug.Log("start loading");
+
+        yield return async;
     }
 
-    private const float MinTimeBeforeLoadScene = 0.9f;
-    
-    private static IEnumerator LoadAsyncScene(int sceneIndex)
+   
+    private void AsyncLoadFunc()
     {
-        var asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
-        var timer = 0f;
-        
-        asyncLoad.allowSceneActivation = false;
-        while (!asyncLoad.isDone)
+        if (CameraControllerInSpace.instance.FlyToUnit == null)
+        if (async != null && async.progress>=0.9f)
         {
-            timer += Time.unscaledDeltaTime;
-
-            if (asyncLoad.progress >= 0.9f && timer >= MinTimeBeforeLoadScene)
-            {
-                CameraManager.FlyToUnit = null;
-                asyncLoad.allowSceneActivation = true;
-            }
-
-            yield return null;
+            async.allowSceneActivation = true;
         }
     }
 
@@ -342,6 +348,8 @@ public class GameManager : MonoBehaviour
     }
      
 }
+
+
 public static class ObservableCollectionExtension
 {
     public static T Find<T>(this ObservableCollection<T> list, Func<T, bool> predicate)

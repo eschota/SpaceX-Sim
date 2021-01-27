@@ -18,7 +18,7 @@ public class UIButtonUnitOnEarth : MonoBehaviour
 
     void OnClick()
     {
-        CameraManager.instance.TargetObject = unit.transform;
+        CameraControllerInSpace.instance.TargetObject = unit.transform;
     //    FindObjectOfType<UIButtonUnitController>().ShowEnterButton(unit,mainNutton.transform.position);
     }
 

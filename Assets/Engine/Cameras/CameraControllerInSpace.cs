@@ -2,27 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour
+public class CameraControllerInSpace : MonoBehaviour
 {
     private float Speed = 1;
+    [SerializeField] float distanceToEarthFly = 0.8f;
     private float zoom;
     private Vector3 startPos,currentPos;
-    public static CameraManager instance;
+    public static CameraControllerInSpace instance;
     public Vector3 target;
     public Transform TargetObject;
     private Transform Pivot;
-    private static Transform _flyToUnit;
-    public static Transform FlyToUnit
+    private Transform _flyToUnit;
+    private Vector3 targetPositionOverUnit;
+    private Vector3 StartPositionOverUnit;
+    private Quaternion targetRotationOverUnit;
+    private Quaternion StartRotationOverUnit;
+    public  Transform FlyToUnit
     {
         get => _flyToUnit;
         set
         {
-          
-                Camera.main.transform.SetParent(null);
+
+         if(value!=null)   SetTargets(value);
+            FlyToTimer = 0;
             _flyToUnit= value;
         }
     }
-    
+
+    public void SetTargets(Transform thisValue)
+    {
+        Camera.main.transform.SetParent(null);
+        targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
+        StartPositionOverUnit = Camera.main.transform.position;
+        Transform temp = new GameObject().transform;
+        temp.position = Camera.main.transform.position;
+        temp.LookAt(thisValue.transform.position);
+        targetRotationOverUnit = temp.rotation;
+        StartRotationOverUnit = Camera.main.transform.rotation;
+    }
+
+    public float FlyToTimer;
+    [SerializeField] public float FlyToTime;
+    [SerializeField] public AnimationCurve FlyToCurve;
     private void Awake()
     {
         if (instance == null) instance = this; else DestroyImmediate(this.gameObject);
@@ -45,10 +66,13 @@ public class CameraManager : MonoBehaviour
 
     private void FlyTo()
     {
-        if (Vector3.Distance(transform.position, FlyToUnit.transform.position) > 1)
+        FlyToTimer += Time.unscaledDeltaTime/FlyToTime;
+        if (FlyToTimer<1)
         {
-            transform.position = Vector3.Slerp(transform.position, FlyToUnit.transform.position, Time.unscaledDeltaTime * 1.5f);
-            transform.LookAt(FlyToUnit.transform.position);
+
+            Camera.main.transform.position = Vector3.Lerp(StartPositionOverUnit, targetPositionOverUnit, FlyToCurve.Evaluate( FlyToTimer));
+            Camera.main.transform.rotation= Quaternion.Lerp(StartRotationOverUnit, targetRotationOverUnit, FlyToCurve.Evaluate( FlyToTimer));
+               
         }
         else FlyToUnit = null;
         

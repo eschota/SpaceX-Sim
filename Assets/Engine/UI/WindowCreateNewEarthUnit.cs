@@ -101,6 +101,6 @@ public class WindowCreateNewEarthUnit : MonoBehaviour
         GameManager.instance.OpenUnitScene(unit as Unit);
         
         
-        CameraManager.FlyToUnit = unit.transform;
+        CameraControllerInSpace.instance.FlyToUnit = unit.transform;
     }
 }

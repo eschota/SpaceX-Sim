@@ -24,7 +24,7 @@ public class UIButtonUnitController : MonoBehaviour
     public void OnClickEnter()
     {
         GameManager.instance.OpenUnitScene(SelectedUnit);
-        CameraManager.FlyToUnit = SelectedUnit.transform;
+        CameraControllerInSpace.instance.FlyToUnit = SelectedUnit.transform;
     }
 
     public void ShowEnterButton(Unit unit, Vector3 pos)
