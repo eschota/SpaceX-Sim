@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.000057085224, g: 0.00007216288, b: 0.00005121789,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1159,11 +1158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisCamera: {fileID: 963194227}
+  Speed: 1
   distanceToEarthFly: 0.95
-  target: {x: 0, y: 0, z: 0}
-  TargetObject: {fileID: 0}
-  PodledEffect: {fileID: 1829269790}
-  FlyToTimer: 0
   FlyToTime: 3
   FlyToCurve:
     serializedVersion: 2
@@ -1189,6 +1185,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  VFXFlyToEffect: {fileID: 1829269790}
+  TargetObject: {fileID: 0}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0

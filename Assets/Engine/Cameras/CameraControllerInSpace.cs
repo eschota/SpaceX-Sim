@@ -4,22 +4,33 @@ using UnityEngine;
  [DefaultExecutionOrder(-100)]
 public class CameraControllerInSpace : MonoBehaviour
 {
-    [SerializeField]public Camera thisCamera;
-    private float Speed = 1;
-    [SerializeField] float distanceToEarthFly = 0.8f;
+    [HideInInspector] [SerializeField] public Camera thisCamera;
+    [Range(0.1f, 2)] [SerializeField] private float Speed = 1;
+
+    [Range(0.0f, 1)] [SerializeField] float distanceToEarthFly = 0.8f;
+
+    private float FlyToTimer;
+    [Header("Fly Time to Target")]
+    [Range(0, 10)] [SerializeField] public float FlyToTime = 2;
+    [Header("Fly Speed Curve")]
+    [SerializeField] public AnimationCurve FlyToCurve;
+    [SerializeField] ParticleSystem VFXFlyToEffect;
+
+     
     private float zoom;
-    private Vector3 startPos,currentPos;
+    private Vector3 startPos, currentPos;
     public static CameraControllerInSpace instance;
-    public Vector3 target;
-    public Transform TargetObject;
+    private Vector3 targetRotation;
+    [HideInInspector]public Transform TargetObject;
     private Transform Pivot;
-    private Transform _flyToUnit;
+
     private Vector3 targetPositionOverUnit;
     private Vector3 StartPositionOverUnit;
     private Quaternion targetRotationOverUnit;
     private Quaternion StartRotationOverUnit;
-    [SerializeField] ParticleSystem PodledEffect;
+    
     bool flyBack = false;
+    private Transform _flyToUnit;
     public  Transform FlyToUnit
     {
         get => _flyToUnit;
@@ -27,7 +38,7 @@ public class CameraControllerInSpace : MonoBehaviour
         {
 
             if (value != null) SetTargets(value);
-            else if (PodledEffect != null) PodledEffect.Stop();
+            else if (VFXFlyToEffect != null) VFXFlyToEffect.Stop();
             FlyToTimer = 0;
             _flyToUnit= value;
         }
@@ -35,8 +46,8 @@ public class CameraControllerInSpace : MonoBehaviour
 
     public void SetTargets(Transform thisValue)
     {
-        if (PodledEffect != null) PodledEffect.Stop();
-        if (PodledEffect != null) PodledEffect.Play();
+        if (VFXFlyToEffect != null) VFXFlyToEffect.Stop();
+        if (VFXFlyToEffect != null) VFXFlyToEffect.Play();
         
         targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
         StartPositionOverUnit = thisCamera.transform.position;
@@ -47,9 +58,7 @@ public class CameraControllerInSpace : MonoBehaviour
         StartRotationOverUnit = thisCamera.transform.rotation;
     }
 
-    public float FlyToTimer;
-    [SerializeField] public float FlyToTime;
-    [SerializeField] public AnimationCurve FlyToCurve;
+   
     private void Awake()
     {
         if (instance == null)
@@ -67,9 +76,9 @@ public class CameraControllerInSpace : MonoBehaviour
     public void IniCamera()
     {
         instance = this;
-        if (PodledEffect != null) PodledEffect.Stop();
+        if (VFXFlyToEffect != null) VFXFlyToEffect.Stop();
         transform.SetParent(Pivot = new GameObject("Pivot").transform);
-        target = transform.rotation.eulerAngles;
+        targetRotation = transform.rotation.eulerAngles;
         DontDestroyOnLoad(Pivot);
          
         GameManager.EventChangeState += OnChangeState;
@@ -129,29 +138,21 @@ public class CameraControllerInSpace : MonoBehaviour
             {
                 Vector3 temp = ((Input.mousePosition - startPos) / Screen.width) * 100;
 
-                target =new Vector3( currentPos.x- temp.y, currentPos.y + temp.x, 0 );
+                targetRotation =new Vector3( currentPos.x- temp.y, currentPos.y + temp.x, 0 );
 
             }
         if (TargetObject != null)
         {
            // Pivot.transform.LookAt(-TargetObject.transform.position);
-            target = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
+            targetRotation = Quaternion.LookRotation(-TargetObject.transform.position).eulerAngles;
             //return;
         }
-        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler( target), 10 * Time.unscaledDeltaTime * Speed);
+        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler( targetRotation), 10 * Time.unscaledDeltaTime * Speed);
 
         
     }
 
-    private void Zoom()
-    {
-        zoom += 5 * Input.mouseScrollDelta.y;
-        if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime;
-
-        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.45f, 4));
-        zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 3);
-        if (Input.GetMouseButtonDown(2)) zoom = 0;
-    }
+    
     private void OnGUI()
     {
         if (Application.isEditor)
@@ -184,6 +185,20 @@ void OnChangeState()
           
         }
 }
+    private void Zoom()
+    {
+        zoom += Speed * Input.mouseScrollDelta.y;
+        if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime * 5;
+
+        Pivot.localScale = Vector3.one * (Mathf.Clamp(Pivot.localScale.x, 0.45f, 4));
+        zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime * 5);
+        if (Input.GetMouseButtonDown(2)) zoom = 0;
+    }
+    private void Reset()
+    {
+        thisCamera = GetComponent<Camera>();
+        FlyToCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    }
 }
 
 
