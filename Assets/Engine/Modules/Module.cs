@@ -55,7 +55,7 @@ public class Module : Unit // главное это префаб модуля, �
     }
     public override void OnDestroy()
     {
-        ScenarioManager.instance.Modules.Remove(this);
+        ScenarioManager.instance?.Modules.Remove(this);
     }
 
 
