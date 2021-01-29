@@ -21,13 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: vfx_coster
-  m_Shader: {fileID: -6465566751694194690, guid: dd25aff8092e6d44f8b51e93a51ac2d0,
+  m_Shader: {fileID: -6465566751694194690, guid: 732a8f1e26cdaf445b470795b33927d6,
     type: 3}
   m_ShaderKeywords: _BLENDMODE_ALPHA _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3001
+  m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -40,7 +40,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_23DD87FD:
-        m_Texture: {fileID: 2800000, guid: 74c0fa5eb2360ca4089e85eba05c459a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 75bce0fb9b07a3542b07e133a70e106f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_41C14B00:
+        m_Texture: {fileID: 2800000, guid: 510a607aa063d7340af1d0a8e17759a5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_8034FF74:
@@ -48,7 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_929B7DC3:
-        m_Texture: {fileID: 2800000, guid: dc8aeb2c207ccaf4d83c17d325f6a0f2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 365dbe8c4193bd04ebd97ea8854560c0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_A39708B4:
+        m_Texture: {fileID: 2800000, guid: 4aa45d0f5b1e4e345a0274650a7cd03b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_AA16E2DB:
@@ -143,6 +151,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_258F6CF3_Out_0:
+        m_Texture: {fileID: 2800000, guid: 7dde31841a1da4443a005cdfc583eef8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_3E2F49D5_Out_0:
+        m_Texture: {fileID: 2800000, guid: a22e0ceb1c9facb468ce89c8bb623b95, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_720AAE34_Out_0:
+        m_Texture: {fileID: 2800000, guid: 510a607aa063d7340af1d0a8e17759a5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ThicknessMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -156,11 +176,21 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_362C3BBE: 30
     - Vector1_5553DC64: 5
     - Vector1_5892B68B: 0
-    - Vector1_764C2D91: 0
+    - Vector1_62E3F092: 119.49
+    - Vector1_764C2D91: 0.01
+    - Vector1_79A2005E: 1
+    - Vector1_84DD317F: 50
+    - Vector1_92AB440: 1
     - Vector1_A5F6650B: 1
+    - Vector1_B2C5AE0C: 1.03
     - Vector1_B53EF277: 0
+    - Vector1_BB5690D0: 26.03
+    - Vector1_C836608: 0.125
+    - Vector1_CCBC865A: 1
+    - Vector1_DA4299C: 10
     - Vector1_EEFF4026: 0
     - Vector1_F8A3F509: 0
     - _AORemapMax: 1
@@ -255,7 +285,7 @@ Material:
     - _PPDMinSamples: 5
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
-    - _ReceivesSSR: 1
+    - _ReceivesSSR: 0
     - _RefractionModel: 0
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
@@ -271,10 +301,10 @@ Material:
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
@@ -291,7 +321,7 @@ Material:
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
     - _TransparentDepthPrepassEnable: 0
-    - _TransparentSortPriority: 1
+    - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UVBase: 0
