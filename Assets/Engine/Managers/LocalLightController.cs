@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-public class LocalLightController : LightControllerAbstract
+public class LocalLightController : LightControllerBase
 {
     [Header("Яркость локальных ИС")]
     [SerializeField] AnimationCurve AllLight;
@@ -17,12 +20,10 @@ public class LocalLightController : LightControllerAbstract
     [SerializeField]
     AnimationCurve EmissiveIntensity;
     Color[] colors;
-    private bool isLocalLightController = false;
     List<float> RandomTimersForLights = new List<float>();
     private void Awake()
     {
         IniTimer();
-        CorrectLocalTime();
         CorrectPrefabsBuildingLocalTime();
         StartRandomizeLights();
     }
@@ -30,11 +31,15 @@ public class LocalLightController : LightControllerAbstract
     protected new void Update()
     {
         base.Update();
+#if UNITY_EDITOR
+        if (!Application.isPlaying && Selection.activeGameObject == gameObject)// работа в эдиторе
+        {
+            StartRandomizeLights();
+        }
+#endif
 
-        ProcessTime();
         ProcessLights();
         ProcessEmissive();
-        ProcessReflectionProbes();
     }
 
     public void StartRandomizeLights()
@@ -48,10 +53,13 @@ public class LocalLightController : LightControllerAbstract
             }
         }
         if (Lights != null)
+        {
+            RandomTimersForLights.Clear();
             for (int i = 0; i < Lights.Count; i++)
             {
                 RandomTimersForLights.Add(Random.Range(-0.5f, 0.5f));
             }
+        }
     }
 
     void ProcessLights()
@@ -60,10 +68,15 @@ public class LocalLightController : LightControllerAbstract
             for (int i = 0; i < Lights.Count; i++)
             {
                 float tempIntensity = AllLight.Evaluate((_localTimer + RandomTimersForLights[i]) / 24f);
-                if (tempIntensity < 0.1f)
-                    if (Lights[i] != null) Lights[i].enabled = true;
-                    else
-                    if (Lights[i] != null) Lights[i].enabled = false;
+                bool isToTurnOn = tempIntensity >= 0.1f;
+                if (Lights[i])
+                {
+                    Lights[i].intensity = tempIntensity;
+                    if (Lights[i].enabled != isToTurnOn)
+                    {
+                        Lights[i].enabled = isToTurnOn;
+                    }
+                }
             }
     }
     void ProcessEmissive()
@@ -84,10 +97,7 @@ public class LocalLightController : LightControllerAbstract
         GlobalLightController global = FindObjectOfType<GlobalLightController>();
         if (global != null)
         {
-            isLocalLightController = true;
             _localTimer = global.localTimer;
-            if (global == this) isLocalLightController = false;
-            else isLocalLightController = true;
         }
     }
 

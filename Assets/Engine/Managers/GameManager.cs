@@ -277,7 +277,6 @@ public class GameManager : MonoBehaviour
         var angle = Vector3.SignedAngle(earthDirection, position.normalized, Vector3.up);
         var localHoursOffset = -angle / 180f * 12f;
         TimeManager.LocalHoursOffset = localHoursOffset;
-        TimeManager.TimeScale = 1 / 60f;
         
         
         

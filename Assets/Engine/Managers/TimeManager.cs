@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
     public static event Action EventChangeDay;
 
     public static float LocalHoursOffset;
-    public static float TimeScale = 1f;
+    public static float TimeScale = .5f;
     public static float Timer =0;
 
     
@@ -26,7 +26,6 @@ public class TimeManager : MonoBehaviour
             _days = value;
             TotalDays++;
             EventChangeDay();
-            
         }
     }
 
@@ -50,12 +49,12 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public static float Hours => _hours;
+
     public static float ElapsedTime
     {
         get => _elapsedTime;
     }
-
-    public static float Hours;
 
     public static void Init()
     {
@@ -73,107 +72,93 @@ public class TimeManager : MonoBehaviour
             else
                 GameManager.CurrentState = GameManager.State.PlaySpace;
         }
-
-     
-
         
         if (SpeedManager.instance.CurrenSpeed == SpeedManager.Speed.Stop) return;
         CalendarControl();
     }
-    private static int days;
+    private static int days_of_year;
     private static void CalendarControl()
     {
-        Hours += Time.deltaTime * Time.timeScale/24;
+        _hours += Time.deltaTime * TimeScale;
          
-        if (Hours >= 24)
+        if (_hours >= 24)
         {
-            Hours = 0;
+            _hours = 0;
             Days++;
-            days++;
+            days_of_year++;
         }
-        if (Months > 12 || Months==0)
+        if (Months > 12)
         {
             Months = 1;
             Years++;
         }
 
-        if (days > 365)
+        if (days_of_year > 365)
         {
             Years++;
             Timer = 0;
-            days = 1;
+            days_of_year = 1;
             Days = 1;
         }
 
-        if (days > 0 && days <= 31)
+        if (days_of_year > 0 && days_of_year <= 31)
         { 
             Months = 1;
         }
-        else if (days > 31 && days <= 60)
+        else if (days_of_year > 31 && days_of_year <= 60)
         {
             if (Days > 31) Days = 1;
             Months = 2;
-             
         }
-        else if (days > 59 && days <= 90)
+        else if (days_of_year > 59 && days_of_year <= 90)
         {
             if (Days > 31) Days = 1;
             Months = 3;
-           
         }
-        else if (days > 90 && days <= 121)
+        else if (days_of_year > 90 && days_of_year <= 121)
         {
             if (Days > 31) Days = 1;
             Months = 4;
-         
         }
-        else if (days > 120 && days <= 150)
+        else if (days_of_year > 120 && days_of_year <= 150)
         {
             if (Days > 30) Days = 1;
             Months = 5;
-            
         }
-        else if (days > 151 && days <= 181)
+        else if (days_of_year > 151 && days_of_year <= 181)
         {
             if (Days > 30) Days = 1;
             Months = 6;
-           
         }
-        else if (days > 181 && days <= 212)
+        else if (days_of_year > 181 && days_of_year <= 212)
         {
             if (Days > 31) Days = 1;
             Months = 7;
-          
         }
-        else if (days > 212 && days <= 243)
+        else if (days_of_year > 212 && days_of_year <= 243)
         {
             if (Days > 31) Days = 1;
             Months = 8;
-           
         }
-        else if (days > 243 && days <= 273)
+        else if (days_of_year > 243 && days_of_year <= 273)
         {
             if (Days > 28) Days = 1;
             Months = 9;
-          
         }
-        else if (days > 273 && days <= 304)
+        else if (days_of_year > 273 && days_of_year <= 304)
         {
             if (Days > 31) Days = 1;
             Months = 10;
-          
         }
-        else if (days > 304 && days <= 334)
+        else if (days_of_year > 304 && days_of_year <= 334)
         {
             if (Days > 30) Days = 1;
             Months = 11;
-           
         }
-        else if (days > 334 && days <= 365)
+        else if (days_of_year > 334 && days_of_year <= 365)
         {
             if (Days > 31) Days = 1;
             Months = 12;
-            
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalLightController : LightControllerAbstract
+public class GlobalLightController : LightControllerBase
 {
     [Header("ШИ С ДЭ САН")]
     [SerializeField]
@@ -26,7 +26,6 @@ public class GlobalLightController : LightControllerAbstract
     private void Awake()
     {
         IniTimer();
-        CorrectLocalTime();
     }
 
     protected new void Update()
@@ -35,8 +34,6 @@ public class GlobalLightController : LightControllerAbstract
 
         ProcessSun();
         ProcessAmbientAndReflectionAmbient();
-        ProcessTime();
-        ProcessReflectionProbes();
     }
     public void ProcessSun()
     {

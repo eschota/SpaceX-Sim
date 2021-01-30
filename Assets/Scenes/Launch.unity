@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.007500654, g: 0.11418792, b: 0.15632999, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -972,8 +972,8 @@ GameObject:
   m_Component:
   - component: {fileID: 427735442}
   - component: {fileID: 427735441}
-  - component: {fileID: 427735443}
   - component: {fileID: 427735444}
+  - component: {fileID: 427735443}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -993,7 +993,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.9232081
+  m_Intensity: 1.9935696
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1049,7 +1049,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427735440}
-  m_LocalRotation: {x: -0.16580763, y: 0.8300428, z: -0.32825956, w: -0.41926426}
+  m_LocalRotation: {x: -0.15194297, y: 0.8462313, z: -0.32964882, w: -0.3900483}
   m_LocalPosition: {x: 72.98224, y: 15.277069, z: 12.859337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1065,11 +1065,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 427735440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88bbd6005112bac42a9af4c5f2b017f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 25c7ea5b8b6a54f4286e970351ab2778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localTimer: 12
-  Sun: {fileID: 427735441}
+  _localTimer: 11.09
+  Speed: 1
+  Reflections:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.44444445
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.44452596
+      value: 1.2522812
+      inSlope: -0.0091279
+      outSlope: -0.0091279
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.7487661
+    - serializedVersion: 3
+      time: 0.55
+      value: 0
+      inSlope: -0.00052769965
+      outSlope: -0.00052769965
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6974334
+      outWeight: 0.24031004
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ReflectionProbes: []
+  sun: {fileID: 427735441}
   SunIntensity:
     serializedVersion: 2
     m_Curve:
@@ -1202,117 +1255,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  AllLight:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.19534507
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.44444445
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.3320074
-      value: 1.2929554
-      inSlope: -0.0061855144
-      outSlope: -0.0061855144
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.42644727
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.54188204
-      value: 1.2930843
-      inSlope: -0.007689586
-      outSlope: -0.007689586
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.62092894
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  Reflections:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.25
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.44444445
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.44452596
-      value: 1.2522812
-      inSlope: -0.0091279
-      outSlope: -0.0091279
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.7487661
-    - serializedVersion: 3
-      time: 0.55
-      value: 0
-      inSlope: -0.00052769965
-      outSlope: -0.00052769965
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.6974334
-      outWeight: 0.24031004
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   Ambients:
     serializedVersion: 2
     m_Curve:
@@ -1364,54 +1306,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Speed: 0.5
-  Lights: []
-  emissivMat: []
-  emissivMatColors: []
-  EmissiveIntensity:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 10
-      inSlope: 0.1420333
-      outSlope: 0.1420333
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.8818573
-    - serializedVersion: 3
-      time: 0.104641736
-      value: 0
-      inSlope: Infinity
-      outSlope: 0
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5069763
-      value: 10
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 10
-      inSlope: -0.0007585007
-      outSlope: -0.0007585007
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 1
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ReflectionProbes:
-  - {fileID: 0}
 --- !u!114 &427735444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3855,7 +3749,7 @@ PrefabInstance:
     - target: {fileID: 2551966082908967426, guid: 4f84c636f162b514394005a9511310b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00002583559
+      value: -0.000013970673
       objectReference: {fileID: 0}
     - target: {fileID: 2551966083438864490, guid: 4f84c636f162b514394005a9511310b1,
         type: 3}
