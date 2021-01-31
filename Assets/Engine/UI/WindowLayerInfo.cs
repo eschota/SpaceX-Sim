@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
@@ -7,10 +8,14 @@ public class WindowLayerInfo : UIWindows
 {
     public static WindowLayerInfo instance;
 
-    [SerializeField] public List<TMPro.TextMeshProUGUI> layersText;
-    [SerializeField] public List<TMPro.TextMeshProUGUI> layersLabels;
+    [SerializeField] 
+    private List<TMPro.TextMeshProUGUI> layersText;
+    [SerializeField] 
+    private List<TMPro.TextMeshProUGUI> layersLabels;
     [SerializeField]
     private UIWindRose windRose;
+    [SerializeField]
+    private string[] literals;
 
     private float maxWealth = float.MaxValue;
     void Awake() 
@@ -25,6 +30,20 @@ public class WindowLayerInfo : UIWindows
             if (country.Wealth > maxWealth) maxWealth = country.Wealth;
         }
         this.maxWealth = maxWealth;
+    }
+
+    private string GetLiteralValue(float normalizedValue)
+    {
+        for (int i = 0; i < literals.Length; i++)
+        {
+            float emin = (i - .5f) / (literals.Length - 1f);
+            float max = (i + .5f) / (literals.Length - 1f);
+            if (normalizedValue >= emin && normalizedValue < max)
+            {
+                return literals[i];
+            }
+        }
+        return "!Non!";
     }
 
     private void Update()
@@ -59,11 +78,11 @@ public class WindowLayerInfo : UIWindows
             }
             layersText[0].text = country.Name;
         }
-        layersText[1].text = country ? country.Wealth +"$" : "N/A";
-        layersText[2].text = country ? country.Population.ToString() + "K" : "N/A";
-        layersText[3].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Population), uvCoords).ToString() + "%";
-        layersText[4].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Transportation), uvCoords).ToString() + "%";
-        layersText[5].text = WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Disaster), uvCoords).ToString() + "%";
+        layersText[1].text = GetLiteralValue((country ? country.Wealth : 0f) / maxWealth);
+        layersText[2].text = GetLiteralValue(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Population), uvCoords) / 100f);
+        layersText[3].text = GetLiteralValue(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Science), uvCoords) / 100f);
+        layersText[4].text = GetLiteralValue(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Transportation), uvCoords) / 100f);
+        layersText[5].text = GetLiteralValue(WorldMapManager.instance.GetPercentByTexture(WorldMapManager.instance.GetTexture(PlaceInfoType.Disaster), uvCoords) / 100f);
         layersText[6].text = WorldMapManager.instance.ClimatZonesNames[WorldMapManager.instance.GetZone(WorldMapManager.instance.GetTexture(PlaceInfoType.Climat), uvCoords)];
 
         List<float> values = new List<float>();
