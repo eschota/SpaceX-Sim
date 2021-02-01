@@ -97,5 +97,5 @@ public class Research : Unit
         Debug.Log("File Saved at: " + Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()));
     }
 
-  
+    public List<BuildingResearchLab> LabsResearchingNow = new List<BuildingResearchLab>();
 }
