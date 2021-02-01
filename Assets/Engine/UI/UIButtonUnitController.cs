@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-public class UIButtonUnitController : MonoBehaviour
+public class UIButtonUnitController : UIWindows
 {
     UIButtonUnit[] units;
 
@@ -20,13 +20,20 @@ public class UIButtonUnitController : MonoBehaviour
         EnterCurrentUnit.onClick.AddListener(OnClickEnter);
      
         EnterCurrentUnit.gameObject.SetActive(false);
+        GameManager.EventChangeState += OnChangeState;
     }
     public void OnClickEnter()
     {
         GameManager.instance.OpenUnitScene(SelectedUnit);
         CameraControllerInSpace.instance.FlyToUnit = SelectedUnit.transform;
+        HideEnterButton();
+        Hide();
     }
 
+    void OnChangeState()
+    {
+        Show();
+    }
     public void ShowEnterButton(Unit unit, Vector3 pos)
     {
         SelectedUnit = unit;
@@ -38,5 +45,10 @@ public class UIButtonUnitController : MonoBehaviour
     {
         SelectedUnit = null;
         EnterCurrentUnit.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EventChangeState -= OnChangeState;
     }
 }
