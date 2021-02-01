@@ -11,18 +11,19 @@ public class BuildingResearchLab : BuildingUnit
     {
         get
         {
+            if (isResearch) return null;
             if (_ButtonLab == null)
             {
                 _ButtonLab = Instantiate(Resources.Load<UiLabButton>("UI/ButtonUnits/ButtonResearchLab"+CurrentClass.ToString()));
                 _ButtonLab.Lab = this;
                 _ButtonLab.transform.SetParent(UIResearchManager.instance.Grid);
+                _ButtonLab.name = "ButtonLab" + Name;
             }
             return _ButtonLab;
         }
     }
     public override void Awake()
     {
-        base.Awake();
-        ButtonLab.name = "ButtonLab" + Name;
+        base.Awake();        
     }
 }
