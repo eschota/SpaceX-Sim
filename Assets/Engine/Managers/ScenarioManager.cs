@@ -270,7 +270,7 @@ public class ScenarioManager : MonoBehaviour
             item.researchButton.RebuildLinks(); 
             item.researchButton.Refresh();
         }
-        SplitResearchedModulesAndReal();
+        
         gameObject.AddComponent<ResearchAndProductionManager>();// инициация системы рисерчей
     }
 
@@ -310,29 +310,7 @@ public class ScenarioManager : MonoBehaviour
 
 
 
-    private void SplitResearchedModulesAndReal()
-    {
-        foreach (var item in FindObjectsOfType<BuildingUnit>())
-        {
-          if(item.isResearch==false)  item.transform.SetParent(GameManager.instance.BuildingsTransform); else item.transform.SetParent(GameManager.instance.ResearchModulesTransform);
-        }
-        foreach (var item in FindObjectsOfType<Module>())
-        {
-            item.transform.SetParent(GameManager.instance.ModulesTransform);
-        }
-        foreach (var item in Researches)
-        {
-            item.transform.SetParent(GameManager.instance.ResearchesTransform);
-            foreach (var modules in item.Modules)
-            { 
-                modules.name = modules.Name;
-                modules.transform.SetParent(GameManager.instance.ResearchModulesTransform);
-            }
-        }
-        
-     
-    }
-
+   
     public void StartNewGame()
     { 
         if (CurrentScenario == null) return;

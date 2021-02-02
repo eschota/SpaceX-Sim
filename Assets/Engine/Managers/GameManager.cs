@@ -150,9 +150,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Transform ResearchesTransform, ResearchModulesTransform, ModulesTransform, BuildingsTransform,EarthUnits;
+    public Transform ResearchesTransform, ResearchModulesTransform, ModulesTransform, BuildingsTransform,EarthUnits,BuildingResearchTransform;
     private void CreateRoots()
     {
+        BuildingResearchTransform = new GameObject("BuildingResearching").transform;
+        BuildingResearchTransform.SetAsFirstSibling();
+        DontDestroyOnLoad(BuildingResearchTransform); 
         ResearchesTransform = new GameObject("Researches").transform;
         ResearchesTransform.SetAsFirstSibling();
         DontDestroyOnLoad(ResearchesTransform);

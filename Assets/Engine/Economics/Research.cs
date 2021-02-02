@@ -73,6 +73,7 @@ public class Research : Unit
         researchButton.research = this;
         researchButton.name = name + "_Button";
         researchButton.Rect.position = localPosition;
+        transform.SetParent(GameManager.instance.ResearchesTransform);
         
     }
     public void RestoreDependencies()
@@ -80,8 +81,9 @@ public class Research : Unit
         Dependances.Clear(); Modules.Clear();
         foreach (var item in DependencesID) Dependances.Add(ScenarioManager.instance.Researches.Find(X => X.ID == item));
         foreach (var item in ModulesID) Modules.Add(ScenarioManager.instance.Modules.Find(X => X.ID == item));
+        RestoreResearchLabs();
     }
-
+   
     public override void SaveJSON()
     {
         ID = GetInstanceID();
@@ -90,7 +92,8 @@ public class Research : Unit
         localPosition = researchButton.Rect.position;
         foreach (var item in Modules) ModulesID.Add(item.GetInstanceID());
         foreach (var item in Dependances) DependencesID.Add(item.GetInstanceID());
-
+        foreach (var item in LabsResearchingNow) LabsResearchingNowID.Add(item.GetInstanceID());
+        
 
         string jsonData = JsonUtility.ToJson(this, true);
         File.WriteAllText(Path.Combine(ScenarioManager.instance.CurrentScenario.CurrentFolder, ID + "." + GetType().ToString()), jsonData);
@@ -98,4 +101,15 @@ public class Research : Unit
     }
 
     public List<BuildingResearchLab> LabsResearchingNow = new List<BuildingResearchLab>();
+    public List<int> LabsResearchingNowID = new List<int>();
+    public void RestoreResearchLabs()
+    {
+        LabsResearchingNow.Clear();
+        foreach (var item in LabsResearchingNowID)
+        {
+            List<BuildingResearchLab> temp = new List<BuildingResearchLab>();
+            temp.AddRange(FindObjectsOfType<BuildingResearchLab>());
+            LabsResearchingNow.Add(temp.Find(X => X.ID == item));
+        }
+    }
 }

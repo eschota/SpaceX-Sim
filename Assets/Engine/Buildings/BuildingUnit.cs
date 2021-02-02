@@ -17,14 +17,21 @@ public class BuildingUnit : Module
     public override void IniAfterJSONRead()
     {
         base.IniAfterJSONRead();
+        SplitByIsResearch();
     }
     public override void Awake()
     {
-        base.Awake();
-        if (isResearch == false) transform.SetParent(GameManager.instance.BuildingsTransform); else transform.SetParent(GameManager.instance.ResearchModulesTransform);
+        base.Awake();        
         if (!GameManager.Buildings.Contains(this)) GameManager.Buildings.Add(this);
-        
+        SplitByIsResearch();
+
     }
+    public virtual void SplitByIsResearch()
+    {
+        if (isResearch) transform.SetParent(GameManager.instance.BuildingResearchTransform);
+        else transform.SetParent(GameManager.instance.BuildingsTransform);
+    }
+
     public int ConstructionCompletedPercentage => Mathf.Clamp( Mathf.RoundToInt(100 * ((float)ConsctructionProcess / (float)ProductionTime[0])),0,100);
 
 
