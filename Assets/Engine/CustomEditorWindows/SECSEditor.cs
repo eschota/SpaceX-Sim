@@ -68,20 +68,8 @@ public class SECSEditor : EditorWindow
 
             foreach (var item in Resources.LoadAll<Module>("Modules"))
             {
-                if (item.Prefab == null) { Debug.LogError(item.name); return; }
-                
-             
-                Texture2D tex = AssetPreview.GetAssetPreview(item.Prefab) as Texture2D;
-
-
-           //     if (System.IO.File.Exists(item.IconFilePath)) System.IO.File.Delete(item.IconFilePath);
-                System.IO.File.WriteAllBytes(item.IconFilePath, tex.EncodeToPNG());
-              
+                item.OnValidate();
             }
-            AssetDatabase.Refresh();
-
-            Debug.Log("TotalFiles: " + Resources.LoadAll<Module>("Modules").Length);
-
 
         }
 

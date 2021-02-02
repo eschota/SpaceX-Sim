@@ -62,8 +62,41 @@ public class Module : Unit // главное это префаб модуля, �
 
     public virtual void OnValidate()
     { if (Application.isPlaying) return;
+
+        if (Prefab.gameObject == this.gameObject) 
+        {
+            Prefab = null;
+            Debug.LogError("ВЫДЕЛЕН ТОТ ЖЕ ПРЕФАБ ЧТО И ИСХОДНЫЙ!! ОЛОЛОЛО");
+        }
         string path = AssetDatabase.GetAssetPath(Prefab);
         PrefabPath = path.Substring(17,path.Length-24);
         PrefabName = Prefab.name;
+
+        if (Prefab != null) if(Icon==null) 
+
+        {
+            Texture2D tex=null;
+                    int tries = 0;
+            while (tex == null && tries < 1000)            
+            {
+                    if (!AssetPreview.IsLoadingAssetPreview(Prefab.GetInstanceID()))
+                    {
+                        tex = AssetPreview.GetAssetPreview(Prefab);
+                        Debug.Log("PNG Generated: " + tex);
+                        break;
+                    }
+                tries++;
+       
+            }
+
+            if (tex != null)
+             {
+                if (System.IO.File.Exists(IconFilePath)) System.IO.File.Delete(IconFilePath);
+                System.IO.File.WriteAllBytes(IconFilePath, tex.EncodeToPNG());
+            }
+
+
+        AssetDatabase.Refresh();
+        }
     }
 }
