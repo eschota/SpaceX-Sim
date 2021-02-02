@@ -61,7 +61,8 @@ public class Module : Unit // главное это префаб модуля, �
 
 
     public virtual void OnValidate()
-    { if (Application.isPlaying) return;
+    { 
+        if (Application.isPlaying) return;
 
         if (Prefab.gameObject == this.gameObject) 
         {
@@ -72,12 +73,11 @@ public class Module : Unit // главное это префаб модуля, �
         PrefabPath = path.Substring(17,path.Length-24);
         PrefabName = Prefab.name;
 
-        if (Prefab != null) if(Icon==null) 
-
+        if (Prefab && !Icon) 
         {
-            Texture2D tex=null;
-                    int tries = 0;
-            while (tex == null && tries < 1000)            
+            Texture2D tex = AssetPreview.GetAssetPreview(Prefab);
+            int tries = 0;
+            while (!tex && tries < 1000)            
             {
                     if (!AssetPreview.IsLoadingAssetPreview(Prefab.GetInstanceID()))
                     {
@@ -86,7 +86,6 @@ public class Module : Unit // главное это префаб модуля, �
                         break;
                     }
                 tries++;
-       
             }
 
             if (tex != null)
