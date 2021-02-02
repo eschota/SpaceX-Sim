@@ -27,11 +27,17 @@ public class UIResearchManager : MonoBehaviour
                 foreach (var item in ButtonsResearchLabs) item.ButtonAddThisLabToResearch. gameObject.SetActive(false);
                 return;
             }
-            foreach (var item in ButtonsResearchLabs) item.ButtonAddThisLabToResearch.gameObject.SetActive(true);
-            
+            SwitchLabButtonsOnResearchSelection(value);
+
             _CurrentResearchSelected = value;
             
         }
+    }
+
+    void SwitchLabButtonsOnResearchSelection(UIResearchButton lab)
+    {
+        foreach (var item in ButtonsResearchLabs) if (!lab.research.LabsResearchingNow.Contains(item.Lab)) item.ButtonAddThisLabToResearch.gameObject.SetActive(true);
+            else item.ButtonAddThisLabToResearch.gameObject.SetActive(false);
     }
 
     void OnChangeState ()
@@ -57,8 +63,12 @@ public class UIResearchManager : MonoBehaviour
 
     public void AddLabToResearch(BuildingResearchLab lab)
     {
-        CurrentResearchSelected.research.LabsResearchingNow.Add(lab);
-        lab.ButtonLab.ButtonAddThisLabToResearch.gameObject.SetActive(false);
+        if (!CurrentResearchSelected.research.LabsResearchingNow.Contains(lab))
+        {
+            CurrentResearchSelected.research.LabsResearchingNow.Add(lab);
+            Debug.Log("Added Lab To Research: " + lab + " => " + CurrentResearchSelected);
+            lab.ButtonLab.ButtonAddThisLabToResearch.gameObject.SetActive(false);
+        }
     }
     private void ClearResearchLabsButtons()
     {
@@ -81,9 +91,42 @@ public class UIResearchManager : MonoBehaviour
         if (GameManager.CurrentState != GameManager.State.ResearchGlobal) return;
         if (Input.GetMouseButtonDown(0)) SelectResearch();
         if (Input.GetMouseButtonDown(1)) CurrentResearchSelected = null;// deselect research
-
+        DrawLinks();
     }
+    void DrawLinks()
+    {
+        for (int i = 0; i <Arrows.Count ; i++)
+        {
+            Destroy(Arrows[i].gameObject);
+        }
+        Arrows.Clear();
+        foreach (var item in ScenarioManager.instance.Researches)
+        {
+            foreach (var buttons in item.LabsResearchingNow)
+            {
+                CreateLink( item.researchButton.transform.position, buttons.ButtonLab.transform.position);
+            } 
+        }
+    }
+    [SerializeField] public Arrow Arrow;
+    List<Arrow> Arrows = new List<Arrow>();
+    void CreateLink(Vector2 start, Vector2 end)
+    {
+        float dis = Vector2.Distance(start, end);
+        for (int i = 2; i < dis / 30 - 2; i++)
+        {
+            Arrows.Add(Instantiate(Arrow, CameraControllerScenarioResearch.instance.CameraPivot));
+            Arrows[Arrows.Count - 1].Rect.position = Vector2.Lerp(start, end, (float)i / (dis / 30));
+            Arrows[Arrows.Count - 1].transform.SetAsFirstSibling();
 
+            float targetRotation = Mathf.Atan((end.y - start.y) / (end.x - start.x));
+            if (end.x - start.x > 0)
+                Arrows[Arrows.Count - 1].Rect.rotation = Quaternion.Euler(0, 0, 180 + targetRotation * Mathf.Rad2Deg);
+            else
+                Arrows[Arrows.Count - 1].Rect.rotation = Quaternion.Euler(0, 0, targetRotation * Mathf.Rad2Deg);
+
+        }
+    }
     void SelectResearch()
     {
 
