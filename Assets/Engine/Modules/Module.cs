@@ -18,8 +18,12 @@ public class Module : Unit // главное это префаб модуля, �
     {
         get
         {
-            _icon= Resources.Load<Sprite>("Modules/Icons/" + PrefabName);           
-            if (_icon == null) Debug.LogError("Нет иконки! " + PrefabName);            
+            _icon= Resources.Load<Sprite>("Modules/Icons/" + PrefabName);
+            if (_icon == null)
+            {
+                Debug.LogError("Нет иконки! " + PrefabName);
+                _icon = Resources.Load<Sprite>("UI/DefaultModuleIcon.png");
+            }
             return _icon;
         }
     }
