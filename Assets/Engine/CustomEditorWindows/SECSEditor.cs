@@ -19,59 +19,48 @@ public class SECSEditor : EditorWindow
 
     void OnGUI()
     {
-        Module mod;
-        string modName = "";
+        //Module mod;
+        //string modName = "";
 
-        GUILayout.Label("Выделенный модуль", EditorStyles.boldLabel);
+        //GUILayout.Label("Выделенный модуль", EditorStyles.boldLabel);
 
       
             if (GUILayout.Button("RenderIcon"))
         {
-
-            mod = Selection.activeGameObject.GetComponent<Module>();
-            if (mod == null) return;
-            ScreenCapture.CaptureScreenshot(mod.IconFilePath);
-            AssetDatabase.Refresh();
-            AssetDatabase.ImportAsset(mod.IconFilePath);
-            AssetDatabase.Refresh();
-
-
-            ////string path = AssetDatabase.getasseta(mod.IconFilePath + ".png");
-            //Texture2D t = AssetDatabase.LoadAssetAtPath(mod.IconFilePath + ".png", typeof(Texture2D)) as Texture2D;
-            //string path = AssetDatabase.GetAssetPath(t);
-            //TextureImporter importer= AssetImporter.GetAtPath(path) as TextureImporter;
-
-            //importer.textureType = TextureImporterType.Sprite;
-            //importer.filterMode = FilterMode.Trilinear;
-
-            //EditorUtility.SetDirty(importer);
-            //AssetDatabase.SaveAssets();
-            //AssetDatabase.Refresh();
-        
-
-        }     if (GUILayout.Button("GetIconFromPreview"))
-        {
-
-            mod = Selection.activeGameObject.GetComponent<Module>();
-            if (mod == null) return;
-
-            Texture2D tex= AssetPreview.GetAssetPreview(mod.Prefab) as Texture2D;
-
-            System.IO.File.WriteAllBytes(mod.IconFilePath, tex.EncodeToPNG());
-            AssetDatabase.Refresh();
-            AssetDatabase.ImportAsset(mod.IconFilePath);
-        
-        } 
-        
-        if (GUILayout.Button("GetIconFromPreviewALL"))
-        {
-
             foreach (var item in Resources.LoadAll<Module>("Modules"))
-            {
-                item.OnValidate();
+                {
+                   if (item.PrefabName == Selection.activeGameObject.name)
+                {
+                    ScreenCapture.CaptureScreenshot(item.IconFilePath);
+                    Debug.Log("Captured Screenshot :" + item.IconFilePath);
+                }
             }
+                
 
         }
+            //if (GUILayout.Button("GetIconFromPreview"))
+        //{
+
+        //    mod = Selection.activeGameObject.GetComponent<Module>();
+        //    if (mod == null) return;
+
+        //    Texture2D tex= AssetPreview.GetAssetPreview(mod.Prefab) as Texture2D;
+
+        //    System.IO.File.WriteAllBytes(mod.IconFilePath, tex.EncodeToPNG());
+        //    AssetDatabase.Refresh();
+        //    AssetDatabase.ImportAsset(mod.IconFilePath);
+        
+        //} 
+        
+        //if (GUILayout.Button("GetIconFromPreviewALL"))
+        //{
+
+        //    foreach (var item in Resources.LoadAll<Module>("Modules"))
+        //    {
+        //        item.OnValidate();
+        //    }
+
+        //}
 
 
 
