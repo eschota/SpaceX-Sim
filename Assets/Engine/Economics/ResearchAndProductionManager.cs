@@ -62,6 +62,7 @@ public class ResearchAndProductionManager : MonoBehaviour
         {
             foreach (var lab in item.LabsResearchingNow)
             {
+                if(lab.ConstructionCompletedPercentage>=100)
                 item.TimeCompleted[(int)lab.CurrentBuildingClass] += lab.Productivity;
             }
         }

@@ -54,6 +54,7 @@ public class UIResearchManager : MonoBehaviour
         {
             if (!item.isResearch)
                 if (item.GetType() == typeof(BuildingResearchLab))
+                    if(item.ConstructionCompletedPercentage>=100)
                 {
                     (item as BuildingResearchLab).ButtonLab.name = (item as BuildingResearchLab).ButtonLab.name + ButtonsResearchLabs.Count.ToString();
                     ButtonsResearchLabs.Add((item as BuildingResearchLab).ButtonLab);
