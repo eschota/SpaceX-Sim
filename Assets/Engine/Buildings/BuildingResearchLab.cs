@@ -14,7 +14,7 @@ public class BuildingResearchLab : BuildingUnit
             if (isResearch) return null;
             if (_ButtonLab == null)
             {
-                _ButtonLab = Instantiate(Resources.Load<UiLabButton>("UI/ButtonUnits/ButtonResearchLab"+CurrentClass.ToString()));
+                _ButtonLab = Instantiate(Resources.Load<UiLabButton>("UI/ButtonUnits/ButtonResearchLab"+CurrentBuildingClass.ToString()));
                 _ButtonLab.Lab = this;
                 _ButtonLab.transform.SetParent(UIResearchManager.instance.Grid);
                 _ButtonLab.name = "ButtonLab" + Name;

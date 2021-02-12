@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class BuildingUnit : Module
 {
+    public enum BuildinType { Launch, Research, Factory, SeaLaunch }
+
+    public enum BuildingClass { Light = 0, Medium = 1, Heavy = 2 }
+
+    public int Productivity = 1;// скорость исследований, производства и т п
 
     [SerializeField] public Vector2 Size;
     
    
-    public enum BuildingClass{ Light=0, Medium=1,Heavy=2}
-    public BuildingClass CurrentClass;
-    public enum BuildinType { Launch, Research, Factory,SeaLaunch}
+    public BuildingClass CurrentBuildingClass;
     [SerializeField] public List< BuildinType> Types;
     public float ConsctructionProcess = -10;
     public override void IniAfterJSONRead()
