@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Selectable : MonoBehaviour
@@ -24,8 +23,7 @@ public class Selectable : MonoBehaviour
     public void IniSelectable()
     {
         progress = Instantiate(Resources.Load<UICircleProgress>("UI/ButtonUnits/UICircleProgress" ),UIUnitManager.instance.transform);
-        progress.Root = this.transform;
-        ShowPhase();
+        progress.Root = this.transform; 
         OnChangeDay();
     }
     private void OnDestroy()
@@ -38,12 +36,20 @@ public class Selectable : MonoBehaviour
    
    public void OnChangeDay()
     {
-        progress.Progress.fillAmount = RootUnit.ConstructionCompletedPercentage/100f;
-        progress.percentage.text = (Mathf.RoundToInt( RootUnit.ConstructionCompletedPercentage).ToString()) + "%";
-        ShowPhase();
+        ShowProgress();
+        ShowPhasePrefabs();
     }
-
-    void ShowPhase()
+    void ShowProgress()
+    {
+        if (RootUnit.ConstructionCompletedPercentage >= 100)
+        {
+            progress.gameObject.SetActive(false);
+            return;
+        }
+        progress.Progress.fillAmount = RootUnit.ConstructionCompletedPercentage / 100f;
+        progress.percentage.text = (Mathf.RoundToInt(RootUnit.ConstructionCompletedPercentage).ToString()) + "%";
+    }
+    void ShowPhasePrefabs()
     {
         if (Phases.Length <= 1) return;
         int num = Mathf.RoundToInt(Phases.Length * (RootUnit.ConstructionCompletedPercentage) / 100f);
