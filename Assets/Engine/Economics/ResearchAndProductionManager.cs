@@ -25,13 +25,15 @@ public class ResearchAndProductionManager : MonoBehaviour
 
 
 
-        CalculateResearchesProgress();
+        CalculateResearchesCompletion();
         CalculateConstructions();
     }
     void OnChangeDay()
     { 
-        CalculateResearchesProgress();
+        CalculateResearchesCompletion();
         CalculateConstructions();
+        CalculateResearchingProgress();
+        RefreshResearchesUI();
     }
     
 
@@ -53,7 +55,18 @@ public class ResearchAndProductionManager : MonoBehaviour
         if (unit as BuildingRocketLaunch != null) RocketLauches.Add(unit as BuildingRocketLaunch);
         if (unit as BuildingProductionFactory != null) ProductionFactories.Add(unit as BuildingProductionFactory);
     }
-    public void CalculateResearchesProgress()
+
+    public void CalculateResearchingProgress()
+    {
+        foreach (var item in ResearchesAvailable)
+        {
+            foreach (var lab in item.LabsResearchingNow)
+            {
+                item.TimeCompleted[(int)lab.CurrentBuildingClass] += lab.Productivity;
+            }
+        }
+    }
+    public void CalculateResearchesCompletion()
     {
         List<Research> Temp = new List<Research>();
         foreach (var item in ResearchesAvailable)
@@ -69,6 +82,7 @@ public class ResearchAndProductionManager : MonoBehaviour
         {
             ResearchesAvailable.Remove(item);
             ResearchesCompleted.Add(item);
+            RefreshResearchesUI();
         }
     }
 
@@ -78,6 +92,14 @@ public class ResearchAndProductionManager : MonoBehaviour
         foreach (var item in GameManager.Buildings)
         {
          if(item.isResearch==false)   item.ConsctructionProcess++;
+        }
+    }
+
+    void RefreshResearchesUI()
+    {
+        foreach (var item in ResearchesAvailable)
+        {
+            item.researchButton.Refresh();
         }
     }
 }
