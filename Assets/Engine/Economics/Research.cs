@@ -55,7 +55,19 @@ public class Research : Unit
             //GameManager.EventUnit(this);
         }
     }
-
+    public bool Available
+    {
+        get
+        {
+            if (Completed) return false;
+            if (Dependances.Count>0)
+            {
+                if (Dependances.Find(X => X.Completed == false) == null) return true;
+                else return false;
+            }
+            return true;
+        }
+    }
     public override void Awake()// 
     {
         transform.SetParent(GameManager.instance.transform);

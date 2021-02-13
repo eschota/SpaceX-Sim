@@ -199,7 +199,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1000000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 1
+  m_Intensity: 1000000
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -430,6 +430,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IssModule_A
       objectReference: {fileID: 0}
+    - target: {fileID: 154672943439154213, guid: 39aa2aacdf414234594dd38722f085a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 679571391011247775, guid: 39aa2aacdf414234594dd38722f085a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -517,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 1494629660622668704, guid: cef6963fc4d3e284bbc82030a578f75f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 1494629660622668704, guid: cef6963fc4d3e284bbc82030a578f75f,
         type: 3}
@@ -602,12 +607,17 @@ PrefabInstance:
     - target: {fileID: 7326039152940900497, guid: cef6963fc4d3e284bbc82030a578f75f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7849540340344476119, guid: cef6963fc4d3e284bbc82030a578f75f,
         type: 3}
       propertyPath: m_Name
       value: ModuleEngineSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849540340344476119, guid: cef6963fc4d3e284bbc82030a578f75f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cef6963fc4d3e284bbc82030a578f75f, type: 3}
@@ -793,6 +803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IssModule_C
       objectReference: {fileID: 0}
+    - target: {fileID: 9018074200687051133, guid: 55965db5911570b4f8683023ca806547,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55965db5911570b4f8683023ca806547, type: 3}
 --- !u!1001 &4581795810966388929
@@ -866,6 +881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ModuleEngineBig
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569258812891389399, guid: 70c2665851a65c544b3bf6e129121a6c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70c2665851a65c544b3bf6e129121a6c, type: 3}
@@ -965,6 +985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IssModule_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022113303964772554, guid: 015e07382436ad949b7b672eeab4aad3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015e07382436ad949b7b672eeab4aad3, type: 3}
@@ -1090,6 +1115,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IssModule_B
       objectReference: {fileID: 0}
+    - target: {fileID: 2430536053400565520, guid: 26749fff6cc27964f9de132442c47a4f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2814667663091732446, guid: 26749fff6cc27964f9de132442c47a4f,
         type: 3}
       propertyPath: clearColorMode
@@ -1182,7 +1212,7 @@ PrefabInstance:
     - target: {fileID: 179449800852246416, guid: cf4a5fb5675bb99469b13d31e9f0359a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1216859301743504550, guid: cf4a5fb5675bb99469b13d31e9f0359a,
         type: 3}
@@ -1243,6 +1273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ModuleEngineMiddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207187840322065101, guid: cf4a5fb5675bb99469b13d31e9f0359a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf4a5fb5675bb99469b13d31e9f0359a, type: 3}

@@ -9,8 +9,9 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
 {
 
     public Research research;
+    [SerializeField] public Color[] StatesColors;
     [SerializeField] private TMPro.TextMeshProUGUI ResearchName;
-   
+    
     [SerializeField] private RectTransform _rect;
     [SerializeField] public RectTransform pivotStart;
     [SerializeField] public RectTransform pivotEnd;
@@ -28,6 +29,8 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     List<Arrow> Arrows  = new List<Arrow>();
     [SerializeField] public ButtonCreateDependencies createrDependence;
     [SerializeField] public  RectTransform clearDependence;
+    [SerializeField] Button btn;
+    [SerializeField] Image img;
     public bool DependenceNow=false;
     public RectTransform Rect
     {
@@ -54,7 +57,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
     
    void Awake()
     { 
-        GetComponent<Button>().onClick.AddListener(OnClick);
+        btn.onClick.AddListener(OnClick);
 
         ScenarioManager.instance.buttons.Add(this);
 
@@ -66,7 +69,7 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
         {
             Destroy(item.gameObject);
         }
-        GetComponent<Button>().onClick.RemoveAllListeners();
+        btn.onClick.RemoveAllListeners();
     }
 
   
@@ -110,10 +113,16 @@ public class UIResearchButton : MonoBehaviour, IDragHandler, IEndDragHandler//, 
             ProgressHeavy.fillAmount = research.TimeCompleted[2] / research.TimeCost[2];
         }
         else progressesGO[2].SetActive(false);
-
+        SetColorByResearchState();
         RebuildLinks();
     }
-    
+    private void SetColorByResearchState()
+    {
+        if (research.Completed) img.color = StatesColors[0];
+        else
+        if(research.Available) img.color = StatesColors[1];
+        else img.color =StatesColors[2];
+    }
    
     // Update is called once per frame
      
