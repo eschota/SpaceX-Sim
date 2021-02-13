@@ -53,7 +53,7 @@ public class Module : Unit // главное это префаб модуля, �
     public override void IniAfterJSONRead()
     {
         base.IniAfterJSONRead();
-        name =  "Module_ "+ Name ;
+         
         ScenarioManager.instance.Modules.Add(this);
         transform.localPosition = localPosition * 0.1f;
     }

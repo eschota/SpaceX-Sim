@@ -36,8 +36,12 @@ public class UIResearchManager : MonoBehaviour
 
     void SwitchLabButtonsOnResearchSelection(UIResearchButton lab)
     {
-        foreach (var item in ButtonsResearchLabs) if (!lab.research.LabsResearchingNow.Contains(item.Lab)) item.ButtonAddThisLabToResearch.gameObject.SetActive(true);
-            else item.ButtonAddThisLabToResearch.gameObject.SetActive(false);
+        foreach (var item in ButtonsResearchLabs) 
+            if (!lab.research.LabsResearchingNow.Contains(item.Lab)) 
+                if(CurrentResearchSelected.research.Available)
+                item.ButtonAddThisLabToResearch.gameObject.SetActive(true);
+            else 
+                item.ButtonAddThisLabToResearch.gameObject.SetActive(false);
     }
 
     void OnChangeState ()
@@ -65,6 +69,7 @@ public class UIResearchManager : MonoBehaviour
     public void AddLabToResearch(BuildingResearchLab lab)
     {
         if (!CurrentResearchSelected.research.LabsResearchingNow.Contains(lab))
+        if(CurrentResearchSelected.research.Available)
         {
             CurrentResearchSelected.research.LabsResearchingNow.Add(lab);
             Debug.Log("Added Lab To Research: " + lab + " => " + CurrentResearchSelected);
