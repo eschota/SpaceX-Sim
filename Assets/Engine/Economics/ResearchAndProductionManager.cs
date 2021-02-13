@@ -83,16 +83,21 @@ public class ResearchAndProductionManager : MonoBehaviour
         {
             ResearchesAvailable.Remove(item);
             ResearchesCompleted.Add(item);
+            NotificationsManager.instance.AddNotification(item);
             RefreshResearchesUI();
         }
     }
 
-
+    
     void CalculateConstructions()
     {
         foreach (var item in GameManager.Buildings)
         {
-         if(item.isResearch==false)   item.ConsctructionProcess++;
+            if (item.ConstructionCompletedPercentage < 100)
+            {
+                if (item.isResearch == false) item.ConsctructionProcess++;
+                if (item.ConstructionCompletedPercentage == 100) NotificationsManager.instance.AddNotification(item);
+            }
         }
     }
 
