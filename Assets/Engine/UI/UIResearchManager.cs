@@ -27,10 +27,10 @@ public class UIResearchManager : MonoBehaviour
                 foreach (var item in ButtonsResearchLabs) item.ButtonAddThisLabToResearch. gameObject.SetActive(false);
                 return;
             }
-            SwitchLabButtonsOnResearchSelection(value);
+          
 
             _CurrentResearchSelected = value;
-            
+            SwitchLabButtonsOnResearchSelection(value);
         }
     }
 
