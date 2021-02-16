@@ -8,6 +8,7 @@ public class UIResearchManager : MonoBehaviour
 {
     public static UIResearchManager instance;
     [SerializeField] public Transform Grid;
+    [SerializeField] public Image ResearchGlobalButtonProgressFill;
 
     public List<UiLabButton> ButtonsResearchLabs = new List<UiLabButton>();
     void Start()
@@ -184,5 +185,22 @@ public class UIResearchManager : MonoBehaviour
             }
         }
     }
+    public Research CurrentMaximumCompletedResearch;
+    public void RefreshGloballFill()
+    {
+        float max = -100;
+
+        foreach (var item in ResearchAndProductionManager.instance.ResearchesAvailable)
+        {
+            if (item.CompletedPercentage > max)
+            {
+                CurrentMaximumCompletedResearch = item;
+                max = item.CompletedPercentage;
+            }
             
+        }
+        if (CurrentMaximumCompletedResearch != null)
+        ResearchGlobalButtonProgressFill.fillAmount = CurrentMaximumCompletedResearch.CompletedPercentage;
+
+    }
 }

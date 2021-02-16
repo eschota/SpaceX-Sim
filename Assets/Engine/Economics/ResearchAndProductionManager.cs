@@ -7,7 +7,9 @@ using System.Collections.Specialized;
 
 public class ResearchAndProductionManager : MonoBehaviour
 {
+    
     public static ResearchAndProductionManager instance;
+
     private void Awake()
     {
         if (instance != null) DestroyImmediate(instance);
@@ -87,6 +89,7 @@ public class ResearchAndProductionManager : MonoBehaviour
             NotificationsManager.instance.AddNotification(item);
             RefreshResearchesUI();
         }
+        UIResearchManager.instance.RefreshGloballFill();
     }
 
     

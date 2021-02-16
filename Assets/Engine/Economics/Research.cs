@@ -26,6 +26,16 @@ public class Research : Unit
     
     public UIResearchButton researchButton;
 
+
+    public float CompletedPercentage
+    {
+        get
+        {
+            float Total= TimeCost[0] + TimeCost[1] + TimeCost[2];
+            float _completed = TimeCompleted[0] + TimeCompleted[1] + TimeCompleted[2];
+            return _completed / Total;
+        }
+    }
     public bool Completed
     {
         get
