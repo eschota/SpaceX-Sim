@@ -112,23 +112,23 @@ public class GameManager : MonoBehaviour
                 ////
 
                 case State.ScenarioEditorSelection:
-                    
+                    _currentState = value;
                     ScenarioManager.instance.EnterScenarioManager();
                     break;
 
                 case State.Save:
-                     
+                    _currentState = value;
                     ScenarioManager.instance.EnterScenarioManager();
                     ScenarioManager.instance.SaveNameInputField.text = DateTime.Today + "_" + DateTime.Now.ToLongTimeString();
                     break;
 
                 case State.Load:
-                    
+                    _currentState = value;
                     ScenarioManager.instance.EnterScenarioManager();
                     break;
 
                 case State.StartGameSelectScenario:
-                     
+                    _currentState = value;
                     ScenarioManager.instance.EnterScenarioManager();
                     break;
                 /////////////////////////////////////////////////////
