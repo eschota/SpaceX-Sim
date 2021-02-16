@@ -35,16 +35,18 @@ public class UIResearchManager : MonoBehaviour
         }
     }
 
-    void SwitchLabButtonsOnResearchSelection(UIResearchButton lab)
+    void SwitchLabButtonsOnResearchSelection(UIResearchButton ResearchButton)
     {
         foreach (var item in ButtonsResearchLabs) 
-            if (!lab.research.LabsResearchingNow.Contains(item.Lab)) 
+            if (!ResearchButton.research.LabsResearchingNow.Contains(item.Lab)) 
                 if(CurrentResearchSelected.research.Available)
+                    if(CurrentResearchSelected.research.TimeCost[(int)item.Lab.CurrentBuildingClass]>0)
                 item.ButtonAddThisLabToResearch.gameObject.SetActive(true);
             else 
                 item.ButtonAddThisLabToResearch.gameObject.SetActive(false);
     }
 
+    
     void OnChangeState ()
     {
         if (GameManager.CurrentState != GameManager.State.ResearchGlobal)  return;
