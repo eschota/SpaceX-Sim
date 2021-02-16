@@ -64,6 +64,7 @@ public class ResearchAndProductionManager : MonoBehaviour
             {
                 if(lab.ConstructionCompletedPercentage>=100)
                 item.TimeCompleted[(int)lab.CurrentBuildingClass] += lab.Productivity;
+                RefreshResearchesUI();
             }
         }
     }

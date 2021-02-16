@@ -24,7 +24,7 @@ public class UIResearchManager : MonoBehaviour
             if (value == null)
             {
                 _CurrentResearchSelected = null;
-                foreach (var item in ButtonsResearchLabs) item.ButtonAddThisLabToResearch. gameObject.SetActive(false);
+              if(ButtonsResearchLabs.Count>0)  foreach (var item in ButtonsResearchLabs) item.ButtonAddThisLabToResearch?. gameObject.SetActive(false);
                 return;
             }
           
@@ -46,12 +46,16 @@ public class UIResearchManager : MonoBehaviour
 
     void OnChangeState ()
     {
-        if (GameManager.CurrentState != GameManager.State.ResearchGlobal) return;
-        ClearResearchLabsButtons();
-        AddResearchLabButtons();
+        if (GameManager.CurrentState != GameManager.State.ResearchGlobal)  return;
+        
+         ClearResearchLabsButtons();
+        AddResearchLabButtons();  
+        
         CurrentResearchSelected = null;
+       // if (ButtonsResearchLabs.Count > 0) foreach (var item in ButtonsResearchLabs) item.ButtonAddThisLabToResearch?.gameObject.SetActive(false);
     }
 
+    
     private void AddResearchLabButtons()
     {
         foreach (var item in GameManager.Buildings)
@@ -60,8 +64,11 @@ public class UIResearchManager : MonoBehaviour
                 if (item.GetType() == typeof(BuildingResearchLab))
                     if(item.ConstructionCompletedPercentage>=100)
                 {
-                    (item as BuildingResearchLab).ButtonLab.name = (item as BuildingResearchLab).ButtonLab.name + ButtonsResearchLabs.Count.ToString();
-                    ButtonsResearchLabs.Add((item as BuildingResearchLab).ButtonLab);
+                       UiLabButton _ButtonLab = Instantiate(Resources.Load<UiLabButton>("UI/ButtonUnits/ButtonResearchLab"+item.CurrentBuildingClass.ToString()));
+                        _ButtonLab.Lab = item as BuildingResearchLab;
+                        _ButtonLab.transform.SetParent(UIResearchManager.instance.Grid);
+                        _ButtonLab.name = "ButtonLab" + item.Name;
+                        ButtonsResearchLabs.Add(_ButtonLab);
                 }
         }
     }
@@ -73,16 +80,22 @@ public class UIResearchManager : MonoBehaviour
         {
             CurrentResearchSelected.research.LabsResearchingNow.Add(lab);
             Debug.Log("Added Lab To Research: " + lab + " => " + CurrentResearchSelected);
-            lab.ButtonLab.ButtonAddThisLabToResearch.gameObject.SetActive(false);
+            ButtonsResearchLabs.Find(X=>X.Lab==lab).ButtonAddThisLabToResearch.gameObject.SetActive(false);
         }
     }
     private void ClearResearchLabsButtons()
     {
+        Debug.Log("Clear Buttons");
         if (GameManager.CurrentState != GameManager.State.ResearchGlobal) return;
         if (ButtonsResearchLabs.Count>0) for (int i = 0; i < ButtonsResearchLabs.Count; i++)
             {
-            if(ButtonsResearchLabs[i]!=null)   Destroy(ButtonsResearchLabs[i].gameObject);
-            }        
+                if (ButtonsResearchLabs[i] != null)
+                {
+                    
+                    Destroy(ButtonsResearchLabs[i].gameObject);
+                    ButtonsResearchLabs[i]= null;
+                }
+            }     
         ButtonsResearchLabs.Clear();
 
     }
@@ -110,7 +123,7 @@ public class UIResearchManager : MonoBehaviour
         {
             foreach (var buttons in item.LabsResearchingNow)
             {
-                CreateLink( item.researchButton.transform.position, buttons.ButtonLab.transform.position);
+                CreateLink( item.researchButton.transform.position, ButtonsResearchLabs.Find(X => X.Lab ==buttons).transform.position);
             } 
         }
     }

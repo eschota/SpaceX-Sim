@@ -23,6 +23,8 @@ public class UiLabButton : MonoBehaviour
 
     private void OnDestroy()
     {
+      
         ButtonAddThisLabToResearch.onClick.RemoveListener(OnClick);
+
     }
 }
