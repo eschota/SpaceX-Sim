@@ -33,13 +33,15 @@ public class UIProductionManager : MonoBehaviour
 
     void AddProductionFactoryButtons()
     {
-        foreach (var item in ResearchAndProductionManager.instance.ProductionFactories)
+        foreach (var item in GameManager.Buildings)
         {
-            if(item.isResearch==false)
-                if(item.ConstructionCompletedPercentage>=100)
-                {
+            if (!item.isResearch)
+                if (item.GetType() == typeof(BuildingProductionFactory))
+                    if (item.ConstructionCompletedPercentage >= 100)
+                    {
+                        
                     ButtonsProductionFactories.Add(Instantiate(ButtonPrefab, Grid));
-                    ButtonsProductionFactories[ButtonsProductionFactories.Count - 1].ProductionFactory = item;
+                    ButtonsProductionFactories[ButtonsProductionFactories.Count - 1].ProductionFactory = item as BuildingProductionFactory;
                 }
         }
     }

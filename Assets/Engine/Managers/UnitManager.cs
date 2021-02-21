@@ -119,7 +119,7 @@ public class UnitManager : MonoBehaviour
             return;
         }
         buildingUnitPrefabs.Clear();
-        buildingUnitPrefabs.AddRange(ResearchAndProductionManager.instance.BuildingsAvailable.FindAll(X => X.Types.Contains(ThisType)));
+        buildingUnitPrefabs.AddRange(ResearchAndProductionManager.instance.BuildingsAvailableForBuild.FindAll(X => X.Types.Contains(ThisType)));
     }
 
     void SliceTerrain()

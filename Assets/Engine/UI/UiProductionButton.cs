@@ -11,7 +11,7 @@ public class UiProductionButton : MonoBehaviour
 
     private void Awake()
     {
-        ButtonAddThisLabToResearch.onClick.AddListener(OnClick);
+      //  ButtonAddThisLabToResearch.onClick.AddListener(OnClick);
     }
 
 
@@ -24,7 +24,7 @@ public class UiProductionButton : MonoBehaviour
     private void OnDestroy()
     {
       
-        ButtonAddThisLabToResearch.onClick.RemoveListener(OnClick);
+     //   ButtonAddThisLabToResearch.onClick.RemoveListener(OnClick);
 
     }
 }

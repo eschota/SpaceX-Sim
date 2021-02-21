@@ -23,7 +23,7 @@ public class ResearchAndProductionManager : MonoBehaviour
                 if (m.GetType() == typeof(BuildingResearchLab)
                  || m.GetType() == typeof(BuildingRocketLaunch)
                  || m.GetType() == typeof(BuildingProductionFactory))                    
-                                                                         BuildingsAvailable.Add(m as BuildingUnit);
+                                                                         BuildingsAvailableForBuild.Add(m as BuildingUnit);
 
 
 
@@ -45,20 +45,9 @@ public class ResearchAndProductionManager : MonoBehaviour
     public List<Research> ResearchesInProgress = new List<Research>();
  
     public List<Module> ModulesAvailable = new List<Module>();        
-    public List<BuildingUnit> BuildingsAvailable = new List<BuildingUnit>();
+    public List<BuildingUnit> BuildingsAvailableForBuild = new List<BuildingUnit>();
     
-    public List<BuildingResearchLab> ResearchLabs = new List<BuildingResearchLab>();
-    public List<BuildingRocketLaunch> RocketLauches = new List<BuildingRocketLaunch>();
-    public List<BuildingProductionFactory> ProductionFactories = new List<BuildingProductionFactory>();
-    
-
-    public void AddBuilding( BuildingUnit unit)
-    {
-        if (unit as BuildingResearchLab != null) ResearchLabs.Add(unit as BuildingResearchLab);
-        if (unit as BuildingRocketLaunch != null) RocketLauches.Add(unit as BuildingRocketLaunch);
-        if (unit as BuildingProductionFactory != null) ProductionFactories.Add(unit as BuildingProductionFactory);
-    }
-
+  
     public void CalculateResearchingProgress()
     {
         foreach (var item in ResearchesAvailable)
@@ -96,12 +85,16 @@ public class ResearchAndProductionManager : MonoBehaviour
     
     void CalculateConstructions()
     {
-        foreach (var item in GameManager.Buildings)
+        foreach (var item in GameManager.Buildings.FindAll(X=>X.isResearch==false))
         {
             if (item.ConstructionCompletedPercentage < 100)
             {
                 if (item.isResearch == false) item.ConsctructionProcess++;
-                if (item.ConstructionCompletedPercentage == 100) NotificationsManager.instance.AddNotification(item);
+                if (item.ConstructionCompletedPercentage == 100)
+                {
+                    NotificationsManager.instance.AddNotification(item);
+                     
+                }
             }
         }
     }

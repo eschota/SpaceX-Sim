@@ -270,7 +270,7 @@ public class ScenarioManager : MonoBehaviour
             item.researchButton.RebuildLinks(); 
             item.researchButton.Refresh();
         }
-        
+        if (gameObject.GetComponent<ResearchAndProductionManager>() != null) Destroy(gameObject.GetComponent<ResearchAndProductionManager>());
         gameObject.AddComponent<ResearchAndProductionManager>();// инициация системы рисерчей
     }
 

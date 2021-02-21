@@ -15,6 +15,7 @@ public class BuildingUnit : Module
     
    
     public BuildingClass CurrentBuildingClass;
+    [Header ("Тип Здания, должен быть указан хотя бы один")]
     [SerializeField] public List< BuildinType> Types;
     public float ConsctructionProcess = -10;
     public override void IniAfterJSONRead()
