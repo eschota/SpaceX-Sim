@@ -67,7 +67,7 @@ public class TimeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameManager.CurrentState == GameManager.State.PlaySpace)
+            if (GameManager.CurrentState != GameManager.State.Pause)
                 GameManager.CurrentState = GameManager.State.Pause;
             else
                 GameManager.CurrentState = GameManager.State.PlaySpace;

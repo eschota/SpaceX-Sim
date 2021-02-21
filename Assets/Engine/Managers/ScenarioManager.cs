@@ -154,6 +154,7 @@ public class ScenarioManager : MonoBehaviour
     {
         public int[] StartDate;
         public string Name;
+        public string LastScene;
         public string CurrentFolder 
         {
             get
@@ -273,7 +274,7 @@ public class ScenarioManager : MonoBehaviour
         if (gameObject.GetComponent<ResearchAndProductionManager>() != null) Destroy(gameObject.GetComponent<ResearchAndProductionManager>());
         gameObject.AddComponent<ResearchAndProductionManager>();// инициация системы рисерчей
     }
-
+    
     private void ClearResearchesAndModules()
     {
         WindowEditResearch.instance.CurrentResearch = null;
@@ -321,6 +322,7 @@ public class ScenarioManager : MonoBehaviour
     }
     public void SaveGame()
     {
+        CurrentScenario.LastScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         CurrentScenario.Name = SaveNameInputField.text;
         CurrentScenario.SaveNewScenario( );
         GameManager.CurrentState = GameManager.State.PlaySpace;
@@ -332,8 +334,34 @@ public class ScenarioManager : MonoBehaviour
         if (CurrentScenario == null) return;
         ClearResearchesAndModules();
         LoadScenarioResearchAndModules();
-        GameManager.CurrentState = GameManager.State.PlaySpace;
+        SelectStateByLastScene();        
         Debug.LogWarning("Game Loaded:" + CurrentScenario);
+    }
+
+    void SelectStateByLastScene()
+    {
+        switch (CurrentScenario.LastScene)
+        {   
+            case "Launch":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Launch");
+                GameManager.CurrentState = GameManager.State.EarthLauchPlace;
+                break;
+            case "Research":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Research");
+                GameManager.CurrentState = GameManager.State.EarthResearchLab;
+                break;
+            case "Production":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Production");
+                GameManager.CurrentState = GameManager.State.EarthProductionFactory;
+                break;
+            case "SeaLaunch":
+                //GameManager.CurrentState = GameManager.State.;
+                break;
+            default:
+                GameManager.CurrentState = GameManager.State.PlaySpace;
+                break;
+        }
+
     }
     #endregion
 }
