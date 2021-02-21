@@ -76,7 +76,7 @@ public class Module : Unit // главное это префаб модуля, �
         string path = AssetDatabase.GetAssetPath(Prefab);
         PrefabPath = path.Substring(17,path.Length-24);
         PrefabName = Prefab.name;
-
+        if (Name == "") Name = gameObject.name;
         if (Prefab && !Icon) 
         {
             Texture2D tex = AssetPreview.GetAssetPreview(Prefab);

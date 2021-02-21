@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6128794660418984250}
-  - component: {fileID: 8688289823778837698}
+  - component: {fileID: 1202107200308582207}
   m_Layer: 0
-  m_Name: BuildingResearchBig
+  m_Name: BuildingProductionSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8688289823778837698
+--- !u!114 &1202107200308582207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,21 +40,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6183073115864537330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3d28ce853db5f4ca17197b338c0014, type: 3}
+  m_Script: {fileID: 11500000, guid: ded10435c1ebd3b4691222ba5c4aed46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  Name: Research Big
-  Prefab: {fileID: 8833400800458545272, guid: ed0f943fa050d9945a4cf83c49a60677, type: 3}
+  Name: Production Small
+  Prefab: {fileID: 5334233153111851557, guid: bd7f6e3cb68a7164a86aa96aecce8768, type: 3}
   localPosition: {x: 0, y: 0, z: 0}
   localRotation: {x: 0, y: 0, z: 0}
   localScale: {x: 0, y: 0, z: 0}
   ParentName: 
   Class: 
   CreationDate: 0
-  PrefabName: BuildingResearchBIG_Final_Prefab
-  PrefabPath: Modules/EarthUnits/Prefabs/BuildingResearchBIG_Final_Prefab
-  type: 0
+  PrefabName: BuildingResearchSmall
+  PrefabPath: Modules/EarthUnits/Prefabs/BuildingResearchSmall
+  type: -1
   isResearch: 1
   Cost: 1
   ProductionTime: 1e0000001e0000001e000000
@@ -62,6 +62,6 @@ MonoBehaviour:
   _cam: {fileID: 0}
   Productivity: 1
   Size: {x: 0, y: 0}
-  CurrentBuildingClass: 2
+  CurrentBuildingClass: 0
   Types: 
   ConsctructionProcess: -10
