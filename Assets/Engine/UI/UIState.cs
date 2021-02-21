@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[ExecuteInEditMode]
+ 
 [RequireComponent (typeof(CanvasGroup))]
 public class UIState : MonoBehaviour
 {
@@ -60,33 +60,33 @@ public class UIState : MonoBehaviour
 
    
 }
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
-[CustomEditor(typeof(UIState))]
-class UIStateButton : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        if (GUILayout.Button("IsolateThisUI"))
-        {
-            List<UIState> statesParent = new List<UIState>();
-            statesParent.AddRange(Selection.activeGameObject.GetComponentsInParent<UIState>());
-            foreach (var item in statesParent[0].GetComponentsInChildren<UIState>())
-            {
+//[CustomEditor(typeof(UIState))]
+//class UIStateButton : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        base.OnInspectorGUI();
+//        if (GUILayout.Button("IsolateThisUI"))
+//        {
+//            List<UIState> statesParent = new List<UIState>();
+//            statesParent.AddRange(Selection.activeGameObject.GetComponentsInParent<UIState>());
+//            foreach (var item in statesParent[0].GetComponentsInChildren<UIState>())
+//            {
                 
-                if (item.gameObject == Selection.activeGameObject)
-                    item.CG.alpha = 1;
-                else
-                    item.CG.alpha = 0;
-                if (statesParent.Exists(X => X == item)) item.CG.alpha = 1;
-            }
-            foreach (var item in Selection.activeGameObject.GetComponentsInParent<UIState>())
-            {
-                item.CG.alpha = 1;
-            }
-        }
+//                if (item.gameObject == Selection.activeGameObject)
+//                    item.CG.alpha = 1;
+//                else
+//                    item.CG.alpha = 0;
+//                if (statesParent.Exists(X => X == item)) item.CG.alpha = 1;
+//            }
+//            foreach (var item in Selection.activeGameObject.GetComponentsInParent<UIState>())
+//            {
+//                item.CG.alpha = 1;
+//            }
+//        }
 
-    }
-}
-#endif
+//    }
+//}
+//#endif

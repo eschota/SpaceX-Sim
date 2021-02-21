@@ -6,7 +6,7 @@ public class UnitEarth : Unit
 {
 
 
-    private void Update()
+    void LateUpdate()
     {
         if (GameManager.CurrentState == GameManager.State.MenuStartGame)
             transform.Rotate(Vector3.back, Time.deltaTime);

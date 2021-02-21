@@ -36,8 +36,9 @@ public class ResearchAndProductionManager : MonoBehaviour
         CalculateConstructions();
         CalculateResearchingProgress();
         RefreshResearchesUI();
+        RefreshProductionUI();
     }
-    
+    #region Researches
 
     public List<Research> ResearchesCompleted = new List<Research>();
     public List<Research> ResearchesAvailable = new List<Research>();
@@ -112,4 +113,12 @@ public class ResearchAndProductionManager : MonoBehaviour
             item.researchButton.Refresh();
         }
     }
+    #endregion
+    #region Productions
+ void RefreshProductionUI()
+    {
+        
+    }
+
+    #endregion
 }

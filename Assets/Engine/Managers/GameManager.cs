@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     public static bool Creation => (CurrentState == State.CreateLaunchPlace || CurrentState == State.CreateProductionFactory || CurrentState == State.CreateResearchLab || CurrentState == State.CreateSeaLaunch);
     public static event Action EventChangeState;
     public static event Action<Unit> EventWithUnit;
-    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario,CreateSeaLaunch,Back }
+    public enum State { MenuStartGame, Pause, MenuLoadGame, PlaySpace, CreateLaunchPlace, CreateResearchLab, CreateProductionFactory, PlayStation, PlayBase, ResearchGlobal, EarthResearchLab, EarthProductionFactory, EarthLauchPlace, ScenarioEditorSelection, Settings, Save, Load, PlayEarth, ScenarioEditorGlobal, StartGameSelectScenario,CreateSeaLaunch,Back,ProductionGlobal }
     private static State _currentState;
 
     public static State LastState;
