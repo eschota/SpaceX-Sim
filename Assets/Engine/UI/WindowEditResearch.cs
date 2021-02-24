@@ -13,7 +13,7 @@ public class WindowEditResearch : UIWindows
     [SerializeField] public TMPro.TMP_InputField Heavy;
      
     [SerializeField] public Toggle Completed;
-    [SerializeField] public UIButtonSelectModule ButtonSelectModule;
+    [SerializeField] public UIButtonSelectModuleInEditor ButtonSelectModule;
     [SerializeField] public Transform SelectModulesTransform;
 
     
@@ -64,7 +64,7 @@ public class WindowEditResearch : UIWindows
         Heavy.SetTextWithoutNotify(  CurrentResearch.TimeCost[2].ToString());
         Completed.SetIsOnWithoutNotify( CurrentResearch.Completed);
     }
-    public List<UIButtonSelectModule> UIModuleButtons = new List<UIButtonSelectModule>();
+    public List<UIButtonSelectModuleInEditor> UIModuleButtons = new List<UIButtonSelectModuleInEditor>();
     public void AddModuleButton(Module module)
     {
         UIModuleButtons.Add(   Instantiate(ButtonSelectModule, SelectModulesTransform));

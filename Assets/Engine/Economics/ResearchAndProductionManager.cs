@@ -44,7 +44,7 @@ public class ResearchAndProductionManager : MonoBehaviour
     public List<Research> ResearchesAvailable = new List<Research>();
     public List<Research> ResearchesInProgress = new List<Research>();
  
-    public List<Module> ModulesAvailable = new List<Module>();        
+    public List<Module> ModulesAvailableForProduction = new List<Module>();        
     public List<BuildingUnit> BuildingsAvailableForBuild = new List<BuildingUnit>();
     
   
@@ -69,7 +69,7 @@ public class ResearchAndProductionManager : MonoBehaviour
             {
                 Temp.Add(item);
                 Debug.Log("Research Completed: " + item.Name);
-                ModulesAvailable.AddRange(item.Modules);
+                ModulesAvailableForProduction.AddRange(item.Modules);
             }
         }
         foreach (var item in Temp)
