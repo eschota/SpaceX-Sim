@@ -250,6 +250,8 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.U)) foreach (var item in ResearchAndProductionManager.instance.ResearchesAvailable) item.TimeCompleted =item.TimeCost;
+            
         
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
         //if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(1);
