@@ -99,10 +99,11 @@ public class CameraControllerInSpace : MonoBehaviour
     }
     private void FlyBack()
     {
+        
         FlyToTimer += Time.unscaledDeltaTime / FlyToTime;
         if (FlyToTimer < 1)
         {
-
+            if (StartPositionOverUnit.magnitude < 0.5f) StartPositionOverUnit = Vector3.forward * -15;
             thisCamera.transform.position = Vector3.Lerp(targetPositionOverUnit,StartPositionOverUnit, FlyToCurve.Evaluate(FlyToTimer));
             thisCamera.transform.rotation = Quaternion.Lerp(targetRotationOverUnit,StartRotationOverUnit, FlyToCurve.Evaluate(FlyToTimer));
 
