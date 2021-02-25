@@ -21,7 +21,7 @@ public class BuildingUnit : Module
     public override void IniAfterJSONRead()
     {
         base.IniAfterJSONRead();
-        SetParentInHierarchyByType();
+        SetParentInHierarchyByType(isResearch);
     }
     public override void Awake()
     {
@@ -30,9 +30,9 @@ public class BuildingUnit : Module
        
 
     }
-    public override void SetParentInHierarchyByType()
+    public override void SetParentInHierarchyByType(bool _is)
     {
-        if (isResearch) transform.SetParent(GameManager.instance?.BuildingResearchTransform);
+        if (_is) transform.SetParent(GameManager.instance?.BuildingResearchTransform);
         else transform.SetParent(GameManager.instance.BuildingsTransform);
     }
 

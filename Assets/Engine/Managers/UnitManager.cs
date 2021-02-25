@@ -100,12 +100,12 @@ public class UnitManager : MonoBehaviour
         Selectable S = prefab.GetComponent<Selectable>();
         S.transform.position = pos;
         S.RootUnit = Instantiate( unit);
-        S.IniSelectable();
-        CurrentSelected = S.RootUnit;
-        S.RootUnit.isResearch = false;
+        S.IniSelectable(); 
+        S.RootUnit.SetParentInHierarchyByType(S.RootUnit.isResearch=false);
+        S.RootUnit.transform.localPosition = pos;
         S.RootUnit.localPosition = pos;
- 
-        CurrentState = State.None;
+        S.RootUnit.ConsctructionProcess = 1;
+
     }
     void GetAvailableBuildingsIn()
     {
@@ -134,11 +134,9 @@ public class UnitManager : MonoBehaviour
     void LoadBuildings()
     {
         if (GameManager.instance == null) return;
-        foreach (var item in GameManager.Buildings)
+        foreach (var item in GameManager.Buildings.FindAll(X=>X.isResearch==false))
         {
-            if(item.isResearch==false)
-                if(item.Types.Contains(ThisType))
-            if (item.ConsctructionProcess >=0.99f)
+            if(item.Types.Contains(ThisType))         
             {
                 Selectable temp=   Instantiate(Resources.Load<GameObject>(item.PrefabPath)).GetComponent<Selectable>();
                 temp.RootUnit = item;

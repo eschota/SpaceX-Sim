@@ -126,6 +126,7 @@ public class UIUnitManager : MonoBehaviour
 
                             CurrentBuildingGameObject = null;
 
+                           UnitManager.instance.CurrentState = UnitManager.State.None;
                             //ShowSelectBuildingPanel();
                             return;
                         }
