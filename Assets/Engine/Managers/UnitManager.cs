@@ -102,7 +102,8 @@ public class UnitManager : MonoBehaviour
         S.RootUnit = Instantiate( unit);
         S.IniSelectable();
         CurrentSelected = S.RootUnit;
-        S.RootUnit.isResearch = false;        
+        S.RootUnit.isResearch = false;
+        S.RootUnit.localPosition = pos;
         SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
         CurrentState = State.None;
     }
