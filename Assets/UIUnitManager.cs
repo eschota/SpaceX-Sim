@@ -65,7 +65,7 @@ public class UIUnitManager : MonoBehaviour
         
         }
         return tempSelectable;
-        return null;
+        
 
     }
     void Deselection()
@@ -85,7 +85,7 @@ public class UIUnitManager : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
 
-        return results.Count >0;
+    
     }
     void ConstructPositioning()
     {
@@ -114,7 +114,7 @@ public class UIUnitManager : MonoBehaviour
 
                             UnitManager.instance.PlaceBuilding(CurrentBuilding as BuildingUnit, CurrentBuildingGameObject.gameObject, target, Vector3.zero);
 
-                            CurrentBuilding.transform.SetParent(GameManager.instance.BuildingsTransform);
+
 
                             CurrentBuilding.transform.localPosition= target;
 
@@ -126,7 +126,7 @@ public class UIUnitManager : MonoBehaviour
 
                             CurrentBuildingGameObject = null;
 
-                            ShowSelectBuildingPanel();
+                            //ShowSelectBuildingPanel();
                             return;
                         }
                     }

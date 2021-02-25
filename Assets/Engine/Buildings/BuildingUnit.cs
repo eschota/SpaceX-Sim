@@ -32,7 +32,7 @@ public class BuildingUnit : Module
     }
     public override void SetParentInHierarchyByType()
     {
-        if (isResearch) transform.SetParent(GameManager.instance.BuildingResearchTransform);
+        if (isResearch) transform.SetParent(GameManager.instance?.BuildingResearchTransform);
         else transform.SetParent(GameManager.instance.BuildingsTransform);
     }
 

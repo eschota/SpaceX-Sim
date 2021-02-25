@@ -38,7 +38,7 @@ public class UnitManager : MonoBehaviour
             {
                 case State.None: 
                     CurrentSelected = null;
-                    SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
+  
                     ConstructionGrid.SetActive(false);
                     terra.gameObject.SetActive(true);
                     UIUnitManager.instance. BuildingsPanel.CurrentMode = UIWindows.Mode.hide;
@@ -49,7 +49,7 @@ public class UnitManager : MonoBehaviour
                     terra.gameObject.SetActive(true);
                     break;
                 case State.PlaceBuilding:
-                    SpeedManager.instance.CurrenSpeed = SpeedManager.Speed.Stop;
+ 
                     UIUnitManager.instance.CurrentBuilding = null;
                    
                     ConstructionGrid.SetActive(true);
@@ -79,7 +79,7 @@ public class UnitManager : MonoBehaviour
         ConstructionGrid.transform.position = new Vector3(ConstructionGrid.transform.position.x, 0, ConstructionGrid.transform.position.z);
         ConstructionGrid.SetActive(false);
         GetAvailableBuildingsIn();
-        if (GameManager.instance == null) gameObject.AddComponent<GameManager>();
+       
 
         if (terra == null) terra = FindObjectOfType<Terrain>().transform.parent;
         
@@ -104,7 +104,7 @@ public class UnitManager : MonoBehaviour
         CurrentSelected = S.RootUnit;
         S.RootUnit.isResearch = false;
         S.RootUnit.localPosition = pos;
-        SpeedManager.instance.CurrenSpeed = SpeedManager.instance.LastSpeed;
+ 
         CurrentState = State.None;
     }
     void GetAvailableBuildingsIn()
