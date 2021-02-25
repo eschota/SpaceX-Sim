@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
    
     public virtual void IniAfterJSONRead()
     {
-        transform.SetParent(GameManager.instance.transform);
+      
         name = Name;
         transform.localPosition = localPosition;
         transform.localRotation = Quaternion.Euler(localRotation);

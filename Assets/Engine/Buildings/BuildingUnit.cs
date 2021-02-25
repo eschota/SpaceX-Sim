@@ -21,16 +21,16 @@ public class BuildingUnit : Module
     public override void IniAfterJSONRead()
     {
         base.IniAfterJSONRead();
-        SplitByIsResearch();
+        SetParentInHierarchyByType();
     }
     public override void Awake()
     {
         base.Awake();        
         if (!GameManager.Buildings.Contains(this)) GameManager.Buildings.Add(this);
-        SplitByIsResearch();
+       
 
     }
-    public virtual void SplitByIsResearch()
+    public override void SetParentInHierarchyByType()
     {
         if (isResearch) transform.SetParent(GameManager.instance.BuildingResearchTransform);
         else transform.SetParent(GameManager.instance.BuildingsTransform);
