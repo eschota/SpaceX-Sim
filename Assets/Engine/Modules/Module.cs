@@ -48,7 +48,7 @@ public class Module : Unit // главное это префаб модуля, �
     public override void Awake()
     {
         base.Awake();
-        SetParentInHierarchyByType();
+        SetParentInHierarchyByType(isResearch);
     }
     public override void IniAfterJSONRead()
     {
@@ -62,9 +62,9 @@ public class Module : Unit // главное это префаб модуля, �
         ScenarioManager.instance?.Modules.Remove(this);
     }
 
-    public virtual  void SetParentInHierarchyByType()
+    public virtual  void SetParentInHierarchyByType(bool _is)
     {
-        if (!isResearch) transform.SetParent(GameManager.instance.ModulesTransform);
+        if (!_is) transform.SetParent(GameManager.instance.ModulesTransform);
         else transform.SetParent(GameManager.instance.ResearchModulesTransform);
     }
 
