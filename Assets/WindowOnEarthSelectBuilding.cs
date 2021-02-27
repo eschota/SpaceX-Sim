@@ -45,6 +45,7 @@ public class WindowOnEarthSelectBuilding : UIWindows
         if (unit.GetType() != typeof(BuildingProductionFactory)) return;
 
         foreach (var item in ResearchAndProductionManager.instance.ModulesAvailableForProduction)
+            if(item.ProductionTime[(int)(CurrentSelectedModule as BuildingUnit).CurrentBuildingClass]>0)
         {
             ModuleButtons.Add(Instantiate(ButtonPrefab,ModuleButtonsTransform));
             ModuleButtons[ModuleButtons.Count - 1].Ini(item);
