@@ -250,7 +250,8 @@ public class GameManager : MonoBehaviour
     void Hack()
     {
         if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        if (Input.GetKeyDown(KeyCode.U)) foreach (var item in ResearchAndProductionManager.instance.ResearchesAvailable) item.TimeCompleted =item.TimeCost;
+        if (Input.GetKeyDown(KeyCode.U)) { foreach (var item in ResearchAndProductionManager.instance.ResearchesAvailable) item.TimeCompleted = item.TimeCost; Debug.Log("Все исследования завершены:"); }
+        if (Input.GetKeyDown(KeyCode.I)) { foreach (var item in FindObjectsOfType<BuildingUnit>()) item.ConsctructionProcess=10000; Debug.Log("Все Здания построены :"); }
             
         
         if (Input.GetKeyDown(KeyCode.Plus)|| Input.GetKeyDown(KeyCode.KeypadPlus)) Eco.Balance += Eco.Balance;
