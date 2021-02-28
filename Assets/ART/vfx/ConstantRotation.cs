@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ConstantRotation : MonoBehaviour
 {
-    public float rotationSpeed = 10.0f;
+    public Transform target;
+    public int speed;
     private void Update()
+    
     {
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        transform.RotateAround(target.transform.position, target.transform.up, speed * Time.deltaTime);
     }
 }
