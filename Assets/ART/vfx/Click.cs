@@ -9,6 +9,17 @@ public class Click : MonoBehaviour
 
     private List<GameObject> selectedObjects;
 
+    [HideInInspector]
+    public List<GameObject> selectebleObjects;
+    private Vector3 mousePos1;
+    private Vector3 mousePos2;
+
+    void Awake()
+    {
+        selectedObjects = new List<GameObject>();
+        selectebleObjects = new List<GameObject>();
+    }
+
     void Start()
     {
         selectedObjects = new List<GameObject>();
@@ -19,20 +30,13 @@ public class Click : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (selectedObjects.Count > 0)
-            {
-                foreach (GameObject obj in selectedObjects)
-                {
-                    obj.GetComponent<ClickOn>().currentSelected = false;
-                    obj.GetComponent<ClickOn>().ClickMe();
-                }
-
-                selectedObjects.Clear();
-            }
+            ClearSelection();
         }
 
         if (Input.GetMouseButtonDown(0))
         {
+            mousePos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
             RaycastHit rayHit;
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayHit, Mathf.Infinity, Layer))
@@ -56,16 +60,7 @@ public class Click : MonoBehaviour
                 }
                 else
                 {
-                    if (selectedObjects.Count > 0)
-                    {
-                        foreach (GameObject obj in selectedObjects)
-                        {
-                            obj.GetComponent<ClickOn>().currentSelected = false;
-                            obj.GetComponent<ClickOn>().ClickMe();
-                        }
-
-                        selectedObjects.Clear();
-                    }
+                    ClearSelection();
                     
                     selectedObjects.Add(rayHit.collider.gameObject);
                     clickOnScript.currentSelected = true;
@@ -74,4 +69,19 @@ public class Click : MonoBehaviour
             }
         }
     }
+
+    void ClearSelection()
+    {
+        if (selectedObjects.Count > 0)
+        {
+            foreach (GameObject obj in selectedObjects)
+            {
+                obj.GetComponent<ClickOn>().currentSelected = false;
+                obj.GetComponent<ClickOn>().ClickMe();
+            }
+
+            selectedObjects.Clear();
+        }
+    }
+
 }
