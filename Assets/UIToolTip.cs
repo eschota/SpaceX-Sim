@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UIToolTip : UIWindows
 {
-    [SerializeField] public TMPro.TextMeshPro Name;
-    [SerializeField] public TMPro.TextMeshPro Description;
-    [SerializeField] public TMPro.TextMeshPro Cost;    
+    [SerializeField] public TMPro.TextMeshProUGUI Name;
+    [SerializeField] public TMPro.TextMeshProUGUI Description;
+    [SerializeField] public TMPro.TextMeshProUGUI Cost;    
     void Start()
     {
         

@@ -37,6 +37,7 @@ public class ResearchAndProductionManager : MonoBehaviour
         CalculateResearchingProgress();
         RefreshResearchesUI();
         RefreshProductionUI();
+        CalculateProductionModules();
     }
     #region Researches
 
@@ -45,6 +46,7 @@ public class ResearchAndProductionManager : MonoBehaviour
     public List<Research> ResearchesInProgress = new List<Research>();
  
     public List<Module> ModulesAvailableForProduction = new List<Module>();        
+    public List<Module> ModulesProduced = new List<Module>();        
     public List<BuildingUnit> BuildingsAvailableForBuild = new List<BuildingUnit>();
     
   
@@ -108,6 +110,11 @@ public class ResearchAndProductionManager : MonoBehaviour
     }
     #endregion
     #region Productions
+
+    void CalculateProductionModules()
+    {
+        
+    }
  void RefreshProductionUI()
     {
         
