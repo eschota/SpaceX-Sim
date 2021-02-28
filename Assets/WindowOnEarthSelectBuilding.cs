@@ -43,9 +43,10 @@ public class WindowOnEarthSelectBuilding : UIWindows
     {
         ClearBUttons();
         if (unit.GetType() != typeof(BuildingProductionFactory)) return;
+        if ((unit as BuildingUnit).ConstructionCompletedPercentage < 100) return;
 
         foreach (var item in ResearchAndProductionManager.instance.ModulesAvailableForProduction)
-            if(item.ProductionTime[(int)(CurrentSelectedModule as BuildingUnit).CurrentBuildingClass]>0)
+            if(item.ProductionTime[(int)(unit as BuildingUnit).CurrentBuildingClass]>0)
         {
             ModuleButtons.Add(Instantiate(ButtonPrefab,ModuleButtonsTransform));
             ModuleButtons[ModuleButtons.Count - 1].Ini(item);
