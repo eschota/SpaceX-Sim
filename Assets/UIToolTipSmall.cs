@@ -8,7 +8,7 @@ public class UIToolTipSmall : MonoBehaviour
 {
     [SerializeField] CanvasGroup CG;
     [SerializeField] ContentSizeFitter CSF;
-    [SerializeField] RectTransform rect;
+    [SerializeField] RectTransform _rect;
     [SerializeField] TMPro.TextMeshProUGUI Text;
     [SerializeField] TMPro.TextMeshProUGUI CopyText;
     [SerializeField] AnimationCurve FadeCurve;
@@ -46,7 +46,7 @@ public class UIToolTipSmall : MonoBehaviour
     private void Update()
     {
         CurrentToolTip = FindToolTip();
-        rect.position = Input.mousePosition;
+        _rect.position = Input.mousePosition +new Vector3(Screen.width*0.02f,0,0);
 
         if (CurrentToolTip != null)
             timer+=Time.unscaledDeltaTime*TimeToFade;
