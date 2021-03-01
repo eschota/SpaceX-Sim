@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00009628788, g: 0.00012133931, b: 0.000086146465,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,7 +135,6 @@ GameObject:
   - component: {fileID: 12416656}
   - component: {fileID: 12416659}
   - component: {fileID: 12416660}
-  - component: {fileID: 12416661}
   - component: {fileID: 12416662}
   m_Layer: 12
   m_Name: Earth
@@ -289,8 +287,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
+      key1: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -339,19 +337,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
   speed: 29
---- !u!114 &12416661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12416654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 12416654}
 --- !u!114 &12416662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +416,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &358218332
 GameObject:
@@ -445,9 +430,8 @@ GameObject:
   - component: {fileID: 358218336}
   - component: {fileID: 358218335}
   - component: {fileID: 358218334}
-  - component: {fileID: 358218338}
-  - component: {fileID: 358218339}
   - component: {fileID: 358218337}
+  - component: {fileID: 358218338}
   - component: {fileID: 358218340}
   m_Layer: 12
   m_Name: Uranus
@@ -468,7 +452,7 @@ Transform:
   m_LocalScale: {x: 3.9800005, y: 3.98, z: 3.9800005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &358218334
 SphereCollider:
@@ -600,8 +584,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0.28010777, b: 0, a: 1}
+      key1: {r: 1, g: 0.28010777, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -650,19 +634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
   speed: 6
---- !u!114 &358218339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358218332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 358218332}
 --- !u!114 &358218340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,9 +667,8 @@ GameObject:
   - component: {fileID: 592542769}
   - component: {fileID: 592542768}
   - component: {fileID: 592542767}
-  - component: {fileID: 592542771}
-  - component: {fileID: 592542772}
   - component: {fileID: 592542770}
+  - component: {fileID: 592542771}
   - component: {fileID: 592542773}
   m_Layer: 12
   m_Name: Neptune
@@ -719,7 +689,7 @@ Transform:
   m_LocalScale: {x: 3.81, y: 3.81, z: 3.81}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &592542767
 SphereCollider:
@@ -851,8 +821,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0.28010777, b: 0, a: 1}
+      key1: {r: 1, g: 0.28010777, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -901,19 +871,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
   speed: 5
---- !u!114 &592542772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592542765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 592542765}
 --- !u!114 &592542773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,7 +1038,7 @@ RectTransform:
   m_Children:
   - {fileID: 718181812}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1138,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.3160377, g: 0.7450682, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1176,7 +1133,6 @@ GameObject:
   - component: {fileID: 939265604}
   - component: {fileID: 939265607}
   - component: {fileID: 939265608}
-  - component: {fileID: 939265609}
   - component: {fileID: 939265610}
   m_Layer: 12
   m_Name: Venus
@@ -1329,8 +1285,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
+      key1: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1379,19 +1335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
   speed: 35
---- !u!114 &939265609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939265602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 939265602}
 --- !u!114 &939265610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,7 +1364,6 @@ GameObject:
   - component: {fileID: 1099127453}
   - component: {fileID: 1099127456}
   - component: {fileID: 1099127457}
-  - component: {fileID: 1099127458}
   - component: {fileID: 1099127459}
   m_Layer: 12
   m_Name: Mars
@@ -1574,8 +1516,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
+      key1: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1624,19 +1566,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
   speed: 24
---- !u!114 &1099127458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099127451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1099127451}
 --- !u!114 &1099127459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,7 +1594,6 @@ GameObject:
   - component: {fileID: 1196052164}
   - component: {fileID: 1196052163}
   - component: {fileID: 1196052167}
-  - component: {fileID: 1196052168}
   - component: {fileID: 1196052166}
   - component: {fileID: 1196052169}
   m_Layer: 12
@@ -1687,7 +1615,7 @@ Transform:
   m_LocalScale: {x: 0.29999995, y: 0.3, z: 0.29999995}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1196052163
 SphereCollider:
@@ -1819,8 +1747,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0.02821736, b: 0, a: 1}
+      key1: {r: 1, g: 0.02821736, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1869,19 +1797,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
   speed: 4
---- !u!114 &1196052168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196052161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1196052161}
 --- !u!114 &1196052169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,9 +1824,8 @@ GameObject:
   - component: {fileID: 1203641816}
   - component: {fileID: 1203641815}
   - component: {fileID: 1203641814}
-  - component: {fileID: 1203641818}
-  - component: {fileID: 1203641819}
   - component: {fileID: 1203641817}
+  - component: {fileID: 1203641818}
   - component: {fileID: 1203641820}
   m_Layer: 12
   m_Name: Saturn
@@ -1932,7 +1846,7 @@ Transform:
   m_LocalScale: {x: 9.410003, y: 9.41, z: 9.410003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1203641814
 SphereCollider:
@@ -2064,8 +1978,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0.28010777, b: 0, a: 1}
+      key1: {r: 1, g: 0.28010777, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2113,20 +2027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 686494625}
-  speed: 9
---- !u!114 &1203641819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203641812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211001e90382e6746957ec5373f181d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1203641812}
+  speed: 11
 --- !u!114 &1203641820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,6 +2043,99 @@ MonoBehaviour:
   red: {fileID: 2100000, guid: 5b35ada8fa5f037429e7fb0bd8ac5373, type: 2}
   green: {fileID: 2100000, guid: 575e9517a5e8a21418ff5055b86b11f1, type: 2}
   currentSelected: 0
+--- !u!1 &1263652060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263652064}
+  - component: {fileID: 1263652063}
+  - component: {fileID: 1263652062}
+  - component: {fileID: 1263652061}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1263652061
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263652060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1263652062
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263652060}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0f4af6c4d48b5ee4b9f68a7012ff3de2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1263652063
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263652060}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1263652064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263652060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1000, y: 1000, z: 1000}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545187305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2220,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 2000
+  far clip plane: 5000
   field of view: 68
   orthographic: 0
   orthographic size: 5
@@ -2395,6 +2389,7 @@ MonoBehaviour:
   Layer:
     serializedVersion: 2
     m_Bits: 4096
+  selectebleObjects: []
 --- !u!114 &1898073657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2619,8 +2614,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
+      key1: {r: 0.34109113, g: 0.990566, b: 0.9779754, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2696,8 +2691,8 @@ GameObject:
   - component: {fileID: 2119778030}
   - component: {fileID: 2119778029}
   - component: {fileID: 2119778028}
-  - component: {fileID: 2119778032}
   - component: {fileID: 2119778031}
+  - component: {fileID: 2119778032}
   - component: {fileID: 2119778033}
   m_Layer: 12
   m_Name: Jupiter
@@ -2718,7 +2713,7 @@ Transform:
   m_LocalScale: {x: 11.200004, y: 11.2, z: 11.200004}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2119778028
 SphereCollider:
@@ -2850,8 +2845,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.13207841, g: 1, b: 0, a: 1}
-      key1: {r: 0.13207841, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0.28010777, b: 0, a: 1}
+      key1: {r: 1, g: 0.28010777, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

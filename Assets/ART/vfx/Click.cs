@@ -68,6 +68,55 @@ public class Click : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            mousePos2 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            if (mousePos1 != mousePos2)
+            {
+                SelectObjects();
+            }
+        }
+    }
+
+    void SelectObjects()
+    {
+        List<GameObject> remObjects = new List<GameObject>();
+
+        if (Input.GetKey("left ctrl") == false)
+        {
+            ClearSelection();
+        }
+
+        Rect selectRect = new Rect(mousePos1.x, mousePos1.y, mousePos2.x - mousePos1.x, mousePos2.y - mousePos1.y);
+
+        foreach (GameObject selectObject in selectebleObjects)
+        {
+            if (selectObject != null)
+            {
+                if (selectRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
+                {
+                    selectedObjects.Add(selectObject);
+                    selectObject.GetComponent<ClickOn>().currentSelected = true;
+                    selectObject.GetComponent<ClickOn>().ClickMe();
+
+                }
+            }
+            else
+            {
+                remObjects.Add(selectObject);
+            }            
+        }
+
+        if (remObjects.Count > 0)
+        {
+            foreach(GameObject rem in remObjects)
+            {
+                selectebleObjects.Remove(rem);
+            }
+
+            remObjects.Clear();
+        }
     }
 
     void ClearSelection()
