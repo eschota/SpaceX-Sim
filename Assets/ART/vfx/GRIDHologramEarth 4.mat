@@ -9,12 +9,12 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: GRIDHologramEarth 4
   m_Shader: {fileID: 4800000, guid: c44555513c3e70e4798decef7da6c099, type: 3}
-  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _BLENDMODE_ADD _DISABLE_SSR _DOUBLESIDED_ON
-    _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
+  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _ALPHATEST_ON _BLENDMODE_ALPHA _DISABLE_SSR
+    _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 3001
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -91,10 +91,10 @@ Material:
     - _AddPrecomputedVelocity: 1
     - _AllBR: 1
     - _AlphaCutoff: 0.18
-    - _AlphaCutoffEnable: 0
-    - _AlphaDstBlend: 1
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _BlendMode: 1
+    - _BlendMode: 0
     - _BumpScale: 1
     - _CullMode: 0
     - _CullModeForward: 0
@@ -102,7 +102,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 1
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _EnableFogOnTransparent: 1
     - _Float0: 1
     - _GlossMapScale: 1
@@ -137,16 +137,16 @@ Material:
     - _ThirdPower: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 1
-    - _TransparentSortPriority: 0
+    - _TransparentSortPriority: 1
     - _TransparentZWrite: 1
     - _UVSec: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 4
-    - _ZTestGBuffer: 4
+    - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - __dirty: 0
-    - _powerEmission: 0.05
+    - _powerEmission: 0.32
     - _speed: 0.04
     - _thirdPower: 0.1
     m_Colors:
