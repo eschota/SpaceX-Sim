@@ -536,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409750522}
   - component: {fileID: 409750523}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System Force Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1799,7 +1799,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 191.56
+      value: 232.69
       mode: 0
       spread: 0
       speed:
@@ -5819,8 +5819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdeefaa80521714f9fb946792105d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 16
+  target: {fileID: 1118243095631530882}
+  speed: 2
 --- !u!1 &1268158303
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,13 +6373,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904773983}
-  m_LocalRotation: {x: -0.9733645, y: -0.02482773, z: -0.18838586, w: 0.12828086}
+  m_LocalRotation: {x: -0.92968345, y: -0.08782669, z: 0.34440723, w: 0.096741214}
   m_LocalPosition: {x: 0, y: 0.0000032431017, z: 0.0000028155425}
   m_LocalScale: {x: 0.027739018, y: 0.027739018, z: 0.027739018}
   m_Children: []
   m_Father: {fileID: 1118243096190223862}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -164.984, y: -21.906982, z: 0}
+  m_LocalEulerAnglesHint: {x: -173.144, y: 41.461, z: -13.390991}
 --- !u!33 &1904773987
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6663,7 +6663,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.52156866, g: 0.68711203, b: 0.94509804, a: 0.015686275}
+      maxColor: {r: 0.94509804, g: 0.6953043, b: 0.52156866, a: 0.10980392}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7187,7 +7187,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 191.56
+      value: 232.69
       mode: 0
       spread: 0
       speed:
@@ -11207,8 +11207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdeefaa80521714f9fb946792105d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 16
+  target: {fileID: 1118243095631530882}
+  speed: 5
 --- !u!1 &1118243094866977407
 GameObject:
   m_ObjectHideFlags: 0
@@ -11303,8 +11303,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10.7
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.426834
+  m_Center: {x: 0, y: -0.000000014901161, z: 0}
 --- !u!96 &1118243094866977346
 TrailRenderer:
   serializedVersion: 2
@@ -11348,7 +11348,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -11376,8 +11376,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 0.3176471, g: 1, b: 0.9930294, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -11409,7 +11409,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243094866977345
 MonoBehaviour:
@@ -11521,8 +11521,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15.29
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.42683402
+  m_Center: {x: 9.992007e-16, y: -0.000000014901161, z: -3.7470027e-16}
 --- !u!96 &1118243095233752752
 TrailRenderer:
   serializedVersion: 2
@@ -11566,7 +11566,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -11594,8 +11594,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 1, g: 0.85701454, b: 0.3160377, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -11627,7 +11627,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243095233752759
 MonoBehaviour:
@@ -11751,8 +11751,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 27.31
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.42683405
+  m_Center: {x: 0, y: -0.000000014901163, z: 0}
 --- !u!96 &1118243095380596324
 TrailRenderer:
   serializedVersion: 2
@@ -11796,7 +11796,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -11824,8 +11824,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 1, g: 0.6545922, b: 0.2216981, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -11857,7 +11857,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243095380596331
 MonoBehaviour:
@@ -12099,7 +12099,7 @@ GameObject:
   - component: {fileID: 1118243095631530882}
   - component: {fileID: 1118243095631530881}
   - component: {fileID: 1118243095631530887}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12147,7 +12147,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 11.72
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1118243095706395662
 GameObject:
@@ -12243,7 +12243,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &1118243095706395665
 TrailRenderer:
@@ -12288,7 +12288,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -12316,8 +12316,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 0.3176471, g: 0.5050625, b: 1, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -12349,7 +12349,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243095706395664
 MonoBehaviour:
@@ -12502,7 +12502,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1118243096174778084
 MonoBehaviour:
@@ -12561,7 +12561,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -12589,7 +12589,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 0.029375553, g: 0, b: 1, a: 1}
       key2: {r: 1, g: 0, b: 0.064777374, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -12622,7 +12622,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!1 &1118243096190223863
 GameObject:
@@ -12719,8 +12719,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.42683408
+  m_Center: {x: 0, y: -0.000000014901165, z: 0}
 --- !u!96 &1118243096190223866
 TrailRenderer:
   serializedVersion: 2
@@ -12764,7 +12764,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -12792,7 +12792,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 0, g: 1, b: 0.5810094, a: 1}
       key2: {r: 1, g: 0, b: 0.064777374, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -12825,7 +12825,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243096190223865
 MonoBehaviour:
@@ -12935,7 +12935,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &1118243096288477827
 TrailRenderer:
@@ -12980,7 +12980,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -13008,8 +13008,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 0.8493464, g: 1, b: 0.3176471, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -13041,7 +13041,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243096288477826
 MonoBehaviour:
@@ -13153,8 +13153,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.426834
+  m_Center: {x: 0, y: -0.00000001490116, z: 0}
 --- !u!96 &1118243096326612684
 TrailRenderer:
   serializedVersion: 2
@@ -13198,7 +13198,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -13226,8 +13226,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 0, g: 1, b: 0.010046244, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -13259,7 +13259,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1472399795695054505
 MonoBehaviour:
@@ -13346,7 +13346,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118243096526404343}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 6461297695846733525, guid: 992c144ee3118374db973f9c5d0eecc2, type: 3}
 --- !u!23 &1118243096526404341
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13397,7 +13397,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 32.59
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &1118243096526404346
 TrailRenderer:
@@ -13442,7 +13442,7 @@ TrailRenderer:
   m_Time: 10
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -13470,8 +13470,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0.064777374, a: 0}
+      key1: {r: 1, g: 0.4694984, b: 0, a: 1}
+      key2: {r: 0.382514, g: 0, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -13503,7 +13503,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!114 &1118243096526404345
 MonoBehaviour:
@@ -14056,7 +14056,6 @@ GameObject:
   - component: {fileID: 7095781097722628594}
   - component: {fileID: 4515547160716221383}
   - component: {fileID: 5289481544033909878}
-  - component: {fileID: 1118243095223048229}
   m_Layer: 0
   m_Name: vfx_PS_asteroid
   m_TagString: Untagged
@@ -14160,7 +14159,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 10
       minScalar: 5
       maxCurve:
@@ -14792,7 +14791,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 191.56
+      value: 232.69
       mode: 0
       spread: 0
       speed:
@@ -17600,9 +17599,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -17670,7 +17669,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -17778,7 +17777,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 4096
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -17999,17 +17998,17 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 1, g: 0.061194867, b: 0, a: 0}
+        key2: {r: 0.05498308, g: 0.12784418, b: 0.9450169, a: 0}
+        key3: {r: 0, g: 0.13172197, b: 1, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
+        ctime1: 17348
+        ctime2: 54163
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -18023,7 +18022,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -18057,7 +18056,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -18115,17 +18114,17 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 1, g: 0.061194867, b: 0, a: 0}
+        key2: {r: 0.05498308, g: 0.12784418, b: 0.9450169, a: 0}
+        key3: {r: 0, g: 0.13172197, b: 1, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
+        ctime1: 19082
+        ctime2: 61487
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -18139,7 +18138,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -18800,20 +18799,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1118243095223048229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563827001271480509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fdeefaa80521714f9fb946792105d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 16
 --- !u!1 &1594833690721220028
 GameObject:
   m_ObjectHideFlags: 0
@@ -21977,6 +21962,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1118243095631530882}
     m_Modifications:
+    - target: {fileID: 1906207560, guid: fed70220a622ffa48b7d959deb8fd7fa, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4391708337767275200, guid: fed70220a622ffa48b7d959deb8fd7fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22036,6 +22025,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: vfx_sunNull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391708337767275201, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391708337853001690, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391708337906358359, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391708338634251011, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391708339206263399, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391708339351011049, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068368944900445652, guid: fed70220a622ffa48b7d959deb8fd7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7199890218900604105, guid: fed70220a622ffa48b7d959deb8fd7fa,
         type: 3}
