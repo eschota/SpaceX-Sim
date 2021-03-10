@@ -5,10 +5,10 @@ using UnityEngine;
 public class ConstantRotation : MonoBehaviour
 {
     public Transform target;
-    public int speed;
+    public int orbitSpeed;
     private void Update()
     
     {
-        transform.RotateAround(target.transform.position, target.transform.up, speed * Time.deltaTime);
+        transform.RotateAround(target.transform.position, target.transform.up, orbitSpeed * Time.deltaTime);//ебучая хуета
     }
 }

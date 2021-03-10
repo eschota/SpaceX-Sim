@@ -14,7 +14,7 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3001
+  m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -137,7 +137,7 @@ Material:
     - _ThirdPower: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 1
-    - _TransparentSortPriority: 1
+    - _TransparentSortPriority: 0
     - _TransparentZWrite: 1
     - _UVSec: 0
     - _UseShadowThreshold: 0
@@ -146,12 +146,12 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - __dirty: 0
-    - _powerEmission: 0.32
-    - _speed: 0.04
+    - _powerEmission: 0.1
+    - _speed: 5
     - _thirdPower: 0.1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.22078538, g: 1, b: 0, a: 0}
+    - _Color0: {r: 0.22078532, g: 1, b: 0, a: 0.14117648}
     - _Dark: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -163,4 +163,4 @@ Material:
     - _ThirdlayerDark: {r: 0, g: 0.53125, b: 1, a: 0}
     - _ThirdlayerLight: {r: 0.122641504, g: 0.023718402, b: 0.023718402, a: 0}
     - _Tiling: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _frenel: {r: 0.66574514, g: 1, b: 0.6367924, a: 0}
+    - _frenel: {r: 1, g: 1, b: 1, a: 0.23921569}

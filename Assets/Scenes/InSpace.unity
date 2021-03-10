@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &642225702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1118243095631530882, guid: 824febbc6a67f984d9e8bd06b99b12da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1118243095223048227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &835749140
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &835749141
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -209,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835749140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -12.26, z: -4.9}
+  m_LocalPosition: {x: 0.1, y: -16.4, z: -4.9}
   m_LocalScale: {x: 200, y: 1, z: 200}
   m_Children: []
   m_Father: {fileID: 0}
@@ -239,10 +245,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260424939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 500, z: 0}
+  m_LocalPosition: {x: 0, y: 211, z: -290}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1898073653}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -260,7 +265,6 @@ GameObject:
   - component: {fileID: 1898073654}
   - component: {fileID: 1898073655}
   - component: {fileID: 1898073656}
-  - component: {fileID: 1898073657}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -326,13 +330,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898073650}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.18282087, y: -0, z: -0, w: 0.98314625}
+  m_LocalPosition: {x: 0, y: 140, z: -425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1260424940}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 21.068, y: 0, z: 0}
 --- !u!114 &1898073654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,38 +467,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898073650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb1e5f33ab938b4b8301c76c83f29f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fdeefaa80521714f9fb946792105d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  left: 97
-  right: 100
-  up: 119
-  down: 115
-  rotCamA: 113
-  rotCamB: 101
-  startPoint: {fileID: 1260424940}
-  rotationX: 90
-  maxHeight: 1000
-  minHeight: 10
-  rotationLimit: 360
---- !u!114 &1898073657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898073650}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a41e313a4e15f304b86d61f7a81d3e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0, z: 0}
-  currentPos: {x: 0, y: 0, z: 0}
-  target: {x: 0, y: 0, z: 0}
-  startRot: {x: 0, y: 0, z: 0}
-  Pivot: {fileID: 1260424940}
+  target: {fileID: 642225702}
+  orbitSpeed: 5
 --- !u!1 &1910095052
 GameObject:
   m_ObjectHideFlags: 1
@@ -606,6 +583,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SolarSys
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key1.r
+      value: 0.4811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key1.g
+      value: 0.030188682
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxGradient.ctime1
+      value: 9830
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxGradient.key1.r
+      value: 0.50980395
       objectReference: {fileID: 0}
     - target: {fileID: 5808958924175315329, guid: 824febbc6a67f984d9e8bd06b99b12da,
         type: 3}
