@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitProductionFactory : UnitEco
+public class UnitProductionFactory : Unit
 {
     public override void Start()
     {
