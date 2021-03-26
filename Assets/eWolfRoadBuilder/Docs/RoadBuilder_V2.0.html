@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Electric Wolf Road Builder</title>
+	<link href="ewolf.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="content">
+
+<center>
+		<img src="Images\RoadBuilderC.png" width='45%'
+			title="Road Builder&#13;Unity Package"
+			alt="Road Builder Image"/>
+	</center>
+
+<table>
+	<tr>
+		<td width='10%'></td>
+		<td width='80%'>
+<article>		
+			<b>Road Builder</b> Lets you create non-linear roads easily by using a network of nodes.
+			With easy to use buttons to extrude, join, insert nodes and create mesh.
+			Building new roads has never been so easy.</br></br>
+</article>
+			To see the full documentation <a href="Documentation.html">Road builder</a></br></br>
+
+			<b>Version: 2.0 : Added Terrain modifier</b></br>
+			
+			<center>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/TZxMWKg8Qgg?rel=0" frameborder="0" allowfullscreen></iframe>					
+			</center>
+			
+			</br></br>
+			<a id="1-1"></a>
+			<b>Using terrain modifier on any road:</b>
+			
+			<table>
+				<tr>
+					<td width='40%'>
+						<img width='95%' src="Images\AddTerrainModifier.png"
+							title="Road Builder&#13;Unity Package"
+							alt="Add Terrain Modifier"/>
+					</td>
+					
+					<td width='60%'>
+						Select the main <b>RoadNetwork_Main_pf</b> (the root object of the road system)</br>
+						And press on the <b>"Add Terrain modifier"</b> button to add the terrain modifier
+					</td>
+				</tr>
+				
+				<tr>
+					<td width='40%'>
+						Now assign our terrain game object to the Terrain field in the new terrain modifier
+					</td>
+					<td width='60%'>
+						<img width='85%' src="Images\TerrainModifierDefault.png"
+							title="Road Builder&#13;Unity Package"
+							alt="Add Terrain Modifier"/>
+					</td>
+				</tr>
+			</Table>
+			
+			<table>
+				<tr>
+					<td width='40%'>
+						Now you can press the "Modify Terrain to match road" button to modify the terrain.</br>
+						The <b>Plateau</b> is set to 8 in this example.
+					</td>
+					<td width='60%'>
+						<img width='95%' src="Images\ShowTerrainPlateauA.png"
+							title="Road Builder&#13;Unity Package"
+							alt="Add Terrain Modifier"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width='40%'>
+						The <b>Plateau</b> is set to 0 in this example.
+					</td>
+					<td width='60%'>
+						<img width='95%' src="Images\ShowTerrainPlateauB.png"
+							title="Road Builder&#13;Unity Package"
+							alt="Add Terrain Modifier"/>
+					</td>
+				</tr>
+				<tr>
+					<td width='40%'>
+						The <b>Plateau</b> is set to 8</br>
+						The <b>Slope</b> is set to 16</br>
+					</td>
+					<td width='60%'>
+						<img width='95%' src="Images\ShowTerrainPlateauC.png"
+							title="Road Builder&#13;Unity Package"
+							alt="Add Terrain Modifier"/>
+					</td>
+				</tr>
+			</table>
+			
+			</br></br>
+			<a id="1-2"></a>
+			<b>Terrain Actions:</b>
+			<table width='100%'>
+				<tr>
+					<td width='50%'>
+						When you have your roads system just as you need it, press the <b>"Modify Terrain to match road"</b> To updated the terrain.</br>
+						If you are not happy with the terrain you can press on <b>"Restore previous terrain"</b> to undo the modification.
+					</td>
+					<td width='50%'>
+						<img width='95%' src="Images\TerrainModifierActions.png"
+							title="Road Builder&#13;Unity Package"
+							alt="Add Terrain Modifier"/>
+					</td>
+				</tr>
+			</table>
+			
+			</br></br>
+			<a id="1-3"></a>
+			<b>Terrain Options:</b>
+			<table width='100%'>
+				<tr>
+					<td width='10%'/>
+					<td width='20%'>
+						<b>Plateau:</b>
+					</td>
+					<td width='60%'>
+						The amount to level off on both side of the road
+					</td>
+					<td width='10%'/>
+				</tr>
+				<tr>
+					<td width='10%'/>
+					<td width='20%'>
+						<b>Slope:</b>
+					</td>
+					<td width='60%'>
+						The amount to smooth out to match the existing terrain.</br>
+					</td>
+					<td width='10%'/>
+				</tr>
+				<tr>
+					<td width='10%'/>
+					<td width='20%'>
+						<b>Flatten Terrain:</b>
+					</td>
+					<td width='60%'>
+						Flatten the terrain before modifying.</br>
+					</td>
+					<td width='10%'/>
+				</tr>
+				<tr>
+					<td width='10%'/>
+					<td width='20%'>
+						<b>Details-Off Set:</b>
+					</td>
+					<td width='60%'>
+						Off set the height of the terrain from the road (reduces the chances of the terrain clipping the road)
+					</td>
+					<td width='10%'/>
+				</tr>
+				<tr>
+					<td width='10%'/>
+					<td width='20%'>
+						<b>Details-Divider:</b>
+					</td>
+					<td width='60%'>
+						The higher the details on the terrain, the higher this number will need to be.
+					</td>
+					<td width='10%'/>
+				</tr>
+			</table>
+			
+			</br></br>
+			<a id="1-0"></a>
+			<b>Support:</b>
+			<table width='100%'>
+				<tr>
+					<td width='10%'></td>
+					<td width='80%'>
+						If you need more information, or would like to know when this version is released, please email me at
+						<center>
+							<b>RoadBuilder@ElectricWolf.co.uk</b>
+						</center>
+					</td>
+					<td width='10%'></td>
+				</tr>
+			</table>
+			
+			</br>
+			
+		</td>
+		<td width='10%'></td>
+	</tr>
+</table>
+</br></br></br>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PW_Plant_Fern_Realistic_02
+  m_Shader: {fileID: -6465566751694194690, guid: 26e13b92150b60542b5039846beee74c,
+    type: 3}
+  m_ShaderKeywords: _ALPHATEST_OFF _ALPHATEST_ON _AUTUMNSHIFTMODE_STATIC _COLORMODE_OFF
+    _COVERMAPMODE_OFF _PW_COVER_OFF _PW_SF_COVER_ON _PW_SF_SSS_ON _PW_SF_WIND_ON
+    _PW_SF_WORLDMAP_ON _PW_SSS_ON _WINDDISTANCEMODE_OFF _WINDMODE2_OFF _WINDMODE3_OFF
+    _WINDMODE_OFF _WINDPWDISTANCEMODE_OFF
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 633d87c06b07aed448a96dbed90d8913, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverAlbedoMap1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverNormalMap1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9c37298228c924148b3c6ebe576a63f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metal:
+        m_Texture: {fileID: 2800000, guid: 2e70dd6fecdeff9449b5405284cc77d9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: 082ec944596930b4191c309a9ecd13eb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer0Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_CoverLayer1Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PW_WorldMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ALPHATEST: 0
+    - _AOPower: 0.3
+    - _AOPowerExp: 0.7
+    - _AOScale: 1
+    - _AOSlider: 1
+    - _AOVertexMask: 1
+    - _AlphaCutoffBias: 0.8
+    - _AlphaTest: 1
+    - _AutumnShift: 1.5
+    - _AutumnShiftDynamicDistanceLength: 3
+    - _AutumnShiftDynamicOffset: -0.25
+    - _AutumnShiftMode: 0
+    - _BlendOp: 0
+    - _Brightness: 0.62
+    - _Brightness1: 2
+    - _BumpMapScale: 1
+    - _BumpScale: 1
+    - _CameraFadingEnabled: 0
+    - _CameraFarFadeDistance: 2
+    - _CameraNearFadeDistance: 1
+    - _ColorMaskFuzziness: 0.03
+    - _ColorMaskFuzziness2: 0.03
+    - _ColorMaskRange: 0
+    - _ColorMaskRange2: 0
+    - _ColorMode: 0
+    - _CoverBottomUpOffset: 0.0732467
+    - _CoverBottomUpOffset1: 0.0732467
+    - _CoverBrightness: 2
+    - _CoverBrightness1: 2
+    - _CoverDynamicBlendStrength: 0
+    - _CoverDynamicBlendStrength1: 0
+    - _CoverDynamicDistanceLength: 3
+    - _CoverDynamicDistanceLength1: 3
+    - _CoverDynamicOffset: -0.25
+    - _CoverDynamicOffset1: -0.25
+    - _CoverDynamicScatterScale: 1.5
+    - _CoverDynamicScatterScale1: 1.5
+    - _CoverIntensity: 2
+    - _CoverIntensity1: 2
+    - _CoverMapMode: 0
+    - _CoverNormalStrength: 1
+    - _CoverNormalStrength1: 1
+    - _CoverSmoothness1: 1
+    - _CoverSmoothnessMode1: 0
+    - _CoverSmoothnessThreshold1: 0
+    - _CoverSmoothnessVariance1: 0.5
+    - _CoverTiling: 5
+    - _CoverTiling1: 5
+    - _CoverTopDownOffset: -1
+    - _CoverTopDownOffset1: -0.353329
+    - _CrossfadeDistanceIntensity: 0
+    - _CrossfadeDistanceIntensity2: 0
+    - _CrossfadeDistanceOffset: 0
+    - _CrossfadeDistanceOffset2: 0
+    - _CrossfadeDistancePower: 13.28441
+    - _CrossfadeDistancePower2: 13.28441
+    - _CrossfadeDistanceRange: 0
+    - _CrossfadeDistanceRange2: 0
+    - _Cull: 2
+    - _CullMode: 0
+    - _CullMode1: 0
+    - _Cutoff: 0.33
+    - _DebugMode: 0
+    - _DebugMode1: 0
+    - _DebugMode2: 0
+    - _DetailNormalMapScale: 1
+    - _DistortionBlend: 0.5
+    - _DistortionEnabled: 0
+    - _DistortionStrength: 1
+    - _DistortionStrengthScaled: 0
+    - _DstBlend: 0
+    - _EmissionEnabled: 0
+    - _EnableColorMode: 0
+    - _EnableSSSMode: 1
+    - _FlipbookMode: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _LODCrossfadeMode: 0
+    - _LODCrossfadeMode2: 3
+    - _LODDistanceMode: 1
+    - _LODDistanceMode2: 1
+    - _LightingEnabled: 1
+    - _Metallic: 0.184
+    - _MetallicStrength: 0
+    - _Mode: 1
+    - _NormalMode: 0
+    - _NormalModezBias: -1
+    - _NormalStrength: 1
+    - _OcclusionStrength: 1
+    - _OcclusionStrength5: 0.39
+    - _OcclusionStrength6: 0.5
+    - _OcclusionVertexStrength: 0
+    - _PW_Cover: 1
+    - _PW_CoverEdge: 0.1
+    - _PW_CoverLayer0AlphaClamp: 1
+    - _PW_CoverLayer0Edge: 0.1
+    - _PW_CoverLayer0FadeDist: 0
+    - _PW_CoverLayer0FadeStart: 0
+    - _PW_CoverLayer0Metallic: 0.2
+    - _PW_CoverLayer0NormalScale: 1
+    - _PW_CoverLayer0Progress: 0
+    - _PW_CoverLayer0Smoothness: 0.75
+    - _PW_CoverLayer0Tiling: 64
+    - _PW_CoverLayer0Wrap: 0
+    - _PW_CoverLayer1AlphaClamp: 1
+    - _PW_CoverLayer1Edge: 0.1
+    - _PW_CoverLayer1FadeDist: 0
+    - _PW_CoverLayer1FadeStart: 0
+    - _PW_CoverLayer1Metallic: 0.2
+    - _PW_CoverLayer1NormalScale: 1
+    - _PW_CoverLayer1Progress: 0
+    - _PW_CoverLayer1Smoothness: 0.75
+    - _PW_CoverLayer1Tiling: 64
+    - _PW_CoverLayer1Wrap: 0
+    - _PW_CoverWorldUVScale: 1
+    - _PW_GlobalControl: 1
+    - _PW_Global_Metallic: 0
+    - _PW_Global_SeasonalTintAmount: 0
+    - _PW_Global_Smoothness: 0
+    - _PW_SF_COVER: 0
+    - _PW_SF_GLOBAL_CONTROL: 0
+    - _PW_SF_SSS: 0
+    - _PW_SF_WIND: 0
+    - _PW_SF_WORLDMAP: 0
+    - _PW_SSS: 1
+    - _PW_SSSDistortion: 0.5
+    - _PW_SSSPower: 1
+    - _PW_SSS_1: 0
+    - _PW_SeasonalTintAmount: 1
+    - _PW_ShaderMode: 1
+    - _PW_TerrainSizeX: 2048
+    - _PW_TerrainSizeY: 0
+    - _PW_TerrainSizeZ: 2048
+    - _PW_WindFrequency: 16
+    - _PW_WindGustDistance: 5
+    - _PW_WindSpeed: 30
+    - _PW_WindToggle: 1
+    - _PW_WindVertex: 0
+    - _PW_WorldMapToggle: 1
+    - _PW_WorldMapUVScale: 2048
+    - _Parallax: 0.02
+    - _ParallaxHeightScale: 0
+    - _ParallaxReferencePlane: 0
+    - _SSSColorContribution: 1
+    - _SSSDistortion: 0.5
+    - _SSSGlobalLightColor: 0
+    - _SSSGlobalLightColor1: 0
+    - _SSSGlobalLightIntensity: 1
+    - _SSSGlobalLightIntensity1: 1.15
+    - _SSSIntensity: 1
+    - _SSSIntensity2: 2.02
+    - _SSSMode: 0
+    - _SSSMode3: 2
+    - _SSSPower: 1
+    - _SSSPower2: 0.47
+    - _SSSPreciseDistortion1: 1.379
+    - _Smoothness: 0.314
+    - _SmoothnessMode: 0
+    - _SmoothnessTextureChannel: 0
+    - _SmoothnessThreshold: 0
+    - _SmoothnessVariance: 0.467
+    - _SoftParticlesEnabled: 0
+    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesNearFadeDistance: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Tiling: 1
+    - _UVSec: 0
+    - _WindDistanceIntensity: 0.1
+    - _WindDistanceMode: 0
+    - _WindDistanceOffset: 0
+    - _WindDistancePower: 3.70041
+    - _WindDistanceRange: 8.1
+    - _WindMode: 0
+    - _WindMode2: 0
+    - _WindMode3: 0
+    - _WindPWDirection: 0.042
+    - _WindPWDistanceIntensity: 0.1
+    - _WindPWDistanceMode: 0
+    - _WindPWDistanceOffset: 0
+    - _WindPWDistancePower: 4
+    - _WindPWDistanceRange: 14.06244
+    - _WindPWFrequency: 2.49
+    - _WindPWFrequencyDetail: 2.3
+    - _WindPWIntensity: 0.0366
+    - _WindPWMagnitude: 0.216
+    - _WindPWMagnitudeDetail: 1
+    - _WindPWMaskVerticalIntensity: 0.004
+    - _WindPWMaskVerticalOffset: -0.682
+    - _WindStrengthPainted: 0
+    - _WindTurbulencePainted: 0
+    - _WrapLighting: 0
+    - _ZWrite: 1
+    - __dirty: 1
+    m_Colors:
+    - _AlbedoTint: {r: 1, g: 1, b: 1, a: 0}
+    - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
+    - _Color: {r: 0.654902, g: 0.8862745, b: 0.70980394, a: 1}
+    - _ColorMaskTint: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorMaskTint2: {r: 0, g: 0, b: 0, a: 0}
+    - _CoverTint: {r: 1, g: 1, b: 1, a: 0}
+    - _CoverTint1: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PW_CoverLayer0Color: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_CoverLayer1Color: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_SSSTint: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_WindDirection: {r: 5, g: 2, b: 5, a: 0}
+    - _PW_WorldMapColorCover0: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_WorldMapColorCover1: {r: 1, g: 1, b: 1, a: 1}
+    - _PW_WorldMapColorObject: {r: 0.6037736, g: 0.5183983, b: 0.3218227, a: 1}
+    - _SSSColor: {r: 0.34117648, g: 0.32941175, b: 0.25098038, a: 1}
+    - _SSSColor2: {r: 0.5966277, g: 0.8301887, b: 0.40334642, a: 1}
+    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
