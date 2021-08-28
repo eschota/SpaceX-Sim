@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.00009628788, g: 0.00012133931, b: 0.000086146465,
+    a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -583,6 +584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SolarSys
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515547160716221383, guid: 824febbc6a67f984d9e8bd06b99b12da,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5808958924175315329, guid: 824febbc6a67f984d9e8bd06b99b12da,
         type: 3}
