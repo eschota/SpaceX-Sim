@@ -37,11 +37,11 @@ public abstract class LightControllerBase : MonoBehaviour
     }
     protected void IniTimer()
     {
-        if (!Application.isPlaying) _localTimer = 12;
-        if (TimeManager.Hours <= 0.1f)
+        //if (!Application.isPlaying) _localTimer = 12;
+        //if (TimeManager.Hours <= 0.1f)
             _localTimer = 12;
-        else
-            _localTimer = TimeManager.Hours;
+        //else
+        //    _localTimer = TimeManager.Hours;
     }
     protected void ProcessReflectionProbes()
     {

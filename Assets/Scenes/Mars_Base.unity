@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 6862.6816, g: 3852.045, b: 5871.1777, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,7 +249,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8527.67
+  m_Intensity: 288481.22
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157207112}
-  m_LocalRotation: {x: 0.00026421348, y: 0.9960692, z: 0.08852893, w: -0.0029717837}
+  m_LocalRotation: {x: -0.16580763, y: 0.8300428, z: -0.32825956, w: -0.41926426}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c7ea5b8b6a54f4286e970351ab2778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localTimer: 0.19567737
+  _localTimer: 12
   Reflections:
     serializedVersion: 2
     m_Curve:
@@ -1379,6 +1379,7 @@ GameObject:
   - component: {fileID: 1806310886}
   - component: {fileID: 1806310888}
   - component: {fileID: 1806310889}
+  - component: {fileID: 1806310890}
   m_Layer: 0
   m_Name: ___SCRIPTS___
   m_TagString: Untagged
@@ -1407,7 +1408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806310885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6108531, y: 4.389496, z: -2.6175919}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1441,6 +1442,31 @@ MonoBehaviour:
   play: {fileID: 0}
   pause: {fileID: 0}
   LastSpeed: 0
+--- !u!114 &1806310890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806310885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184bb8804b8a60743a10e337f29bcf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatePositions:
+  - {x: 0, y: 111, z: -100}
+  - {x: 0, y: 333, z: -222}
+  - {x: 0, y: 444, z: -333}
+  StateRotations:
+  - {x: 45, y: 0, z: 0}
+  - {x: 50, y: 0, z: 0}
+  - {x: 55, y: 0, z: 0}
+  Wheel: 1
+  currentLerp: 0
+  CurrentCameraState: 2
+  CameraSpeed: 50
+  DistanceMax: 50000
 --- !u!1 &1823688464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,7 +1510,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 51.82
+  m_FocalLength: 24
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1492,8 +1518,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 100
-  far clip plane: 1000
-  field of view: 26.07643
+  far clip plane: 5000
+  field of view: 53.130104
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1518,8 +1544,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0, y: -0.9237025, z: 0.3831107, w: 0}
-  m_LocalPosition: {x: 0, y: 213, z: 221}
+  m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
+  m_LocalPosition: {x: 0, y: 444, z: -333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1560,7 +1586,7 @@ MonoBehaviour:
     m_Aperture: 32
     m_BladeCount: 7
     m_Curvature: {x: 2, y: 11}
-    m_BarrelClipping: 0.25
+    m_BarrelClipping: 0.227
     m_Anamorphism: 0
   flipYMode: 0
   xrRendering: 1

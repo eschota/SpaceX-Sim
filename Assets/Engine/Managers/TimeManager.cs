@@ -7,13 +7,13 @@ public class TimeManager : MonoBehaviour
 
     public static float LocalHoursOffset;
     public static float TimeScale = .5f;
-    public static float Timer =0;
+    public static float Timer ;
 
     
     private static int _days;
     private static int _years;
     private static int _months;
-    private static float _hours;
+    private static float _hours=12;
     private static float _elapsedTime;
 
     public static int TotalDays;
@@ -61,9 +61,10 @@ public class TimeManager : MonoBehaviour
         Days = Mathf.RoundToInt(ScenarioManager.instance.CurrentScenario.StartDate[0]);
         Years = Mathf.RoundToInt(ScenarioManager.instance.CurrentScenario.StartDate[1]);
         Months = Mathf.RoundToInt(ScenarioManager.instance.CurrentScenario.StartDate[2]);
+        _hours = 12;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
