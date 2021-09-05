@@ -10,6 +10,7 @@ public class GlobalLightController : LightControllerBase
     [Header("Яркость солнца в течении дня")]
     [SerializeField]
     private AnimationCurve SunIntensity;
+    [SerializeField] int SunIntensityMultiplayer = 10000;
     [Header("Ротейшен солнца в течении дня, значение домножается на 360")]
 
     [SerializeField]
@@ -39,7 +40,7 @@ public class GlobalLightController : LightControllerBase
     {
         if (sun != null)
         {
-            sun.intensity = SunIntensity.Evaluate(_localTimer / 24f);
+            sun.intensity = SunIntensityMultiplayer* SunIntensity.Evaluate(_localTimer / 24f);
             sun.transform.rotation = Quaternion.Euler(SunRotationX.Evaluate(_localTimer / 24f) * 360, SunRotationY.Evaluate(_localTimer / 24f) * 360, SunRotationZ.Evaluate(_localTimer / 24f) * 360);
         }
     }

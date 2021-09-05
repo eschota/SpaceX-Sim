@@ -25,7 +25,7 @@ public class TimeManager : MonoBehaviour
         {
             _days = value;
             TotalDays++;
-            EventChangeDay();
+            if(EventChangeDay!=null) EventChangeDay();
         }
     }
 
