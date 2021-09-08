@@ -70,7 +70,12 @@ public class ReferenceHelper : MonoBehaviour
             if (e.rawType == EventType.MouseDown && e.button == 0)// left button 
                 {
 
-                if (CurrentImageID==-1)SetCurrentImage(References[0]);
+                if (CurrentImageID == -1)
+                {
+                    if (CurrentImage == null)
+                        SetCurrentImage(References[0]);
+                    else SetCurrentImage(CurrentImage);
+                }
                 else
                 {
                     DisableAllReferences();
