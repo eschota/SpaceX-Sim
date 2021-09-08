@@ -7,31 +7,75 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class ReferenceHelper : MonoBehaviour
 {
-    [SerializeField] Color TransparencyColor ;
+    private Color TransparencyColor=Color.white;
+    [SerializeField] List<Image> References = new List<Image>();
+    
+    private Image CurrentImage;
+    private int CurrentImageID=0;
+    private void Awake()
+    {
+        if(!Application.isEditor) Destroy(this.gameObject);
+    }
+    private void OnValidate()
+    {
+        References.Clear();
+        References.AddRange(transform.GetComponentsInChildren<Image>());
+        foreach (var item in References) item.fillMethod = Image.FillMethod.Horizontal;
+        foreach (var item in References) item.fillOrigin= 1;
+        
+    }
     private void Update()
     {
-        if (true) ;
+        if (true) ;// workaround for editor running
     }
+
+    void SetCurrentImage(Image img)
+    {
+        foreach (var item in References)
+        {
+            item.color = new Color(0, 0, 0, 0);
+        }
+        img.color = TransparencyColor;
+        CurrentImageID = References.IndexOf(img);
+        CurrentImage = References[CurrentImageID];
+    } 
+    void SetCurrentImage(int id)
+    {
+        foreach (var item in References)
+        {
+            item.color = new Color(0, 0, 0, 0);
+        }
+        if (id == References.Count) CurrentImageID = 0;
+        else CurrentImageID = id;
+        References[CurrentImageID].color = TransparencyColor;
+    }
+    void DisableAllReferences()
+    {
+        foreach (var item in References)
+        {
+            item.color = new Color(0,0,0,0);
+        }
+        CurrentImage = References[CurrentImageID];
+        CurrentImageID = -1;
+    }
+
     void OnGUI()
         {
             Event e = new Event();
             while (Event.PopEvent(e))
             {
             Vector3 lastPos = Camera.main.transform.position;
-            Image Ref1 = GameObject.Find("Ref1").GetComponent<Image>();
+            
 
-            if (e.rawType == EventType.MouseDown && e.button == 0)
+            if (e.rawType == EventType.MouseDown && e.button == 0)// left button 
                 {
-                
-                
-                if (!Ref1) return;
 
-                if (Ref1.color.a < 0.1f)
-                { 
-                    Ref1.color = TransparencyColor;
+                if (CurrentImageID==-1)SetCurrentImage(References[0]);
+                else
+                {
+                    DisableAllReferences();
                 }
-                else Ref1.color = new Color(255, 255, 255, 0);
-               
+                
                 //Ray ray = Camera.main.ScreenPointToRay(new Vector2(e.mousePosition.x, Screen.height - e.mousePosition.y));
                 //RaycastHit hit;
                 //if (Physics.Raycast(ray, out hit))
@@ -46,29 +90,24 @@ public class ReferenceHelper : MonoBehaviour
 
                 //}
             }
-            if (e.rawType == EventType.MouseDrag && e.button == 1)
+            if (e.rawType == EventType.MouseDrag && e.button == 1)// right button
             {
-                if (!Ref1) return;
 
-                Ref1.fillAmount = 1-(e.mousePosition.x / Screen.width);
-                Ref1.color = new Color(255,255,255,2* (1-(e.mousePosition.y / Screen.height)));
+                foreach (var item in References)
+                {
+                    item.fillAmount = 1 - (e.mousePosition.x / Screen.width);
+                    TransparencyColor= new Color(255, 255, 255, 2 * (1 - (e.mousePosition.y / Screen.height)));
+                }
+                CurrentImage.color = TransparencyColor;
+
 
             }
 
-            if (e.rawType == EventType.MouseDown && e.button == 3)
+            if (e.rawType == EventType.Used && e.button ==2)/// wheel ,puse
             {
-                Ref1.fillAmount = 0.1f;
-            }
-            if (e.rawType == EventType.Used && e.button ==2)
-            {
-                Ref1.fillAmount = 0.1f;
-            } 
-            if (e.type == EventType.ScrollWheel )
-            {
-                Ref1.fillAmount = 0.1f;
-            }
-
-                Camera.main.transform.Translate(Vector3.up, Space.World);
+                SetCurrentImage(++CurrentImageID);
+            }  
+            Camera.main.transform.Translate(Vector3.up, Space.World);
             Camera.main.transform.position = lastPos;
         }
         }
