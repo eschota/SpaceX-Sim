@@ -103,7 +103,7 @@ public class ReferenceHelper : MonoBehaviour
                     item.fillAmount = 1 - (e.mousePosition.x / Screen.width);
                     TransparencyColor= new Color(255, 255, 255, 2 * (1 - (e.mousePosition.y / Screen.height)));
                 }
-                CurrentImage.color = TransparencyColor;
+                References[CurrentImageID].color = TransparencyColor;
 
 
             }
