@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+[InitializeOnLoad]
 [ExecuteInEditMode]
 public class ReferenceHelper : MonoBehaviour
 {
@@ -24,6 +26,8 @@ public class ReferenceHelper : MonoBehaviour
         foreach (var item in References) item.fillOrigin= 1;
         
     }
+
+   
     private void Update()
     {
         if (true) ;// workaround for editor running
@@ -59,15 +63,48 @@ public class ReferenceHelper : MonoBehaviour
         CurrentImageID = -1;
     }
 
+    [MenuItem("My Commands/Special Command %g")]
+    static void SpecialCommand()
+    {
+        Debug.Log("You used the shortcut Cmd+G (Mac)  Ctrl+G (Win)");
+    }
+    public void Capture()
+    {       
+            Camera _camera = Camera.main;
+            RenderTexture activeRenderTexture = RenderTexture.active;
+            Debug.Log(_camera);
+            RenderTexture.active = _camera.targetTexture;
+
+            _camera.Render();
+
+            Texture2D image = new Texture2D(_camera.targetTexture.width, _camera.targetTexture.height);
+            image.ReadPixels(new Rect(0, 0, _camera.targetTexture.width, _camera.targetTexture.height), 0, 0);
+            image.Apply();
+            RenderTexture.active = activeRenderTexture;
+
+            byte[] bytes = image.EncodeToPNG();
+            Destroy(image);
+
+            Debug.Log(bytes);
+
+            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "history.png"), bytes);
+         
+    }
     void OnGUI()
         {
+
+            
+
             Event e = new Event();
             while (Event.PopEvent(e))
             {
             Vector3 lastPos = Camera.main.transform.position;
-            
 
-            if (e.rawType == EventType.MouseDown && e.button == 0)// left button 
+            if (e.rawType == EventType.KeyDown) //' && e.button == KeyCode.R)// left button 
+            {
+                Capture();
+            }
+                if (e.rawType == EventType.MouseDown && e.button == 0)// left button 
                 {
 
                 if (CurrentImageID == -1)
@@ -114,6 +151,13 @@ public class ReferenceHelper : MonoBehaviour
             }  
             Camera.main.transform.Translate(Vector3.up, Space.World);
             Camera.main.transform.position = lastPos;
-        }
+            e.Use();
+            if (Input.GetKey(KeyCode.RightControl)) Capture();
+
         }
     }
+
+    
+   
+
+}
