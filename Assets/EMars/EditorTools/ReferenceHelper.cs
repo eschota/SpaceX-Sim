@@ -9,11 +9,12 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class ReferenceHelper : MonoBehaviour
 {
-    private Color TransparencyColor=Color.white;
-    [SerializeField] List<Image> References = new List<Image>();
-    
-    private Image CurrentImage;
-    private int CurrentImageID=0;
+    private static Color TransparencyColor=Color.white;
+    [SerializeField] static List<Image> References = new List<Image>();
+    [SerializeField] static RawImage history ;
+
+    private static Image CurrentImage;
+    private static int CurrentImageID=0;
     private void Awake()
     {
         if(!Application.isEditor) Destroy(this.gameObject);
@@ -24,7 +25,7 @@ public class ReferenceHelper : MonoBehaviour
         References.AddRange(transform.GetComponentsInChildren<Image>());
         foreach (var item in References) item.fillMethod = Image.FillMethod.Horizontal;
         foreach (var item in References) item.fillOrigin= 1;
-        
+        if(history==null) history = GameObject.Find("RenderHistoryRawImage").GetComponent<RawImage>();
     }
 
    
@@ -52,8 +53,9 @@ public class ReferenceHelper : MonoBehaviour
         if (id == References.Count) CurrentImageID = 0;
         else CurrentImageID = id;
         References[CurrentImageID].color = TransparencyColor;
+        history.color = new Color(0, 0, 0, 0);
     }
-    void DisableAllReferences()
+    static void DisableAllReferences()
     {
         foreach (var item in References)
         {
@@ -61,6 +63,7 @@ public class ReferenceHelper : MonoBehaviour
         }
         CurrentImage = References[CurrentImageID];
         CurrentImageID = -1;
+        history.color = new Color(0, 0, 0, 0); 
     }
 
     [MenuItem("My Commands/Special Command %e")]
@@ -69,27 +72,20 @@ public class ReferenceHelper : MonoBehaviour
         Debug.Log("You used the shortcut Cmd+G (Mac)  Ctrl+G (Win)");
         Capture();
     }
+    static void EnableHistory()
+    {
+        DisableAllReferences();
+        history.color = TransparencyColor;
+    }
     public static void Capture()
-    {       
-            Camera _camera = Camera.main;
-            RenderTexture activeRenderTexture = RenderTexture.active;
-            Debug.Log(_camera);
-            RenderTexture.active = _camera.targetTexture;
-
-            _camera.Render();
-
-            Texture2D image = new Texture2D(Screen.width, Screen.height);
-            image.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-            image.Apply();
-            RenderTexture.active = activeRenderTexture;
-
-            byte[] bytes = image.EncodeToPNG();
-            Destroy(image);
-
-            Debug.Log(bytes);
-
-            File.WriteAllBytes(Path.Combine(Application.streamingAssetsPath, "history.png"), bytes);
-         
+    {
+            DisableAllReferences();
+            ScreenCapture.CaptureScreenshot(Path.Combine(Application.streamingAssetsPath, "history.png"));
+        Texture2D tex =new Texture2D(Screen.width,Screen.height);
+        tex.LoadImage(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath, "history.png")));
+        tex.Apply();
+        history.texture = tex;
+        EnableHistory();
     }
     void OnGUI()
         {
