@@ -63,12 +63,13 @@ public class ReferenceHelper : MonoBehaviour
         CurrentImageID = -1;
     }
 
-    [MenuItem("My Commands/Special Command %g")]
+    [MenuItem("My Commands/Special Command %e")]
     static void SpecialCommand()
     {
         Debug.Log("You used the shortcut Cmd+G (Mac)  Ctrl+G (Win)");
+        Capture();
     }
-    public void Capture()
+    public static void Capture()
     {       
             Camera _camera = Camera.main;
             RenderTexture activeRenderTexture = RenderTexture.active;
@@ -77,8 +78,8 @@ public class ReferenceHelper : MonoBehaviour
 
             _camera.Render();
 
-            Texture2D image = new Texture2D(_camera.targetTexture.width, _camera.targetTexture.height);
-            image.ReadPixels(new Rect(0, 0, _camera.targetTexture.width, _camera.targetTexture.height), 0, 0);
+            Texture2D image = new Texture2D(Screen.width, Screen.height);
+            image.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
             image.Apply();
             RenderTexture.active = activeRenderTexture;
 
@@ -87,7 +88,7 @@ public class ReferenceHelper : MonoBehaviour
 
             Debug.Log(bytes);
 
-            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "history.png"), bytes);
+            File.WriteAllBytes(Path.Combine(Application.streamingAssetsPath, "history.png"), bytes);
          
     }
     void OnGUI()
@@ -140,7 +141,7 @@ public class ReferenceHelper : MonoBehaviour
                     item.fillAmount = 1 - (e.mousePosition.x / Screen.width);
                     TransparencyColor= new Color(255, 255, 255, 2 * (1 - (e.mousePosition.y / Screen.height)));
                 }
-                References[CurrentImageID].color = TransparencyColor;
+              if(CurrentImageID!=-1)  References[CurrentImageID].color = TransparencyColor;
 
 
             }
