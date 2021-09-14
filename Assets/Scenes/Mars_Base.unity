@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6976.4395, g: 3872.1836, b: 5200.631, a: 1}
+  m_IndirectSpecularColor: {r: 192.46637, g: 81.96045, b: 60.959915, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,6 +125,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &29790695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ad8e1f83174e3944a47339a138f31a5, type: 2}
+    - target: {fileID: 919132149155446097, guid: 214fd77f2fc903645aa27067e06e9fea,
+        type: 3}
+      propertyPath: m_Name
+      value: crater_256ktris_v2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 214fd77f2fc903645aa27067e06e9fea, type: 3}
 --- !u!1001 &79697738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f8de8bb23cf3c7c428a3a0f49e308962, type: 3}
       propertyPath: m_Name
       value: Crater_Mesh Output 2048_256ktris
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f8de8bb23cf3c7c428a3a0f49e308962, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f8de8bb23cf3c7c428a3a0f49e308962, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -249,7 +327,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 288481.22
+  m_Intensity: 153856.66
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -292,7 +370,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 8562
+  m_ColorTemperature: 5555
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -325,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 8527.67
+  m_Intensity: 6000
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -386,8 +464,8 @@ MonoBehaviour:
   m_MaxDepthBias: 0.001
   m_ShadowResolution:
     m_Override: 512
-    m_UseOverride: 1
-    m_Level: 0
+    m_UseOverride: 0
+    m_Level: 2
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -553,7 +631,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SunIntensityMultiplayer: 150000
+  SunIntensityMultiplayer: 80000
   SunRotationX:
     serializedVersion: 2
     m_Curve:
@@ -1161,10 +1239,6 @@ MonoBehaviour:
   m_Script: {fileID: 1046474506}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 2054266220}
 --- !u!4 &818532034
 Transform:
   m_ObjectHideFlags: 19
@@ -1328,9 +1402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82636eeb55dac14081ede1cd04e5548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  References:
-  - {fileID: 1764675114}
-  - {fileID: 2119564726}
 --- !u!222 &1198592187
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1491,7 +1562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1764675113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2337,7 +2408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2119564725
 RectTransform:
   m_ObjectHideFlags: 0
