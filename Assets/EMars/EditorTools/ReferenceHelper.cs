@@ -17,7 +17,7 @@ public class ReferenceHelper : MonoBehaviour
     private static int CurrentImageID=0;
     private void Awake()
     {
-        if(!Application.isEditor) Destroy(this.gameObject);
+        if(Application.isPlaying) Destroy(this.gameObject);
     }
     private void OnValidate()
     {
@@ -25,7 +25,7 @@ public class ReferenceHelper : MonoBehaviour
         References.AddRange(transform.GetComponentsInChildren<Image>());
         foreach (var item in References) item.fillMethod = Image.FillMethod.Horizontal;
         foreach (var item in References) item.fillOrigin= 1;
-        if(history==null) history = GameObject.Find("RenderHistoryRawImage").GetComponent<RawImage>();
+     //'   if(history==null) history = GameObject.Find("RenderHistoryRawImage").GetComponent<RawImage>();
     }
 
    

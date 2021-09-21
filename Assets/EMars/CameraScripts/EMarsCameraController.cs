@@ -8,6 +8,7 @@ using UnityEngine;
 public class EMarsCameraController : MonoBehaviour
 {
    
+
     [SerializeField] private Vector3[] StatePositions;
     [SerializeField] private Vector3[] StateRotations;
     public float Wheel,currentLerp;
@@ -17,8 +18,16 @@ public class EMarsCameraController : MonoBehaviour
    // DepthOfField dof;
     float mistakeTimer;
     Vector2 mPos;
-    [SerializeField] float CameraSpeed = 50;
     [SerializeField] float DistanceMax = 50;
+    
+    [SerializeField] float CameraSpeed = 50;
+    [SerializeField] AnimationCurve CameraSpeedMultByHeight=new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+
+    private float totalSpeed
+    {
+        get => Mathf.Clamp(  CameraSpeed * CameraSpeedMultByHeight.Evaluate(Camera.main.transform.position.y / StatePositions[StatePositions.Length - 1].y), .1f,1);
+        
+    }
     public enum CameraState
     {
         
@@ -46,26 +55,41 @@ public class EMarsCameraController : MonoBehaviour
    
     void Update()
     {
+        if (!Application.isPlaying) return;
 
-       
-         
+        MoveCameraByKeboard();
         MoveCamera();
-        //if (Application.isPlaying) dof.focusDistance.value = Vector3.Distance(Camera.main.transform.position, Camera.main.transform.parent.position);
-        //else
-        //{
-        //    PostProcessProfile ppf = ppv.profile;
-        //    ppf.TryGetSettings<DepthOfField>(out dof);
-        //    dof.focusDistance.value = Vector3.Distance(Camera.main.transform.position, Vector3.zero);
-        //}
-
-        ChangeCamera();
+        MoveCameraByHeightAndRotate();
         
+    }
+    void MoveCameraByKeboard()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            PivotShift.transform.position+=(totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            PivotShift.transform.position-=(totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            PivotShift.transform.position-=(totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            PivotShift.transform.position+=(totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
+        }
+        Debug.DrawRay(PivotShift.transform.position, 10*CameraSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
     }
     void MoveCamera()
     {
         if (Application.isPlaying)
         {
-            Wheel += 1.8f * Input.GetAxis("Mouse ScrollWheel");
+
+
+
+            Wheel += 1.4f * Input.GetAxis("Mouse ScrollWheel");
             Wheel = Mathf.Clamp01(Wheel);
 
             currentLerp = Mathf.Lerp(currentLerp, Wheel, 5 * Time.deltaTime);
@@ -102,16 +126,18 @@ public class EMarsCameraController : MonoBehaviour
                         PivotShift.transform.position += PivotShift.transform.TransformDirection( Direction);
                 }
             }
-            if (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1))
+
+            
+                if (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1))
             {
                 
                 mPos = Input.mousePosition;
             }
-                if (Input.GetMouseButton(2))
+                if (Input.GetMouseButton(1))
             {
                 PivotShift.transform.rotation=Quaternion.Euler(0,PivotShift.transform.rotation.eulerAngles.y+(((mPos.x-Input.mousePosition.x)/Screen.width)*Time.deltaTime*500),0);
             }
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0))
             {
                 Vector3 Direction = Input.mousePosition - new Vector3(mPos.x,mPos.y,0);
                 Direction = new Vector3(Direction.x, 0, Direction.y);
@@ -119,11 +145,11 @@ public class EMarsCameraController : MonoBehaviour
                 if (Vector3.Distance(PivotShift.transform.position + PivotShift.transform.TransformDirection(Direction), Vector3.zero) <= DistanceMax)
                     PivotShift.transform.position += PivotShift.transform.TransformDirection(Direction);
             }
-            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position, 50*Time.deltaTime);
-            Pivot.transform.rotation = Quaternion.Lerp(Pivot.transform.rotation, PivotShift.transform.rotation, 50*Time.deltaTime);
+            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position,10* Time.deltaTime);
+            Pivot.transform.rotation = Quaternion.Lerp(Pivot.transform.rotation, PivotShift.transform.rotation,10* Time.deltaTime);
         }
     }
-    void ChangeCamera()
+    void MoveCameraByHeightAndRotate()
     {
         if (!Application.isPlaying)
         {
