@@ -21,9 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: vfx_Explosion_003
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Shader: {fileID: 4800000, guid: c4edd00ff2db5b24391a4fcb1762e459, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT _EMISSIVE_COLOR_MAP _ENABLE_FOG_ON_TRANSPARENT
-    _NORMALMAP _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
+    _NORMALMAP _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -33,8 +33,6 @@ Material:
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
-  - TransparentDepthPrepass
-  - RayTracingPrepass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -134,6 +132,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _UnlitColorMap:
+        m_Texture: {fileID: 2800000, guid: fe8993f706d1a2e4cbe76fd27beebf3b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -195,6 +197,7 @@ Material:
     - _DistortionDstBlend: 1
     - _DistortionEnable: 0
     - _DistortionEnabled: 0
+    - _DistortionOnly: 0
     - _DistortionScale: 1
     - _DistortionSrcBlend: 1
     - _DistortionStrength: 1
@@ -207,7 +210,7 @@ Material:
     - _EmissionEnabled: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
-    - _EmissiveIntensity: 0.25
+    - _EmissiveIntensity: 8102865.5
     - _EmissiveIntensityUnit: 1
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
@@ -224,6 +227,7 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
+    - _IncludeIndirectLighting: 1
     - _InvTilingScale: 1
     - _Ior: 1.5
     - _IridescenceMask: 1
@@ -285,7 +289,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 3
@@ -300,7 +304,7 @@ Material:
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 8, g: 3.4285712, b: 0, a: 0.25}
+    - _EmissiveColor: {r: 8102865.5, g: 3557637.5, b: 1370346.1, a: 8102865.5}
     - _EmissiveColorLDR: {r: 1, g: 0.69369286, b: 0.44811308, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
@@ -311,4 +315,6 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _UnlitColor: {r: 1, g: 1, b: 1, a: 1}
+    - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
