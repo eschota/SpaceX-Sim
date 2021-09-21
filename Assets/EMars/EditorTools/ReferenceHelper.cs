@@ -57,7 +57,6 @@ public class ReferenceHelper : MonoBehaviour
     }
     static void DisableAllReferences()
     {
-        if (CurrentImageID == -1) CurrentImageID = 0;
         foreach (var item in References)
         {
             item.color = new Color(0,0,0,0);
