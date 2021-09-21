@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5283.4766, g: 2251.3135, b: 2088.8203, a: 1}
+  m_IndirectSpecularColor: {r: 192.3609, g: 81.90283, b: 60.959885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -327,7 +327,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 153856.66
+  m_Intensity: 6000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1534,6 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184bb8804b8a60743a10e337f29bcf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCollided: 0
   StatePositions:
   - {x: 0, y: 30, z: -30}
   - {x: 0, y: 333, z: -222}
@@ -1545,6 +1546,8 @@ MonoBehaviour:
   Wheel: 0
   currentLerp: 4e-45
   CurrentCameraState: 0
+  Pivot: {fileID: 0}
+  PivotShift: {fileID: 0}
   DistanceMax: 1000
   CameraSpeed: 11
   CameraSpeedMultByHeight:
