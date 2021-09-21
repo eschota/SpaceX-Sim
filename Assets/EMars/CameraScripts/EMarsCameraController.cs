@@ -56,30 +56,38 @@ public class EMarsCameraController : MonoBehaviour
     void Update()
     {
         if (!Application.isPlaying) return;
-
-        MoveCameraByKeboard();
-        MoveCamera();
-        MoveCameraByHeightAndRotate();
+        if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        CameraInputInteraction();
+        MoveCameraByHeightAndRotateInEditor();
         DragCamera();
         
     }
     void MoveCameraByKeboard()
     {
-        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
+        Vector3 dir;
+            if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y>Screen.height*0.95f)
         {
-            PivotShift.transform.position+=(totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+            dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+            if (isCollidedWithRelief(dir)) return;
+                PivotShift.transform.position+=(totalSpeed * dir);
         }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y < Screen.height * 0.05f)
         {
-            PivotShift.transform.position-=(totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+            dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+            if (isCollidedWithRelief(dir)) return;
+            PivotShift.transform.position-=(totalSpeed * dir);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x < Screen.width * 0.05f)
         {
-            PivotShift.transform.position-=(totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
+            dir = new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z);
+            if (isCollidedWithRelief(dir)) return;
+            PivotShift.transform.position-=(totalSpeed * dir);
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x > Screen.width * 0.95f)
         {
-            PivotShift.transform.position+=(totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
+            dir = new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z);
+            if (isCollidedWithRelief(dir)) return;
+            PivotShift.transform.position+=(totalSpeed * dir);
         }
         Debug.DrawRay(PivotShift.transform.position, 10*CameraSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
     }
@@ -99,7 +107,7 @@ public class EMarsCameraController : MonoBehaviour
             Vector3 planarDirection = new Vector3(ray.direction.x, 0, ray.direction.z);
             Vector3 planarOrigin = new Vector3(ray.origin.x, 0, ray.origin.z);
         DragPosStart = planarOrigin + (planarDirection.normalized * distToZeroPlane);
-        Debug.DrawLine(DragPosStart, DragPosStart+planarDirection*100, Color.green);
+       // Debug.DrawLine(DragPosStart, DragPosStart+planarDirection*100, Color.green);
 
 
         }
@@ -115,86 +123,76 @@ public class EMarsCameraController : MonoBehaviour
             Vector3 planarOrigin = new Vector3(ray.origin.x, 0, ray.origin.z);
            Vector3 DragPos = planarOrigin + (planarDirection.normalized * distToZeroPlane);
 
-            PivotShift.transform.position += -DragPos + DragPosStart;
-            PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
-            DragPosStart = (DragPos);
-            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position, 25 * Time.deltaTime);
+            if (!isCollidedWithRelief(-DragPos + DragPosStart))
+            {
+                PivotShift.transform.position += -DragPos + DragPosStart;
+                PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
+                DragPosStart = (DragPos);
+                Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position, 25 * Time.deltaTime);
+            }
         }
     }
 
-    void MoveCamera()
+    bool isCollidedWithRelief(Vector3 dir)
+    {
+
+        Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position+ dir*25);
+         
+            Collider[] hitColliders = Physics.OverlapSphere((Camera.main.transform.position-Vector3.up*5)+dir.normalized*16,24 );
+            foreach (var hitCollider in hitColliders)
+            {
+                Debug.Log("Collided!");
+                PivotShift.transform.position -= dir.normalized*10;                
+                return true;
+            }
+          
+         
+
+
+        return false;
+    }
+
+    void CameraInputInteraction()
     {
         if (Application.isPlaying)
         {
-
-
-
-           
-
-            
                 if (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1))
             {
                 
                 mPos = Input.mousePosition;
             }
-                if (Input.GetMouseButton(2))
+            if (Input.GetMouseButton(2))
             {
-                PivotShift.transform.rotation=Quaternion.Euler(0,PivotShift.transform.rotation.eulerAngles.y+(((mPos.x-Input.mousePosition.x)/Screen.width)*Time.deltaTime*500),0);
-            } 
+                PivotShift.transform.rotation = Quaternion.Euler(0, PivotShift.transform.rotation.eulerAngles.y + (((mPos.x - Input.mousePosition.x) / Screen.width) * Time.deltaTime * 500), 0);
+            }
             else
             {
-                Wheel += 1.8f * Input.GetAxis("Mouse ScrollWheel");
-                Wheel = Mathf.Clamp01(Wheel);
+            
+                if (!isCollidedWithRelief(Vector3.up * Input.GetAxis("Mouse ScrollWheel"))) 
+                { 
+                    Wheel += 1.4f * Input.GetAxis("Mouse ScrollWheel");
+                    Wheel = Mathf.Clamp01(Wheel);
 
-                currentLerp = Mathf.Lerp(currentLerp, Wheel, 5 * Time.deltaTime);
-                currentLerp = Mathf.Clamp01(currentLerp);
-
-                {
+                    currentLerp = Mathf.Lerp(currentLerp, Wheel, 5 * Time.deltaTime);
+                    currentLerp = Mathf.Clamp01(currentLerp);
 
                     Camera.main.transform.localPosition = Vector3.Lerp(StatePositions[2], StatePositions[0], currentLerp);
                     Camera.main.transform.localRotation = Quaternion.Euler(Vector3.Lerp(StateRotations[2], StateRotations[0], currentLerp));
                 }
-
-                if (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height)
-                {
-
-                }
-                else
-                {
-
-                    if (Input.mousePosition.x < 0.05f * Screen.width) mistakeTimer += Time.deltaTime;
-                    else
-                     if (Input.mousePosition.x > 0.95f * Screen.width) mistakeTimer += Time.deltaTime;
-                    else
-                     if (Input.mousePosition.y > 0.95f * Screen.height) mistakeTimer += Time.deltaTime;
-                    else
-                     if (Input.mousePosition.y < 0.05f * Screen.height) mistakeTimer += Time.deltaTime;
-                    else mistakeTimer = 0;
-
-                    if (mistakeTimer > 0.17f)
-                    {
-                        if(Input.mousePosition.x<Screen.width*0.05f)
-                            PivotShift.transform.position -= (totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
-                        if (Input.mousePosition.x > Screen.width * 0.95f)
-                            PivotShift.transform.position += (totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
-                        if (Input.mousePosition.y < Screen.height * 0.05f)
-                            PivotShift.transform.position -= (totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
-                        if (Input.mousePosition.y > Screen.height * 0.95f)
-                            PivotShift.transform.position += (totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
-
-
-                    }
-                }
+                    MoveCameraByKeboard();
+                    
             }
+              PivotShift.transform.position = new Vector3(Mathf.Clamp( PivotShift.transform.position.x,-DistanceMax,+DistanceMax), PivotShift.transform.position.y, Mathf.Clamp(PivotShift.transform.position.z, -DistanceMax, +DistanceMax));
+              isCollidedWithRelief(Vector3.zero);
 
-            PivotShift.transform.position = new Vector3(Mathf.Clamp( PivotShift.transform.position.x,-DistanceMax,+DistanceMax), PivotShift.transform.position.y, Mathf.Clamp(PivotShift.transform.position.z, -DistanceMax, +DistanceMax));
-         if(!Input.GetMouseButton(0))   Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position,10* Time.deltaTime);
-            Pivot.transform.rotation = Quaternion.Lerp(Pivot.transform.rotation, PivotShift.transform.rotation,10* Time.deltaTime);
+            if (!Input.GetMouseButton(0))   Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position,10* Time.deltaTime);
+              Pivot.transform.rotation = Quaternion.Lerp(Pivot.transform.rotation, PivotShift.transform.rotation,10* Time.deltaTime);
         }
     }
-    void MoveCameraByHeightAndRotate()
+    void MoveCameraByHeightAndRotateInEditor()
     {
-        if (!Application.isPlaying)
+        if (!Application.isPlaying) 
+            
         {
             Camera.main.transform.position = StatePositions[(int)CurrentCameraState];
             Camera.main.transform.localRotation = Quaternion.Euler(StateRotations[(int)CurrentCameraState]);
@@ -206,4 +204,6 @@ public class EMarsCameraController : MonoBehaviour
          else CurrentCameraState=0;
 
     }
+
+   
 }
