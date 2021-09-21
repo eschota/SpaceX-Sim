@@ -21,11 +21,11 @@ public class EMarsCameraController : MonoBehaviour
     [SerializeField] float DistanceMax = 50;
     
     [SerializeField] float CameraSpeed = 50;
-    [SerializeField] AnimationCurve CameraSpeedMultByHeight=new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+    [SerializeField] AnimationCurve CameraSpeedMultByHeight=new AnimationCurve(new Keyframe(0, 0.1f), new Keyframe(1, 1));
 
     private float totalSpeed
     {
-        get => Mathf.Clamp(  CameraSpeed * CameraSpeedMultByHeight.Evaluate(Camera.main.transform.position.y / StatePositions[StatePositions.Length - 1].y), .1f,1);
+        get =>  CameraSpeed * Mathf.Clamp( CameraSpeedMultByHeight.Evaluate(Camera.main.transform.position.y / StatePositions[StatePositions.Length - 1].y),0.01f,1);
         
     }
     public enum CameraState
@@ -64,19 +64,19 @@ public class EMarsCameraController : MonoBehaviour
     }
     void MoveCameraByKeboard()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
         {
             PivotShift.transform.position+=(totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             PivotShift.transform.position-=(totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             PivotShift.transform.position-=(totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             PivotShift.transform.position+=(totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
         }
@@ -89,43 +89,7 @@ public class EMarsCameraController : MonoBehaviour
 
 
 
-            Wheel += 1.4f * Input.GetAxis("Mouse ScrollWheel");
-            Wheel = Mathf.Clamp01(Wheel);
-
-            currentLerp = Mathf.Lerp(currentLerp, Wheel, 5 * Time.deltaTime);
-            currentLerp = Mathf.Clamp01(currentLerp);
-
-            {
-
-                Camera.main.transform.localPosition = Vector3.Lerp(StatePositions[2], StatePositions[0], currentLerp);
-                Camera.main.transform.localRotation = Quaternion.Euler(Vector3.Lerp(StateRotations[2], StateRotations[0], currentLerp));
-            }
-
-            if (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height)
-            {
-
-            }
-            else
-            {
-
-                if (Input.mousePosition.x < 0.05f * Screen.width) mistakeTimer += Time.deltaTime;
-                else
-                 if (Input.mousePosition.x > 0.95f * Screen.width) mistakeTimer += Time.deltaTime;
-                else
-                 if (Input.mousePosition.y > 0.95f * Screen.height) mistakeTimer += Time.deltaTime;
-                else
-                 if (Input.mousePosition.y < 0.05f * Screen.height) mistakeTimer += Time.deltaTime;
-                else mistakeTimer = 0;
-
-                if (mistakeTimer > 0.17f)
-                {
-                    Vector3 Direction = Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
-                    Direction = new Vector3(Direction.x, 0, Direction.y);
-                    Direction = (200*CameraSpeed * Direction.normalized * Time.deltaTime * mistakeTimer);
-                    if (Vector3.Distance(PivotShift.transform.position + PivotShift.transform.TransformDirection(Direction), Vector3.zero) <= DistanceMax)
-                        PivotShift.transform.position += PivotShift.transform.TransformDirection( Direction);
-                }
-            }
+           
 
             
                 if (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1))
@@ -133,18 +97,64 @@ public class EMarsCameraController : MonoBehaviour
                 
                 mPos = Input.mousePosition;
             }
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(2))
             {
                 PivotShift.transform.rotation=Quaternion.Euler(0,PivotShift.transform.rotation.eulerAngles.y+(((mPos.x-Input.mousePosition.x)/Screen.width)*Time.deltaTime*500),0);
             }
+            else
             if (Input.GetMouseButton(0))
             {
-                Vector3 Direction = Input.mousePosition - new Vector3(mPos.x,mPos.y,0);
-                Direction = new Vector3(Direction.x, 0, Direction.y);
-                Direction =-1* (CameraSpeed * Direction * Time.deltaTime  );
-                if (Vector3.Distance(PivotShift.transform.position + PivotShift.transform.TransformDirection(Direction), Vector3.zero) <= DistanceMax)
-                    PivotShift.transform.position += PivotShift.transform.TransformDirection(Direction);
+                float distToZeroPlane = Camera.main.transform.position.y / Mathf.Cos(Camera.main.transform.rotation.y);
+                PivotShift.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distToZeroPlane;
+                PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
             }
+            else
+            {
+                Wheel += 1.4f * Input.GetAxis("Mouse ScrollWheel");
+                Wheel = Mathf.Clamp01(Wheel);
+
+                currentLerp = Mathf.Lerp(currentLerp, Wheel, 5 * Time.deltaTime);
+                currentLerp = Mathf.Clamp01(currentLerp);
+
+                {
+
+                    Camera.main.transform.localPosition = Vector3.Lerp(StatePositions[2], StatePositions[0], currentLerp);
+                    Camera.main.transform.localRotation = Quaternion.Euler(Vector3.Lerp(StateRotations[2], StateRotations[0], currentLerp));
+                }
+
+                if (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height)
+                {
+
+                }
+                else
+                {
+
+                    if (Input.mousePosition.x < 0.05f * Screen.width) mistakeTimer += Time.deltaTime;
+                    else
+                     if (Input.mousePosition.x > 0.95f * Screen.width) mistakeTimer += Time.deltaTime;
+                    else
+                     if (Input.mousePosition.y > 0.95f * Screen.height) mistakeTimer += Time.deltaTime;
+                    else
+                     if (Input.mousePosition.y < 0.05f * Screen.height) mistakeTimer += Time.deltaTime;
+                    else mistakeTimer = 0;
+
+                    if (mistakeTimer > 0.17f)
+                    {
+                        if(Input.mousePosition.x<Screen.width*0.05f)
+                            PivotShift.transform.position -= (totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
+                        if (Input.mousePosition.x > Screen.width * 0.95f)
+                            PivotShift.transform.position += (totalSpeed * new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z));
+                        if (Input.mousePosition.y < Screen.height * 0.05f)
+                            PivotShift.transform.position -= (totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+                        if (Input.mousePosition.y > Screen.height * 0.95f)
+                            PivotShift.transform.position += (totalSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+
+
+                    }
+                }
+            }
+
+            PivotShift.transform.position = new Vector3(Mathf.Clamp( PivotShift.transform.position.x,-DistanceMax,+DistanceMax), PivotShift.transform.position.y, Mathf.Clamp(PivotShift.transform.position.z, -DistanceMax, +DistanceMax));
             Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position,10* Time.deltaTime);
             Pivot.transform.rotation = Quaternion.Lerp(Pivot.transform.rotation, PivotShift.transform.rotation,10* Time.deltaTime);
         }
