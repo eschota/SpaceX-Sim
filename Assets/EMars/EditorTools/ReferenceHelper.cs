@@ -10,14 +10,14 @@ using UnityEngine.UI;
 public class ReferenceHelper : MonoBehaviour
 {
     private static Color TransparencyColor=Color.white;
-    [SerializeField] static List<Image> References = new List<Image>();
-    [SerializeField] static RawImage history ;
+    [SerializeField]  List<Image> References = new List<Image>();
+    [SerializeField]  RawImage history ;
 
     private static Image CurrentImage;
     private static int CurrentImageID=0;
     private void Awake()
     {
-        if(!Application.isEditor) Destroy(this.gameObject);
+        if(Application.isPlaying) Destroy(this);
     }
     private void OnValidate()
     {
@@ -25,7 +25,7 @@ public class ReferenceHelper : MonoBehaviour
         References.AddRange(transform.GetComponentsInChildren<Image>());
         foreach (var item in References) item.fillMethod = Image.FillMethod.Horizontal;
         foreach (var item in References) item.fillOrigin= 1;
-        if(history==null) history = GameObject.Find("RenderHistoryRawImage").GetComponent<RawImage>();
+      //  if(history==null) history = GameObject.Find("RenderHistoryRawImage").GetComponent<RawImage>();
     }
 
    
@@ -55,29 +55,29 @@ public class ReferenceHelper : MonoBehaviour
         References[CurrentImageID].color = TransparencyColor;
         history.color = new Color(0, 0, 0, 0);
     }
-    static void DisableAllReferences()
+     void DisableAllReferences()
     {
         foreach (var item in References)
         {
             item.color = new Color(0,0,0,0);
         }
-        CurrentImage = References[CurrentImageID];
+      if(CurrentImageID!=-1)  CurrentImage = References[CurrentImageID];
         CurrentImageID = -1;
         history.color = new Color(0, 0, 0, 0); 
     }
 
     [MenuItem("My Commands/Special Command %e")]
-    static void SpecialCommand()
+    void SpecialCommand()
     {
         Debug.Log("You used the shortcut Cmd+G (Mac)  Ctrl+G (Win)");
         Capture();
     }
-    static void EnableHistory()
+     void EnableHistory()
     {
         DisableAllReferences();
         history.color = TransparencyColor;
     }
-    public static void Capture()
+    public  void Capture()
     {
             DisableAllReferences();
             ScreenCapture.CaptureScreenshot(Path.Combine(Application.streamingAssetsPath, "history.png"));
