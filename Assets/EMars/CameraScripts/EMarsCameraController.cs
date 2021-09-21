@@ -101,14 +101,20 @@ public class EMarsCameraController : MonoBehaviour
             {
                 PivotShift.transform.rotation=Quaternion.Euler(0,PivotShift.transform.rotation.eulerAngles.y+(((mPos.x-Input.mousePosition.x)/Screen.width)*Time.deltaTime*500),0);
             }
-            else
-            if (Input.GetMouseButton(0))
-            {
-                float distToZeroPlane = Camera.main.transform.position.y / Mathf.Cos(Camera.main.transform.rotation.y);
-                PivotShift.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distToZeroPlane;
-                PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
-            }
-            else
+            //else
+            //if (Input.GetMouseButton(0))
+            //{
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                float angle = Mathf.Abs( Vector3.Angle(ray.direction , Vector3.down));
+
+                float distToZeroPlane = ray.origin.y / Mathf.Atan( Mathf.Deg2Rad*angle );
+            Debug.DrawLine(ray.origin + ray.direction * distToZeroPlane, ray.origin + ray.direction * distToZeroPlane + Vector3.up*100,Color.green);
+            Debug.Log("Angle = " + angle.ToString("00") + " Distance: " + distToZeroPlane.ToString("00000"));
+
+            //  PivotShift.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distToZeroPlane;
+            //'  PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
+            //}
+            //else
             {
                 Wheel += 1.4f * Input.GetAxis("Mouse ScrollWheel");
                 Wheel = Mathf.Clamp01(Wheel);
