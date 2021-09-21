@@ -25,7 +25,7 @@ public class EMarsCameraController : MonoBehaviour
 
     private float totalSpeed
     {
-        get =>  CameraSpeed * Mathf.Clamp( CameraSpeedMultByHeight.Evaluate(Camera.main.transform.position.y / StatePositions[StatePositions.Length - 1].y),0.01f,1);
+        get =>  CameraSpeed * Mathf.Clamp( CameraSpeedMultByHeight.Evaluate(Camera.main.transform.position.y / StatePositions[StatePositions.Length - 1].y),0.1f,1);
         
     }
     public enum CameraState
@@ -49,7 +49,7 @@ public class EMarsCameraController : MonoBehaviour
             CurrentCameraState = CameraState.TopView;
 
             //PostProcessProfile ppf= ppv.profile;
-            //ppf.TryGetSettings<DepthOfField>(out dof);
+            //ppf.TryGetSettings<DepthOfField>(out dof);    
         }
     }
    
@@ -60,6 +60,7 @@ public class EMarsCameraController : MonoBehaviour
         MoveCameraByKeboard();
         MoveCamera();
         MoveCameraByHeightAndRotate();
+        DragCamera();
         
     }
     void MoveCameraByKeboard()
@@ -82,6 +83,45 @@ public class EMarsCameraController : MonoBehaviour
         }
         Debug.DrawRay(PivotShift.transform.position, 10*CameraSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
     }
+
+
+    private Vector3 DragPosStart;
+    void DragCamera()
+    {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float angle =Vector3.Angle(ray.direction, Vector3.down);
+
+            float distToZeroPlane = ray.origin.y * Mathf.Tan(Mathf.Deg2Rad * angle);
+        //Debug.Log("Angle = " + angle.ToString("00") + " Distance: " + distToZeroPlane.ToString("00000"));
+            Vector3 planarDirection = new Vector3(ray.direction.x, 0, ray.direction.z);
+            Vector3 planarOrigin = new Vector3(ray.origin.x, 0, ray.origin.z);
+        DragPosStart = planarOrigin + (planarDirection.normalized * distToZeroPlane);
+        Debug.DrawLine(DragPosStart, DragPosStart+planarDirection*100, Color.green);
+
+
+        }
+        else
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float angle = Vector3.Angle(ray.direction, Vector3.down);
+
+            float distToZeroPlane = ray.origin.y * Mathf.Tan(Mathf.Deg2Rad * angle);
+            //Debug.Log("Angle = " + angle.ToString("00") + " Distance: " + distToZeroPlane.ToString("00000"));
+            Vector3 planarDirection = new Vector3(ray.direction.x, 0, ray.direction.z);
+            Vector3 planarOrigin = new Vector3(ray.origin.x, 0, ray.origin.z);
+           Vector3 DragPos = planarOrigin + (planarDirection.normalized * distToZeroPlane);
+
+            PivotShift.transform.position += -DragPos + DragPosStart;
+            PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
+            DragPosStart = (DragPos);
+            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position, 25 * Time.deltaTime);
+        }
+    }
+
     void MoveCamera()
     {
         if (Application.isPlaying)
@@ -100,23 +140,10 @@ public class EMarsCameraController : MonoBehaviour
                 if (Input.GetMouseButton(2))
             {
                 PivotShift.transform.rotation=Quaternion.Euler(0,PivotShift.transform.rotation.eulerAngles.y+(((mPos.x-Input.mousePosition.x)/Screen.width)*Time.deltaTime*500),0);
-            }
-            //else
-            //if (Input.GetMouseButton(0))
-            //{
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                float angle = Mathf.Abs( Vector3.Angle(ray.direction , Vector3.down));
-
-                float distToZeroPlane = ray.origin.y / Mathf.Atan( Mathf.Deg2Rad*angle );
-            Debug.DrawLine(ray.origin + ray.direction * distToZeroPlane, ray.origin + ray.direction * distToZeroPlane + Vector3.up*100,Color.green);
-            Debug.Log("Angle = " + angle.ToString("00") + " Distance: " + distToZeroPlane.ToString("00000"));
-
-            //  PivotShift.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distToZeroPlane;
-            //'  PivotShift.transform.position = new Vector3(PivotShift.transform.position.x, 0, PivotShift.transform.position.z);
-            //}
-            //else
+            } 
+            else
             {
-                Wheel += 1.4f * Input.GetAxis("Mouse ScrollWheel");
+                Wheel += 1.8f * Input.GetAxis("Mouse ScrollWheel");
                 Wheel = Mathf.Clamp01(Wheel);
 
                 currentLerp = Mathf.Lerp(currentLerp, Wheel, 5 * Time.deltaTime);
@@ -161,7 +188,7 @@ public class EMarsCameraController : MonoBehaviour
             }
 
             PivotShift.transform.position = new Vector3(Mathf.Clamp( PivotShift.transform.position.x,-DistanceMax,+DistanceMax), PivotShift.transform.position.y, Mathf.Clamp(PivotShift.transform.position.z, -DistanceMax, +DistanceMax));
-            Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position,10* Time.deltaTime);
+         if(!Input.GetMouseButton(0))   Pivot.transform.position = Vector3.Lerp(Pivot.transform.position, PivotShift.transform.position,10* Time.deltaTime);
             Pivot.transform.rotation = Quaternion.Lerp(Pivot.transform.rotation, PivotShift.transform.rotation,10* Time.deltaTime);
         }
     }
