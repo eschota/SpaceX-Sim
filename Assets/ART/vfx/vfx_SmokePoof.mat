@@ -21,28 +21,32 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: vfx_SmokePoof
-  m_Shader: {fileID: -6465566751694194690, guid: d73908ea82bcb074bbead9dae7091822,
+  m_Shader: {fileID: -6465566751694194690, guid: 06cfff4283fdd9546991bcc07cf806c2,
     type: 3}
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT
+  m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT
     _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3001
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3002
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
   - RayTracingPrepass
   - MOTIONVECTORS
-  - TransparentDepthPrepass
-  - TransparentDepthPostpass
   - TransparentBackface
+  - TransparentDepthPostpass
+  - TransparentDepthPrepass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_23DD87FD:
         m_Texture: {fileID: 2800000, guid: bb0cae31eec296d4c950584b24d07a1d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_77099AA4:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -156,6 +160,8 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_24E77A4C: 0.5
+    - Vector1_5AAD2BA5: 0.45
+    - Vector1_92B14817: 0
     - Vector1_B53EF277: 0
     - Vector1_F8A3F509: 0
     - _AORemapMax: 0.5098561
@@ -181,8 +187,8 @@ Material:
     - _CameraNearFadeDistance: 1
     - _CoatMask: 0
     - _Cull: 2
-    - _CullMode: 0
-    - _CullModeForward: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -211,7 +217,7 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
-    - _DoubleSidedEnable: 1
+    - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
     - _EmissionEnabled: 0
@@ -281,7 +287,7 @@ Material:
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
     - _SubsurfaceMask: 1
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _SurfaceType: 1
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
@@ -291,7 +297,7 @@ Material:
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
     - _TransparentDepthPrepassEnable: 0
-    - _TransparentSortPriority: 1
+    - _TransparentSortPriority: 2
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UVBase: 0
@@ -306,11 +312,12 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - Color_FA918BB9: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_3782A8B8: {r: 0, g: 2, b: 0, a: 0}
     - Vector2_D0C9AA28: {r: 0, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.5803922}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.98833734, g: 0.24837798, b: 0.09831628, a: 0.36862746}
+    - _Color: {r: 3.4489958, g: 0.8667633, b: 0.3430938, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
