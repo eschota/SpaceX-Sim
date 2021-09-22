@@ -41,6 +41,7 @@ public class EMarsCameraController : MonoBehaviour
     {
         if (Application.isPlaying)
         {
+            gameObject.AddComponent<EMap>();
             transform.position = Vector3.up * 200;
             Pivot = new GameObject(); Pivot.name = "PivotCamera"; Pivot.transform.position = Vector3.zero; Pivot.transform.rotation = Quaternion.identity;
             PivotShift = new GameObject(); PivotShift.name = "PivotShift"; PivotShift.transform.position = Vector3.zero; PivotShift.transform.rotation = Quaternion.identity;
@@ -67,32 +68,33 @@ public class EMarsCameraController : MonoBehaviour
     }
     void MoveCameraByKeboard()
     {
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1) && Input.GetMouseButton(2)) return;
         Vector3 dir;
-            if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y>Screen.height*0.95f)
+            if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y>Screen.height*0.95f && Input.mousePosition.y <= Screen.height * 1.001f)
         {
             dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
             
                 PivotShift.transform.position+=(totalSpeed * dir);
         }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y < Screen.height * 0.05f)
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y < Screen.height * 0.05f && Input.mousePosition.y >= 0)
         {
             dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
             
             PivotShift.transform.position-=(totalSpeed * dir);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x < Screen.width * 0.05f)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x < Screen.width * 0.05f && Input.mousePosition.x >= 0)
         {
             dir = new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z);
             
             PivotShift.transform.position-=(totalSpeed * dir);
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x > Screen.width * 0.95f)
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x > Screen.width * 0.95f && Input.mousePosition.x < Screen.width * 1.001f)
         {
             dir = new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z);
             
             PivotShift.transform.position+=(totalSpeed * dir);
         }
-        Debug.DrawRay(PivotShift.transform.position, 10*CameraSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
+      //'  Debug.DrawRay(PivotShift.transform.position, 10*CameraSpeed * new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z));
     }
 
 
