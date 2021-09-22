@@ -21,13 +21,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mars_Surface
-  m_Shader: {fileID: 4800000, guid: ce302e8d4e10b4f42917c9b77899f9ed, type: 3}
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP _NORMALMAP_TANGENT_SPACE
+  m_Shader: {fileID: -6465566751694194690, guid: 1ac50726af284f043bb4d4c93fc764fb,
+    type: 3}
+  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2225
+  stringTagMap:
+    MotionVector: User
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
@@ -37,6 +39,78 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - AO_far:
+        m_Texture: {fileID: 2800000, guid: e53328f2d1494354a83562b3400f33ff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - AO_near:
+        m_Texture: {fileID: 2800000, guid: 501915882413c8e47b6b291a9348c010, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Base_Color_far:
+        m_Texture: {fileID: 2800000, guid: 98ddecdf358706e46adf43b4ddf4b623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Base_Color_near:
+        m_Texture: {fileID: 2800000, guid: eacc8a3966810434682f5ee121c8beaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Base_color_far:
+        m_Texture: {fileID: 2800000, guid: 98ddecdf358706e46adf43b4ddf4b623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Detail1_Normal:
+        m_Texture: {fileID: 2800000, guid: 25027e013111a354fbebef61dc2274d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Detail1_Overlay:
+        m_Texture: {fileID: 2800000, guid: 67053ba20f9abaf43be28ea9046318e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Detail2_Normal:
+        m_Texture: {fileID: 2800000, guid: 3b9082e1889be00448c6fe6c330204d7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Detail2_Overlay:
+        m_Texture: {fileID: 2800000, guid: cd0bac03b2ee08141a698314c649fc85, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Detail_Overlay1:
+        m_Texture: {fileID: 2800000, guid: 63183c018989a414b9ba647128cf3d52, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Detail_Overlay2:
+        m_Texture: {fileID: 2800000, guid: 7eb78db2138a5f64c8afb70fa5ec6af8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Metallic_far:
+        m_Texture: {fileID: 2800000, guid: ebcffe1af6c6e3b43a7849108c9d0268, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Metallic_near:
+        m_Texture: {fileID: 2800000, guid: f04b64f93279169468e30c91b428ccd2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Normal_far:
+        m_Texture: {fileID: 2800000, guid: e4a5db046d52fff4cadbf3f5823eba34, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Normal_near:
+        m_Texture: {fileID: 2800000, guid: 47ae779d95d8feb4d8fff7c4ed5f64e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Smoothness_far:
+        m_Texture: {fileID: 2800000, guid: e53328f2d1494354a83562b3400f33ff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Smoothness_near:
+        m_Texture: {fileID: 2800000, guid: f80bc0442253135419c48949dbea0cec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_Array:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo_far:
         m_Texture: {fileID: 2800000, guid: 98ddecdf358706e46adf43b4ddf4b623, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -141,6 +215,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 2800000, guid: 98ddecdf358706e46adf43b4ddf4b623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TextureSample0:
         m_Texture: {fileID: 2800000, guid: 3e84cde439cb4f24a8e8076834dfcf07, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -175,6 +253,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - HUE: 3
+    - Metallic: 0
+    - Near_Tile_noise_size: 150
+    - Near_end: 0.186
+    - Near_start: 0.024
+    - Normal_multiply: 1.4
+    - Saturation: 0.95
+    - Smoothness: 0.18
     - _AORemapMax: 1
     - _AORemapMin: 0.5748924
     - _ATDistance: 1
@@ -217,6 +303,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
+    - _Float: 0.69
     - _Float0: 53.77
     - _Float1: 1105.1
     - _HeightAmplitude: 0.02
@@ -295,9 +382,15 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - Base_Color_near_tile: {r: 20, g: 20, b: 1, a: 1}
+    - Color1: {r: 0.6603774, g: 0.16509435, b: 0.16509435, a: 0}
+    - Color_1: {r: 0, g: 0.057522297, b: 1, a: 0}
+    - Color_Tint: {r: 0.047169805, g: 0.010741522, b: 0, a: 1}
+    - Colorrrr: {r: 0.16640952, g: 0.33962262, b: 0.09772159, a: 0}
+    - Near_Tile: {r: 50, g: 50, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 0.70943516, b: 0.6367924, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.70943516, b: 0.6367924, a: 1}
+    - _Color: {r: 0.747, g: 0.747, b: 0.747, a: 1}
     - _Color0: {r: 0.68232346, g: 0.7735849, b: 0.33935562, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

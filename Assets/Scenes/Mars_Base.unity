@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5284.01, g: 2254.2686, b: 2113.2095, a: 1}
+  m_IndirectSpecularColor: {r: 5249.577, g: 2254.8027, b: 2248.165, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -470,14 +470,14 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 2
+    m_Level: 3
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
     m_Override: 0
-    m_UseOverride: 1
-    m_Level: 0
+    m_UseOverride: 0
+    m_Level: 2
   m_RayTracedContactShadow: 0
   m_ShadowTint: {r: 0, g: 0, b: 0, a: 1}
   m_PenumbraTint: 0
@@ -1175,6 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 1046474506}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &818532034
 Transform:
   m_ObjectHideFlags: 19
@@ -1664,6 +1665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184bb8804b8a60743a10e337f29bcf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCollided: 0
   StatePositions:
   - {x: 0, y: 30, z: -30}
   - {x: 0, y: 333, z: -222}
@@ -1675,6 +1677,8 @@ MonoBehaviour:
   Wheel: 0
   currentLerp: 4e-45
   CurrentCameraState: 0
+  Pivot: {fileID: 0}
+  PivotShift: {fileID: 0}
   DistanceMax: 500
   CameraSpeed: 11
   CameraSpeedMultByHeight:
@@ -1778,13 +1782,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: 0, y: 30, z: -30}
+  m_LocalRotation: {x: 0.26686418, y: -0, z: -0, w: 0.9637342}
+  m_LocalPosition: {x: -6, y: 33, z: -70}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45.053, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.956, y: 0, z: 0}
 --- !u!114 &1823688468
 MonoBehaviour:
   m_ObjectHideFlags: 0
