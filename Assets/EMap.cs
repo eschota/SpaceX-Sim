@@ -23,7 +23,7 @@ public class EMap : MonoBehaviour
 
         for (int j = 0; j < 12; j++)
         {
-            GameObject child = GameObject.Instantiate(Resources.Load<GameObject>("Emap\\Wires"));
+            GameObject child = Instantiate(Resources.Load("Emap\\Wires")) as GameObject;
             child.transform.SetParent(WiresGO.transform);
             child.transform.localRotation = Quaternion.Euler(new Vector3(0, (j + 1) * 30, 0));
         }

@@ -43,6 +43,8 @@ public class EMarsCameraController : MonoBehaviour
         {
             gameObject.AddComponent<EState>();
             gameObject.AddComponent<EMap>();
+            GameObject child = Instantiate(Resources.Load("Emap\\SUBSCRIPTS")) as GameObject;
+
             transform.position = Vector3.up * 200;
             Pivot = new GameObject(); Pivot.name = "PivotCamera"; Pivot.transform.position = Vector3.zero; Pivot.transform.rotation = Quaternion.identity;
             PivotShift = new GameObject(); PivotShift.name = "PivotShift"; PivotShift.transform.position = Vector3.zero; PivotShift.transform.rotation = Quaternion.identity;
