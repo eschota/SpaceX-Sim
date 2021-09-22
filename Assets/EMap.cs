@@ -10,10 +10,15 @@ public class EMap : MonoBehaviour
     {
         EMapIni();
     }
-
+    private void Awake()
+    {
+        EState.EventChangeState += OnChangeState;
+    }
     public void EMapIni()
     {
+
         WiresGO = new GameObject("Wires").gameObject; 
+        WiresGO.transform.position= Vector3.zero; 
        
 
         for (int j = 0; j < 12; j++)
@@ -22,11 +27,27 @@ public class EMap : MonoBehaviour
             child.transform.SetParent(WiresGO.transform);
             child.transform.localRotation = Quaternion.Euler(new Vector3(0, (j + 1) * 30, 0));
         }
-
+        WiresGO.SetActive(false);
     }
     public void EmapClear()
     {
-        Destroy(Wires.gameObject);
+        Destroy(WiresGO);
+    }
+
+    void OnChangeState()
+    {
+        if (EState.CurrentState == EState.UIState.Building)
+        {
+            WiresGO.SetActive(true);
+        }
+        else
+        {
+            WiresGO.SetActive(false);
+        }
+    }
+    private void OnDestroy()
+    {
+        EState.EventChangeState -= OnChangeState;
     }
 
     // Update is called once per frame

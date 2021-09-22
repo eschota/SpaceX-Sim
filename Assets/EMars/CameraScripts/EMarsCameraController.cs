@@ -41,6 +41,7 @@ public class EMarsCameraController : MonoBehaviour
     {
         if (Application.isPlaying)
         {
+            gameObject.AddComponent<EState>();
             gameObject.AddComponent<EMap>();
             transform.position = Vector3.up * 200;
             Pivot = new GameObject(); Pivot.name = "PivotCamera"; Pivot.transform.position = Vector3.zero; Pivot.transform.rotation = Quaternion.identity;
