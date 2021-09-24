@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.58431375, b: 0.43529415, a: 1}
+      maxColor: {r: 1, g: 0.9827044, b: 0.9764151, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -977,20 +977,38 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
-          inSlope: 10.706563
-          outSlope: 10.706563
+          value: 0.56756747
+          inSlope: 7.2642655
+          outSlope: 7.2642655
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.05932203
+          outWeight: 0.076271184
+        - serializedVersion: 3
+          time: 0.03131433
+          value: 0.91767806
+          inSlope: 2.3180184
+          outSlope: 2.3180184
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 1
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.44084197
+          value: 1
+          inSlope: -0.31613755
+          outSlope: -0.31613755
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 0.95945936
@@ -1305,7 +1323,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.6, b: 0.41176474, a: 1}
+        key0: {r: 0.82745105, g: 0.43529415, b: 0.29803923, a: 1}
         key1: {r: 1, g: 0.7642776, b: 0.6556604, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4794,7 +4812,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
