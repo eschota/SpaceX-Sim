@@ -21,11 +21,11 @@ public class EMap : MonoBehaviour
         WiresGO.transform.position= Vector3.zero; 
        
 
-        for (int j = 0; j < 12; j++)
+        for (int j = 0; j < 24; j++)
         {
             GameObject child = Instantiate(Resources.Load("Emap\\Wires")) as GameObject;
             child.transform.SetParent(WiresGO.transform);
-            child.transform.localRotation = Quaternion.Euler(new Vector3(0, (j + 1) * 30, 0));
+            child.transform.localRotation = Quaternion.Euler(new Vector3(0, (j + 1) * 15, 0));
         }
         WiresGO.SetActive(false);
     }
