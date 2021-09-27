@@ -33,5 +33,20 @@ public class UIButtonChangeState : MonoBehaviour
         EState.EventChangeState -= OnChangeState;
     }
 
-    
+
+    private void Update()
+    {
+        if (!Application.isPlaying) return;
+        if(thisState==EState.CurrentState)
+        {
+            rect.anchoredPosition = Vector3.Lerp(Pos1, Pos2, EState.EventTimer);
+            rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot1, Rot2, EState.EventTimer));
+        }
+        else
+        {
+            rect.anchoredPosition = Vector3.Lerp(Pos2, Pos1, 5 * Time.deltaTime);
+            rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot2, Rot1, EState.EventTimer));
+        }
+    }
+
 }
