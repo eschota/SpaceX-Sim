@@ -53,7 +53,7 @@ public class ReferenceHelper : MonoBehaviour
         if (id == References.Count) CurrentImageID = 0;
         else CurrentImageID = id;
         References[CurrentImageID].color = TransparencyColor;
-        history.color = new Color(0, 0, 0, 0);
+       // history.color = new Color(0, 0, 0, 0);
     }
     static void DisableAllReferences()
     {
