@@ -23,11 +23,11 @@ Material:
   m_Name: vfx_SmokePoof
   m_Shader: {fileID: -6465566751694194690, guid: 06cfff4283fdd9546991bcc07cf806c2,
     type: 3}
-  m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT
+  m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT
     _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
@@ -163,9 +163,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Normal_Strengh: 0.48
+    - Normal_Strengh: 0
     - Vector1_24E77A4C: 0.5
-    - Vector1_5AAD2BA5: -1.05
+    - Vector1_5AAD2BA5: -1.1
     - Vector1_92B14817: 0
     - Vector1_B53EF277: 0
     - Vector1_F8A3F509: 0
@@ -192,8 +192,8 @@ Material:
     - _CameraNearFadeDistance: 1
     - _CoatMask: 0
     - _Cull: 2
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -222,7 +222,7 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
-    - _DoubleSidedEnable: 0
+    - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
     - _EmissionEnabled: 0
