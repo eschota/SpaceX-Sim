@@ -20,6 +20,7 @@ public class EState : MonoBehaviour
         {
             _currentState = value;
             if(EventChangeState!=null) EventChangeState();
+            Debug.Log("Changing State: " + value);
         }
     }
     void Start()

@@ -61,7 +61,7 @@ public class ReferenceHelper : MonoBehaviour
         {
             item.color = new Color(0,0,0,0);
         }
-        CurrentImage = References[CurrentImageID];
+      if(CurrentImageID>-1)  CurrentImage = References[CurrentImageID];
         CurrentImageID = -1;
         history.color = new Color(0, 0, 0, 0); 
     }
@@ -84,8 +84,8 @@ public class ReferenceHelper : MonoBehaviour
         Texture2D tex =new Texture2D(Screen.width,Screen.height);
         tex.LoadImage(File.ReadAllBytes(Path.Combine(Application.streamingAssetsPath, "history.png")));
         tex.Apply();
-        history.texture = tex;
-        EnableHistory();
+       // history.texture = tex;
+       ///// EnableHistory();
     }
     void OnGUI()
         {
