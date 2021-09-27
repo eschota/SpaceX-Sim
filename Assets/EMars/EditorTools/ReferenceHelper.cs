@@ -63,7 +63,7 @@ public class ReferenceHelper : MonoBehaviour
         }
       if(CurrentImageID>-1)  CurrentImage = References[CurrentImageID];
         CurrentImageID = -1;
-        history.color = new Color(0, 0, 0, 0); 
+      //  history.color = new Color(0, 0, 0, 0); 
     }
 
     [MenuItem("My Commands/Special Command %e")]
