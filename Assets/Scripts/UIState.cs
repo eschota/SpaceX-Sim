@@ -32,6 +32,16 @@ public class UIState : MonoBehaviour
         rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot1, Rot2, CurrentLerp));
         img.color = Color.Lerp(Color1, Color2, CurrentLerp);
     }
+
+    public virtual void Reset()
+    {
+        if (rect == null) rect = GetComponent<RectTransform>();
+        if (img == null) img = GetComponent<Image>();
+        Pos1 = rect.anchoredPosition;
+        Pos2 = rect.anchoredPosition;
+        Color1 = img.color;
+    }
+
     public virtual void OnChange()
     {
 
@@ -39,7 +49,7 @@ public class UIState : MonoBehaviour
     public virtual void Update()
     {
         if (!Application.isPlaying) return;
-        if (thisState == Core.CurrentState)
+        if (thisState != Core.CurrentState)
         {
             rect.anchoredPosition = Vector3.Lerp(Pos1, Pos2, Core.EventTimer);
             rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot1, Rot2, Core.EventTimer));
