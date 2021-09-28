@@ -1,92 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 
  
-[RequireComponent (typeof(CanvasGroup))]
+[RequireComponent (typeof(RectTransform))]
 public class UIState : MonoBehaviour
 {
-    private void Reset()
-    {
-        CG = GetComponent<CanvasGroup>();
-    }
-    private void Awake()
-    {
-        GameManager.EventChangeState += OnChange; 
-        if (thisState  == null) Debug.LogError("Ни одного стейта не выбрано у ГУЙ объекта : " + name);
-    }
-
-    void Start()
-    {
-        OnChange();
-    }
-    void Update()
-    {
-      
-    }
-     [SerializeField] public CanvasGroup CG;
-    [SerializeField] List <GameManager.State> thisState;
+    [SerializeField] EState.UIState thisState;
+    [SerializeField] RectTransform rect;
+    [SerializeField] Image img;
+    [SerializeField] Vector3 Pos1 = Vector3.one * 0.5f;
+    [SerializeField] Vector3 Pos2 = Vector3.one * 0.5f;
+    [SerializeField] Vector3 Rot1 = Vector3.zero;
+    [SerializeField] Vector3 Rot2 = Vector3.zero;
+    [SerializeField] Color32 Color1 = Color.white;
+    [SerializeField] Color32 Color2 = new Color32(0,0,0,0);
     
+    [Range(0, 1)]
+    public float CurrentLerp = 0;
 
-    void OnChange()
+    public virtual void OnValidate()
     {
-        if (thisState.Count < 1) return;
-        if (thisState.Exists(X=>X==GameManager.CurrentState))  Show();
-        else Hide();
-    }  
-    void Show()
-    {
-        CG.alpha = 1;
-        CG.interactable = true;
-        CG.blocksRaycasts = true;
+        if (rect == null) rect = GetComponent<RectTransform>();
+        if (img == null) img= GetComponent<Image>();
+        rect.anchoredPosition = Vector3.Lerp(Pos1, Pos2, CurrentLerp);
+        rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot1, Rot2, CurrentLerp));
+        img.color = Color.Lerp(Color1, Color2, CurrentLerp);
     }
-    void Hide()
+    public virtual void Start()
     {
-        
-        CG.alpha = 0;
+        EState.EventChangeState += OnChangeState;
+    }
+    public virtual void OnChangeState()
+    {
+        EState.CurrentState = thisState;
+    }
+    public virtual void OnDestroy()
+    {
+        EState.EventChangeState -= OnChangeState;
+    }
+    public virtual void Reset()
+    {
+        if (rect == null) rect = GetComponent<RectTransform>();
+        if (img == null) img = GetComponent<Image>();
+        Pos1 = rect.anchoredPosition;
+        Pos2 = rect.anchoredPosition;
+        Color1 = img.color;
 
-        CG.interactable = false;
-        CG.blocksRaycasts = false;
     }
 
-   
-    private void OnDestroy()
+
+
+    public virtual void Update()
     {
-        GameManager.EventChangeState -= OnChange;
-      
+        if (!Application.isPlaying) return;
+        if (thisState == EState.CurrentState)
+        {
+            rect.anchoredPosition = Vector3.Lerp(Pos1, Pos2, EState.EventTimer);
+            rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot1, Rot2, EState.EventTimer));
+            img.color = Color.Lerp(Color1, Color2, CurrentLerp);
+        }
+        else
+        {
+            rect.anchoredPosition = Vector3.Lerp(Pos2, Pos1, 5 * Time.deltaTime);
+            rect.rotation = Quaternion.Euler(Vector3.Lerp(Rot2, Rot1, EState.EventTimer));
+            img.color = Color.Lerp(Color2, Color1, EState.EventTimer);
+        }
     }
 
-
-   
 }
-//#if UNITY_EDITOR
-
-//[CustomEditor(typeof(UIState))]
-//class UIStateButton : Editor
-//{
-//    public override void OnInspectorGUI()
-//    {
-//        base.OnInspectorGUI();
-//        if (GUILayout.Button("IsolateThisUI"))
-//        {
-//            List<UIState> statesParent = new List<UIState>();
-//            statesParent.AddRange(Selection.activeGameObject.GetComponentsInParent<UIState>());
-//            foreach (var item in statesParent[0].GetComponentsInChildren<UIState>())
-//            {
-                
-//                if (item.gameObject == Selection.activeGameObject)
-//                    item.CG.alpha = 1;
-//                else
-//                    item.CG.alpha = 0;
-//                if (statesParent.Exists(X => X == item)) item.CG.alpha = 1;
-//            }
-//            foreach (var item in Selection.activeGameObject.GetComponentsInParent<UIState>())
-//            {
-//                item.CG.alpha = 1;
-//            }
-//        }
-
-//    }
-//}
-//#endif
