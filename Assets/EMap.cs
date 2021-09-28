@@ -36,7 +36,7 @@ public class EMap : MonoBehaviour
 
     void OnChangeState()
     {
-        if (EState.CurrentState == EState.UIState.Building)
+        if (EState.CurrentState == EState.State.Building)
         {
             WiresGO.SetActive(true);
         }
