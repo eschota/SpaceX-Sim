@@ -12,7 +12,7 @@ public class EMap : MonoBehaviour
     }
     private void Awake()
     {
-        EState.EventChangeState += OnChangeState;
+        Core.EventChangeState += OnChangeState;
     }
     public void EMapIni()
     {
@@ -36,7 +36,7 @@ public class EMap : MonoBehaviour
 
     void OnChangeState()
     {
-        if (EState.CurrentState == EState.State.Building)
+        if (Core.CurrentState == Core.State.Building)
         {
             WiresGO.SetActive(true);
         }
@@ -47,7 +47,7 @@ public class EMap : MonoBehaviour
     }
     private void OnDestroy()
     {
-        EState.EventChangeState -= OnChangeState;
+        Core.EventChangeState -= OnChangeState;
     }
 
     // Update is called once per frame

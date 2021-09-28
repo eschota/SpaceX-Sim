@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EState : MonoBehaviour
+public class Core : MonoBehaviour
 {
     public static event Action EventChangeState;
-    public static float EventTimer=1;
-    public enum State { None, Play, Pause, Building}
+    public static float EventTimer = 1;
+    public enum State { None, Play, Pause, Building }
     private static State _currentState;
     public static State CurrentState
     {
@@ -20,14 +20,14 @@ public class EState : MonoBehaviour
         set
         {
             _currentState = value;
-            if(EventChangeState!=null) EventChangeState();
+            if (EventChangeState != null) EventChangeState();
             Debug.Log("Changing State: " + value);
             EventTimer = 0;
         }
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

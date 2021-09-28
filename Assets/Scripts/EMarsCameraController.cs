@@ -41,7 +41,7 @@ public class EMarsCameraController : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            gameObject.AddComponent<EState>();
+            gameObject.AddComponent<Core>();
             gameObject.AddComponent<EMap>();
             GameObject child = Instantiate(Resources.Load("Emap\\SUBSCRIPTS")) as GameObject;
 
