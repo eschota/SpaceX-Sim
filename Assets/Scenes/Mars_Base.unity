@@ -676,6 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 1046474506}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &818532034
 Transform:
   m_ObjectHideFlags: 19
@@ -805,12 +806,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76842ba81461d9546a7307005cc3e01e, type: 3}
---- !u!4 &882277974 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76842ba81461d9546a7307005cc3e01e,
-    type: 3}
-  m_PrefabInstance: {fileID: 882277973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!115 &1046474506
 MonoScript:
   m_ObjectHideFlags: 0
@@ -825,6 +820,36 @@ MonoScript:
   m_ExecutionOrder: 0
   m_ClassName: SceneObjectIDMapSceneAsset
   m_Namespace: UnityEngine.Rendering.HighDefinition
+--- !u!1 &1068107718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068107719}
+  m_Layer: 0
+  m_Name: CameraInterpolatorTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1068107719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068107718}
+  m_LocalRotation: {x: 0.23875986, y: 0, z: 0, w: 0.97107863}
+  m_LocalPosition: {x: 0, y: 269647.25, z: -1212953.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1161134453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1537,26 +1562,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.05
-      outSlope: 0.05
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.05
-      inSlope: 0.05
-      outSlope: 0.05
-      tangentMode: 34
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   Cam: {fileID: 1823688466}
-  TargetObject: {fileID: 882277974}
+  TargetObject: {fileID: 1068107719}
   ClipStart: {x: 10, y: 2000000}
   ClipEnd: {x: 1, y: 2000}
 --- !u!95 &1823688470
@@ -1608,7 +1633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 0}
-  m_StaticLightingSkyUniqueID: 4
+  m_StaticLightingSkyUniqueID: 0
 --- !u!4 &2013410475
 Transform:
   m_ObjectHideFlags: 1

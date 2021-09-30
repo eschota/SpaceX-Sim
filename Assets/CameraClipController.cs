@@ -9,7 +9,7 @@ public class CameraClipController : MonoBehaviour
     [SerializeField] Transform TargetObject;
     [SerializeField] Vector2 ClipStart;
     [SerializeField] Vector2 ClipEnd;
-    float startDist;
+    double startDist;
     void Start()
     {
         if (Cam == null) Cam = GetComponent<Camera>();
@@ -19,7 +19,9 @@ public class CameraClipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cam.nearClipPlane = Mathf.Lerp(ClipStart.x, ClipEnd.x, Curve.Evaluate( Vector3.Distance(Cam.transform.position, TargetObject.position)/ startDist ));
-        Cam.farClipPlane= Mathf.Lerp(ClipStart.y, ClipEnd.y, Curve.Evaluate( Vector3.Distance(Cam.transform.position, TargetObject.position)/ startDist ));
+
+        double clc=  (Vector3.Distance(Cam.transform.position, TargetObject.position)) / startDist ;
+        Cam.nearClipPlane = Mathf.Lerp(ClipStart.x, ClipEnd.x, Curve.Evaluate((float)clc));
+        Cam.farClipPlane= Mathf.Lerp(ClipStart.y, ClipEnd.y, Curve.Evaluate((float)clc));
     }
 }
