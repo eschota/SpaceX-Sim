@@ -232,6 +232,7 @@ Shader "Mars_atmosphere"
 
 
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_WORLD_VIEW_DIR
 
@@ -376,12 +377,12 @@ Shader "Mars_atmosphere"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float3 objectToViewPos = TransformWorldToView(TransformObjectToWorld(inputMesh.positionOS));
+				float eyeDepth = -objectToViewPos.z;
+				o.ase_texcoord1.x = eyeDepth;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(inputMesh.normalOS);
-				o.ase_texcoord1.xyz = ase_worldNormal;
+				o.ase_texcoord1.yzw = ase_worldNormal;
 				
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord1.w = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
 				#else
@@ -503,7 +504,9 @@ Shader "Mars_atmosphere"
 				float3 V = GetWorldSpaceNormalizeViewDir( input.positionRWS );
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float3 ase_worldNormal = packedInput.ase_texcoord1.xyz;
+				float eyeDepth = packedInput.ase_texcoord1.x;
+				float clampResult34 = clamp( pow( (0.0 + (( eyeDepth / 2000000.0 ) - 0.0) * (1.0 - 0.0) / (0.1 - 0.0)) , 2.0 ) , 0.0 , 1.0 );
+				float3 ase_worldNormal = packedInput.ase_texcoord1.yzw;
 				float dotResult19 = dot( -_DirectionalLightDatas[0].forward , ase_worldNormal );
 				float clampResult24 = clamp( (0.0 + (dotResult19 - -0.2) * (1.0 - 0.0) / (0.5 - -0.2)) , 0.0 , 1.0 );
 				float fresnelNdotV7 = dot( ase_worldNormal, V );
@@ -515,7 +518,7 @@ Shader "Mars_atmosphere"
 				
 				surfaceDescription.Color = _AtmosphereColor.rgb;
 				surfaceDescription.Emission = 0;
-				surfaceDescription.Alpha = lerpResult25;
+				surfaceDescription.Alpha = ( ( clampResult34 * lerpResult25 ) * 2.0 );
 				surfaceDescription.AlphaClipThreshold = _AlphaCutoff;
 				surfaceDescription.ShadowTint = float4( 0, 0 ,0 ,1 );
 				float2 Distortion = float2 ( 0, 0 );
@@ -597,6 +600,7 @@ Shader "Mars_atmosphere"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPass.cs.hlsl"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphHeader.hlsl"
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
 
 
@@ -712,14 +716,16 @@ Shader "Mars_atmosphere"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float3 objectToViewPos = TransformWorldToView(TransformObjectToWorld(inputMesh.positionOS));
+				float eyeDepth = -objectToViewPos.z;
+				o.ase_texcoord.x = eyeDepth;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(inputMesh.normalOS);
-				o.ase_texcoord.xyz = ase_worldNormal;
+				o.ase_texcoord.yzw = ase_worldNormal;
 				float3 ase_worldPos = GetAbsolutePositionWS( TransformObjectToWorld( (inputMesh.positionOS).xyz ) );
 				o.ase_texcoord1.xyz = ase_worldPos;
 				
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.w = 0;
 				o.ase_texcoord1.w = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
@@ -856,7 +862,9 @@ Shader "Mars_atmosphere"
 				float3 V = float3( 1.0, 1.0, 1.0 );
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float3 ase_worldNormal = packedInput.ase_texcoord.xyz;
+				float eyeDepth = packedInput.ase_texcoord.x;
+				float clampResult34 = clamp( pow( (0.0 + (( eyeDepth / 2000000.0 ) - 0.0) * (1.0 - 0.0) / (0.1 - 0.0)) , 2.0 ) , 0.0 , 1.0 );
+				float3 ase_worldNormal = packedInput.ase_texcoord.yzw;
 				float dotResult19 = dot( -_DirectionalLightDatas[0].forward , ase_worldNormal );
 				float clampResult24 = clamp( (0.0 + (dotResult19 - -0.2) * (1.0 - 0.0) / (0.5 - -0.2)) , 0.0 , 1.0 );
 				float3 ase_worldPos = packedInput.ase_texcoord1.xyz;
@@ -869,7 +877,7 @@ Shader "Mars_atmosphere"
 				float clampResult15 = clamp( ( clampResult13 - clampResult10 ) , 0.0 , 1.0 );
 				float lerpResult25 = lerp( ( clampResult24 * clampResult15 ) , clampResult15 , _DarkSideAtmosphere);
 				
-				surfaceDescription.Alpha = lerpResult25;
+				surfaceDescription.Alpha = ( ( clampResult34 * lerpResult25 ) * 2.0 );
 				surfaceDescription.AlphaClipThreshold = _AlphaCutoff;
 
 				SurfaceData surfaceData;
@@ -997,6 +1005,7 @@ Shader "Mars_atmosphere"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/MaterialUtilities.hlsl"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
 
 
@@ -1052,14 +1061,16 @@ Shader "Mars_atmosphere"
 				UNITY_SETUP_INSTANCE_ID( inputMesh );
 				UNITY_TRANSFER_INSTANCE_ID( inputMesh, o );
 
+				float3 objectToViewPos = TransformWorldToView(TransformObjectToWorld(inputMesh.positionOS));
+				float eyeDepth = -objectToViewPos.z;
+				o.ase_texcoord.x = eyeDepth;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(inputMesh.normalOS);
-				o.ase_texcoord.xyz = ase_worldNormal;
+				o.ase_texcoord.yzw = ase_worldNormal;
 				float3 ase_worldPos = GetAbsolutePositionWS( TransformObjectToWorld( (inputMesh.positionOS).xyz ) );
 				o.ase_texcoord1.xyz = ase_worldPos;
 				
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.w = 0;
 				o.ase_texcoord1.w = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
@@ -1192,7 +1203,9 @@ Shader "Mars_atmosphere"
 				float3 V = float3( 1.0, 1.0, 1.0 );
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float3 ase_worldNormal = packedInput.ase_texcoord.xyz;
+				float eyeDepth = packedInput.ase_texcoord.x;
+				float clampResult34 = clamp( pow( (0.0 + (( eyeDepth / 2000000.0 ) - 0.0) * (1.0 - 0.0) / (0.1 - 0.0)) , 2.0 ) , 0.0 , 1.0 );
+				float3 ase_worldNormal = packedInput.ase_texcoord.yzw;
 				float dotResult19 = dot( -_DirectionalLightDatas[0].forward , ase_worldNormal );
 				float clampResult24 = clamp( (0.0 + (dotResult19 - -0.2) * (1.0 - 0.0) / (0.5 - -0.2)) , 0.0 , 1.0 );
 				float3 ase_worldPos = packedInput.ase_texcoord1.xyz;
@@ -1207,7 +1220,7 @@ Shader "Mars_atmosphere"
 				
 				surfaceDescription.Color = _AtmosphereColor.rgb;
 				surfaceDescription.Emission = 0;
-				surfaceDescription.Alpha = lerpResult25;
+				surfaceDescription.Alpha = ( ( clampResult34 * lerpResult25 ) * 2.0 );
 				surfaceDescription.AlphaClipThreshold =  _AlphaCutoff;
 
 				SurfaceData surfaceData;
@@ -1336,6 +1349,7 @@ Shader "Mars_atmosphere"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/MaterialUtilities.hlsl"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
 
 
@@ -1387,14 +1401,16 @@ Shader "Mars_atmosphere"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float3 objectToViewPos = TransformWorldToView(TransformObjectToWorld(inputMesh.positionOS));
+				float eyeDepth = -objectToViewPos.z;
+				o.ase_texcoord.x = eyeDepth;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(inputMesh.normalOS);
-				o.ase_texcoord.xyz = ase_worldNormal;
+				o.ase_texcoord.yzw = ase_worldNormal;
 				float3 ase_worldPos = GetAbsolutePositionWS( TransformObjectToWorld( (inputMesh.positionOS).xyz ) );
 				o.ase_texcoord1.xyz = ase_worldPos;
 				
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.w = 0;
 				o.ase_texcoord1.w = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
@@ -1521,7 +1537,9 @@ Shader "Mars_atmosphere"
 				SurfaceData surfaceData;
 				BuiltinData builtinData;
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float3 ase_worldNormal = packedInput.ase_texcoord.xyz;
+				float eyeDepth = packedInput.ase_texcoord.x;
+				float clampResult34 = clamp( pow( (0.0 + (( eyeDepth / 2000000.0 ) - 0.0) * (1.0 - 0.0) / (0.1 - 0.0)) , 2.0 ) , 0.0 , 1.0 );
+				float3 ase_worldNormal = packedInput.ase_texcoord.yzw;
 				float dotResult19 = dot( -_DirectionalLightDatas[0].forward , ase_worldNormal );
 				float clampResult24 = clamp( (0.0 + (dotResult19 - -0.2) * (1.0 - 0.0) / (0.5 - -0.2)) , 0.0 , 1.0 );
 				float3 ase_worldPos = packedInput.ase_texcoord1.xyz;
@@ -1534,7 +1552,7 @@ Shader "Mars_atmosphere"
 				float clampResult15 = clamp( ( clampResult13 - clampResult10 ) , 0.0 , 1.0 );
 				float lerpResult25 = lerp( ( clampResult24 * clampResult15 ) , clampResult15 , _DarkSideAtmosphere);
 				
-				surfaceDescription.Alpha = lerpResult25;
+				surfaceDescription.Alpha = ( ( clampResult34 * lerpResult25 ) * 2.0 );
 				surfaceDescription.AlphaClipThreshold =  _AlphaCutoff;
 
 				GetSurfaceAndBuiltinData(surfaceDescription, input, V, posInput, surfaceData, builtinData);
@@ -1657,6 +1675,7 @@ Shader "Mars_atmosphere"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/MaterialUtilities.hlsl"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
 
 
@@ -1707,14 +1726,16 @@ Shader "Mars_atmosphere"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float3 objectToViewPos = TransformWorldToView(TransformObjectToWorld(inputMesh.positionOS));
+				float eyeDepth = -objectToViewPos.z;
+				o.ase_texcoord.x = eyeDepth;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(inputMesh.normalOS);
-				o.ase_texcoord.xyz = ase_worldNormal;
+				o.ase_texcoord.yzw = ase_worldNormal;
 				float3 ase_worldPos = GetAbsolutePositionWS( TransformObjectToWorld( (inputMesh.positionOS).xyz ) );
 				o.ase_texcoord1.xyz = ase_worldPos;
 				
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.w = 0;
 				o.ase_texcoord1.w = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
@@ -1850,7 +1871,9 @@ Shader "Mars_atmosphere"
 				float3 V = float3( 1.0, 1.0, 1.0 );
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float3 ase_worldNormal = packedInput.ase_texcoord.xyz;
+				float eyeDepth = packedInput.ase_texcoord.x;
+				float clampResult34 = clamp( pow( (0.0 + (( eyeDepth / 2000000.0 ) - 0.0) * (1.0 - 0.0) / (0.1 - 0.0)) , 2.0 ) , 0.0 , 1.0 );
+				float3 ase_worldNormal = packedInput.ase_texcoord.yzw;
 				float dotResult19 = dot( -_DirectionalLightDatas[0].forward , ase_worldNormal );
 				float clampResult24 = clamp( (0.0 + (dotResult19 - -0.2) * (1.0 - 0.0) / (0.5 - -0.2)) , 0.0 , 1.0 );
 				float3 ase_worldPos = packedInput.ase_texcoord1.xyz;
@@ -1863,7 +1886,7 @@ Shader "Mars_atmosphere"
 				float clampResult15 = clamp( ( clampResult13 - clampResult10 ) , 0.0 , 1.0 );
 				float lerpResult25 = lerp( ( clampResult24 * clampResult15 ) , clampResult15 , _DarkSideAtmosphere);
 				
-				surfaceDescription.Alpha = lerpResult25;
+				surfaceDescription.Alpha = ( ( clampResult34 * lerpResult25 ) * 2.0 );
 				surfaceDescription.AlphaClipThreshold =  _AlphaCutoff;
 
 				SurfaceData surfaceData;
@@ -1998,6 +2021,7 @@ Shader "Mars_atmosphere"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/MaterialUtilities.hlsl"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_WORLD_VIEW_DIR
 
@@ -2051,12 +2075,12 @@ Shader "Mars_atmosphere"
 			VertexInput ApplyMeshModification(VertexInput inputMesh, float3 timeParameters, inout VertexOutput o )
 			{
 				_TimeParameters.xyz = timeParameters;
+				float3 objectToViewPos = TransformWorldToView(TransformObjectToWorld(inputMesh.positionOS));
+				float eyeDepth = -objectToViewPos.z;
+				o.ase_texcoord3.x = eyeDepth;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(inputMesh.normalOS);
-				o.ase_texcoord3.xyz = ase_worldNormal;
+				o.ase_texcoord3.yzw = ase_worldNormal;
 				
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord3.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
@@ -2273,7 +2297,9 @@ Shader "Mars_atmosphere"
 				float3 V = GetWorldSpaceNormalizeViewDir(input.positionRWS);
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float3 ase_worldNormal = packedInput.ase_texcoord3.xyz;
+				float eyeDepth = packedInput.ase_texcoord3.x;
+				float clampResult34 = clamp( pow( (0.0 + (( eyeDepth / 2000000.0 ) - 0.0) * (1.0 - 0.0) / (0.1 - 0.0)) , 2.0 ) , 0.0 , 1.0 );
+				float3 ase_worldNormal = packedInput.ase_texcoord3.yzw;
 				float dotResult19 = dot( -_DirectionalLightDatas[0].forward , ase_worldNormal );
 				float clampResult24 = clamp( (0.0 + (dotResult19 - -0.2) * (1.0 - 0.0) / (0.5 - -0.2)) , 0.0 , 1.0 );
 				float fresnelNdotV7 = dot( ase_worldNormal, V );
@@ -2283,7 +2309,7 @@ Shader "Mars_atmosphere"
 				float clampResult15 = clamp( ( clampResult13 - clampResult10 ) , 0.0 , 1.0 );
 				float lerpResult25 = lerp( ( clampResult24 * clampResult15 ) , clampResult15 , _DarkSideAtmosphere);
 				
-				surfaceDescription.Alpha = lerpResult25;
+				surfaceDescription.Alpha = ( ( clampResult34 * lerpResult25 ) * 2.0 );
 				surfaceDescription.AlphaClipThreshold = _AlphaCutoff;
 
 				SurfaceData surfaceData;
@@ -2332,51 +2358,65 @@ Shader "Mars_atmosphere"
 }
 /*ASEBEGIN
 Version=18912
--1913;273;1920;1004;1569.703;721.705;1.3;True;True
+-1891;256;1920;998;-1195.997;473.1595;1.036485;True;True
 Node;AmplifyShaderEditor.FresnelNode;7;-979,-84.5;Inherit;True;Standard;WorldNormal;ViewDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;12;-1009,-354.5;Inherit;False;Property;_AtmosphereTransparency;Atmosphere Transparency;2;0;Create;True;0;0;0;False;0;False;6;0;0;30;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;9;-863,198.8757;Inherit;False;Property;_OuterTransparency;Outer Transparency;1;0;Create;True;0;0;0;False;0;False;0.76;1;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;12;-1009,-354.5;Inherit;False;Property;_AtmosphereTransparency;Atmosphere Transparency;2;0;Create;True;0;0;0;False;0;False;6;0;0;30;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TFHCRemapNode;8;-528,22.5;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0.5;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;20;-53.41357,-578.3811;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.WorldNormalVector;21;-43.50244,-391.0816;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.PowerNode;11;-627,-289.5;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.TFHCRemapNode;8;-528,22.5;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0.5;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ClampOpNode;10;-182,89.5;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ClampOpNode;13;-195,-241.5;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DotProductOpNode;19;241.5444,-533.2103;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ClampOpNode;10;-182,89.5;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SurfaceDepthNode;28;916.9694,-454.9103;Inherit;False;0;1;0;FLOAT3;0,0,0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleDivideOpNode;30;1270.624,-460.723;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;2000000;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;23;510.2096,-354.891;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;-0.2;False;2;FLOAT;0.5;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;14;18,-107.5;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ClampOpNode;15;301,21.5;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ClampOpNode;24;827.2096,-262.891;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;26;1018.597,379.3952;Inherit;False;Property;_DarkSideAtmosphere;DarkSide Atmosphere;3;0;Create;True;0;0;0;False;0;False;0;0.03;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ClampOpNode;15;301,21.5;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.TFHCRemapNode;32;1430.244,-371.5852;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;22;1129.209,-28.991;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;27;1386.496,-257.6047;Inherit;False;Property;_AtmosphereColor;Atmosphere Color;0;0;Create;True;0;0;0;False;0;False;1,0.6627451,0.5607843,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.PowerNode;31;1664.489,-234.7694;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;26;1018.597,379.3952;Inherit;False;Property;_DarkSideAtmosphere;DarkSide Atmosphere;3;0;Create;True;0;0;0;False;0;False;0;0.03;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;25;1369.598,215.5952;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ClampOpNode;34;1840.691,-130.0841;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;33;1974.398,37.82659;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;27;1428.993,1.51645;Inherit;False;Property;_AtmosphereColor;Atmosphere Color;0;0;Create;True;0;0;0;False;0;False;1,0.6627451,0.5607843,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;36;2166.148,64.77611;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;5;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;Motion Vectors;0;5;Motion Vectors;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;False;False;False;False;False;False;False;False;True;True;0;True;-9;255;False;-1;255;True;-10;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=MotionVectors;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;DistortionVectors;0;6;DistortionVectors;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;4;1;False;-1;1;False;-1;4;1;False;-1;1;False;-1;True;1;False;-1;1;False;-1;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;False;False;False;False;False;False;False;False;True;True;0;True;-11;255;False;-1;255;True;-12;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;2;False;-1;True;3;False;-1;False;True;1;LightMode=DistortionVectors;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;META;0;2;META;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;SceneSelectionPass;0;3;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;DistortionVectors;0;6;DistortionVectors;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;4;1;False;-1;1;False;-1;4;1;False;-1;1;False;-1;True;1;False;-1;1;False;-1;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;False;False;False;False;False;False;False;False;True;True;0;True;-11;255;False;-1;255;True;-12;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;2;False;-1;True;3;False;-1;False;True;1;LightMode=DistortionVectors;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;DepthForwardOnly;0;4;DepthForwardOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;True;True;0;True;-7;255;False;-1;255;True;-8;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=DepthForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;False;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;New Amplify Shader;7f5cb9c3ea6481f469fdd856555439ef;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;1769.052,-22.1;Float;False;True;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;Mars_atmosphere;7f5cb9c3ea6481f469fdd856555439ef;True;Forward Unlit;0;0;Forward Unlit;9;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;1;0;True;-20;0;True;-21;1;0;True;-22;0;True;-23;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;False;False;False;False;False;False;False;False;True;True;0;True;-5;255;False;-1;255;True;-6;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;0;True;-24;True;0;True;-32;False;True;1;LightMode=ForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;29;Surface Type;0;  Rendering Pass ;0;  Rendering Pass;1;  Blending Mode;0;  Receive Fog;1;  Distortion;0;    Distortion Mode;0;    Distortion Only;1;  Depth Write;1;  Cull Mode;0;  Depth Test;4;Double-Sided;0;Alpha Clipping;0;Motion Vectors;1;  Add Precomputed Velocity;0;Shadow Matte;0;Cast Shadows;1;DOTS Instancing;0;GPU Instancing;1;Tessellation;0;  Phong;0;  Strength;0.5,False,-1;  Type;0;  Tess;16,False,-1;  Min;10,False,-1;  Max;25,False,-1;  Edge Length;16,False,-1;  Max Displacement;25,False,-1;Vertex Position,InvertActionOnDeselection;1;0;7;True;True;True;True;True;True;False;False;;False;0
-WireConnection;11;0;7;0
-WireConnection;11;1;12;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;2376.619,0.2273779;Float;False;True;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;Mars_atmosphere;7f5cb9c3ea6481f469fdd856555439ef;True;Forward Unlit;0;0;Forward Unlit;9;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;1;0;True;-20;0;True;-21;1;0;True;-22;0;True;-23;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;-26;False;False;False;False;False;False;False;False;False;True;True;0;True;-5;255;False;-1;255;True;-6;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;0;True;-24;True;0;True;-32;False;True;1;LightMode=ForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;29;Surface Type;0;  Rendering Pass ;0;  Rendering Pass;1;  Blending Mode;0;  Receive Fog;1;  Distortion;0;    Distortion Mode;0;    Distortion Only;1;  Depth Write;1;  Cull Mode;0;  Depth Test;4;Double-Sided;0;Alpha Clipping;0;Motion Vectors;1;  Add Precomputed Velocity;0;Shadow Matte;0;Cast Shadows;1;DOTS Instancing;0;GPU Instancing;1;Tessellation;0;  Phong;0;  Strength;0.5,False,-1;  Type;0;  Tess;16,False,-1;  Min;10,False,-1;  Max;25,False,-1;  Edge Length;16,False,-1;  Max Displacement;25,False,-1;Vertex Position,InvertActionOnDeselection;1;0;7;True;True;True;True;True;True;False;False;;False;0
 WireConnection;8;0;7;0
 WireConnection;8;1;9;0
-WireConnection;10;0;8;0
+WireConnection;11;0;7;0
+WireConnection;11;1;12;0
 WireConnection;13;0;11;0
 WireConnection;19;0;20;0
 WireConnection;19;1;21;0
+WireConnection;10;0;8;0
+WireConnection;30;0;28;0
 WireConnection;23;0;19;0
 WireConnection;14;0;13;0
 WireConnection;14;1;10;0
-WireConnection;15;0;14;0
 WireConnection;24;0;23;0
+WireConnection;15;0;14;0
+WireConnection;32;0;30;0
 WireConnection;22;0;24;0
 WireConnection;22;1;15;0
+WireConnection;31;0;32;0
 WireConnection;25;0;22;0
 WireConnection;25;1;15;0
 WireConnection;25;2;26;0
+WireConnection;34;0;31;0
+WireConnection;33;0;34;0
+WireConnection;33;1;25;0
+WireConnection;36;0;33;0
 WireConnection;0;0;27;0
-WireConnection;0;2;25;0
+WireConnection;0;2;36;0
 ASEEND*/
-//CHKSM=D34B2243F6A90471C753AE5C36B03C7180D21985
+//CHKSM=ACB5EBF8E4E58E9687927FC53F2B8E6AD4C40296

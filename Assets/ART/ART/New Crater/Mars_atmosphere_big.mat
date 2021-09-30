@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mars_atmosphere
+  m_Name: Mars_atmosphere_big
   m_Shader: {fileID: 4800000, guid: 2ad0375081715ac46896b29cba90f56f, type: 3}
   m_ShaderKeywords: _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
@@ -139,7 +139,7 @@ Material:
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
-    - _AtmosphereTransparency: 6
+    - _AtmosphereTransparency: 5.8
     - _BlendMode: 0
     - _CoatMask: 0
     - _CullMode: 2
@@ -168,6 +168,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
+    - _FadeDistance: 0.1
     - _Float0: 0.7
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
@@ -190,7 +191,7 @@ Material:
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
-    - _OuterTransparency: 0.76
+    - _OuterTransparency: 0.764
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -244,7 +245,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - Atmosphere_Color: {r: 1, g: 0.54318476, b: 0.4198113, a: 0}
-    - _AtmosphereColor: {r: 1, g: 0.66407245, b: 0.56078434, a: 0}
+    - _AtmosphereColor: {r: 1, g: 0.600942, b: 0.48584908, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
