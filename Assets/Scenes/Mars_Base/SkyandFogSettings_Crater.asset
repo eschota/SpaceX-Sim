@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: HDRISky
   m_EditorClassIdentifier: 
   active: 0
-  m_AdvancedMode: 0
   rotation:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 360
   skyIntensityMode:
     m_OverrideState: 0
     m_Value: 0
@@ -28,11 +25,9 @@ MonoBehaviour:
   multiplier:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
     m_Value: 3.1644638
-    min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
     m_Value: {x: 0.29130176, y: 0.24706894, z: 0.5}
@@ -45,34 +40,35 @@ MonoBehaviour:
   updatePeriod:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
   includeSunInBaking:
     m_OverrideState: 0
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
     m_Value: {fileID: 8900000, guid: c3e793a1142e2ec488642c63056749e3, type: 3}
-  enableDistortion:
+  distortionMode:
     m_OverrideState: 0
     m_Value: 0
-  procedural:
-    m_OverrideState: 0
-    m_Value: 1
   flowmap:
     m_OverrideState: 0
     m_Value: {fileID: 0}
   upperHemisphereOnly:
     m_OverrideState: 0
     m_Value: 1
-  scrollDirection:
+  scrollOrientation:
     m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
+    m_Value:
+      mode: 1
+      customValue: 0
+      additiveValue: 0
+      multiplyValue: 1
   scrollSpeed:
     m_OverrideState: 0
-    m_Value: 2
-    min: 0
+    m_Value:
+      mode: 1
+      customValue: 100
+      additiveValue: 0
+      multiplyValue: 1
   enableBackplate:
     m_OverrideState: 0
     m_Value: 0
@@ -88,31 +84,21 @@ MonoBehaviour:
   projectionDistance:
     m_OverrideState: 0
     m_Value: 16
-    min: 0.0000001
   plateRotation:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 360
   plateTexRotation:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 360
   plateTexOffset:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0}
   blendAmount:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 100
   shadowTint:
     m_OverrideState: 0
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   pointLightShadow:
     m_OverrideState: 0
     m_Value: 0
@@ -122,6 +108,19 @@ MonoBehaviour:
   rectLightShadow:
     m_OverrideState: 0
     m_Value: 0
+  m_SkyVersion: 1
+  enableDistortion:
+    m_OverrideState: 0
+    m_Value: 0
+  procedural:
+    m_OverrideState: 0
+    m_Value: 1
+  scrollDirection:
+    m_OverrideState: 0
+    m_Value: 0
+  m_ObsoleteScrollSpeed:
+    m_OverrideState: 0
+    m_Value: 2
 --- !u!114 &-4151792930034644520
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -135,7 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  m_AdvancedMode: 0
   quality:
     m_OverrideState: 0
     m_Value: 1
@@ -148,32 +146,21 @@ MonoBehaviour:
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 1, b: 0.48655844, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
   maxFogDistance:
     m_OverrideState: 0
     m_Value: 48.3
-    min: 0
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
   mipFogNear:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
   mipFogFar:
     m_OverrideState: 0
     m_Value: 1000
-    min: 0
   baseHeight:
     m_OverrideState: 1
     m_Value: 0
@@ -183,61 +170,42 @@ MonoBehaviour:
   meanFreePath:
     m_OverrideState: 1
     m_Value: 63
-    min: 1
   enableVolumetricFog:
     m_OverrideState: 0
     m_Value: 1
   albedo:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   globalLightProbeDimmer:
     m_OverrideState: 1
     m_Value: 1
-    min: 0
-    max: 1
   depthExtent:
     m_OverrideState: 1
     m_Value: 500
-    min: 0.1
   denoisingMode:
     m_OverrideState: 0
     m_Value: 2
   anisotropy:
     m_OverrideState: 1
     m_Value: 0.65
-    min: -1
-    max: 1
   sliceDistributionUniformity:
     m_OverrideState: 0
     m_Value: 0.75
-    min: 0
-    max: 1
   m_FogControlMode:
     m_OverrideState: 0
     m_Value: 0
   screenResolutionPercentage:
     m_OverrideState: 0
     m_Value: 12.5
-    min: 6.25
-    max: 100
   volumeSliceCount:
     m_OverrideState: 0
     m_Value: 64
-    min: 1
-    max: 1024
   m_VolumetricFogBudget:
     m_OverrideState: 0
     m_Value: 0.33
-    min: 0
-    max: 1
   m_ResolutionDepthRatio:
     m_OverrideState: 0
     m_Value: 0.666
-    min: 0
-    max: 1
   directionalLightsOnly:
     m_OverrideState: 0
     m_Value: 0
@@ -254,69 +222,68 @@ MonoBehaviour:
   m_Name: GlobalIllumination
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
     m_Value: 3
   enable:
     m_OverrideState: 1
     m_Value: 1
+  tracing:
+    m_OverrideState: 0
+    m_Value: 1
+  rayMiss:
+    m_OverrideState: 0
+    m_Value: 3
   depthBufferThickness:
     m_OverrideState: 1
     m_Value: 0.2
-    min: 0
-    max: 0.5
-  m_RaySteps:
-    m_OverrideState: 1
-    m_Value: 96
-    min: 16
-    max: 128
-  m_FullResolutionSS:
-    m_OverrideState: 1
+  fullResolutionSS:
+    m_OverrideState: 0
     m_Value: 1
-  m_FilterRadius:
-    m_OverrideState: 1
-    m_Value: 7
-    min: 2
-    max: 8
-  rayTracing:
+  m_MaxRaySteps:
+    m_OverrideState: 0
+    m_Value: 32
+  m_DenoiseSS:
+    m_OverrideState: 0
+    m_Value: 1
+  m_HalfResolutionDenoiserSS:
     m_OverrideState: 0
     m_Value: 0
+  m_DenoiserRadiusSS:
+    m_OverrideState: 0
+    m_Value: 0.6
+  m_SecondDenoiserPassSS:
+    m_OverrideState: 0
+    m_Value: 1
+  lastBounceFallbackHierarchy:
+    m_OverrideState: 0
+    m_Value: 3
   layerMask:
     m_OverrideState: 0
     m_Value:
       serializedVersion: 2
       m_Bits: 4294967295
-  mode:
+  textureLodBias:
     m_OverrideState: 0
-    m_Value: 2
-  sampleCount:
-    m_OverrideState: 0
-    m_Value: 2
-    min: 1
-    max: 32
-  bounceCount:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 1
-    max: 8
+    m_Value: 7
   m_RayLength:
     m_OverrideState: 1
     m_Value: 50
-    min: 0.01
   m_ClampValue:
     m_OverrideState: 1
     m_Value: 1.5
-    min: 0.001
-    max: 10
+  mode:
+    m_OverrideState: 0
+    m_Value: 2
   m_FullResolution:
     m_OverrideState: 1
     m_Value: 1
-  m_UpscaleRadius:
-    m_OverrideState: 1
-    m_Value: 4
-    min: 2
-    max: 4
+  sampleCount:
+    m_OverrideState: 0
+    m_Value: 2
+  bounceCount:
+    m_OverrideState: 0
+    m_Value: 1
   m_Denoise:
     m_OverrideState: 1
     m_Value: 1
@@ -326,10 +293,14 @@ MonoBehaviour:
   m_DenoiserRadius:
     m_OverrideState: 1
     m_Value: 0.25
-    min: 0.001
-    max: 1
   m_SecondDenoiserPass:
     m_OverrideState: 1
+    m_Value: 1
+  m_MaxMixedRaySteps:
+    m_OverrideState: 0
+    m_Value: 48
+  receiverMotionRejection:
+    m_OverrideState: 0
     m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -363,13 +334,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
     m_Value: 3
+  cloudType:
+    m_OverrideState: 0
+    m_Value: 0
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 1
+  windOrientation:
+    m_OverrideState: 0
+    m_Value: 0
+  windSpeed:
+    m_OverrideState: 0
+    m_Value: 100
   fogType:
     m_OverrideState: 1
     m_Value: 0
@@ -386,12 +365,9 @@ MonoBehaviour:
   m_Name: GradientSky
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   rotation:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
-    max: 360
   skyIntensityMode:
     m_OverrideState: 1
     m_Value: 0
@@ -401,11 +377,9 @@ MonoBehaviour:
   multiplier:
     m_OverrideState: 1
     m_Value: 131.83
-    min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
@@ -418,28 +392,18 @@ MonoBehaviour:
   updatePeriod:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
   includeSunInBaking:
     m_OverrideState: 0
     m_Value: 0
   top:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.42404735, b: 0.3443396, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
   middle:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.65738785, b: 0.5254902, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
   bottom:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
   gradientDiffusion:
     m_OverrideState: 1
     m_Value: 1.49
@@ -456,7 +420,6 @@ MonoBehaviour:
   m_Name: Exposure
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
     m_Value: 0
@@ -562,19 +525,15 @@ MonoBehaviour:
   adaptationSpeedDarkToLight:
     m_OverrideState: 1
     m_Value: 3
-    min: 0.001
   adaptationSpeedLightToDark:
     m_OverrideState: 1
     m_Value: 1
-    min: 0.001
   weightTextureMask:
     m_OverrideState: 0
     m_Value: {fileID: 0}
   histogramPercentages:
     m_OverrideState: 0
     m_Value: {x: 40, y: 90}
-    min: 0
-    max: 100
   histogramUseCurveRemapping:
     m_OverrideState: 0
     m_Value: 0
@@ -599,4 +558,3 @@ MonoBehaviour:
   proceduralSoftness:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
