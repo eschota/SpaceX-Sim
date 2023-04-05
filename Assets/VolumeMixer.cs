@@ -21,16 +21,16 @@ public class VolumeMixer : MonoBehaviour
     void Start()
     {
 
-        startDist = Vector3.Distance(Cam.transform.position, target.position);
+        startDist = Vector3.Distance(Cam.transform.position, Vector3.zero);
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Application.isPlaying)
-        clc = (Vector3.Distance(Cam.transform.position, target.position)) / startDist;
+        clc = (Vector3.Distance(Cam.transform.position, Vector3.zero)) / startDist;
         //Cam.nearClipPlane = Mathf.Lerp(ClipStart.x, ClipEnd.x, Curve.Evaluate((float)clc));
-        Cam.farClipPlane = Mathf.Lerp(clipStart.x, clipStart.y, curve.Evaluate((float)clc));
+        //Cam.farClipPlane = Mathf.Lerp(clipStart.x, clipStart.y, curve.Evaluate((float)clc));
         //Space.weight = Mathf.Clamp01( curve.Evaluate((float) clc));
         //Ground.weight =1- Space.weight;
     }
