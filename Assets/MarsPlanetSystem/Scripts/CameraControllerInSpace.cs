@@ -145,8 +145,8 @@ public class CameraControllerInSpace : MonoBehaviour
         if (FlyToTimer<1* FlyToTime)
         {
 
-            zoom =1- FlyToCurve.Evaluate( FlyToTimer/ FlyToTime); 
-            //zoom = Mathf.Lerp(lastZoom, 0, FlyToTimer/ FlyToTime);
+           // zoom =1- FlyToCurve.Evaluate( FlyToTimer/ FlyToTime); 
+            zoom = Mathf.Lerp(lastZoom, 0, FlyToTimer/ FlyToTime);
             //Pivot = Vector3.Lerp(StartPositionOverUnit, targetPositionOverUnit, FlyToCurve.Evaluate( FlyToTimer));
             //thisCamera.transform.rotation= Quaternion.Lerp(StartRotationOverUnit, targetRotationOverUnit, FlyToCurve.Evaluate( FlyToTimer));
                
