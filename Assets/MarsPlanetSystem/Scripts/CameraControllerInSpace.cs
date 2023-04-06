@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ public class CameraControllerInSpace : MonoBehaviour
     [SerializeField] ParticleSystem FlyToEffect;
 
     bool flyBack = false;
-    public float zoom;
+    public float zoom=1;
     private Vector3 startPos, currentPos;
     public static CameraControllerInSpace instance;
     private Vector3 TargetObjectRotation;
@@ -52,16 +53,16 @@ public class CameraControllerInSpace : MonoBehaviour
 
     public void SetTargets(Transform thisValue)
     {
-        if (FlyToEffect != null) FlyToEffect.Stop();
-        if (FlyToEffect != null) FlyToEffect.Play();
+        //if (FlyToEffect != null) FlyToEffect.Stop();
+        //if (FlyToEffect != null) FlyToEffect.Play();
         
-        targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
-        StartPositionOverUnit = thisCamera.transform.position;
-        Transform temp = new GameObject().transform;
-        temp.position = thisCamera.transform.position;
-        temp.LookAt(thisValue.transform.position);
-        targetRotationOverUnit = temp.rotation;
-        StartRotationOverUnit = thisCamera.transform.rotation;
+        //targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
+        //StartPositionOverUnit = thisCamera.transform.position;
+        //Transform temp = new GameObject().transform;
+        //temp.position = thisCamera.transform.position;
+        //temp.LookAt(thisValue.transform.position);
+        //targetRotationOverUnit = temp.rotation;
+        //StartRotationOverUnit = thisCamera.transform.rotation;
     }
 
     private void Awake()
@@ -93,18 +94,21 @@ public class CameraControllerInSpace : MonoBehaviour
     {
 
         TurnCameraRotate();
+     
+        if(flyBack==false && FlyToUnit==null)
         LockToPlanet();
 
         if (flyBack)
         {
             FlyBack();
+            Zoom();
             return;
         }
 
         if (FlyToUnit != null)
         {
             FlyTo();
-            return;
+             
         }
         
         
@@ -121,28 +125,37 @@ public class CameraControllerInSpace : MonoBehaviour
     }
     private void FlyBack()
     {
-        FlyToTimer += Time.unscaledDeltaTime / FlyToTime;
-        if (FlyToTimer < 1)
+        FlyToTimer += Time.unscaledDeltaTime;
+     //   FlyToTimer /= FlyToTime;
+        if (FlyToTimer < 1* FlyToTime)
         {
 
-            thisCamera.transform.position = Vector3.Lerp(targetPositionOverUnit,StartPositionOverUnit, FlyToCurve.Evaluate(FlyToTimer));
-            thisCamera.transform.rotation = Quaternion.Lerp(targetRotationOverUnit,StartRotationOverUnit, FlyToCurve.Evaluate(FlyToTimer));
-
+           // zoom = Mathf.Lerp(lastZoom, 1f, FlyToTimer/ FlyToTime);
+            zoom = FlyToCurve.Evaluate( FlyToTimer/ FlyToTime);
         }
-        else flyBack=false;
+        else { flyBack = false; FlyToUnit = null; }
+
 
     }
+    float lastZoom;
     private void FlyTo()
     {
-        FlyToTimer += Time.unscaledDeltaTime/FlyToTime;
-        if (FlyToTimer<1)
+        FlyToTimer += Time.unscaledDeltaTime;
+       // FlyToTimer /= FlyToTime;
+        if (FlyToTimer<1* FlyToTime)
         {
 
-            thisCamera.transform.position = Vector3.Lerp(StartPositionOverUnit, targetPositionOverUnit, FlyToCurve.Evaluate( FlyToTimer));
-            thisCamera.transform.rotation= Quaternion.Lerp(StartRotationOverUnit, targetRotationOverUnit, FlyToCurve.Evaluate( FlyToTimer));
+            zoom =1- FlyToCurve.Evaluate( FlyToTimer/ FlyToTime); 
+            //zoom = Mathf.Lerp(lastZoom, 0, FlyToTimer/ FlyToTime);
+            //Pivot = Vector3.Lerp(StartPositionOverUnit, targetPositionOverUnit, FlyToCurve.Evaluate( FlyToTimer));
+            //thisCamera.transform.rotation= Quaternion.Lerp(StartRotationOverUnit, targetRotationOverUnit, FlyToCurve.Evaluate( FlyToTimer));
                
         }
-        else FlyToUnit = null;
+        else
+        {
+            FlyToUnit = null;
+        }
+       
         
 
     }
@@ -169,9 +182,24 @@ public class CameraControllerInSpace : MonoBehaviour
             Vector2 screenPoint = thisCamera.WorldToScreenPoint(target.transform.position);
             {
                 float distance = Vector2.Distance(Input.mousePosition, screenPoint);
-                Debug.Log("distance: " + distance);
+               // Debug.Log("distance: " + distance);
                 if (distance < Screen.width/15)
                 {
+                    if (currentTarget == target)
+                    {
+                        if (zoom < 0.05f)
+                        {
+                            flyBack = true;
+                            lastZoom = zoom;
+                            FlyToTimer = 0;
+                            return;
+                        }
+                        FlyToUnit = target.transform;
+                        lastZoom = zoom;
+                        FlyToTimer = 0;
+
+                        return;
+                    }
                     currentTarget = target;
                     
                     break;
@@ -186,7 +214,12 @@ public class CameraControllerInSpace : MonoBehaviour
 
             
     }
-    bool locked = false;
+    //void OnGUI()
+    //{
+    //    GUI.color = Color.blue;
+    //    GUI.Label(new Rect(100, 100, 200, 200), FlyToTimer.ToString());
+    //    GUI.Label(new Rect(200, 200, 200, 200), Input.mouseScrollDelta.y.ToString());
+    //}
     private void NearEarth()
     {
         
@@ -213,7 +246,7 @@ public class CameraControllerInSpace : MonoBehaviour
         }
 
          
-        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler( TargetObjectRotation), 10 * Time.unscaledDeltaTime );
+        Pivot.rotation = Quaternion.Lerp(Pivot.rotation, Quaternion.Euler( TargetObjectRotation), 5 * Time.unscaledDeltaTime );
         
 
     }
@@ -240,22 +273,34 @@ public class CameraControllerInSpace : MonoBehaviour
         }
     }
     public float  zoomMult=1000;
+    float nzoom;
     private void Zoom()
     {
-        zoom -= ZoomSpeed * Input.mouseScrollDelta.y;
-        zoom = Mathf.Clamp(zoom, -1, 1);
-        if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime*5;
+        if (Mathf.Abs(Input.mouseScrollDelta.y) > 0.05f)
+        {
+            FlyToUnit = null; flyBack = false;
+        } 
+
+
+        nzoom =zoom- ZoomSpeed * zoomMult *(zoom)* Input.mouseScrollDelta.y;
+        nzoom = Mathf.Clamp(nzoom, -1, 1);
+         
+        zoom = Mathf.Lerp(zoom, nzoom , Time.unscaledDeltaTime);
+        zoom = Mathf.Clamp(zoom, 0.001f, 1.001f);
+        //if (zoom != 0) Pivot.localScale *= 1 - 0.1f * zoom * Time.unscaledDeltaTime*5;
 
         //Pivot.localScale = Vector3.one * Mathf.Clamp(Pivot.localScale.x*zoomMult*ZoomInSpeedCurve.Evaluate(Pivot.localScale.x - ZoomMinMax.x), ZoomMinMax.x,ZoomMinMax.y);
 
 
-        float scale = ZoomSpeedAnimateCurve.Evaluate((zoom + 1.00001f) / 2);
-        Pivot.localScale = Vector3.one * scale* scale* scale;
+        float scale = ZoomMinMax.x+ZoomSpeedAnimateCurve.Evaluate(zoom);
+        //scale = Mathf.Lerp(Pivot.localScale.x, scale, Time.unscaledDeltaTime*1f);
+        
+        Pivot.localScale = Vector3.one * scale;
         Pivot.localScale = Vector3.one * Mathf.Clamp(Pivot.localScale.x, ZoomMinMax.x,ZoomMinMax.y);
         //zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime*0.1f  );
-        thisCamera.farClipPlane = 60000* ZoomFarClipPlaneAnimateCurve.Evaluate(Pivot.localScale.x -ZoomMinMax.x);
+        thisCamera.farClipPlane =10+( 6000000 * ZoomFarClipPlaneAnimateCurve.Evaluate(zoom));
         //thisCamera.nearClipPlane = Mathf.Lerp(ZoomMinMaxClipCameraPlane.x, ZoomMinMaxClipCameraPlane.x, (1 - ZoomMinMax.x) / (ZoomMinMax.y));
-        if (Input.GetMouseButtonDown(2)) zoom = 0;
+        //if (Input.GetMouseButtonDown(2)) zoom = 0;
     }
     private void Reset()
     {
@@ -267,7 +312,7 @@ public class CameraControllerInSpace : MonoBehaviour
     bool isrotate = false;
     void TurnCameraRotate()
     {
-        if (Input.GetKeyUp(KeyCode.F11))
+        if (Input.GetKeyUp(KeyCode.F11)|| Input.GetKeyUp(KeyCode.Space))
         {
             if (isrotate == false)
             {
