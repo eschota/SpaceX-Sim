@@ -304,12 +304,12 @@ public class CameraControllerInSpace : MonoBehaviour
 
         //Pivot.localScale = Vector3.one * Mathf.Clamp(Pivot.localScale.x*zoomMult*ZoomInSpeedCurve.Evaluate(Pivot.localScale.x - ZoomMinMax.x), ZoomMinMax.x,ZoomMinMax.y);
 
-
-        float scale = ZoomMinMax.x+ZoomSpeedAnimateCurve.Evaluate(zoom);
+        float diffMult = 0;if (currentTarget != null) diffMult = currentTarget.zoomInSDifferencial;
+        float scale = diffMult + ZoomMinMax.x+ZoomSpeedAnimateCurve.Evaluate(zoom);
         //scale = Mathf.Lerp(Pivot.localScale.x, scale, Time.unscaledDeltaTime*1f);
         
         Pivot.localScale = Vector3.one * scale;
-        Pivot.localScale = Vector3.one * Mathf.Clamp(Pivot.localScale.x, ZoomMinMax.x,ZoomMinMax.y);
+        Pivot.localScale = Vector3.one * Mathf.Clamp(Pivot.localScale.x, diffMult + ZoomMinMax.x,ZoomMinMax.y);
         //zoom = Mathf.Lerp(zoom, 0, Time.unscaledDeltaTime*0.1f  );
         thisCamera.farClipPlane =10+( 6000000 * ZoomFarClipPlaneAnimateCurve.Evaluate(zoom));
         //thisCamera.nearClipPlane = Mathf.Lerp(ZoomMinMaxClipCameraPlane.x, ZoomMinMaxClipCameraPlane.x, (1 - ZoomMinMax.x) / (ZoomMinMax.y));

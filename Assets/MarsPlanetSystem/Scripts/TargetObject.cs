@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetObject : MonoBehaviour
 {
     [SerializeField] public Collider col;
+    [SerializeField] public float zoomInSDifferencial = 0;
     void Awake()
     {
         col = GetComponent<Collider>();
