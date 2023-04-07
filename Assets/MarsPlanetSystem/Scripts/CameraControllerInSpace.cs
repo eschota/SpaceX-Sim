@@ -56,7 +56,7 @@ public class CameraControllerInSpace : MonoBehaviour
         //if (FlyToEffect != null) FlyToEffect.Stop();
         //if (FlyToEffect != null) FlyToEffect.Play();
         
-        //targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
+        targetPositionOverUnit = Vector3.Lerp(transform.position, thisValue.transform.position, distanceToEarthFly);
         //StartPositionOverUnit = thisCamera.transform.position;
         //Transform temp = new GameObject().transform;
         //temp.position = thisCamera.transform.position;
@@ -241,7 +241,7 @@ public class CameraControllerInSpace : MonoBehaviour
         if (currentTarget!=null)
         {
            // Pivot.transform.rotation=Quaternion.Lerp(Pivot.transform.rotation, Pivot.transform.LookAt(-currentTarget.transform.position),Time.unscaledDeltaTime*10);
-            TargetObjectRotation = Quaternion.LookRotation(-TargetObjectTransform.transform.position).eulerAngles;
+            TargetObjectRotation = Quaternion.LookRotation(-currentTarget.transform.position).eulerAngles;
           //  return;
         }
 
