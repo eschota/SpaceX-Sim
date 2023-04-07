@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering.LookDev;
 
 [RequireComponent (typeof (Camera))]
 public class CameraControllerInSpace : MonoBehaviour
@@ -16,7 +19,10 @@ public class CameraControllerInSpace : MonoBehaviour
     [SerializeField] Vector2 ZoomMinMaxClipCameraPlane = new Vector2 (10f,600000);
     [SerializeField] AnimationCurve ZoomFarClipPlaneAnimateCurve = new AnimationCurve (new Keyframe (0, 0), new Keyframe (1, 1));
     [SerializeField] AnimationCurve ZoomSpeedAnimateCurve = new AnimationCurve (new Keyframe (0, 0), new Keyframe (1, 1));
-    
+
+    [SerializeField] Volume volume;
+    [SerializeField] float intensityExposureInSpace=-6;
+
     private float FlyToTimer;
     [Header("Fly Time to Target")]
     [Range(0,10)][SerializeField] public float FlyToTime=2;
@@ -36,7 +42,8 @@ public class CameraControllerInSpace : MonoBehaviour
     private Vector3 StartPositionOverUnit;
     private Quaternion targetRotationOverUnit;
     private Quaternion StartRotationOverUnit;
-
+    GradientSky Sky;
+    float SkyStartExposure;
     private Transform _flyToUnit;
     public  Transform FlyToUnit
     {
@@ -88,11 +95,17 @@ public class CameraControllerInSpace : MonoBehaviour
         TargetObjectRotation = transform.rotation.eulerAngles;
         TargetObjectTransform = TargetObjects[0].transform; 
         TargetObjectTransform.SetParent(PlanetTransform);
-
+        volume.profile.TryGet(out Sky);
+        if (Sky != null) SkyStartExposure = Sky.exposure.value;
+    }
+    void ControlVolumeInensity()
+    {
+        if (volume == null) return;
+        Sky.exposure.value = Mathf.Lerp(SkyStartExposure, SkyStartExposure + intensityExposureInSpace, zoom);
     }
     void Update()
     {
-
+        ControlVolumeInensity();
         TurnCameraRotate();
      
         if(flyBack==false && FlyToUnit==null)
