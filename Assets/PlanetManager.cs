@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [ExecuteInEditMode]
 public class PlanetManager : MonoBehaviour
-{
-    [SerializeField] Planet GenerativePlanetPrefab;
-
+{ 
     private int _currentPlanet;
     [SerializeField] public int CurrentPlanet
     {
@@ -63,6 +61,7 @@ public class PlanetManager : MonoBehaviour
     }
     public void AddPlanet()
     {
+        
         if(PlanetList.Count == 0) { PlanetList.AddRange(FindObjectsOfType<Planet>()); }
         foreach (Planet go in Resources.FindObjectsOfTypeAll(typeof(Planet)) as Planet[])
         {
@@ -74,6 +73,7 @@ public class PlanetManager : MonoBehaviour
               PlanetList[PlanetList.Count - 1].Regenerate(Seed);
               CurrentPlanet = PlanetList.Count-1;
                 PlanetList[PlanetList.Count - 1].gameObject.name="Planet "+ (PlanetList[PlanetList.Count - 1].ID+1).ToString();
+                Seed++;
                 return; 
                
             }
