@@ -73,7 +73,7 @@ public class PlanetManager : MonoBehaviour
               PlanetList[PlanetList.Count - 1].Regenerate(Seed);
               CurrentPlanet = PlanetList.Count-1;
                 PlanetList[PlanetList.Count - 1].gameObject.name="Planet "+ (PlanetList[PlanetList.Count - 1].ID+1).ToString();
-                return;
+                return; 
                
             }
         }
