@@ -15,14 +15,14 @@ public class PlanetManager : MonoBehaviour
         }
         set
         {
+            _currentPlanet = value;
             if (value > PlanetList.Count)
             {
                 _currentPlanet = 0;
             }
-            if (value< 0) _currentPlanet = PlanetList.Count;
+            if (value< 0) _currentPlanet = PlanetList.Count-1;
 
 
-            _currentPlanet =value;
             foreach (var p in PlanetList)
             {
                 if (p == null) 
@@ -58,7 +58,8 @@ public class PlanetManager : MonoBehaviour
         {
             p.ID = PlanetList.IndexOf(p);
         }
-        if(CurrentPlanet!=0) while (PlanetList[CurrentPlanet]==null) CurrentPlanet--;
+        if (CurrentPlanet != 0) if (CurrentPlanet >= PlanetList.Count) CurrentPlanet--;
+            else while (PlanetList[CurrentPlanet] == null) CurrentPlanet--;
     }
     public void AddPlanet()
     {
@@ -80,6 +81,7 @@ public class PlanetManager : MonoBehaviour
     }
     public void RemovePlanet()
     {
+        if( PlanetList.Count != 0 ) 
         DestroyImmediate( PlanetList[CurrentPlanet].gameObject);
     }
     public void EditPlanet()
