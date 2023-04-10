@@ -64,9 +64,6 @@
             "m_Id": "0173fb9cd31543fc8e826a3ee3a22b1a"
         },
         {
-            "m_Id": "b9ae4360fb51417696e8438689a3647c"
-        },
-        {
             "m_Id": "c4cb97e8c7b84c5388d81e13adfe8e63"
         }
     ],
@@ -272,9 +269,6 @@
                 "m_Id": "0173fb9cd31543fc8e826a3ee3a22b1a"
             },
             {
-                "m_Id": "b9ae4360fb51417696e8438689a3647c"
-            },
-            {
                 "m_Id": "c4cb97e8c7b84c5388d81e13adfe8e63"
             }
         ]
@@ -339,8 +333,6 @@
         "m_GuidSerialized": "cb68a85e-4d29-46f2-9171-f1330f8bc40a"
     },
     "m_Name": "PowerEmission",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_ADBC39DD",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -451,21 +443,6 @@
         "e32": 0.0,
         "e33": 1.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "1a5c9784aa9448d0b0b9f4c0b580a5c1",
-    "m_Id": 0,
-    "m_DisplayName": "Alpha Clip Threshold",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "AlphaClipThreshold",
-    "m_StageCapability": 2,
-    "m_Value": 0.5,
-    "m_DefaultValue": 0.5,
-    "m_Labels": []
 }
 
 {
@@ -649,15 +626,13 @@
 }
 
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
     "m_ObjectId": "50f5383bb67ff18cb1d368fdf8b9aa52",
     "m_Guid": {
         "m_GuidSerialized": "438e68c5-6525-4afc-ab25-61dcc1f2ffd4"
     },
     "m_Name": "Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_C87504E",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -666,9 +641,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
+        "r": 0.02358490228652954,
+        "g": 0.529609203338623,
+        "b": 1.0,
         "a": 0.0
     },
     "m_ColorMode": 1
@@ -791,8 +766,6 @@
         "m_GuidSerialized": "2dac37a4-92a6-4ad3-aac9-c69fe8cc6f34"
     },
     "m_Name": "Albedo",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_8FEEBB68",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -998,9 +971,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 78.00004577636719,
-            "y": -718.0000610351563,
-            "width": 208.00001525878907,
+            "x": 30.0,
+            "y": -677.0,
+            "width": 208.0,
             "height": 302.0
         }
     },
@@ -1240,10 +1213,10 @@
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -596.0,
-            "y": -680.0,
-            "width": 135.0,
-            "height": 77.0
+            "x": -203.0,
+            "y": -637.0,
+            "width": 157.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1440,45 +1413,12 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
-    "m_ObjectId": "b9ae4360fb51417696e8438689a3647c",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "SurfaceDescription.AlphaClipThreshold",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "1a5c9784aa9448d0b0b9f4c0b580a5c1"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.SystemData",
     "m_ObjectId": "bf803952d6334cf6acf3b424aabb1e4f",
     "m_MaterialNeedsUpdateHash": 0,
     "m_SurfaceType": 1,
     "m_RenderingPass": 4,
-    "m_BlendMode": 0,
+    "m_BlendMode": 1,
     "m_ZTest": 4,
     "m_ZWrite": false,
     "m_TransparentCullMode": 2,
@@ -1492,7 +1432,7 @@
     "m_DOTSInstancing": false,
     "m_Version": 0,
     "m_FirstTimeMigrationExecuted": true,
-    "inspectorFoldoutMask": 0
+    "inspectorFoldoutMask": 9
 }
 
 {
@@ -1852,8 +1792,6 @@
         "m_GuidSerialized": "aba944b4-85ab-4ac8-b373-9114aefcee57"
     },
     "m_Name": "FadeRange",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector2_4F8D01F9",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
