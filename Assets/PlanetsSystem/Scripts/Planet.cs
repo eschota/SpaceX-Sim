@@ -6,9 +6,7 @@ using UnityEngine.Rendering;
 
 public class Planet : MonoBehaviour
 {
-   [HideInInspector]
-   [SerializeField] public PlanetType planetType; [HideInInspector]
-    
+   [SerializeField] public PlanetType planetType; 
     [SerializeField] public MeshRenderer AtmosphereMR;
     [SerializeField] public MeshRenderer PlanetMR;
     [SerializeField] public MeshRenderer StarsMR;
