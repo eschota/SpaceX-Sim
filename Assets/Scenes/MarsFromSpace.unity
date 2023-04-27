@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.00783509, g: 0.00783509, b: 0.00783509, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1296,7 +1296,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943494517}
-  m_LocalRotation: {x: 0.032496303, y: 0.49772486, z: -0.056464855, w: 0.8648848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0826, y: 1.0826, z: 1.0826}
   m_Children: []
@@ -1364,10 +1364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e62dc0cecb2b14c8340641c52edcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtmosphereColor: {r: 0, g: 1, b: 0.11642933, a: 1}
+  textureSize: 512
+  AtmosphereColor: {r: 1, g: 0.029372733, b: 0, a: 1}
   AtmosphereIntensity: 1
-  ClimatZoneNoise: 3.7
-  OceanLevel: 0.21
+  ClimatZoneNoise: 0
+  OceanLevel: 0.311
   Temperature: 0.5
   ComputeShaderMat: {fileID: 2100000, guid: 1332150f7d5ea7a4696bd357b8e4fb52, type: 2}
   SetToMaterial: {fileID: 2100000, guid: 7c6d6461127d01640b9103ae680ade49, type: 2}
@@ -1974,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1867600785
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2122,7 +2123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1952333839
 MeshRenderer:
   m_ObjectHideFlags: 0
