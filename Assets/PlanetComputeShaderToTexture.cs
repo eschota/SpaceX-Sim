@@ -8,9 +8,17 @@ using UnityEngine.Rendering;
 [ExecuteInEditMode]
 public class PlanetComputeShaderToTexture : MonoBehaviour
 {
+
+    public enum TextureSize
+    {
+        small = 512, large = 1024, big = 2048, huge=4096, max = 8192
+    }
+    [Header("Textures Size: 512->8192")]
+    public TextureSize textureSize=TextureSize.small;
     [Header ("Atmosphere Color")]
     public Color AtmosphereColor = Color.blue;
     [Header ("Atmosphere Intensity")]
+    [HideInInspector]
     public float AtmosphereIntensity = 1;
     [Header ("ClimateZonesNoise")]
     [Range (0,100)]
@@ -42,7 +50,7 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
     
     void ComputeMap(int renderID,string TexturePrefix)
     {
-        RenderTexture rt = new RenderTexture(512, 512, 24);
+        RenderTexture rt = new RenderTexture((int)textureSize, (int)textureSize / 2, 24);
         Material bakemat = ComputeShaderMat;
         ComputeShaderMat.SetInt("_RenderID",renderID);
         ComputeShaderMat.SetFloat("_NoiseClimat", ClimatZoneNoise);
@@ -53,22 +61,22 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
         Graphics.Blit(null, rt, bakemat);
 
         //RenderTexture.active = rtdest;
-        Texture2D frame = new Texture2D(512, 512);
-        frame.ReadPixels(new Rect(0, 0, 512, 512), 0, 0, false);
+        Texture2D frame = new Texture2D((int) textureSize, (int)textureSize/2);
+        frame.ReadPixels(new Rect(0, 0, (int)textureSize, (int)textureSize/2), 0, 0, false);
         frame.Apply();
-        byte[] bytes = frame.EncodeToPNG();
-        string p = (Application.dataPath + "/p.png");
+        //byte[] bytes = frame.EncodeToPNG();
+        //string p = (Application.dataPath + "/p.png");
 
-        FileStream file = File.Open(p, FileMode.Create);
-        BinaryWriter binary = new BinaryWriter(file);
-        binary.Write(bytes);
-        file.Close();
+        //FileStream file = File.Open(p, FileMode.Create);
+        //BinaryWriter binary = new BinaryWriter(file);
+        //binary.Write(bytes);
+        //file.Close();
 
-        AssetDatabase.Refresh();
-        AssetDatabase.ImportAsset(p);
-        Texture2D hDRPMask = AssetDatabase.LoadAssetAtPath<Texture2D>(p);
-        Debug.Log("HDRP Mask Created: " + hDRPMask);
-        RenderTexture.active = null;
+        //AssetDatabase.Refresh();
+        //AssetDatabase.ImportAsset(p);
+        //Texture2D hDRPMask = AssetDatabase.LoadAssetAtPath<Texture2D>(p);
+        //Debug.Log("HDRP Mask Created: " + hDRPMask);
+        //RenderTexture.active = null;
         SetToMaterial.SetTexture(TexturePrefix, frame);
     }
 }
