@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [ExecuteInEditMode]
 public class PlanetComputeShaderToTexture : MonoBehaviour
 {
     public Material ClimateZonesMat;
+    public Material HeightPlusOceanMap;
     public Material SetToMaterial;
     
     public RenderTexture rt;
@@ -39,6 +41,6 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
         Texture2D hDRPMask = AssetDatabase.LoadAssetAtPath<Texture2D>(p);
         Debug.Log("HDRP Mask Created: " + hDRPMask);
         RenderTexture.active = null;
-        SetToMaterial.SetTexture("_MaskMap", hDRPMask);
+        SetToMaterial.SetTexture("_BaseColorMap", frame);
     }
 }
