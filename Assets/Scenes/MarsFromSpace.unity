@@ -1364,11 +1364,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e62dc0cecb2b14c8340641c52edcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClimatZoneNoise: 22
+  AtmosphereColor: {r: 0, g: 1, b: 0.11642933, a: 1}
+  AtmosphereIntensity: 1
+  ClimatZoneNoise: 3.7
   OceanLevel: 0.21
   Temperature: 0.5
   ComputeShaderMat: {fileID: 2100000, guid: 1332150f7d5ea7a4696bd357b8e4fb52, type: 2}
   SetToMaterial: {fileID: 2100000, guid: 7c6d6461127d01640b9103ae680ade49, type: 2}
+  AtmosphereMaterial: {fileID: 2100000, guid: 0f5f298c8f78fa44a8dbc565a6f0870a, type: 2}
   rt: {fileID: 0}
 --- !u!115 &1046474506
 MonoScript:
@@ -2321,7 +2324,7 @@ Transform:
   m_GameObject: {fileID: 2109295204}
   m_LocalRotation: {x: 0, y: 0, z: 0.065150626, w: 0.99787545}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.03, y: 1.0300002, z: 1.0300003}
+  m_LocalScale: {x: 1.0736719, y: 1.0736722, z: 1.0736723}
   m_Children:
   - {fileID: 1867600787}
   m_Father: {fileID: 141704589}
