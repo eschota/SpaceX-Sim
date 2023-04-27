@@ -1,8 +1,8 @@
-// Upgrade NOTE: upgraded instancing buffer 'HeightPlusOceanToHeightMap' to new syntax.
+// Upgrade NOTE: upgraded instancing buffer 'HeightPlusOceanPlusClimatPlusOceanMaskToHDRP' to new syntax.
 
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "HeightPlusOceanToHeightMap"
+Shader "HeightPlusOceanPlusClimatPlusOceanMaskToHDRP"
 {
 	Properties
 	{
@@ -70,12 +70,12 @@ Shader "HeightPlusOceanToHeightMap"
 			};
 
 			uniform sampler2D _TextureSample0;
-			UNITY_INSTANCING_BUFFER_START(HeightPlusOceanToHeightMap)
+			UNITY_INSTANCING_BUFFER_START(HeightPlusOceanPlusClimatPlusOceanMaskToHDRP)
 				UNITY_DEFINE_INSTANCED_PROP(float4, _TextureSample0_ST)
-#define _TextureSample0_ST_arr HeightPlusOceanToHeightMap
+#define _TextureSample0_ST_arr HeightPlusOceanPlusClimatPlusOceanMaskToHDRP
 				UNITY_DEFINE_INSTANCED_PROP(float, _OceanLevel)
-#define _OceanLevel_arr HeightPlusOceanToHeightMap
-			UNITY_INSTANCING_BUFFER_END(HeightPlusOceanToHeightMap)
+#define _OceanLevel_arr HeightPlusOceanPlusClimatPlusOceanMaskToHDRP
+			UNITY_INSTANCING_BUFFER_END(HeightPlusOceanPlusClimatPlusOceanMaskToHDRP)
 
 			
 			v2f vert ( appdata v )
@@ -136,12 +136,12 @@ Shader "HeightPlusOceanToHeightMap"
 }
 /*ASEBEGIN
 Version=18912
-6;5.5;1908;1013.5;1010;509.25;1;True;True
+6;5.5;1908;1013.5;1010;506.5;1;True;True
 Node;AmplifyShaderEditor.RangedFloatNode;2;-596,118.25;Inherit;False;InstancedProperty;_OceanLevel;OceanLevel;1;0;Create;True;0;0;0;True;0;False;0.2588235;0.2117647;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;1;-589,-211.75;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;fe41fb262c955084ab44b9e21776a55e;fe41fb262c955084ab44b9e21776a55e;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ClampOpNode;3;-161,-66.75;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,1,1,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCRemapNode;6;-66,176.75;Inherit;True;5;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,1,1,1;False;3;COLOR;0,0,0,0;False;4;COLOR;1,1,1,1;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;241,-39;Float;False;True;-1;2;ASEMaterialInspector;100;1;HeightPlusOceanToHeightMap;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;False;True;0;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;True;0;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;RenderType=Opaque=RenderType;True;2;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=ForwardBase;False;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;1;True;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;241,-39;Float;False;True;-1;2;ASEMaterialInspector;100;1;HeightPlusOceanPlusClimatPlusOceanMaskToHDRP;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;False;True;0;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;True;0;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;RenderType=Opaque=RenderType;True;2;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=ForwardBase;False;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;1;True;False;;False;0
 WireConnection;3;0;1;0
 WireConnection;3;1;2;0
 WireConnection;6;0;3;0
@@ -149,4 +149,4 @@ WireConnection;6;1;2;0
 WireConnection;6;2;2;0
 WireConnection;0;0;6;0
 ASEEND*/
-//CHKSM=DFDE1866D9FD2D5F363D27E798E1F8BCD1ECF67A
+//CHKSM=90F7B8B387F7806DA597552323492E5EE33C85A6
