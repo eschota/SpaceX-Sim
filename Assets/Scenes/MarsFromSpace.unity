@@ -470,7 +470,7 @@ MonoBehaviour:
   StarsMR: {fileID: 1778532579}
   volume: {fileID: 201867526}
   Seed: 6
-  ID: 1
+  ID: 0
 --- !u!4 &141704589
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,6 +1281,7 @@ GameObject:
   - component: {fileID: 943494518}
   - component: {fileID: 943494520}
   - component: {fileID: 943494519}
+  - component: {fileID: 943494521}
   m_Layer: 0
   m_Name: Planet_Atmosphere_big
   m_TagString: Untagged
@@ -1351,6 +1352,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943494517}
   m_Mesh: {fileID: 6461297695846733525, guid: 980f7a0f3ea94b742b4ca26880fa8d41, type: 3}
+--- !u!114 &943494521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943494517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e62dc0cecb2b14c8340641c52edcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClimatZoneNoise: 22
+  OceanLevel: 0.21
+  Temperature: 0.5
+  ComputeShaderMat: {fileID: 2100000, guid: 1332150f7d5ea7a4696bd357b8e4fb52, type: 2}
+  SetToMaterial: {fileID: 2100000, guid: 7c6d6461127d01640b9103ae680ade49, type: 2}
+  rt: {fileID: 0}
 --- !u!115 &1046474506
 MonoScript:
   m_ObjectHideFlags: 0
@@ -1565,8 +1584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlanetList:
-  - {fileID: 1926415020}
   - {fileID: 141704588}
+  - {fileID: 1926415020}
   Seed: 7
 --- !u!4 &1316867516
 Transform:
@@ -2051,7 +2070,7 @@ MonoBehaviour:
   StarsMR: {fileID: 671250038}
   volume: {fileID: 691317420}
   Seed: 5
-  ID: 0
+  ID: 1
 --- !u!4 &1926415021
 Transform:
   m_ObjectHideFlags: 0

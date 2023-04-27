@@ -8,19 +8,39 @@ using UnityEngine.Rendering;
 [ExecuteInEditMode]
 public class PlanetComputeShaderToTexture : MonoBehaviour
 {
-    public Material ClimateZonesMat;
-    public Material HeightPlusOceanMap;
+    [Header ("ClimateZonesNoise")]
+    [Range (0,100)]
+    public float ClimatZoneNoise = 22;
+    [Header ("Ocean Level")]
+    [Range (0,1)]
+    public float OceanLevel = 0.21f;
+    [Header ("Temperature")]
+    [Range (0,1)]
+    public float Temperature = 0.5f;
+    public Material ComputeShaderMat;
     public Material SetToMaterial;
-    
+    [HideInInspector]
     public RenderTexture rt;
     // Use this for initialization
     [ContextMenu("Compute")]
+    void ComputeMaps()
+    {
 
+        ComputeMap(0, "_BaseColorMap");
+        ComputeMap(1, "_MaskMap");
+        ComputeMap(2, "_NormalMap");
+        ComputeMap(3, "_HeightMap");
+        ComputeMap(4, "_EmissiveColorMap");
+    }
     
-    void Compute()
+    void ComputeMap(int renderID,string TexturePrefix)
     {
         RenderTexture rt = new RenderTexture(512, 512, 24);
-        Material bakemat = ClimateZonesMat;
+        Material bakemat = ComputeShaderMat;
+        ComputeShaderMat.SetInt("_RenderID",renderID);
+        ComputeShaderMat.SetFloat("_NoiseClimat", ClimatZoneNoise);
+        ComputeShaderMat.SetFloat("_Temperature", Temperature);
+        ComputeShaderMat.SetFloat("_OceanLevel", OceanLevel);
         RenderTexture.active = rt;
         Graphics.Blit(null, rt, bakemat);
 
@@ -41,6 +61,6 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
         Texture2D hDRPMask = AssetDatabase.LoadAssetAtPath<Texture2D>(p);
         Debug.Log("HDRP Mask Created: " + hDRPMask);
         RenderTexture.active = null;
-        SetToMaterial.SetTexture("_BaseColorMap", frame);
+        SetToMaterial.SetTexture(TexturePrefix, frame);
     }
 }
