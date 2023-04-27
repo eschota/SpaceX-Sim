@@ -8,6 +8,10 @@ using UnityEngine.Rendering;
 [ExecuteInEditMode]
 public class PlanetComputeShaderToTexture : MonoBehaviour
 {
+    [Header ("Atmosphere Color")]
+    public Color AtmosphereColor = Color.blue;
+    [Header ("Atmosphere Intensity")]
+    public float AtmosphereIntensity = 1;
     [Header ("ClimateZonesNoise")]
     [Range (0,100)]
     public float ClimatZoneNoise = 22;
@@ -19,6 +23,7 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
     public float Temperature = 0.5f;
     public Material ComputeShaderMat;
     public Material SetToMaterial;
+    [SerializeField] Material AtmosphereMaterial;
     [HideInInspector]
     public RenderTexture rt;
     // Use this for initialization
@@ -31,6 +36,8 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
         ComputeMap(2, "_NormalMap");
         ComputeMap(3, "_HeightMap");
         ComputeMap(4, "_EmissiveColorMap");
+        AtmosphereMaterial.SetColor("_AtmosphereColor", AtmosphereColor);
+
     }
     
     void ComputeMap(int renderID,string TexturePrefix)
@@ -41,6 +48,7 @@ public class PlanetComputeShaderToTexture : MonoBehaviour
         ComputeShaderMat.SetFloat("_NoiseClimat", ClimatZoneNoise);
         ComputeShaderMat.SetFloat("_Temperature", Temperature);
         ComputeShaderMat.SetFloat("_OceanLevel", OceanLevel);
+        ComputeShaderMat.SetColor("_AtmosphereColor", AtmosphereColor);
         RenderTexture.active = rt;
         Graphics.Blit(null, rt, bakemat);
 
