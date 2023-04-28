@@ -13,6 +13,8 @@ namespace AmplifyShaderEditor
 	{
 		[SerializeField]
 		private ViewSpace m_normalSpace = ViewSpace.Tangent;
+		[SerializeField]
+		private bool m_normalize = true;
 
 		private int m_cachedIntensityId = -1;
 
@@ -31,7 +33,8 @@ namespace AmplifyShaderEditor
 			"}\n"
 		};
 
-
+		//void MixRealtimeAndBakedGI(inout Light light, half3 normalWS, inout half3 bakedGI, half4 shadowMask)
+		private readonly string LWMixRealtimeWithGI = "MixRealtimeAndBakedGI({0}, {1}, {2}, half4(0,0,0,0));";
 
 		protected override void CommonInit( int uniqueId )
 		{
@@ -82,6 +85,10 @@ namespace AmplifyShaderEditor
 
 			EditorGUI.BeginChangeCheck();
 			m_normalSpace = (ViewSpace)EditorGUILayoutEnumPopup( "Normal Space", m_normalSpace );
+			if( m_normalSpace != ViewSpace.World || !m_inputPorts[ 0 ].IsConnected )
+			{
+				m_normalize = EditorGUILayoutToggle("Normalize", m_normalize);
+			}
 			if( EditorGUI.EndChangeCheck() )
 			{
 				UpdatePort();
@@ -202,7 +209,7 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					if( dataCollector.CurrentSRPType == TemplateSRPType.Lightweight )
+					if( dataCollector.CurrentSRPType == TemplateSRPType.URP )
 					{
 						string texcoord1 = string.Empty;
 
@@ -219,12 +226,18 @@ namespace AmplifyShaderEditor
 						{
 							string worldNormal = dataCollector.TemplateDataCollectorInstance.GetWorldNormal( PrecisionType.Float, false, MasterNodePortCategory.Vertex );
 							dataCollector.TemplateDataCollectorInstance.RequestNewInterpolator( WirePortDataType.FLOAT4, false, "lightmapUVOrVertexSH" );
-							
+
 							dataCollector.AddToVertexLocalVariables( UniqueId, "OUTPUT_LIGHTMAP_UV( " + texcoord1 + ", unity_LightmapST, " + vOutName + ".lightmapUVOrVertexSH.xy );" );
 							dataCollector.AddToVertexLocalVariables( UniqueId, "OUTPUT_SH( " + worldNormal + ", " + vOutName + ".lightmapUVOrVertexSH.xyz );" );
 
 							dataCollector.AddToPragmas( UniqueId, "multi_compile _ DIRLIGHTMAP_COMBINED" );
 							dataCollector.AddToPragmas( UniqueId, "multi_compile _ LIGHTMAP_ON" );
+							dataCollector.AddToPragmas( UniqueId , "multi_compile _ _MIXED_LIGHTING_SUBTRACTIVE" );
+
+							dataCollector.AddToPragmas( UniqueId , "multi_compile _ _MAIN_LIGHT_SHADOWS" );
+							dataCollector.AddToPragmas( UniqueId , "multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE" );
+							dataCollector.AddToPragmas( UniqueId , "multi_compile _ _SHADOWS_SOFT" );
+
 						}
 
 						string fragWorldNormal = string.Empty;
@@ -248,11 +261,15 @@ namespace AmplifyShaderEditor
 						finalValue = "bakedGI" + OutputId;
 						string result = string.Format( LWIndirectDiffuseHeader, fInName + ".lightmapUVOrVertexSH.xy", fragWorldNormal );
 						dataCollector.AddLocalVariable( UniqueId, CurrentPrecisionType, WirePortDataType.FLOAT3, finalValue, result );
+						string mainLight = dataCollector.TemplateDataCollectorInstance.GetURPMainLight(UniqueId);
+						dataCollector.AddLocalVariable( UniqueId , string.Format( LWMixRealtimeWithGI , mainLight , fragWorldNormal , finalValue ) );
+
+
 
 						m_outputPorts[ 0 ].SetLocalValue( finalValue, dataCollector.PortCategory );
 						return finalValue;
 					}
-					else if( dataCollector.CurrentSRPType == TemplateSRPType.HD )
+					else if( dataCollector.CurrentSRPType == TemplateSRPType.HDRP )
 					{
 						string texcoord1 = string.Empty;
 						string texcoord2 = string.Empty;
@@ -314,7 +331,13 @@ namespace AmplifyShaderEditor
 
 				normal = m_inputPorts[ 0 ].GeneratePortInstructions( ref dataCollector );
 				if( m_normalSpace == ViewSpace.Tangent )
+				{
 					normal = "WorldNormalVector( " + Constants.InputVarStr + " , " + normal + " )";
+					if( m_normalize )
+					{
+						normal = "normalize( " + normal + " )";
+					}
+				}
 			}
 			else
 			{
@@ -328,7 +351,7 @@ namespace AmplifyShaderEditor
 					}
 				}
 
-				normal = GeneratorUtils.GenerateWorldNormal( ref dataCollector, UniqueId );
+				normal = GeneratorUtils.GenerateWorldNormal( ref dataCollector, UniqueId, m_normalize );
 			}
 
 
