@@ -57,7 +57,8 @@ namespace AmplifyShaderEditor
 		///////////////////////////////////////////////////////////
 		private const string AseObjectToClipPosVarName = "objectToClip";
 		private const string AseObjectToClipPosFormat = "UnityObjectToClipPos({0})";
-		private const string AseSRPObjectToClipPosFormat = "TransformWorldToHClip(TransformObjectToWorld({0}))";
+		//private const string AseSRPObjectToClipPosFormat = "TransformWorldToHClip(TransformObjectToWorld({0}))";
+		private const string AseSRPObjectToClipPosFormat = "TransformObjectToHClip({0})";
 
 		private const string AseWorldToClipPosVarName = "worldToClip";
 		private const string AseWorldToClipPosFormat = "mul(UNITY_MATRIX_VP, float4({0}, 1.0))";
@@ -183,7 +184,7 @@ namespace AmplifyShaderEditor
 						{
 							if( dataCollector.IsTemplate && dataCollector.IsSRP )
 							{
-								if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+								if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 								{
 									result = string.Format( AseHDObjectToWorldPosFormat, result );
 									if( m_absoluteWorldPos )
@@ -191,7 +192,7 @@ namespace AmplifyShaderEditor
 										result = string.Format( ASEHDAbsoluteWordPos, result );
 									}
 								}
-								else if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.Lightweight )
+								else if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.URP )
 								{
 									result = string.Format( AseHDObjectToWorldPosFormat, result );
 								}
@@ -205,7 +206,7 @@ namespace AmplifyShaderEditor
 						break;
 						case TransformSpaceTo.View:
 						{
-							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 								result = string.Format( AseHDObjectToViewPosFormat, result );
 							else
 								result = string.Format( AseObjectToViewPosFormat, result );
@@ -214,7 +215,7 @@ namespace AmplifyShaderEditor
 						break;
 						case TransformSpaceTo.Clip:
 						{
-							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType != TemplateSRPType.BuiltIn )
+							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType != TemplateSRPType.BiRP )
 							{
 								result = string.Format( AseSRPObjectToClipPosFormat, result );
 							}
@@ -236,7 +237,7 @@ namespace AmplifyShaderEditor
 						{
 							if( dataCollector.IsTemplate && dataCollector.IsSRP )
 							{
-								if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+								if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 								{
 									if( m_absoluteWorldPos )
 									{
@@ -244,7 +245,7 @@ namespace AmplifyShaderEditor
 									}
 									result = string.Format( AseSRPWorldToObjectPosFormat, result );
 								}
-								else if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.Lightweight )
+								else if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.URP )
 								{
 									result = string.Format( AseSRPWorldToObjectPosFormat, result );
 								}
@@ -265,7 +266,7 @@ namespace AmplifyShaderEditor
 						break;
 						case TransformSpaceTo.Clip:
 						{
-							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType != TemplateSRPType.BuiltIn )
+							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType != TemplateSRPType.BiRP )
 							{
 								result = string.Format( AseSRPWorldToClipPosFormat, result );
 							}
@@ -285,7 +286,7 @@ namespace AmplifyShaderEditor
 					{
 						case TransformSpaceTo.Object:
 						{
-							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 								result = string.Format( AseHDViewToObjectPosFormat, result );
 							else
 								result = string.Format( AseViewToObjectPosFormat, result );
@@ -296,7 +297,7 @@ namespace AmplifyShaderEditor
 						{
 							result = string.Format( AseViewToWorldPosFormat, result ); 
 							if( dataCollector.IsTemplate && 
-								dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD &&
+								dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP &&
 								m_absoluteWorldPos )
 							{
 								result = string.Format( ASEHDAbsoluteWordPos , result );
@@ -308,7 +309,7 @@ namespace AmplifyShaderEditor
 						case TransformSpaceTo.View: break;
 						case TransformSpaceTo.Clip:
 						{
-							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType != TemplateSRPType.BuiltIn )
+							if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType != TemplateSRPType.BiRP )
 							{
 								result = string.Format( AseSRPViewToClipPosFormat, result );
 							}
@@ -328,7 +329,7 @@ namespace AmplifyShaderEditor
 				//	{
 				//		case TransformSpace.Object:
 				//		{
-				//			if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+				//			if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 				//			{
 				//				result = string.Format( AseHDClipToObjectPosFormat, result );
 				//			}
@@ -341,7 +342,7 @@ namespace AmplifyShaderEditor
 				//		break;
 				//		case TransformSpace.World:
 				//		{
-				//			if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+				//			if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 				//			{
 				//				result = string.Format( AseHDClipToWorldPosFormat, result );
 				//			}
@@ -354,7 +355,7 @@ namespace AmplifyShaderEditor
 				//		break;
 				//		case TransformSpace.View:
 				//		{
-				//			if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
+				//			if( dataCollector.IsTemplate && dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
 				//			{
 				//				result = string.Format( AseHDClipToViewPosFormat, result );
 				//			}

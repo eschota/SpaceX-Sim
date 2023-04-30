@@ -40,8 +40,18 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					UIUtils.ShowMessage( UniqueId, m_nodeAttribs.Name + " does not work properly on Vertex ports" );
-					return GenerateErrorValue();
+					UIUtils.ShowMessage( UniqueId , FaceVariableNode.FaceOnVertexWarning , MessageSeverity.Warning );
+					string faceVariable = GeneratorUtils.GenerateVertexFace( ref dataCollector , UniqueId );
+
+					if( m_outputPorts[ 0 ].IsLocalValue( dataCollector.PortCategory ) )
+						return m_outputPorts[ 0 ].LocalValue( dataCollector.PortCategory );
+
+					string frontValue = m_inputPorts[ 0 ].GeneratePortInstructions( ref dataCollector );
+					string backValue = m_inputPorts[ 1 ].GeneratePortInstructions( ref dataCollector );
+
+					string finalResult = string.Format( SwitchOp , faceVariable , frontValue , backValue );
+					RegisterLocalVariable( 0 , finalResult , ref dataCollector , "switchResult" + OutputId );
+					return m_outputPorts[ 0 ].LocalValue( dataCollector.PortCategory );
 				}
 			}
 
@@ -51,7 +61,15 @@ namespace AmplifyShaderEditor
 			string front = m_inputPorts[ 0 ].GeneratePortInstructions( ref dataCollector );
 			string back = m_inputPorts[ 1 ].GeneratePortInstructions( ref dataCollector );
 
-			dataCollector.AddToInput( UniqueId, SurfaceInputs.VFACE );
+			if ( dataCollector.CurrentCanvasMode == NodeAvailability.TemplateShader )
+			{
+				dataCollector.AddToInput( UniqueId, SurfaceInputs.FRONT_FACING );
+			}
+			else
+			{
+				dataCollector.AddToInput( UniqueId, SurfaceInputs.FRONT_FACING_VFACE );
+			}
+
 			string variable = string.Empty;
 			if ( dataCollector.IsTemplate )
 			{
@@ -59,7 +77,7 @@ namespace AmplifyShaderEditor
 			}
 			else
 			{
-				variable = ( ( dataCollector.PortCategory == MasterNodePortCategory.Vertex ) ? Constants.VertexShaderOutputStr : Constants.InputVarStr ) + "." + Constants.VFaceVariable;
+				variable = ( ( dataCollector.PortCategory == MasterNodePortCategory.Vertex ) ? Constants.VertexShaderOutputStr : Constants.InputVarStr ) + "." + Constants.IsFrontFacingVariable;
 			}
 
 			string value = string.Format( SwitchOp, variable, front, back );

@@ -51,6 +51,9 @@ internal class ASEMaterialInspector : ShaderGUI
 
 
 	// Reflection Fields
+
+	private FieldInfo m_previewDirDefault = null;
+
 	private Type m_modelInspectorType = null;
 	private MethodInfo m_renderMeshMethod = null;
 	private Type m_previewGUIType = null;
@@ -66,13 +69,11 @@ internal class ASEMaterialInspector : ShaderGUI
 	FieldInfo activeMaterialInfo;
 #endif
 
-#if UNITY_2018_2_OR_NEWER
 	public override void OnClosed( Material material )
 	{
 		base.OnClosed( material );
 		CleanUp();
 	}
-#endif
 	
 	void CleanUp()
 	{
@@ -90,7 +91,7 @@ internal class ASEMaterialInspector : ShaderGUI
 
 	~ASEMaterialInspector()
 	{
-		Undo.undoRedoPerformed -= UndoRedoPerformed;
+		UndoUtils.UnregisterUndoRedoCallback( UndoRedoPerformed );
 		CleanUp();
 	}
 	public override void OnGUI( MaterialEditor materialEditor, MaterialProperty[] properties )
@@ -107,7 +108,7 @@ internal class ASEMaterialInspector : ShaderGUI
 		{
 			Init();
 			m_initialized = true;
-			Undo.undoRedoPerformed += UndoRedoPerformed;
+			UndoUtils.RegisterUndoRedoCallback( UndoRedoPerformed );
 		}
 
 		if( Event.current.type == EventType.Repaint &&
@@ -126,12 +127,7 @@ internal class ASEMaterialInspector : ShaderGUI
 				GUILayout.Space( 3 );
 				if( GUILayout.Button( "Open in Shader Editor" ) )
 				{
-#if UNITY_2018_3_OR_NEWER
 					ASEPackageManagerHelper.SetupLateMaterial( mat );
-
-#else
-					AmplifyShaderEditorWindow.LoadMaterialToASE( mat );
-#endif
 				}
 
 				GUILayout.BeginHorizontal();
@@ -379,12 +375,8 @@ internal class ASEMaterialInspector : ShaderGUI
 
 		EditorGUILayout.Space();
 		materialEditor.RenderQueueField();
-#if UNITY_5_6_OR_NEWER
 		materialEditor.EnableInstancingField();
-#endif
-#if UNITY_5_6_2 || UNITY_5_6_3 || UNITY_5_6_4 || UNITY_2017_1_OR_NEWER
 		materialEditor.DoubleSidedGIField();
-#endif
 		materialEditor.LightmapEmissionProperty();
 		if( m_refreshOnUndo || EditorGUI.EndChangeCheck() )
 		{
@@ -445,6 +437,11 @@ internal class ASEMaterialInspector : ShaderGUI
 				m_selectedField = typeof( MaterialEditor ).GetField( "m_SelectedMesh", BindingFlags.Instance | BindingFlags.NonPublic );
 			}
 
+			if( m_previewDirDefault == null )
+			{
+				m_previewDirDefault = typeof( MaterialEditor ).GetField( "m_PreviewDir" , BindingFlags.Instance | BindingFlags.NonPublic );
+			}
+
 			m_selectedMesh = (int)m_selectedField.GetValue( materialEditor );
 
 			if( m_selectedMesh != 0 )
@@ -455,6 +452,13 @@ internal class ASEMaterialInspector : ShaderGUI
 					EditorPrefs.SetString( PreviewModelPref, "" );
 				}
 			}
+		}
+
+		if( GUILayout.Button( "R" ,GUILayout.MaxWidth(17), GUILayout.MaxHeight( 13 ) ) )
+		{
+			m_previewDir = new Vector2( 0 , 0 );
+			if( m_previewDirDefault != null )
+				m_previewDirDefault.SetValue( materialEditor , m_previewDir );
 		}
 	}
 	
@@ -484,11 +488,7 @@ internal class ASEMaterialInspector : ShaderGUI
 		if( m_previewRenderUtility == null )
 		{
 			m_previewRenderUtility = new PreviewRenderUtility();
-#if UNITY_2017_1_OR_NEWER
 			m_previewRenderUtility.cameraFieldOfView = 30f;
-#else
-			m_previewRenderUtility.m_CameraFieldOfView = 30f;
-#endif
 		}
 
 		if( m_previewGUIType == null )
