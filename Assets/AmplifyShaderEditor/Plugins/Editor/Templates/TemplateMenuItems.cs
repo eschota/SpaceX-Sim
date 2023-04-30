@@ -6,10 +6,15 @@ namespace AmplifyShaderEditor
 {
 	public class TemplateMenuItems
 	{
-		[MenuItem( "Assets/Create/Amplify Shader/Deprecated/Legacy/Default Unlit", false, 85 )]
-		public static void ApplyTemplateDeprecatedLegacyDefaultUnlit()
+		[MenuItem( "Assets/Create/Amplify Shader/Custom Render Texture/Initialize", false, 85 )]
+		public static void ApplyTemplateCustomRenderTextureInitialize()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "6e114a916ca3e4b4bb51972669d463bf" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "6ce779933eb99f049b78d6163735e06f" );
+		}
+		[MenuItem( "Assets/Create/Amplify Shader/Custom Render Texture/Update", false, 85 )]
+		public static void ApplyTemplateCustomRenderTextureUpdate()
+		{
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "32120270d1b3a8746af2aca8bc749736" );
 		}
 		[MenuItem( "Assets/Create/Amplify Shader/HD/Lit", false, 85 )]
 		public static void ApplyTemplateHDLit()
@@ -66,6 +71,11 @@ namespace AmplifyShaderEditor
 		{
 			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "c71b220b631b6344493ea3cf87110c93" );
 		}
+		[MenuItem( "Assets/Create/Amplify Shader/Legacy/Post-Processing Stack", false, 85 )]
+		public static void ApplyTemplateLegacyPostProcessingStack()
+		{
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "32139be9c1eb75640a847f011acf3bcf" );
+		}
 		[MenuItem( "Assets/Create/Amplify Shader/Legacy/Unlit", false, 85 )]
 		public static void ApplyTemplateLegacyUnlit()
 		{
@@ -75,26 +85,6 @@ namespace AmplifyShaderEditor
 		public static void ApplyTemplateLegacyUnlitLightmap()
 		{
 			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "899e609c083c74c4ca567477c39edef0" );
-		}
-		[MenuItem( "Assets/Create/Amplify Shader/Templates/CustomRTInit", false, 85 )]
-		public static void ApplyTemplateTemplatesCustomRTInit()
-		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "6ce779933eb99f049b78d6163735e06f" );
-		}
-		[MenuItem( "Assets/Create/Amplify Shader/Templates/CustomRTUpdate", false, 85 )]
-		public static void ApplyTemplateTemplatesCustomRTUpdate()
-		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "32120270d1b3a8746af2aca8bc749736" );
-		}
-		[MenuItem( "Assets/Create/Amplify Shader/Templates/PostProcessStack", false, 85 )]
-		public static void ApplyTemplateTemplatesPostProcessStack()
-		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "32139be9c1eb75640a847f011acf3bcf" );
-		}
-		[MenuItem( "Assets/Create/Amplify Shader/Templates/UI-Default", false, 85 )]
-		public static void ApplyTemplateTemplatesUIDefault()
-		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "4e0417284ab4dd044a7b77c27aac5201" );
 		}
 	}
 }
