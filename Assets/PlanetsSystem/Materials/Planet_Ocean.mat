@@ -42,12 +42,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ClimateZonesTex:
+        m_Texture: {fileID: 2800000, guid: 32a9930d3585f254998e050552dcd7d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _CoatMaskMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ElevationTexture:
+        m_Texture: {fileID: 2800000, guid: 996baaefd0daa864a989843ac465e5fd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
@@ -106,6 +114,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: b421e413094084f42833df252352b751, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SeamlessMask:
+        m_Texture: {fileID: 2800000, guid: d75d267e2759dad47b9b3c6431484cfd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -123,7 +135,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
-        m_Texture: {fileID: 2800000, guid: 996baaefd0daa864a989843ac465e5fd, type: 3}
+        m_Texture: {fileID: 2800000, guid: b421e413094084f42833df252352b751, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ThicknessMap:
@@ -139,7 +151,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _seamlessMultMask:
-        m_Texture: {fileID: 2800000, guid: d8b1171af0931f34cac23763fc72ff3c, type: 3}
+        m_Texture: {fileID: 2800000, guid: d75d267e2759dad47b9b3c6431484cfd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -176,6 +188,13 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _BlendMode: 0
+    - _ClimateSandContrast: 0.604
+    - _ClimateSandLevel: 1
+    - _ClimateSnowContrast: 0.878
+    - _ClimateSnowLevel: 0.824
+    - _ClimateZonesContrast: 1
+    - _ClimateZonesNoiseScale: 129.3
+    - _ClimateZonesNoiseStrength: 0.038
     - _CoatMask: 1
     - _CullMode: 0
     - _CullModeForward: 0
@@ -221,10 +240,10 @@ Material:
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
-    - _MountainsLevel: 0.214
+    - _MountainsLevel: 0.174
     - _NormalMapSpace: 0
     - _NormalScale: 1
-    - _OceanLevel: 0.139
+    - _OceanLevel: 0.106
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
@@ -240,7 +259,7 @@ Material:
     - _Smoothness: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
-    - _SnowLevel: 0.503
+    - _SnowLevel: 0.285
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SpecularOcclusionMode: 1
@@ -285,6 +304,11 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorGround: {r: 0.20872203, g: 0.735849, b: 0.03818085, a: 0}
+    - _ColorMountains: {r: 0.6698113, g: 0.44016123, b: 0, a: 0}
+    - _ColorOcean: {r: 0, g: 0.3144647, b: 0.8018868, a: 0}
+    - _ColorSand: {r: 0.9716981, g: 0.88601786, b: 0, a: 0}
+    - _ColorSnow: {r: 1, g: 1, b: 1, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
