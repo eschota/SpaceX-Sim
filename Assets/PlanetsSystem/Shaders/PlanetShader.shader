@@ -22,6 +22,7 @@ Shader "PlanetShader"
 		_ClimateSnowContrast("ClimateSnowContrast", Range( 0 , 0.99)) = 0
 		_ClimateSandLevel("ClimateSandLevel", Range( 0 , 1)) = 0
 		_ClimateSandContrast("ClimateSandContrast", Range( 0 , 0.99)) = 0
+		[Toggle]_CloudsEnable("CloudsEnable", Float) = 1
 		_CloudsTex("CloudsTex", 2D) = "white" {}
 		_ColorClouds("ColorClouds", Color) = (1,1,1,0)
 		[ASEEnd]_CloudsDensity("CloudsDensity", Range( 0 , 1)) = 0.5
@@ -373,18 +374,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -963,7 +965,7 @@ Shader "PlanetShader"
 				float4 temp_cast_6 = (temp_output_166_0).xxxx;
 				float4 lerpResult156 = lerp( lerpResult91 , _ColorClouds , (float4( 0,0,0,0 ) + (clampResult158 - temp_cast_5) * (float4( 1,1,1,1 ) - float4( 0,0,0,0 )) / (temp_cast_6 - temp_cast_5)));
 				
-				surfaceDescription.BaseColor = lerpResult156.rgb;
+				surfaceDescription.BaseColor = (( _CloudsEnable )?( lerpResult156 ):( lerpResult91 )).rgb;
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.BentNormal = float3( 0, 0, 1 );
 				surfaceDescription.CoatMask = 0;
@@ -1120,18 +1122,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -1689,7 +1692,7 @@ Shader "PlanetShader"
 				float4 temp_cast_6 = (temp_output_166_0).xxxx;
 				float4 lerpResult156 = lerp( lerpResult91 , _ColorClouds , (float4( 0,0,0,0 ) + (clampResult158 - temp_cast_5) * (float4( 1,1,1,1 ) - float4( 0,0,0,0 )) / (temp_cast_6 - temp_cast_5)));
 				
-				surfaceDescription.BaseColor = lerpResult156.rgb;
+				surfaceDescription.BaseColor = (( _CloudsEnable )?( lerpResult156 ):( lerpResult91 )).rgb;
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.BentNormal = float3( 0, 0, 1 );
 				surfaceDescription.CoatMask = 0;
@@ -1852,18 +1855,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -2405,18 +2409,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -2966,18 +2971,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -3554,18 +3560,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -4196,18 +4203,19 @@ Shader "PlanetShader"
 			#endif
 
 			CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -4878,7 +4886,7 @@ Shader "PlanetShader"
 				float4 temp_cast_6 = (temp_output_166_0).xxxx;
 				float4 lerpResult156 = lerp( lerpResult91 , _ColorClouds , (float4( 0,0,0,0 ) + (clampResult158 - temp_cast_5) * (float4( 1,1,1,1 ) - float4( 0,0,0,0 )) / (temp_cast_6 - temp_cast_5)));
 				
-				surfaceDescription.BaseColor = lerpResult156.rgb;
+				surfaceDescription.BaseColor = (( _CloudsEnable )?( lerpResult156 ):( lerpResult91 )).rgb;
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.BentNormal = float3( 0, 0, 1 );
 				surfaceDescription.CoatMask = 0;
@@ -5135,18 +5143,19 @@ Shader "PlanetShader"
 
 			float4 _SelectionID;
             CBUFFER_START( UnityPerMaterial )
+			float4 _ColorSand;
 			float4 _ColorOcean;
 			float4 _ColorSnow;
 			float4 _ColorClouds;
 			float4 _SeamlessMask_ST;
 			float4 _ColorMountains;
 			float4 _ColorGround;
-			float4 _ColorSand;
 			float4 _CloudsTex_ST;
 			float4 _ElevationTexture_ST;
 			float _SnowLevel;
 			float _MountainsLevel;
 			float _OceanLevel;
+			float _CloudsEnable;
 			float _ClimateSandLevel;
 			float _ClimateSnowContrast;
 			float _ClimateSnowLevel;
@@ -5455,32 +5464,31 @@ Node;AmplifyShaderEditor.NoiseGeneratorNode;99;-4611.542,-540.1498;Inherit;True;
 Node;AmplifyShaderEditor.TFHCRemapNode;101;-4291.542,-476.1499;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0.45;False;4;FLOAT;0.55;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;24;-4337.147,-212.5986;Inherit;True;Property;_SeamlessMask;SeamlessMask;9;0;Create;True;0;0;0;False;0;False;-1;None;d75d267e2759dad47b9b3c6431484cfd;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.LerpOp;117;-3945.571,-392.899;Inherit;True;3;0;FLOAT;0.5;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.BlendOpsNode;109;-3625.571,-424.899;Inherit;True;Overlay;True;3;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.RangedFloatNode;141;-3221.916,-16.68612;Inherit;False;Property;_ClimateSnowContrast;ClimateSnowContrast;14;0;Create;True;0;0;0;False;0;False;0;0.878;0;0.99;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;138;-3235.297,-154.5052;Inherit;False;Property;_ClimateSnowLevel;ClimateSnowLevel;13;0;Create;True;0;0;0;False;0;False;0;0.824;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;141;-3221.916,-16.68612;Inherit;False;Property;_ClimateSnowContrast;ClimateSnowContrast;14;0;Create;True;0;0;0;False;0;False;0;0.938;0;0.99;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;138;-3235.297,-154.5052;Inherit;False;Property;_ClimateSnowLevel;ClimateSnowLevel;13;0;Create;True;0;0;0;False;0;False;0;0.386;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.OneMinusNode;151;-2931.05,-124.4957;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;107;-3337.571,-488.8991;Inherit;True;Property;_ClimateZonesTex;ClimateZonesTex;10;0;Create;True;0;0;0;False;0;False;-1;None;32a9930d3585f254998e050552dcd7d2;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.OneMinusNode;142;-2905.006,-6.683222;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;149;-3198.329,-674.9333;Inherit;False;Property;_ClimateSandContrast;ClimateSandContrast;16;0;Create;True;0;0;0;False;0;False;0;0.604;0;0.99;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;149;-3198.329,-674.9333;Inherit;False;Property;_ClimateSandContrast;ClimateSandContrast;16;0;Create;True;0;0;0;False;0;False;0;0.8;0;0.99;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;148;-3212.558,-804.4386;Inherit;False;Property;_ClimateSandLevel;ClimateSandLevel;15;0;Create;True;0;0;0;False;0;False;0;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.OneMinusNode;152;-2884.584,-773.6791;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.OneMinusNode;128;-2715.172,-251.5356;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;139;-2592,-16;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0
 Node;AmplifyShaderEditor.OneMinusNode;147;-2882.329,-669.9333;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;78;-2579.487,621.6732;Inherit;False;Property;_MountainsLevel;MountainsLevel;2;0;Create;True;0;0;0;True;0;False;0.5;0.174;-0.1;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;78;-2579.487,621.6732;Inherit;False;Property;_MountainsLevel;MountainsLevel;2;0;Create;True;0;0;0;True;0;False;0.5;0.193;-0.1;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;146;-2700.329,-700.9333;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;31;-2887.389,144.2543;Inherit;True;Property;_ElevationTexture;ElevationTexture;0;0;Create;True;0;0;0;False;0;False;-1;996baaefd0daa864a989843ac465e5fd;996baaefd0daa864a989843ac465e5fd;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;30;-2577.95,376.9377;Inherit;False;Property;_OceanLevel;OceanLevel;1;0;Create;True;0;0;0;True;0;False;0.2;0.106;-0.1;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ClampOpNode;137;-2508.471,-242.3392;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;140;-2227.841,-161.9315;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;85;-2564.672,890.7821;Inherit;False;Property;_SnowLevel;SnowLevel;3;0;Create;True;0;0;0;True;0;False;0.7;0.285;-0.1;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;85;-2564.672,890.7821;Inherit;False;Property;_SnowLevel;SnowLevel;3;0;Create;True;0;0;0;True;0;False;0.7;0.228;-0.1;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ClampOpNode;145;-2515.329,-806.9333;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;80;-2244.421,684.7701;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.01;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RGBToHSVNode;77;-2530.2,161.8058;Inherit;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.ColorNode;61;-1309.718,199.3843;Inherit;False;Property;_ColorGround;ColorGround;4;0;Create;True;0;0;0;False;0;False;0.2087225,0.735849,0.03818085,0;0.2087215,0.735849,0.03818085,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;92;-1298.793,868.4163;Inherit;False;Property;_ColorSnow;ColorSnow;8;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleAddOpNode;63;-2239.855,448.6927;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.01;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;59;-1299.554,-21.9285;Inherit;False;Property;_ColorOcean;ColorOcean;6;0;Create;True;0;0;0;False;0;False;0,0.3903246,1,0;0,0.3144642,0.8018868,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;59;-1299.554,-21.9285;Inherit;False;Property;_ColorOcean;ColorOcean;6;0;Create;True;0;0;0;False;0;False;0,0.3903246,1,0;0,0.3144641,0.8018868,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;143;-1297.563,399.9494;Inherit;False;Property;_ColorSand;ColorSand;5;0;Create;True;0;0;0;False;0;False;0.9662921,1,0,1;0.9716981,0.8860179,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.LerpOp;135;-1033.902,195.1886;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ClampOpNode;79;-2086.646,601.0427;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
@@ -5489,7 +5497,7 @@ Node;AmplifyShaderEditor.SimpleAddOpNode;88;-2254.414,949.472;Inherit;False;2;2;
 Node;AmplifyShaderEditor.ClampOpNode;32;-2087.946,356.4438;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;144;-747.9058,231.9996;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.LerpOp;134;-1032.187,-35.34676;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;84;-1307.373,622.6105;Inherit;False;Property;_ColorMountains;ColorMountains;7;0;Create;True;0;0;0;False;0;False;0.794,0.6033407,0.24217,0;0.6698113,0.4401608,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;84;-1307.373,622.6105;Inherit;False;Property;_ColorMountains;ColorMountains;7;0;Create;True;0;0;0;False;0;False;0.794,0.6033407,0.24217,0;0.6698113,0.4401607,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ClampOpNode;86;-2092.298,846.2524;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;62;-1893.072,341.0556;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;81;-1889.689,588.3387;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
@@ -5511,18 +5519,20 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;72;717.701,430.6213;Float;F
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;67;717.701,430.6213;Float;False;False;-1;2;Rendering.HighDefinition.LightingShaderGraphGUI;0;2;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;SceneSelectionPass;0;3;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;8;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps5;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;74;717.701,430.6213;Float;False;False;-1;2;Rendering.HighDefinition.LightingShaderGraphGUI;0;2;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Forward;0;9;Forward;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;8;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps5;switch;0;False;True;1;0;True;_SrcBlend;0;True;_DstBlend;1;0;True;_AlphaSrcBlend;0;True;_AlphaDstBlend;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullModeForward;False;False;False;True;True;True;True;True;0;True;_TransparentWritingMotionVec;False;False;False;False;False;True;True;0;True;_StencilRef;255;False;;255;True;_StencilWriteMask;7;False;;3;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;0;True;_ZWrite;True;0;True;_ZTestDepthEqualForOpaque;False;True;1;LightMode=Forward;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;69;717.701,430.6213;Float;False;False;-1;2;Rendering.HighDefinition.LightingShaderGraphGUI;0;2;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Motion Vectors;0;5;Motion Vectors;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;8;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps5;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;False;False;False;False;False;False;False;False;True;True;0;True;_StencilRefMV;255;False;;255;True;_StencilWriteMaskMV;7;False;;3;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;1;False;;False;False;True;1;LightMode=MotionVectors;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.SamplerNode;155;-196.2518,860.5009;Inherit;True;Property;_CloudsTex;CloudsTex;17;0;Create;True;0;0;0;False;0;False;-1;None;081528328f7f2cd4582f5186fa9ab015;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;157;-239.1463,463.3515;Inherit;False;Property;_ColorClouds;ColorClouds;18;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;155;-196.2518,860.5009;Inherit;True;Property;_CloudsTex;CloudsTex;18;0;Create;True;0;0;0;False;0;False;-1;None;081528328f7f2cd4582f5186fa9ab015;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;157;-239.1463,463.3515;Inherit;False;Property;_ColorClouds;ColorClouds;19;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;154;596.6944,850.6693;Float;False;False;-1;2;Rendering.HighDefinition.LightingShaderGraphGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;ScenePickingPass;0;10;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;64;1148.195,650.3694;Float;False;True;-1;2;Rendering.HighDefinition.LightingShaderGraphGUI;0;12;PlanetShader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;GBuffer;0;0;GBuffer;33;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;8;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps5;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;False;False;False;False;False;False;False;False;True;True;0;True;_StencilRefGBuffer;255;False;;255;True;_StencilWriteMaskGBuffer;7;False;;3;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;True;0;True;_ZTestGBuffer;False;True;1;LightMode=GBuffer;False;False;0;;0;0;Standard;39;Surface Type;0;0;  Rendering Pass;1;0;  Refraction Model;0;0;    Blending Mode;0;0;    Blend Preserves Specular;1;0;  Back Then Front Rendering;0;0;  Transparent Depth Prepass;0;0;  Transparent Depth Postpass;0;0;  ZWrite;0;0;  Z Test;4;0;Double-Sided;0;0;Alpha Clipping;0;0;  Use Shadow Threshold;0;0;Material Type,InvertActionOnDeselection;0;0;  Energy Conserving Specular;1;0;  Transmission,InvertActionOnDeselection;0;0;Forward Only;0;0;Receive Decals;1;0;Receives SSR;1;0;Receive SSR Transparent;0;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;Specular AA;0;0;Specular Occlusion Mode;1;0;Override Baked GI;0;0;Depth Offset;0;0;DOTS Instancing;0;0;GPU Instancing;1;0;LOD CrossFade;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position;1;0;0;11;True;True;True;True;True;True;False;False;False;True;True;False;;False;0
-Node;AmplifyShaderEditor.LerpOp;156;803.3741,687.2558;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ClampOpNode;158;218.046,908.8489;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,1,1,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCRemapNode;160;483.046,915.8489;Inherit;True;5;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,1,1,1;False;3;COLOR;0,0,0,0;False;4;COLOR;1,1,1,1;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;166;-43.95398,1288.849;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ClampOpNode;163;-287.954,1282.849;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;-0.99;False;2;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ClampOpNode;161;-305.954,1056.849;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.99;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;167;-587.954,1156.849;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;1;False;4;FLOAT;-1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;159;-966.954,1158.849;Inherit;False;Property;_CloudsDensity;CloudsDensity;19;0;Create;True;0;0;0;False;0;False;0.5;0.5;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;159;-966.954,1158.849;Inherit;False;Property;_CloudsDensity;CloudsDensity;20;0;Create;True;0;0;0;False;0;False;0.5;0.52;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.BlendOpsNode;109;-3625.571,-424.899;Inherit;True;Overlay;True;3;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.LerpOp;156;797.3741,762.2558;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;64;1352.195,683.3694;Float;False;True;-1;2;Rendering.HighDefinition.LightingShaderGraphGUI;0;12;PlanetShader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;GBuffer;0;0;GBuffer;33;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;8;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps5;switch;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullMode;False;False;False;False;False;False;False;False;False;True;True;0;True;_StencilRefGBuffer;255;False;;255;True;_StencilWriteMaskGBuffer;7;False;;3;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;True;0;True;_ZTestGBuffer;False;True;1;LightMode=GBuffer;False;False;0;;0;0;Standard;39;Surface Type;0;0;  Rendering Pass;1;0;  Refraction Model;0;0;    Blending Mode;0;0;    Blend Preserves Specular;1;0;  Back Then Front Rendering;0;0;  Transparent Depth Prepass;0;0;  Transparent Depth Postpass;0;0;  ZWrite;0;0;  Z Test;4;0;Double-Sided;0;0;Alpha Clipping;0;0;  Use Shadow Threshold;0;0;Material Type,InvertActionOnDeselection;0;0;  Energy Conserving Specular;1;0;  Transmission,InvertActionOnDeselection;0;0;Forward Only;0;0;Receive Decals;1;0;Receives SSR;1;0;Receive SSR Transparent;0;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;Specular AA;0;0;Specular Occlusion Mode;1;0;Override Baked GI;0;0;Depth Offset;0;0;DOTS Instancing;0;0;GPU Instancing;1;0;LOD CrossFade;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position;1;0;0;11;True;True;True;True;True;True;False;False;False;True;True;False;;False;0
+Node;AmplifyShaderEditor.ToggleSwitchNode;168;1033.296,652.964;Inherit;False;Property;_CloudsEnable;CloudsEnable;17;0;Create;True;0;0;0;False;0;False;1;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 WireConnection;116;0;111;0
 WireConnection;113;0;112;0
 WireConnection;113;1;111;0
@@ -5535,8 +5545,6 @@ WireConnection;101;3;114;0
 WireConnection;101;4;113;0
 WireConnection;117;1;101;0
 WireConnection;117;2;24;0
-WireConnection;109;0;95;0
-WireConnection;109;1;117;0
 WireConnection;151;0;138;0
 WireConnection;107;1;109;0
 WireConnection;142;0;141;0
@@ -5613,10 +5621,6 @@ WireConnection;121;0;150;0
 WireConnection;121;1;107;2
 WireConnection;121;2;107;3
 WireConnection;121;3;140;0
-WireConnection;64;0;156;0
-WireConnection;156;0;91;0
-WireConnection;156;1;157;0
-WireConnection;156;2;160;0
 WireConnection;158;0;155;0
 WireConnection;158;1;161;0
 WireConnection;158;2;166;0
@@ -5627,5 +5631,13 @@ WireConnection;166;0;163;0
 WireConnection;163;0;167;0
 WireConnection;161;0;167;0
 WireConnection;167;0;159;0
+WireConnection;109;0;95;0
+WireConnection;109;1;117;0
+WireConnection;156;0;91;0
+WireConnection;156;1;157;0
+WireConnection;156;2;160;0
+WireConnection;64;0;168;0
+WireConnection;168;0;91;0
+WireConnection;168;1;156;0
 ASEEND*/
-//CHKSM=DC55B4D99201D59FE32C5FA80650EEF8C821A82C
+//CHKSM=27D3860A5989593F844551C508E1C34E65C50262
