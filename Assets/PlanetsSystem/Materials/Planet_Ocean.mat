@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Planet_Ocean
   m_Shader: {fileID: 4800000, guid: cf0609218288a16468309188a49cad1f, type: 3}
-  m_ShaderKeywords: _CLOUDSENABLE_ON _DISABLE_SSR_TRANSPARENT _DISPLACEMENT_LOCK_TILING_SCALE
-    _DOUBLESIDED_ON _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP_TANGENT_SPACE _PIXEL_DISPLACEMENT
-    _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE _TOGGLESWITCH0_ON
+  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _DISPLACEMENT_LOCK_TILING_SCALE _DOUBLESIDED_ON
+    _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP_TANGENT_SPACE _PIXEL_DISPLACEMENT _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE
+    _TOGGLESWITCH0_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -193,15 +193,15 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _BlendMode: 0
-    - _ClimateSandContrast: 0.8
-    - _ClimateSandLevel: 1
-    - _ClimateSnowContrast: 0.938
-    - _ClimateSnowLevel: 0.386
+    - _ClimateSandContrast: 0.076
+    - _ClimateSandLevel: 0.941
+    - _ClimateSnowContrast: 0.638
+    - _ClimateSnowLevel: 0.928
     - _ClimateZonesContrast: 1
     - _ClimateZonesNoiseScale: 129.3
-    - _ClimateZonesNoiseStrength: 0.03
-    - _CloudsDensity: 0.5
-    - _CloudsEnable: 1
+    - _ClimateZonesNoiseStrength: 0.247
+    - _CloudsDensity: 0
+    - _CloudsEnable: 0
     - _CloudsTransparency: -1
     - _CoatMask: 1
     - _CullMode: 0
